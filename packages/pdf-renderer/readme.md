@@ -1,21 +1,20 @@
 # @asym/pdf-renderer
 
-Phase 10 print shell foundation for the Asym PDF Document Builder print
-renderer.
+Phase 12 preview foundation for the Asym PDF Document Builder print renderer.
 
 ## Purpose
 
 This package owns deterministic document serialization, print-ready HTML,
-paged-media CSS foundations, renderer preflight, browser preview helpers, and
-fixture utilities. Phase 10 adds the first schema-driven print shell around the
-Phase 09 serializer output.
+paged-media CSS foundations, browser-safe preview helpers, server-only
+DocRaptor test preview orchestration, and renderer fixtures.
 
-DocRaptor remains the production PDF target, but direct DocRaptor API calls
-belong in `@asym/docraptor-client`.
+DocRaptor remains the production PDF fidelity target. Browser preview is fast
+authoring feedback only and must never be treated as final PDF output.
 
 ## Public API Promise
 
-The current public API is intentionally small:
+The root package entry is browser-safe and intentionally does not import the
+server-only DocRaptor client:
 
 - `pdfRendererBoundary`
 - `PdfRendererBoundary`
@@ -32,16 +31,92 @@ The current public API is intentionally small:
 - `ComposePrintDocumentHtmlInput`
 - `ComposePrintDocumentHtmlResult`
 - `PrintDocumentPageBox`
+- `createBrowserPdfPreview`
+- `CreateBrowserPdfPreviewRequest`
+- `PdfPreviewResult`
+- `PdfPreviewDiagnostic`
+- `PdfPreviewPreflightHook`
+- `PdfPreviewSnapshots`
+- `PdfPreviewArtifact`
 
-`composePdfDocumentHtml` accepts structured document JSON and returns
-deterministic HTML plus structured CSS requirements, warnings, asset
-references, and variable usage. It is separate from `composeReactEmail` and
-does not render through React Email components.
+The server-only DocRaptor test preview API is isolated behind:
 
-`composePrintDocumentHtml` wraps serializer output in a full HTML document with
-a deterministic `<style>` block, schema-validated page settings, escaped
-document title, base print CSS variables, page-break helpers, keep-together
-helpers, repeated table header CSS, and page-number placeholder classes.
+```ts
+import { createDocRaptorTestPdfPreview } from '@asym/pdf-renderer/docraptor-preview';
+```
+
+Do not import `@asym/pdf-renderer/docraptor-preview` from browser code. The
+subpath imports `@asym/docraptor-client`, which enforces a server-only runtime.
+
+## Browser Preview
+
+`createBrowserPdfPreview` validates a structured template with
+`DocumentTemplateV1Schema`, serializes the template content with
+`composePdfDocumentHtml`, wraps it with `composePrintDocumentHtml`, and returns
+generated HTML/CSS snapshots plus structured diagnostics.
+
+```ts
+import { createBrowserPdfPreview } from '@asym/pdf-renderer';
+
+const preview = await createBrowserPdfPreview({
+  template,
+  preflight: async () => [
+    {
+      code: 'custom_warning',
+      message: 'Optional Phase 12 preview preflight warning.',
+    },
+  ],
+});
+
+if (preview.status !== 'error') {
+  console.log(preview.snapshots.html);
+  console.log(preview.snapshots.css);
+}
+```
+
+Browser preview metadata always reports:
+
+- `renderer: "browser"`
+- `finalPdfFidelity: false`
+- `productionRender: false`
+- `docraptorTestMode: false`
+
+The browser path does not mutate the caller's template object and does not
+resolve real donor or financial data in Phase 12.
+
+## DocRaptor Test Preview
+
+`createDocRaptorTestPdfPreview` lives in the server-only subpath. It uses the
+same template validation, serializer, print shell, and optional preflight hook
+as browser preview, then calls `@asym/docraptor-client` in `mode: "test"`.
+
+```ts
+import { createDocRaptorTestPdfPreview } from '@asym/pdf-renderer/docraptor-preview';
+
+const preview = await createDocRaptorTestPdfPreview({
+  apiKey: process.env.DOCRAPTOR_API_KEY ?? '',
+  baseUrl: 'https://assets.example.test/documents/',
+  template,
+});
+
+const pdf = preview.artifacts.find((artifact) => artifact.kind === 'pdf-bytes');
+```
+
+The DocRaptor test preview request sends `prince_options.media: "print"` and
+includes `baseurl` when `baseUrl` is provided. Preview results expose sanitized
+request metadata only; API keys are constructor input and are never serialized
+into preview results.
+
+DocRaptor test preview metadata reports:
+
+- `renderer: "docraptor"`
+- `finalPdfFidelity: true`
+- `productionRender: false`
+- `docraptorTestMode: true`
+- `mayContainWatermark: true`
+
+Test renders may be watermarked. Production rendering remains a later package
+and platform integration concern.
 
 ## Phase 09 Behavior
 
@@ -73,16 +148,17 @@ DocRaptor compatibility notes:
 ## Non-goals
 
 - No React editor UI.
-- No DocRaptor credentials or direct API calls.
-- No DocRaptor request payloads or render modes before Phase 11.
-- No browser preview fidelity guarantees before Phase 12.
+- No product preview panel.
+- No full Phase 25 preflight implementation.
+- No production DocRaptor render orchestration.
+- No real donor, ministry, financial, or tenant data resolution.
 - No integrated header/footer system before Phase 21.
 - No tenant storage, auth, queue, or core app imports.
 - No string-replacement merge engine.
 
 ## Maturity
 
-`phase-10-print-shell`. The package remains private to prevent accidental
+`phase-12-preview`. The package remains private to prevent accidental
 publication while renderer contracts are still being built.
 
 ## Development

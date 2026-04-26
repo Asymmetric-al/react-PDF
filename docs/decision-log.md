@@ -347,3 +347,22 @@ phase-level choices and tradeoffs found during implementation.
   donor data preview, or template mutation.
 - Constraint: Browser preview remains non-authoritative, and DocRaptor preview
   must stay server-only and test-mode by default.
+
+## 2026-04-26: Phase 12 Splits Browser Preview From DocRaptor Test Preview
+
+- Decision: The root `@asym/pdf-renderer` entry exposes browser-safe preview
+  APIs and shared preview types, while DocRaptor test preview lives behind the
+  server-only `@asym/pdf-renderer/docraptor-preview` subpath.
+- Reason: Future editor, playground, and core adapter code need fast local
+  preview from generated print HTML/CSS without importing server-only
+  DocRaptor code into browser bundles.
+- Decision: Browser preview metadata always marks the result as non-final PDF
+  fidelity and non-production output.
+- Reason: Browser output is useful authoring feedback, but DocRaptor/Prince
+  remains the PDF fidelity path.
+- Decision: DocRaptor test preview uses `@asym/docraptor-client` in
+  `mode: "test"` and returns sanitized request metadata plus PDF bytes.
+- Reason: Preview should exercise the real renderer path without risking
+  production renders or serialized API keys.
+- Tradeoff: Phase 12 adds only an optional preflight diagnostic hook. The full
+  publish/render preflight system remains Phase 25.

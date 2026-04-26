@@ -42,8 +42,8 @@
 | 9 | Build the Document Serializer Foundation | Complete | `packages/pdf-renderer/src/compose-pdf-document-html.ts` |
 | 10 | Build the Print HTML Shell and Page Model | Complete | `packages/pdf-renderer/src/print-shell.ts` |
 | 11 | Build the DocRaptor Client Package | Complete | `packages/docraptor-client/src` |
-| 12 | Build Browser Preview and DocRaptor Preview Strategy | Next | `packages/pdf-renderer/src/preview`, `packages/pdf-editor/src/preview` |
-| 13 | Build the Typed Variable Registry | Not started | `packages/pdf-template-schema/src/variables` |
+| 12 | Build Browser Preview and DocRaptor Preview Strategy | Complete; validation recorded | `packages/pdf-renderer/src/preview`, `packages/pdf-renderer/src/docraptor-preview.ts` |
+| 13 | Build the Typed Variable Registry | Next | `packages/pdf-template-schema/src/variables` |
 | 14 | Build Variable Resolution, Formatter, and Fallback System | Not started | `packages/pdf-template-schema/src/formatters`, `packages/pdf-renderer/src/variables` |
 | 15 | Build the Variable Chip Editor Extension | Not started | `packages/pdf-editor/src/extensions/variable` |
 | 16 | Build Conditional Section Engine and Editor Extension | Not started | `packages/pdf-editor/src/extensions/conditional-section`, `packages/pdf-renderer/src/conditions` |
@@ -487,26 +487,28 @@ preview.
 
 ### Primary output
 
-- Preview package-layer APIs in renderer/editor boundaries.
+- Preview package-layer APIs in `@asym/pdf-renderer`.
 
 ### Tasks
 
-- [ ] Add browser preview from generated print HTML/CSS and DocRaptor preview
+- [x] Add browser preview from generated print HTML/CSS and DocRaptor preview
       through server-side test mode.
-- [ ] Return preview result types with success, warnings, errors, render ID,
+- [x] Return preview result types with success, warnings, errors, render ID,
       generated HTML/CSS snapshots, PDF bytes or URL, and render timing.
-- [ ] Mark browser preview as non-final fidelity and ensure preview cannot
+- [x] Mark browser preview as non-final fidelity and ensure preview cannot
       mutate templates.
 
 ### Validation
 
-- [ ] Tests cover browser preview generation, DocRaptor preview payload,
+- [x] Tests cover browser preview generation, DocRaptor preview payload,
       warning/error flow, no API key exposure, and read-only preview behavior.
-- [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
+- [x] Run or attempt `pnpm test`, `pnpm build`, and `pnpm lint`; record
+      blocked local package-manager validation honestly when tooling is
+      unavailable.
 
 ### Handoff output
 
-- [ ] Preview architecture docs and caveats.
+- [x] Preview architecture docs and caveats.
 
 ## Phase 13: Build the Typed Variable Registry
 

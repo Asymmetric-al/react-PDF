@@ -7,7 +7,11 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
+      "@asym/docraptor-client": ["../docraptor-client/src/index.ts"],
       "@asym/pdf-renderer": ["./src/index.ts"],
+      "@asym/pdf-renderer/docraptor-preview": [
+        "./src/docraptor-preview.ts"
+      ],
       "@asym/pdf-template-schema": ["../pdf-template-schema/src/index.ts"]
     },
     "target": "ES2022",

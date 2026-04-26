@@ -48,8 +48,11 @@ Observed repo facts:
 - Phase 11 fills the private `@asym/docraptor-client` package with a
   server-only direct REST client for DocRaptor sync renders, async render job
   creation, status polling, timeouts, abort signals, normalized errors, and
-  app-layer idempotency metadata. It remains unwired from editor UI and
-  preview orchestration.
+  app-layer idempotency metadata.
+- Phase 12 fills the private `@asym/pdf-renderer` package with browser-safe
+  preview orchestration in the root entry and server-only DocRaptor test
+  preview orchestration behind `@asym/pdf-renderer/docraptor-preview`. It
+  remains unwired from editor UI and real donor or financial data resolution.
 
 The broader Asymmetric.al platform currently uses Unlayer document mode for
 PDF Studio. That platform shape includes or expects template CRUD, Unlayer
@@ -178,14 +181,15 @@ The canonical implementation sequence is now the 42-phase tracker in
 foundation, Phase 07 owns broader compatibility fixtures, Phase 08 owns safe
 document naming, Phase 09 owns the document serializer foundation, Phase 10
 owns the print shell, and Phase 11 owns the DocRaptor client package. Later
-phases add preview, typed variables, variable resolution and formatting,
-variable chips, conditionals, repeaters, tables, calculations, page flow,
-headers/footers, assets, branding, fixtures, preflight, render metadata,
-template lifecycle/versioning, batch, async rendering, Playwright local test
-rendering, metadata/accessibility, security, Unlayer coexistence, core adapter
-contracts, docs/examples, performance, API stability, browser bundle audits,
-OpenSpec reconciliation, mocked end-to-end package flows, core cutover
-planning, and final package sign-off.
+Phase 12 owns browser and DocRaptor test preview. Later phases add typed
+variables, variable resolution and formatting, variable chips, conditionals,
+repeaters, tables, calculations, page flow, headers/footers, assets, branding,
+fixtures, preflight, render metadata, template lifecycle/versioning, batch,
+async rendering, Playwright local test rendering, metadata/accessibility,
+security, Unlayer coexistence, core adapter contracts, docs/examples,
+performance, API stability, browser bundle audits, OpenSpec reconciliation,
+mocked end-to-end package flows, core cutover planning, and final package
+sign-off.
 
 ## 6. Target state
 
@@ -271,8 +275,9 @@ naming.
 ### `packages/pdf-renderer`
 
 Owns document serialization, print HTML generation, print CSS generation,
-renderer preflight, local preview helpers, and golden fixture utilities. It
-should not own tenant storage, platform permissions, or core app routes.
+renderer preflight, browser preview helpers, the server-only DocRaptor test
+preview subpath, and golden fixture utilities. It should not own tenant
+storage, platform permissions, or core app routes.
 
 ### `packages/docraptor-client`
 

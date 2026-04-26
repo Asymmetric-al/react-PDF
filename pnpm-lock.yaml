@@ -694,6 +694,9 @@ importers:
 
   packages/pdf-renderer:
     dependencies:
+      '@asym/docraptor-client':
+        specifier: workspace:*
+        version: link:../docraptor-client
       '@asym/pdf-template-schema':
         specifier: workspace:*
         version: link:../pdf-template-schema
