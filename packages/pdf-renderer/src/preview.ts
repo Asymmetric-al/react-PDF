@@ -1,6 +1,6 @@
 import {
-  DocumentTemplateV1Schema,
   type DocumentTemplateV1,
+  DocumentTemplateV1Schema,
 } from '@asym/pdf-template-schema';
 import {
   composePdfDocumentHtml,

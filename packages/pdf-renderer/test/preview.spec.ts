@@ -3,8 +3,8 @@ import {
   createBrowserPdfPreview,
   type PdfPreviewPreflightHook,
 } from '@asym/pdf-renderer';
-import { donationReceiptTemplate } from '../../pdf-template-schema/test/fixtures/templates';
 import { describe, expect, it, vi } from 'vitest';
+import { donationReceiptTemplate } from '../../pdf-template-schema/test/fixtures/templates';
 
 describe('Phase 12 browser PDF preview', () => {
   it('creates a browser preview from a valid template fixture', async () => {

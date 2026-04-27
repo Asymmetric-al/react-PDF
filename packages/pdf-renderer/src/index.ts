@@ -39,14 +39,6 @@ export {
   type PdfDocumentRenderWarningSource,
   type PdfDocumentVariableUsage,
 } from './compose-pdf-document-html';
-
-export {
-  type ComposePrintDocumentHtmlInput,
-  type ComposePrintDocumentHtmlResult,
-  composePrintDocumentHtml,
-  type PrintDocumentPageBox,
-} from './print-shell';
-
 export {
   type BasePdfPreviewRequest,
   type CreateBrowserPdfPreviewRequest,
@@ -67,3 +59,9 @@ export {
   type PdfPreviewSnapshots,
   type PdfPreviewStatus,
 } from './preview';
+export {
+  type ComposePrintDocumentHtmlInput,
+  type ComposePrintDocumentHtmlResult,
+  composePrintDocumentHtml,
+  type PrintDocumentPageBox,
+} from './print-shell';

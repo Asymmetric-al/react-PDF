@@ -6,21 +6,30 @@ const currentDirectory = fileURLToPath(new URL('.', import.meta.url));
 
 export default defineConfig({
   resolve: {
-    alias: {
-      '@asym/docraptor-client': resolve(
-        currentDirectory,
-        '../docraptor-client/src/index.ts',
-      ),
-      '@asym/pdf-renderer': resolve(currentDirectory, 'src/index.ts'),
-      '@asym/pdf-renderer/docraptor-preview': resolve(
-        currentDirectory,
-        'src/docraptor-preview.ts',
-      ),
-      '@asym/pdf-template-schema': resolve(
-        currentDirectory,
-        '../pdf-template-schema/src/index.ts',
-      ),
-    },
+    alias: [
+      {
+        find: '@asym/pdf-renderer/docraptor-preview',
+        replacement: resolve(currentDirectory, 'src/docraptor-preview.ts'),
+      },
+      {
+        find: '@asym/pdf-renderer',
+        replacement: resolve(currentDirectory, 'src/index.ts'),
+      },
+      {
+        find: '@asym/docraptor-client',
+        replacement: resolve(
+          currentDirectory,
+          '../docraptor-client/src/index.ts',
+        ),
+      },
+      {
+        find: '@asym/pdf-template-schema',
+        replacement: resolve(
+          currentDirectory,
+          '../pdf-template-schema/src/index.ts',
+        ),
+      },
+    ],
   },
   test: {
     environment: 'node',

@@ -2,8 +2,8 @@ import {
   createDocRaptorTestPdfPreview,
   docraptorPreviewBoundary,
 } from '@asym/pdf-renderer/docraptor-preview';
-import { donationReceiptTemplate } from '../../pdf-template-schema/test/fixtures/templates';
 import { describe, expect, it, vi } from 'vitest';
+import { donationReceiptTemplate } from '../../pdf-template-schema/test/fixtures/templates';
 
 type FetchCall = {
   readonly url: string;
