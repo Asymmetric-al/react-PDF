@@ -19,8 +19,10 @@ export type PdfDocumentRenderWarningCode =
   | 'unsupported_node';
 
 export type PdfDocumentRenderWarningSeverity = 'warning' | 'error';
+export type PdfDocumentRenderWarningSource = 'serializer' | 'print-shell';
 
 export interface PdfDocumentRenderWarning {
+  readonly source?: PdfDocumentRenderWarningSource;
   readonly code: PdfDocumentRenderWarningCode;
   readonly severity: PdfDocumentRenderWarningSeverity;
   readonly message: string;

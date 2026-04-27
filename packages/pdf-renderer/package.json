@@ -19,6 +19,16 @@
         "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
       }
+    },
+    "./docraptor-preview": {
+      "import": {
+        "types": "./dist/docraptor-preview.d.mts",
+        "default": "./dist/docraptor-preview.mjs"
+      },
+      "require": {
+        "types": "./dist/docraptor-preview.d.cts",
+        "default": "./dist/docraptor-preview.cjs"
+      }
     }
   },
   "license": "MIT",
@@ -46,6 +56,7 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
+    "@asym/docraptor-client": "workspace:*",
     "@asym/pdf-template-schema": "workspace:*"
   },
   "devDependencies": {

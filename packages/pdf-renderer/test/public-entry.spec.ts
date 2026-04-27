@@ -1,6 +1,7 @@
 import {
   composePdfDocumentHtml,
   composePrintDocumentHtml,
+  createBrowserPdfPreview,
   type PdfRendererBoundary,
   pdfRendererBoundary,
 } from '@asym/pdf-renderer';
@@ -12,9 +13,9 @@ describe('@asym/pdf-renderer public entry', () => {
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-renderer',
-      maturity: 'phase-10-print-shell',
+      maturity: 'phase-12-preview',
       owns: 'print-renderer',
-      runtime: 'server-or-build-time',
+      runtime: 'browser-safe-root-with-server-subpath',
       consumes: ['@asym/pdf-template-schema'],
     });
   });
@@ -25,5 +26,9 @@ describe('@asym/pdf-renderer public entry', () => {
 
   it('exposes the Phase 10 print shell foundation', () => {
     expect(composePrintDocumentHtml).toBeDefined();
+  });
+
+  it('exposes the Phase 12 browser-safe preview foundation', () => {
+    expect(createBrowserPdfPreview).toBeDefined();
   });
 });

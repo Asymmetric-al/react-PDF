@@ -1,8 +1,8 @@
 import type { PdfTemplateSchemaBoundary } from '@asym/pdf-template-schema';
 
 export type PdfRendererPackageName = '@asym/pdf-renderer';
-export type PdfRendererMaturity = 'phase-10-print-shell';
-export type PdfRendererRuntime = 'server-or-build-time';
+export type PdfRendererMaturity = 'phase-12-preview';
+export type PdfRendererRuntime = 'browser-safe-root-with-server-subpath';
 export type PdfRendererOwnership = 'print-renderer';
 
 export interface PdfRendererBoundary {
@@ -15,9 +15,9 @@ export interface PdfRendererBoundary {
 
 export const pdfRendererBoundary: PdfRendererBoundary = {
   packageName: '@asym/pdf-renderer',
-  maturity: 'phase-10-print-shell',
+  maturity: 'phase-12-preview',
   owns: 'print-renderer',
-  runtime: 'server-or-build-time',
+  runtime: 'browser-safe-root-with-server-subpath',
   consumes: ['@asym/pdf-template-schema'],
 };
 
@@ -36,9 +36,29 @@ export {
   type PdfDocumentRenderWarning,
   type PdfDocumentRenderWarningCode,
   type PdfDocumentRenderWarningSeverity,
+  type PdfDocumentRenderWarningSource,
   type PdfDocumentVariableUsage,
 } from './compose-pdf-document-html';
-
+export {
+  type BasePdfPreviewRequest,
+  type CreateBrowserPdfPreviewRequest,
+  createBrowserPdfPreview,
+  type PdfPreviewArtifact,
+  type PdfPreviewArtifactKind,
+  type PdfPreviewDiagnostic,
+  type PdfPreviewDiagnosticInput,
+  type PdfPreviewDiagnosticSeverity,
+  type PdfPreviewDiagnosticSource,
+  type PdfPreviewMetadata,
+  type PdfPreviewMode,
+  type PdfPreviewPreflightHook,
+  type PdfPreviewPreflightInput,
+  type PdfPreviewRenderer,
+  type PdfPreviewRequestMetadata,
+  type PdfPreviewResult,
+  type PdfPreviewSnapshots,
+  type PdfPreviewStatus,
+} from './preview';
 export {
   type ComposePrintDocumentHtmlInput,
   type ComposePrintDocumentHtmlResult,
