@@ -2,9 +2,8 @@
 
 This repository is the Asymmetric.al fork of
 [`resend/react-email`](https://github.com/resend/react-email). It is being
-turned into a PDF-first document builder for nonprofit and ministry workflows:
-donation receipts, tax receipts, annual giving statements, donor letters,
-missionary support reports, financial reports, invoices, certificates, branded
+turned into a PDF-first document builder for nonprofit and business workflows:
+donation receipts, tax receipts, annual giving statements, donor letters, marketing reports, financial reports, invoices, certificates, branded
 documents, and large batch generation.
 
 The project still has React Email roots. The current editor foundation is
