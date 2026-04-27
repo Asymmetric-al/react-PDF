@@ -59,6 +59,7 @@ export function composePrintDocumentHtml(
         ...input.document.warnings,
         {
           code: 'invalid_page_settings',
+          source: 'print-shell',
           severity: 'error',
           message: 'Phase 10 print shell received invalid page settings.',
           path: ['pageSettings'],

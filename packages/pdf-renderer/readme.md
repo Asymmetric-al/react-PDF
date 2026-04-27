@@ -45,6 +45,10 @@ The server-only DocRaptor test preview API is isolated behind:
 import { createDocRaptorTestPdfPreview } from '@asym/pdf-renderer/docraptor-preview';
 ```
 
+The subpath also exports `docraptorPreviewBoundary` so dependency inspectors can
+see the server-only `@asym/docraptor-client` edge without treating the browser
+safe root entry as a DocRaptor consumer.
+
 Do not import `@asym/pdf-renderer/docraptor-preview` from browser code. The
 subpath imports `@asym/docraptor-client`, which enforces a server-only runtime.
 

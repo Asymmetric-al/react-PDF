@@ -6,8 +6,12 @@ import {
   composePdfDocumentHtml,
   type PdfDocumentCssRequirement,
   type PdfDocumentRenderWarning,
+  type PdfDocumentRenderWarningCode,
 } from './compose-pdf-document-html';
 import { composePrintDocumentHtml } from './print-shell';
+
+const printShellWarningCodes: ReadonlySet<PdfDocumentRenderWarningCode> =
+  new Set(['invalid_page_settings']);
 
 export type PdfPreviewMode = 'browser' | 'docraptor-test';
 export type PdfPreviewStatus = 'success' | 'warning' | 'error';
@@ -305,8 +309,7 @@ function createPreviewMetadata(mode: PdfPreviewMode): PdfPreviewMetadata {
 function convertRenderWarningToDiagnostic(
   warning: PdfDocumentRenderWarning,
 ): PdfPreviewDiagnostic {
-  const source: PdfPreviewDiagnosticSource =
-    warning.code === 'invalid_page_settings' ? 'print-shell' : 'serializer';
+  const source = resolveRenderWarningSource(warning);
 
   return {
     code: warning.code,
@@ -316,6 +319,18 @@ function convertRenderWarningToDiagnostic(
     severity: warning.severity,
     source,
   };
+}
+
+function resolveRenderWarningSource(
+  warning: PdfDocumentRenderWarning,
+): PdfPreviewDiagnosticSource {
+  if (warning.source === 'print-shell' || warning.source === 'serializer') {
+    return warning.source;
+  }
+
+  return printShellWarningCodes.has(warning.code)
+    ? 'print-shell'
+    : 'serializer';
 }
 
 async function runPreflight(

@@ -175,6 +175,7 @@ describe('Phase 10 composePrintDocumentHtml', () => {
       warnings: [
         {
           code: 'invalid_page_settings',
+          source: 'print-shell',
           severity: 'error',
           path: ['pageSettings'],
         },
@@ -183,6 +184,7 @@ describe('Phase 10 composePrintDocumentHtml', () => {
     expect(invalidPageSizeResult.warnings).toMatchObject([
       {
         code: 'invalid_page_settings',
+        source: 'print-shell',
         severity: 'error',
         path: ['pageSettings'],
       },

@@ -16,6 +16,31 @@ import {
   type PdfPreviewResult,
 } from './preview';
 
+export type DocRaptorPreviewPackageName =
+  '@asym/pdf-renderer/docraptor-preview';
+export type DocRaptorPreviewMaturity = 'phase-12-preview';
+export type DocRaptorPreviewRuntime = 'server-only';
+export type DocRaptorPreviewOwnership = 'docraptor-test-preview';
+
+export interface DocRaptorPreviewBoundary {
+  readonly packageName: DocRaptorPreviewPackageName;
+  readonly maturity: DocRaptorPreviewMaturity;
+  readonly owns: DocRaptorPreviewOwnership;
+  readonly runtime: DocRaptorPreviewRuntime;
+  readonly consumes: readonly [
+    '@asym/pdf-template-schema',
+    '@asym/docraptor-client',
+  ];
+}
+
+export const docraptorPreviewBoundary: DocRaptorPreviewBoundary = {
+  packageName: '@asym/pdf-renderer/docraptor-preview',
+  maturity: 'phase-12-preview',
+  owns: 'docraptor-test-preview',
+  runtime: 'server-only',
+  consumes: ['@asym/pdf-template-schema', '@asym/docraptor-client'],
+};
+
 export interface CreateDocRaptorTestPdfPreviewRequest
   extends BasePdfPreviewRequest {
   readonly apiKey: string;

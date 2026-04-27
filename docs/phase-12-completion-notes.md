@@ -22,6 +22,9 @@ uses `@asym/docraptor-client` in test mode.
   `productionRender: false`.
 - `createDocRaptorTestPdfPreview` is exported only from
   `@asym/pdf-renderer/docraptor-preview`.
+- `docraptorPreviewBoundary` records the server-only DocRaptor subpath
+  dependency so the browser-safe root `pdfRendererBoundary` only lists the
+  root entry's schema dependency.
 - DocRaptor test preview uses `mode: "test"`, sends `media: "print"`, passes
   `baseUrl` as DocRaptor `baseurl` when provided, and returns PDF bytes as a
   preview artifact.

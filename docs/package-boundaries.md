@@ -63,7 +63,7 @@ Each package exposes one small typed boundary export from its root entry point:
 |---|---|
 | `@asym/pdf-template-schema` | `pdfTemplateSchemaBoundary`, `PdfTemplateSchemaBoundary` |
 | `@asym/pdf-renderer` | `pdfRendererBoundary`, `PdfRendererBoundary`, `composePdfDocumentHtml`, `composePrintDocumentHtml`, `createBrowserPdfPreview`, related serializer, print-shell, and browser-safe preview types |
-| `@asym/pdf-renderer/docraptor-preview` | `createDocRaptorTestPdfPreview`, server-only DocRaptor test preview request type |
+| `@asym/pdf-renderer/docraptor-preview` | `docraptorPreviewBoundary`, `createDocRaptorTestPdfPreview`, server-only DocRaptor test preview request type |
 | `@asym/docraptor-client` | `createDocRaptorClient`, `DocRaptorClient`, `DocRaptorClientError`, `docraptorClientBoundary`, related request/result/error types |
 | `@asym/pdf-editor` | `pdfEditorBoundary`, `PdfEditorBoundary` |
 

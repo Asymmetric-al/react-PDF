@@ -1,4 +1,7 @@
-import { createDocRaptorTestPdfPreview } from '@asym/pdf-renderer/docraptor-preview';
+import {
+  createDocRaptorTestPdfPreview,
+  docraptorPreviewBoundary,
+} from '@asym/pdf-renderer/docraptor-preview';
 import { donationReceiptTemplate } from '../../pdf-template-schema/test/fixtures/templates';
 import { describe, expect, it, vi } from 'vitest';
 
@@ -19,6 +22,16 @@ const apiKey = 'phase_12_docraptor_api_key';
 const pdfBytes = new Uint8Array([37, 80, 68, 70]);
 
 describe('Phase 12 DocRaptor test PDF preview', () => {
+  it('exposes a server-only subpath boundary', () => {
+    expect(docraptorPreviewBoundary).toEqual({
+      packageName: '@asym/pdf-renderer/docraptor-preview',
+      maturity: 'phase-12-preview',
+      owns: 'docraptor-test-preview',
+      runtime: 'server-only',
+      consumes: ['@asym/pdf-template-schema', '@asym/docraptor-client'],
+    });
+  });
+
   it('uses DocRaptor test mode and returns PDF bytes as an artifact', async () => {
     const fetch = createMockFetch([pdfResponse()]);
 

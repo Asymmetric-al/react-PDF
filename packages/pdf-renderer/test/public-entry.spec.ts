@@ -16,7 +16,7 @@ describe('@asym/pdf-renderer public entry', () => {
       maturity: 'phase-12-preview',
       owns: 'print-renderer',
       runtime: 'browser-safe-root-with-server-subpath',
-      consumes: ['@asym/pdf-template-schema', '@asym/docraptor-client'],
+      consumes: ['@asym/pdf-template-schema'],
     });
   });
 

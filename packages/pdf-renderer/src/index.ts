@@ -10,10 +10,7 @@ export interface PdfRendererBoundary {
   readonly maturity: PdfRendererMaturity;
   readonly owns: PdfRendererOwnership;
   readonly runtime: PdfRendererRuntime;
-  readonly consumes: readonly (
-    | PdfTemplateSchemaBoundary['packageName']
-    | '@asym/docraptor-client'
-  )[];
+  readonly consumes: readonly [PdfTemplateSchemaBoundary['packageName']];
 }
 
 export const pdfRendererBoundary: PdfRendererBoundary = {
@@ -21,7 +18,7 @@ export const pdfRendererBoundary: PdfRendererBoundary = {
   maturity: 'phase-12-preview',
   owns: 'print-renderer',
   runtime: 'browser-safe-root-with-server-subpath',
-  consumes: ['@asym/pdf-template-schema', '@asym/docraptor-client'],
+  consumes: ['@asym/pdf-template-schema'],
 };
 
 export {
@@ -39,6 +36,7 @@ export {
   type PdfDocumentRenderWarning,
   type PdfDocumentRenderWarningCode,
   type PdfDocumentRenderWarningSeverity,
+  type PdfDocumentRenderWarningSource,
   type PdfDocumentVariableUsage,
 } from './compose-pdf-document-html';
 
