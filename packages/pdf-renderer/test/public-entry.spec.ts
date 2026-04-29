@@ -2,6 +2,7 @@ import {
   composePdfDocumentHtml,
   composePrintDocumentHtml,
   createBrowserPdfPreview,
+  evaluatePdfDocumentCondition,
   type PdfRendererBoundary,
   pdfRendererBoundary,
   resolvePdfDocumentVariables,
@@ -14,7 +15,7 @@ describe('@asym/pdf-renderer public entry', () => {
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-renderer',
-      maturity: 'phase-14-variable-resolution',
+      maturity: 'phase-16-conditional-sections',
       owns: 'print-renderer',
       runtime: 'browser-safe-root-with-server-subpath',
       consumes: ['@asym/pdf-template-schema'],
@@ -35,5 +36,9 @@ describe('@asym/pdf-renderer public entry', () => {
 
   it('exposes the Phase 14 variable resolution adapter', () => {
     expect(resolvePdfDocumentVariables).toBeDefined();
+  });
+
+  it('exposes the Phase 16 conditional section adapter', () => {
+    expect(evaluatePdfDocumentCondition).toBeDefined();
   });
 });

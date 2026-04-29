@@ -427,3 +427,25 @@ phase-level choices and tradeoffs found during implementation.
 - Constraint: Phase 15 does not implement variable browsing UI, full preflight,
   real platform data resolution, conditionals, repeaters, DocRaptor wiring, or
   raw merge-tag conversion.
+
+## 2026-04-29: Phase 16 Adds Structured Conditional Sections
+
+- Decision: Extend the existing `fieldPath`-based `ConditionalRuleSchema`
+  instead of adding a parallel condition model.
+- Reason: Phase 6 already established `ConditionalRule` as the shared schema
+  contract, so extending it keeps templates, editor nodes, and renderer input
+  aligned.
+- Decision: Implement a React-free condition evaluator in
+  `@asym/pdf-template-schema` and consume it from both `@asym/pdf-renderer`
+  and `@asym/pdf-editor`.
+- Reason: Conditional behavior must be deterministic and reusable by preview,
+  preflight, repeaters, tables, and future core adapters without pulling in
+  editor UI.
+- Decision: Renderer false conditions omit nested content and skip nested
+  variable/asset collection, while invalid rules or missing condition context
+  render nested content with structured warnings. Missing fields in a supplied
+  context honor the evaluator's `matched: false` result.
+- Reason: Incorrectly hiding content on broken data would be harder to detect
+  than rendering with diagnostics during preview and preflight.
+- Constraint: Phase 16 does not add repeaters, financial tables, arbitrary
+  JavaScript, DocRaptor orchestration, or slash-command UI wiring.

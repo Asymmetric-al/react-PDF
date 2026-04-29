@@ -21,8 +21,8 @@ that list with current phase status for handoff visibility.
 | 13 | Build the Typed Variable Registry | Complete; validation recorded | `packages/pdf-template-schema/src/variables` |
 | 14 | Build Variable Resolution, Formatter, and Fallback System | Complete; validation recorded | Shared resolver, formatter, and fallback modules |
 | 15 | Build the Variable Chip Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/variable` |
-| 16 | Build Conditional Section Engine and Editor Extension | Next | Conditional editor and renderer support |
-| 17 | Build Repeater Extension and Scoped Data Resolver | Not started | Repeater editor and renderer support |
+| 16 | Build Conditional Section Engine and Editor Extension | Complete; validation recorded | Conditional editor and renderer support |
+| 17 | Build Repeater Extension and Scoped Data Resolver | Next | Repeater editor and renderer support |
 | 18 | Build Financial Data Table Block | Not started | Financial table node and renderer support |
 | 19 | Build Totals, Subtotals, Grouping, and Summary Blocks | Not started | Safe calculation contracts |
 | 20 | Build Page Break and Keep-Together Controls | Not started | Page-flow controls and print CSS |
@@ -49,15 +49,15 @@ that list with current phase status for handoff visibility.
 | 41 | `Asymmetric-al/core` Cutover Playbook and Integration PR Plan | Not started | Core cutover playbook |
 | 42 | Production Hardening, Launch Readiness, and Final Package Sign-Off | Not started | Final package readiness report |
 
-## Phase 16 Entry Point
+## Phase 17 Entry Point
 
-Phase 15 is complete. It added protected structured variable chips in
-`@asym/pdf-editor`, request-level fallback overrides in
-`@asym/pdf-template-schema`, and renderer fallback propagation for
-serializer-collected variable usages. The completion handoff is recorded in
-`docs/phase-15-completion-notes.md`.
+Phase 16 is complete. It added structured conditional rules in
+`@asym/pdf-template-schema`, conditional rendering support in
+`@asym/pdf-renderer`, and a protected conditional section TipTap node in
+`@asym/pdf-editor`. The completion handoff is recorded in
+`docs/phase-16-completion-notes.md`.
 
-Phase 16 should start from the Phase 15 variable chip extension, Phase 14 resolver, Phase 13 registry, Phase 12 preview foundation,
+Phase 17 should start from the Phase 16 conditional section engine, Phase 15 variable chip extension, Phase 14 resolver, Phase 13 registry, Phase 12 preview foundation,
 Phase 11 DocRaptor client, Phase 10 print shell and page model, Phase 9
 document serializer foundation, Phase 8 naming compatibility aliases, Phase 7
 compatibility harness, Phase 6 schema foundation, Phase 5 package strategy, and
@@ -74,6 +74,7 @@ Phase 4 editor boundary artifacts:
 - `docs/phase-13-completion-notes.md`
 - `docs/phase-14-completion-notes.md`
 - `docs/phase-15-completion-notes.md`
+- `docs/phase-16-completion-notes.md`
 - `docs/phase-7-completion-notes.md`
 - `docs/phase-6-completion-notes.md`
 - `openspec/changes/build-pdf-document-builder/tasks.md`
@@ -88,15 +89,20 @@ Phase 4 editor boundary artifacts:
 - `packages/pdf-renderer/test/print-shell.spec.ts`
 - `packages/pdf-renderer/test/variable-registry-import.spec.ts`
 - `packages/pdf-renderer/src/variables.ts`
+- `packages/pdf-renderer/src/conditions.ts`
+- `packages/pdf-renderer/test/conditional-section.spec.ts`
 - `packages/pdf-renderer/test/variable-resolution.spec.ts`
 - `packages/pdf-renderer/src/compose-pdf-document-html.ts`
 - `packages/pdf-renderer/test/compose-pdf-document-html.spec.ts`
 - `packages/pdf-editor/src/index.ts`
 - `packages/pdf-editor/src/extensions/variable`
+- `packages/pdf-editor/src/extensions/conditional-section`
 - `packages/pdf-editor/test/variable-chip-extension.spec.tsx`
+- `packages/pdf-editor/test/conditional-section-extension.spec.tsx`
 - `packages/pdf-editor/test/document-naming-compatibility.spec.tsx`
 - `packages/editor/src/compatibility`
 - `packages/pdf-template-schema`
+- `packages/pdf-template-schema/src/conditions.ts`
 - `packages/pdf-template-schema/src/formatters.ts`
 - `packages/pdf-template-schema/src/variable-resolution.ts`
 - `packages/pdf-template-schema/test/variable-resolution.spec.ts`
@@ -105,8 +111,8 @@ Phase 4 editor boundary artifacts:
 - `packages/docraptor-client`
 - `packages/editor/package.json`
 
-Phase 16 should build structured conditional section behavior without arbitrary
-JavaScript. It should reuse the registry, resolver, and variable chip
-diagnostic patterns, but it should not add repeaters, financial tables, or
-DocRaptor production orchestration before the later phases that own those
+Phase 17 should build repeater sections and scoped data resolution without
+arbitrary JavaScript. It should reuse the conditional rule evaluator and
+variable resolver diagnostics, but it should not add financial table behavior
+or DocRaptor production orchestration before the later phases that own those
 contracts.

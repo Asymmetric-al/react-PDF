@@ -46,8 +46,8 @@
 | 13 | Build the Typed Variable Registry | Complete; validation recorded | `packages/pdf-template-schema/src/variables` |
 | 14 | Build Variable Resolution, Formatter, and Fallback System | Complete; validation recorded | `packages/pdf-template-schema/src/formatters`, `packages/pdf-renderer/src/variables` |
 | 15 | Build the Variable Chip Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/variable` |
-| 16 | Build Conditional Section Engine and Editor Extension | Next | `packages/pdf-editor/src/extensions/conditional-section`, `packages/pdf-renderer/src/conditions` |
-| 17 | Build Repeater Extension and Scoped Data Resolver | Not started | `packages/pdf-editor/src/extensions/repeater`, `packages/pdf-renderer/src/repeaters` |
+| 16 | Build Conditional Section Engine and Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/conditional-section`, `packages/pdf-renderer/src/conditions` |
+| 17 | Build Repeater Extension and Scoped Data Resolver | Next | `packages/pdf-editor/src/extensions/repeater`, `packages/pdf-renderer/src/repeaters` |
 | 18 | Build Financial Data Table Block | Not started | `packages/pdf-editor/src/extensions/data-table`, `packages/pdf-renderer/src/data-table` |
 | 19 | Build Totals, Subtotals, Grouping, and Summary Blocks | Not started | `packages/pdf-renderer/src/calculations`, `packages/pdf-template-schema/src/calculations` |
 | 20 | Build Page Break and Keep-Together Controls | Not started | `packages/pdf-editor/src/extensions/page-flow`, `packages/pdf-renderer/src/page-flow` |
@@ -628,21 +628,21 @@ arbitrary JavaScript.
 
 ### Tasks
 
-- [ ] Support structured operators: exists, not_exists, equals, not_equals,
+- [x] Support structured operators: exists, not_exists, equals, not_equals,
       greater_than, greater_than_or_equal, less_than, less_than_or_equal,
       contains, not_contains, is_empty, is_not_empty, in, and not_in.
-- [ ] Cover receipt language, country-specific language, empty donation table
+- [x] Cover receipt language, country-specific language, empty donation table
       messages, missionary sections, and financial report sections.
 
 ### Validation
 
-- [ ] Tests cover schema validation, condition evaluation, nested content,
+- [x] Tests cover schema validation, condition evaluation, nested content,
       true/false preview, invalid fields, and missing data behavior.
-- [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
+- [x] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
 
-- [ ] Conditional rule schema, renderer behavior, and editor docs.
+- [x] Conditional rule schema, renderer behavior, and editor docs.
 
 ## Phase 17: Build Repeater Extension and Scoped Data Resolver
 

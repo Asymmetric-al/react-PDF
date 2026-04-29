@@ -1,6 +1,6 @@
 # @asym/pdf-renderer
 
-Phase 14 preview and variable resolution foundation for the Asym PDF Document
+Phase 16 preview, variable resolution, and conditional rendering foundation for the Asym PDF Document
 Builder print renderer.
 
 ## Purpose
@@ -8,7 +8,7 @@ Builder print renderer.
 This package owns deterministic document serialization, print-ready HTML,
 paged-media CSS foundations, browser-safe preview helpers, server-only
 DocRaptor test preview orchestration, renderer variable resolution adapters,
-and renderer fixtures.
+conditional section rendering, and renderer fixtures.
 
 DocRaptor remains the production PDF fidelity target. Browser preview is fast
 authoring feedback only and must never be treated as final PDF output.
@@ -43,6 +43,9 @@ server-only DocRaptor client:
 - `resolvePdfDocumentVariables`
 - `ResolvePdfDocumentVariablesInput`
 - `ResolvePdfDocumentVariablesResult`
+- `evaluatePdfDocumentCondition`
+- `EvaluatePdfDocumentConditionInput`
+- `PdfDocumentConditionEvaluation`
 
 The server-only DocRaptor test preview API is isolated behind:
 
@@ -113,6 +116,22 @@ const variables = resolvePdfDocumentVariables({
   variables: serialized.variables,
 });
 ```
+
+## Phase 16 Conditional Sections
+
+`composePdfDocumentHtml` accepts an optional `dataContext` and can render
+structured `conditionalSection` nodes. Matching conditions render nested
+content in a deterministic wrapper. False conditions omit nested content and
+skip nested variable or asset collection. Missing condition context or invalid
+rules render nested content with structured warnings so broken templates do not
+silently hide author-authored content. When a context is present but a
+condition field is missing, the renderer honors the evaluator's
+`matched: false` result and omits the section with a warning so editor preview
+and render output stay aligned.
+
+The renderer delegates all rule evaluation to
+`@asym/pdf-template-schema`. It does not evaluate arbitrary JavaScript and does
+not perform string replacement.
 
 ## DocRaptor Test Preview
 
@@ -185,10 +204,11 @@ DocRaptor compatibility notes:
 - No integrated header/footer system before Phase 21.
 - No tenant storage, auth, queue, or core app imports.
 - No string-replacement merge engine.
+- No arbitrary JavaScript condition execution.
 
 ## Maturity
 
-`phase-14-variable-resolution`. The package remains private to prevent accidental
+`phase-16-conditional-sections`. The package remains private to prevent accidental
 publication while renderer contracts are still being built.
 
 ## Development

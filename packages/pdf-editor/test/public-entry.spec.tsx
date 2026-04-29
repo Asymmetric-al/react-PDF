@@ -31,7 +31,7 @@ describe('@asym/pdf-editor public entry', () => {
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-editor',
-      maturity: 'phase-15-variable-chip',
+      maturity: 'phase-16-conditional-sections',
       owns: 'pdf-editor',
       runtime: 'browser-react',
       compatibility: 'react-email-reference-adapter',

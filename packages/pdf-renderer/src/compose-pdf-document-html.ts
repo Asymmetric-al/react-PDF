@@ -1,7 +1,11 @@
 import type {
+  ConditionalRule,
   DocumentContentNode,
   FallbackBehavior,
+  VariableDataContext,
 } from '@asym/pdf-template-schema';
+import { ConditionalRuleSchema } from '@asym/pdf-template-schema';
+import { evaluatePdfDocumentCondition } from './conditions';
 
 export type PdfDocumentCssMedia = 'all' | 'print';
 
@@ -19,7 +23,11 @@ export type PdfDocumentRenderWarningCode =
   | 'unknown_mark'
   | 'unknown_node'
   | 'unsupported_mark'
-  | 'unsupported_node';
+  | 'unsupported_node'
+  | 'condition_evaluation_error'
+  | 'condition_evaluation_warning'
+  | 'invalid_condition_rule'
+  | 'missing_condition_context';
 
 export type PdfDocumentRenderWarningSeverity = 'warning' | 'error';
 export type PdfDocumentRenderWarningSource = 'serializer' | 'print-shell';
@@ -89,6 +97,7 @@ export interface PdfDocumentMarkRenderer {
 
 export interface ComposePdfDocumentHtmlInput {
   readonly document: DocumentContentNode;
+  readonly dataContext?: VariableDataContext;
   readonly nodeRenderers?: readonly PdfDocumentNodeRenderer[];
   readonly markRenderers?: readonly PdfDocumentMarkRenderer[];
 }
@@ -107,6 +116,7 @@ type StyleMap = Record<string, string>;
 interface RenderState {
   readonly nodeRenderers: ReadonlyMap<string, PdfDocumentNodeRenderer>;
   readonly markRenderers: ReadonlyMap<string, PdfDocumentMarkRenderer>;
+  readonly dataContext?: VariableDataContext;
   readonly warnings: PdfDocumentRenderWarning[];
   readonly assets: PdfDocumentAssetReference[];
   readonly variables: PdfDocumentVariableUsage[];
@@ -116,6 +126,7 @@ const phase09Css = [
   '.pdf-button{display:inline-block;text-decoration:none;}',
   '.pdf-column{box-sizing:border-box;display:table-cell;vertical-align:top;width:50%;}',
   '.pdf-columns{box-sizing:border-box;display:table;width:100%;}',
+  '.pdf-conditional-section{display:block;}',
   '.pdf-image{max-width:100%;}',
   '.pdf-table{border-collapse:collapse;width:100%;}',
   '.pdf-variable{white-space:nowrap;}',
@@ -143,6 +154,7 @@ export function composePdfDocumentHtml(
   const nodeRenderers = createNodeRendererMap(input.nodeRenderers);
   const markRenderers = createMarkRendererMap(input.markRenderers);
   const state: RenderState = {
+    dataContext: input.dataContext,
     nodeRenderers,
     markRenderers,
     warnings,
@@ -238,6 +250,10 @@ function renderNode(
 
   if (value.type === 'text') {
     return renderTextNode(value, path, state);
+  }
+
+  if (value.type === 'conditionalSection') {
+    return renderConditionalSection(value, path, state);
   }
 
   const childrenHtml = renderChildren(value.content, path, state);
@@ -365,6 +381,81 @@ function renderSection(context: PdfDocumentNodeRendererContext): string {
       className: 'pdf-document-section',
     }),
     context.childrenHtml,
+  );
+}
+
+function renderConditionalSection(
+  node: DocumentContentNode,
+  path: readonly string[],
+  state: RenderState,
+): string {
+  const rule = readConditionalRule(node.attrs);
+
+  if (!rule) {
+    state.warnings.push({
+      code: 'invalid_condition_rule',
+      severity: 'error',
+      message:
+        'Phase 16 conditional section rendered content because the rule is missing or invalid.',
+      path,
+      nodeType: node.type,
+    });
+
+    return renderConditionalSectionElement(
+      node,
+      path,
+      renderChildren(node.content, path, state),
+      'true',
+    );
+  }
+
+  const evaluation = evaluatePdfDocumentCondition({
+    context: state.dataContext,
+    nodeType: node.type,
+    path,
+    rule,
+  });
+
+  state.warnings.push(...evaluation.warnings);
+
+  if (!evaluation.visible) {
+    return '';
+  }
+
+  return renderConditionalSectionElement(
+    node,
+    path,
+    renderChildren(node.content, path, state),
+    'true',
+    rule,
+  );
+}
+
+function renderConditionalSectionElement(
+  node: DocumentContentNode,
+  path: readonly string[],
+  childrenHtml: string,
+  visible: 'true' | 'false',
+  rule?: ConditionalRule,
+): string {
+  return renderElement(
+    'section',
+    {
+      ...getElementAttributes(node, {
+        className: 'pdf-conditional-section',
+        excludedAttributeNames: ['condition', 'rule'],
+      }),
+      'data-asym-conditional-section': 'true',
+      'data-condition-path': path.join('.'),
+      'data-condition-visible': visible,
+      ...(rule
+        ? {
+            'data-condition-field-path': rule.fieldPath,
+            'data-condition-operator': rule.operator,
+          }
+        : {}),
+    },
+    childrenHtml,
   );
 }
 
@@ -970,6 +1061,25 @@ function readVariableFallback(
   }
 
   return undefined;
+}
+
+function readConditionalRule(
+  attributes: Readonly<Record<string, unknown>> | undefined,
+): ConditionalRule | undefined {
+  const rawRule = attributes?.rule ?? attributes?.condition;
+  const parsedRule =
+    typeof rawRule === 'string' ? parseConditionalRuleString(rawRule) : rawRule;
+  const result = ConditionalRuleSchema.safeParse(parsedRule);
+
+  return result.success ? result.data : undefined;
+}
+
+function parseConditionalRuleString(value: string): unknown {
+  try {
+    return JSON.parse(value) as unknown;
+  } catch {
+    return undefined;
+  }
 }
 
 function readNumberAttribute(
