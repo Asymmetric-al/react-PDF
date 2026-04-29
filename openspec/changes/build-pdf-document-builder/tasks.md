@@ -43,8 +43,8 @@
 | 10 | Build the Print HTML Shell and Page Model | Complete | `packages/pdf-renderer/src/print-shell.ts` |
 | 11 | Build the DocRaptor Client Package | Complete | `packages/docraptor-client/src` |
 | 12 | Build Browser Preview and DocRaptor Preview Strategy | Complete; validation recorded | `packages/pdf-renderer/src/preview`, `packages/pdf-renderer/src/docraptor-preview.ts` |
-| 13 | Build the Typed Variable Registry | Next | `packages/pdf-template-schema/src/variables` |
-| 14 | Build Variable Resolution, Formatter, and Fallback System | Not started | `packages/pdf-template-schema/src/formatters`, `packages/pdf-renderer/src/variables` |
+| 13 | Build the Typed Variable Registry | Complete; validation recorded | `packages/pdf-template-schema/src/variables` |
+| 14 | Build Variable Resolution, Formatter, and Fallback System | Next | `packages/pdf-template-schema/src/formatters`, `packages/pdf-renderer/src/variables` |
 | 15 | Build the Variable Chip Editor Extension | Not started | `packages/pdf-editor/src/extensions/variable` |
 | 16 | Build Conditional Section Engine and Editor Extension | Not started | `packages/pdf-editor/src/extensions/conditional-section`, `packages/pdf-renderer/src/conditions` |
 | 17 | Build Repeater Extension and Scoped Data Resolver | Not started | `packages/pdf-editor/src/extensions/repeater`, `packages/pdf-renderer/src/repeaters` |
@@ -523,27 +523,27 @@ financial-report document workflows.
 
 ### Tasks
 
-- [ ] Create registry domains for organization, recipient, donation,
+- [x] Create registry domains for organization, recipient, donation,
       document, missionary, tax receipt, financial report, statement, invoice,
       asset, and computed values.
-- [ ] Define key, label, group, description, type, sample value, required flag,
+- [x] Define key, label, group, description, type, sample value, required flag,
       fallback behavior, formatter hints, privacy classification, and future
       source-path metadata.
-- [ ] Add deterministic sample-data generation and fixtures for donation
+- [x] Add deterministic sample-data generation and fixtures for donation
       receipt, tax receipt, annual statement, financial report, invoice, and
       certificate.
-- [ ] Keep the registry React-free so schema, renderer, preview, preflight,
+- [x] Keep the registry React-free so schema, renderer, preview, preflight,
       and future core adapters can import it safely.
 
 ### Validation
 
-- [ ] Tests cover registry validation, duplicate rejection, required fields,
+- [x] Tests cover registry validation, duplicate rejection, required fields,
       sample data generation, group lookup, and unknown variable detection.
-- [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
+- [x] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
 
-- [ ] Variable registry exports, sample-data behavior, and merge tag domain
+- [x] Variable registry exports, sample-data behavior, and merge tag domain
       notes.
 
 ## Phase 14: Build Variable Resolution, Formatter, and Fallback System

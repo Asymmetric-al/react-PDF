@@ -5,6 +5,7 @@ import {
   RepeaterBindingSchema,
   TableBindingSchema,
 } from './bindings';
+import { type TemplateCategory, TemplateCategorySchema } from './categories';
 import {
   IdentifierSchema,
   IsoDateTimeSchema,
@@ -35,18 +36,6 @@ const defaultThemeFonts = {
   heading: 'Arial',
   fallback: ['sans-serif'],
 };
-
-export const TemplateCategorySchema = z.enum([
-  'donation_receipt',
-  'tax_receipt',
-  'annual_giving_statement',
-  'donor_letter',
-  'missionary_report',
-  'financial_report',
-  'invoice',
-  'certificate',
-  'custom',
-]);
 
 export const DocumentEngineSchema = z.enum([
   'asym_pdf_document_builder',
@@ -248,3 +237,4 @@ export const DocumentTemplateV1Schema = z
   .strict();
 
 export type DocumentTemplateV1 = z.infer<typeof DocumentTemplateV1Schema>;
+export type { TemplateCategory };

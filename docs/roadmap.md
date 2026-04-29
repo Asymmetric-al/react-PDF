@@ -18,8 +18,8 @@ that list with current phase status for handoff visibility.
 | 10 | Build the Print HTML Shell and Page Model | Complete; validation recorded | `packages/pdf-renderer/src/print-shell.ts` |
 | 11 | Build the DocRaptor Client Package | Complete; validation recorded | `packages/docraptor-client/src` |
 | 12 | Build Browser Preview and DocRaptor Preview Strategy | Complete; validation recorded | Preview package APIs |
-| 13 | Build the Typed Variable Registry | Next | `packages/pdf-template-schema/src/variables` |
-| 14 | Build Variable Resolution, Formatter, and Fallback System | Not started | Shared resolver, formatter, and fallback modules |
+| 13 | Build the Typed Variable Registry | Complete; validation recorded | `packages/pdf-template-schema/src/variables` |
+| 14 | Build Variable Resolution, Formatter, and Fallback System | Next | Shared resolver, formatter, and fallback modules |
 | 15 | Build the Variable Chip Editor Extension | Not started | `packages/pdf-editor/src/extensions/variable` |
 | 16 | Build Conditional Section Engine and Editor Extension | Not started | Conditional editor and renderer support |
 | 17 | Build Repeater Extension and Scoped Data Resolver | Not started | Repeater editor and renderer support |
@@ -49,20 +49,20 @@ that list with current phase status for handoff visibility.
 | 41 | `Asymmetric-al/core` Cutover Playbook and Integration PR Plan | Not started | Core cutover playbook |
 | 42 | Production Hardening, Launch Readiness, and Final Package Sign-Off | Not started | Final package readiness report |
 
-## Phase 13 Entry Point
+## Phase 14 Entry Point
 
-Phase 12 is complete. It added browser-safe preview APIs in the root
-`@asym/pdf-renderer` entry and a server-only DocRaptor test preview subpath at
-`@asym/pdf-renderer/docraptor-preview`. Browser preview is explicitly marked
-as non-final PDF fidelity, while DocRaptor test preview uses the Phase 11
-server-only client in test mode and may return watermarked PDFs. The completion
-handoff is recorded in `docs/phase-12-completion-notes.md`.
+Phase 13 is complete. It added the React-free typed variable registry in
+`@asym/pdf-template-schema`, including core nonprofit document variable
+definitions, duplicate-key validation, lookup helpers, required-variable
+filtering, unknown-key detection, and deterministic fictional sample-data
+generation. The completion handoff is recorded in
+`docs/phase-13-completion-notes.md`.
 
-Phase 13 should start from the Phase 12 preview foundation, Phase 11 DocRaptor
-client, Phase 10 print shell and page model, Phase 9 document serializer
-foundation, Phase 8 naming compatibility aliases, Phase 7 compatibility
-harness, Phase 6 schema foundation, Phase 5 package strategy, and Phase 4
-editor boundary artifacts:
+Phase 14 should start from the Phase 13 registry, Phase 12 preview foundation,
+Phase 11 DocRaptor client, Phase 10 print shell and page model, Phase 9
+document serializer foundation, Phase 8 naming compatibility aliases, Phase 7
+compatibility harness, Phase 6 schema foundation, Phase 5 package strategy, and
+Phase 4 editor boundary artifacts:
 
 - `docs/package-strategy.md`
 - `docs/package-boundaries.md`
@@ -72,6 +72,7 @@ editor boundary artifacts:
 - `docs/phase-10-completion-notes.md`
 - `docs/phase-11-completion-notes.md`
 - `docs/phase-12-completion-notes.md`
+- `docs/phase-13-completion-notes.md`
 - `docs/phase-7-completion-notes.md`
 - `docs/phase-6-completion-notes.md`
 - `openspec/changes/build-pdf-document-builder/tasks.md`
@@ -84,6 +85,7 @@ editor boundary artifacts:
 - `packages/pdf-renderer/test/preview.spec.ts`
 - `packages/pdf-renderer/test/docraptor-preview.spec.ts`
 - `packages/pdf-renderer/test/print-shell.spec.ts`
+- `packages/pdf-renderer/test/variable-registry-import.spec.ts`
 - `packages/pdf-renderer/src/compose-pdf-document-html.ts`
 - `packages/pdf-renderer/test/compose-pdf-document-html.spec.ts`
 - `packages/pdf-editor/src/index.ts`
@@ -95,7 +97,8 @@ editor boundary artifacts:
 - `packages/docraptor-client`
 - `packages/editor/package.json`
 
-Phase 13 should build the typed variable registry as shared, React-free code.
-It should not add editor variable chips, arbitrary JavaScript template logic,
-real donor data resolution, or full preflight behavior before the later phases
-that own those contracts.
+Phase 14 should build variable resolution, formatter, and fallback behavior as
+shared, React-free code on top of the registry. It should not add editor
+variable chips, arbitrary JavaScript template logic, full preflight behavior,
+or DocRaptor production orchestration before the later phases that own those
+contracts.

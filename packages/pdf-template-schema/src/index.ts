@@ -1,5 +1,5 @@
 export type PdfTemplateSchemaPackageName = '@asym/pdf-template-schema';
-export type PdfTemplateSchemaMaturity = 'phase-6-schema-foundation';
+export type PdfTemplateSchemaMaturity = 'phase-13-variable-registry';
 export type PdfTemplateSchemaRuntime = 'shared';
 export type PdfTemplateSchemaOwnership = 'template-schema';
 
@@ -12,7 +12,7 @@ export interface PdfTemplateSchemaBoundary {
 
 export const pdfTemplateSchemaBoundary: PdfTemplateSchemaBoundary = {
   packageName: '@asym/pdf-template-schema',
-  maturity: 'phase-6-schema-foundation',
+  maturity: 'phase-13-variable-registry',
   owns: 'template-schema',
   runtime: 'shared',
 };
@@ -29,6 +29,7 @@ export {
   TableBindingSchema,
   TableColumnBindingSchema,
 } from './bindings';
+export { type TemplateCategory, TemplateCategorySchema } from './categories';
 
 export {
   type AuditEvent,
@@ -71,16 +72,29 @@ export {
   PageOrientationSchema,
   PageSizeSchema,
   PageUnitSchema,
-  TemplateCategorySchema,
 } from './template';
 
 export {
+  coreVariableDefinitions,
+  coreVariableRegistry,
+  createVariableRegistry,
+  type FallbackBehavior,
   FallbackBehaviorSchema,
+  type PrivacyClassification,
   PrivacyClassificationSchema,
+  type RegistryVariableDefinition,
+  type RegistryVariableDefinitionInput,
+  RegistryVariableDefinitionSchema,
   type VariableDefinition,
   VariableDefinitionSchema,
+  type VariableGroup,
   VariableGroupSchema,
   type VariableReference,
   VariableReferenceSchema,
+  type VariableRegistry,
+  VariableRegistryError,
+  type VariableRegistryErrorCode,
+  type VariableSampleData,
+  type VariableValueType,
   VariableValueTypeSchema,
 } from './variables';

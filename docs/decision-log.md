@@ -366,3 +366,22 @@ phase-level choices and tradeoffs found during implementation.
   production renders or serialized API keys.
 - Tradeoff: Phase 12 adds only an optional preflight diagnostic hook. The full
   publish/render preflight system remains Phase 25.
+
+## 2026-04-28: Phase 13 Adds The Typed Variable Registry
+
+- Decision: Keep the Phase 13 typed variable registry in
+  `@asym/pdf-template-schema` rather than adding a separate variables package.
+- Reason: Variables are part of the shared template language and must be usable
+  by schema, renderer, preview, future preflight, and future core adapter code
+  without React or editor dependencies.
+- Decision: Registry entries use `RegistryVariableDefinitionSchema` with
+  required `documentCategories`, while template-embedded
+  `VariableDefinitionSchema` remains backward-compatible with Phase 6 fixtures.
+- Reason: The registry needs category metadata for browsing and sample data,
+  but existing templates should not be forced to carry registry-only metadata.
+- Decision: `createVariableRegistry` rejects duplicate keys and generates
+  deterministic fictional sample data from `sourcePath`.
+- Constraint: Phase 13 does not resolve real data, apply formatters, render
+  fallbacks, add variable chips, run preflight, or wire editor UI. Phase 14
+  owns resolution/formatting/fallback behavior, and Phase 15 owns variable
+  chips.
