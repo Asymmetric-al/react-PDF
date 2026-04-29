@@ -11,6 +11,7 @@ import {
   pdfTemplateSchemaBoundary,
   RegistryVariableDefinitionSchema,
   RenderRequestSchema,
+  resolveRepeaterItems,
   resolveVariableValue,
 } from '@asym/pdf-template-schema';
 import { describe, expect, it } from 'vitest';
@@ -21,7 +22,7 @@ describe('@asym/pdf-template-schema public entry', () => {
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-template-schema',
-      maturity: 'phase-16-conditional-sections',
+      maturity: 'phase-17-repeaters',
       owns: 'template-schema',
       runtime: 'shared',
     });
@@ -39,5 +40,6 @@ describe('@asym/pdf-template-schema public entry', () => {
     expect(formatVariableValue).toBeDefined();
     expect(defaultVariableFormatters).toHaveProperty('currency.usd');
     expect(evaluateConditionalRule).toBeDefined();
+    expect(resolveRepeaterItems).toBeDefined();
   });
 });

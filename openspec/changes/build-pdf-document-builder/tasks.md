@@ -47,8 +47,8 @@
 | 14 | Build Variable Resolution, Formatter, and Fallback System | Complete; validation recorded | `packages/pdf-template-schema/src/formatters`, `packages/pdf-renderer/src/variables` |
 | 15 | Build the Variable Chip Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/variable` |
 | 16 | Build Conditional Section Engine and Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/conditional-section`, `packages/pdf-renderer/src/conditions` |
-| 17 | Build Repeater Extension and Scoped Data Resolver | Next | `packages/pdf-editor/src/extensions/repeater`, `packages/pdf-renderer/src/repeaters` |
-| 18 | Build Financial Data Table Block | Not started | `packages/pdf-editor/src/extensions/data-table`, `packages/pdf-renderer/src/data-table` |
+| 17 | Build Repeater Extension and Scoped Data Resolver | Complete; validation recorded | `packages/pdf-editor/src/extensions/repeater`, `packages/pdf-renderer/src/repeaters` |
+| 18 | Build Financial Data Table Block | Next | `packages/pdf-editor/src/extensions/data-table`, `packages/pdf-renderer/src/data-table` |
 | 19 | Build Totals, Subtotals, Grouping, and Summary Blocks | Not started | `packages/pdf-renderer/src/calculations`, `packages/pdf-template-schema/src/calculations` |
 | 20 | Build Page Break and Keep-Together Controls | Not started | `packages/pdf-editor/src/extensions/page-flow`, `packages/pdf-renderer/src/page-flow` |
 | 21 | Build Header and Footer System | Not started | `packages/pdf-editor/src/extensions/header-footer`, `packages/pdf-renderer/src/header-footer` |
@@ -658,24 +658,24 @@ resolution for item aliases and nested variables.
 
 ### Tasks
 
-- [ ] Support source array key/path, item alias, index alias where useful,
+- [x] Support source array key/path, item alias, index alias where useful,
       empty state, structured sorting, safe structured filtering where useful,
       maximum row guard, scoped variables, nested conditionals, warnings for
       missing sources, warnings for non-array sources, and deterministic render
       order.
-- [ ] Cover donations, invoice line items, missionary lists, financial row
+- [x] Cover donations, invoice line items, missionary lists, financial row
       groups, and funds.
 
 ### Validation
 
-- [ ] Tests cover repeated rows, empty state, missing source warnings, scoped
+- [x] Tests cover repeated rows, empty state, missing source warnings, scoped
       variable resolution, sorting where included, nested variables, and
       invalid source type.
-- [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
+- [x] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
 
-- [ ] Repeater schema, collection resolver behavior, and fixtures.
+- [x] Repeater schema, collection resolver behavior, and fixtures.
 
 ## Phase 18: Build Financial Data Table Block
 

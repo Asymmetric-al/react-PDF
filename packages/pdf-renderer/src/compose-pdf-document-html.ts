@@ -2,10 +2,16 @@ import type {
   ConditionalRule,
   DocumentContentNode,
   FallbackBehavior,
+  RepeaterBinding,
+  RepeaterBindingInput,
   VariableDataContext,
 } from '@asym/pdf-template-schema';
-import { ConditionalRuleSchema } from '@asym/pdf-template-schema';
+import {
+  ConditionalRuleSchema,
+  RepeaterBindingSchema,
+} from '@asym/pdf-template-schema';
 import { evaluatePdfDocumentCondition } from './conditions';
+import { resolvePdfDocumentRepeaterItems } from './repeaters';
 
 export type PdfDocumentCssMedia = 'all' | 'print';
 
@@ -27,7 +33,14 @@ export type PdfDocumentRenderWarningCode =
   | 'condition_evaluation_error'
   | 'condition_evaluation_warning'
   | 'invalid_condition_rule'
-  | 'missing_condition_context';
+  | 'missing_condition_context'
+  | 'missing_repeater_binding'
+  | 'missing_repeater_context'
+  | 'missing_repeater_source'
+  | 'non_array_repeater_source'
+  | 'repeater_filter_error'
+  | 'repeater_filter_warning'
+  | 'repeater_max_items_exceeded';
 
 export type PdfDocumentRenderWarningSeverity = 'warning' | 'error';
 export type PdfDocumentRenderWarningSource = 'serializer' | 'print-shell';
@@ -56,7 +69,16 @@ export interface PdfDocumentVariableUsage {
   readonly key: string;
   readonly formatter?: string;
   readonly fallback?: FallbackBehavior;
+  readonly scopes?: readonly PdfDocumentVariableScope[];
   readonly path: readonly string[];
+}
+
+export interface PdfDocumentVariableScope {
+  readonly sourcePath: string;
+  readonly itemAlias: string;
+  readonly sourceIndex: number;
+  readonly renderedIndex: number;
+  readonly indexAlias?: string;
 }
 
 export interface PdfDocumentMark {
@@ -98,6 +120,7 @@ export interface PdfDocumentMarkRenderer {
 export interface ComposePdfDocumentHtmlInput {
   readonly document: DocumentContentNode;
   readonly dataContext?: VariableDataContext;
+  readonly repeaterBindings?: readonly RepeaterBindingInput[];
   readonly nodeRenderers?: readonly PdfDocumentNodeRenderer[];
   readonly markRenderers?: readonly PdfDocumentMarkRenderer[];
 }
@@ -116,7 +139,9 @@ type StyleMap = Record<string, string>;
 interface RenderState {
   readonly nodeRenderers: ReadonlyMap<string, PdfDocumentNodeRenderer>;
   readonly markRenderers: ReadonlyMap<string, PdfDocumentMarkRenderer>;
+  readonly repeaterBindings: ReadonlyMap<string, RepeaterBinding>;
   readonly dataContext?: VariableDataContext;
+  readonly scopes: readonly PdfDocumentVariableScope[];
   readonly warnings: PdfDocumentRenderWarning[];
   readonly assets: PdfDocumentAssetReference[];
   readonly variables: PdfDocumentVariableUsage[];
@@ -128,6 +153,9 @@ const phase09Css = [
   '.pdf-columns{box-sizing:border-box;display:table;width:100%;}',
   '.pdf-conditional-section{display:block;}',
   '.pdf-image{max-width:100%;}',
+  '.pdf-repeater{display:block;}',
+  '.pdf-repeater-empty{display:block;}',
+  '.pdf-repeater-item{display:block;}',
   '.pdf-table{border-collapse:collapse;width:100%;}',
   '.pdf-variable{white-space:nowrap;}',
 ].join('\n');
@@ -153,10 +181,13 @@ export function composePdfDocumentHtml(
   const variables: PdfDocumentVariableUsage[] = [];
   const nodeRenderers = createNodeRendererMap(input.nodeRenderers);
   const markRenderers = createMarkRendererMap(input.markRenderers);
+  const repeaterBindings = createRepeaterBindingMap(input.repeaterBindings);
   const state: RenderState = {
     dataContext: input.dataContext,
     nodeRenderers,
     markRenderers,
+    repeaterBindings,
+    scopes: [],
     warnings,
     assets,
     variables,
@@ -233,6 +264,22 @@ function createMarkRendererMap(
   return renderers;
 }
 
+function createRepeaterBindingMap(
+  bindings: readonly RepeaterBindingInput[] | undefined,
+): ReadonlyMap<string, RepeaterBinding> {
+  const bindingMap = new Map<string, RepeaterBinding>();
+
+  for (const binding of bindings ?? []) {
+    const result = RepeaterBindingSchema.safeParse(binding);
+
+    if (result.success) {
+      bindingMap.set(result.data.id, result.data);
+    }
+  }
+
+  return bindingMap;
+}
+
 function renderNode(
   value: unknown,
   path: readonly string[],
@@ -256,6 +303,10 @@ function renderNode(
     return renderConditionalSection(value, path, state);
   }
 
+  if (value.type === 'repeater') {
+    return renderRepeater(value, path, state);
+  }
+
   const childrenHtml = renderChildren(value.content, path, state);
   const renderer = state.nodeRenderers.get(value.type);
 
@@ -273,7 +324,7 @@ function renderNode(
         state.assets.push(asset);
       },
       addVariable: (usage) => {
-        state.variables.push(usage);
+        addVariableUsage(state, usage);
       },
     });
   }
@@ -297,6 +348,148 @@ function renderNode(
     nodeType: value.type,
   });
   return '';
+}
+
+function renderRepeater(
+  node: DocumentContentNode,
+  path: readonly string[],
+  state: RenderState,
+): string {
+  const binding = readRepeaterBinding(node.attrs, state.repeaterBindings);
+
+  if (!binding) {
+    state.warnings.push({
+      code: 'missing_repeater_binding',
+      message:
+        'Phase 17 repeater rendered author content once because the binding is missing or invalid.',
+      nodeType: node.type,
+      path,
+      severity: 'error',
+    });
+
+    return renderRepeaterElement({
+      binding: undefined,
+      childrenHtml: renderChildren(node.content, path, state),
+      node,
+      path,
+    });
+  }
+
+  if (!state.dataContext) {
+    state.warnings.push({
+      code: 'missing_repeater_context',
+      message:
+        'Phase 17 repeater rendered author content once because no data context was provided.',
+      nodeType: node.type,
+      path,
+      severity: 'warning',
+    });
+
+    return renderRepeaterElement({
+      binding,
+      childrenHtml: renderChildren(node.content, path, state),
+      node,
+      path,
+    });
+  }
+
+  const result = resolvePdfDocumentRepeaterItems({
+    binding,
+    context: state.dataContext,
+    nodeType: node.type,
+    path,
+  });
+  state.warnings.push(...result.warnings);
+
+  if (result.items.length === 0) {
+    return renderRepeaterElement({
+      binding,
+      childrenHtml: renderRepeaterEmptyState(binding),
+      node,
+      path,
+    });
+  }
+
+  const childrenHtml = result.items
+    .map((item) => {
+      const scope: PdfDocumentVariableScope = {
+        itemAlias: binding.itemAlias,
+        renderedIndex: item.renderedIndex,
+        sourceIndex: item.sourceIndex,
+        sourcePath: binding.sourcePath,
+        ...(binding.indexAlias ? { indexAlias: binding.indexAlias } : {}),
+      };
+      const itemState: RenderState = {
+        ...state,
+        dataContext: item.context,
+        scopes: [...state.scopes, scope],
+      };
+      const itemHtml = renderChildren(
+        node.content,
+        [...path, 'items', String(item.renderedIndex)],
+        itemState,
+      );
+
+      return renderElement(
+        'div',
+        {
+          class: 'pdf-repeater-item',
+          'data-repeater-rendered-index': String(item.renderedIndex),
+          'data-repeater-source-index': String(item.sourceIndex),
+        },
+        itemHtml,
+      );
+    })
+    .join('');
+
+  return renderRepeaterElement({
+    binding,
+    childrenHtml,
+    node,
+    path,
+  });
+}
+
+function renderRepeaterElement(input: {
+  readonly binding: RepeaterBinding | undefined;
+  readonly childrenHtml: string;
+  readonly node: DocumentContentNode;
+  readonly path: readonly string[];
+}): string {
+  return renderElement(
+    'section',
+    {
+      ...getElementAttributes(input.node, {
+        className: 'pdf-repeater',
+        excludedAttributeNames: ['binding', 'bindingId'],
+      }),
+      'data-asym-repeater': 'true',
+      'data-repeater-path': input.path.join('.'),
+      ...(input.binding
+        ? {
+            'data-repeater-binding-id': input.binding.id,
+            'data-repeater-item-alias': input.binding.itemAlias,
+            'data-repeater-source-path': input.binding.sourcePath,
+          }
+        : {}),
+    },
+    input.childrenHtml,
+  );
+}
+
+function renderRepeaterEmptyState(binding: RepeaterBinding): string {
+  if (!binding.emptyState) {
+    return '';
+  }
+
+  return renderElement(
+    'div',
+    {
+      class: 'pdf-repeater-empty',
+      'data-repeater-empty-state': 'true',
+    },
+    escapeHtml(binding.emptyState),
+  );
 }
 
 function renderChildren(
@@ -704,6 +897,18 @@ function renderVariable(context: PdfDocumentNodeRendererContext): string {
   );
 }
 
+function addVariableUsage(
+  state: RenderState,
+  usage: PdfDocumentVariableUsage,
+): void {
+  const scopes = [...state.scopes, ...(usage.scopes ?? [])];
+
+  state.variables.push({
+    ...usage,
+    ...(scopes.length > 0 ? { scopes } : {}),
+  });
+}
+
 function renderLinkMark(context: PdfDocumentMarkRendererContext): string {
   const href = readStringAttribute(context.mark.attrs, 'href');
 
@@ -1072,6 +1277,39 @@ function readConditionalRule(
   const result = ConditionalRuleSchema.safeParse(parsedRule);
 
   return result.success ? result.data : undefined;
+}
+
+function readRepeaterBinding(
+  attributes: Readonly<Record<string, unknown>> | undefined,
+  bindings: ReadonlyMap<string, RepeaterBinding>,
+): RepeaterBinding | undefined {
+  const inlineBinding = readStructuredAttribute(attributes, 'binding');
+  const inlineResult = RepeaterBindingSchema.safeParse(inlineBinding);
+
+  if (inlineResult.success) {
+    return inlineResult.data;
+  }
+
+  const bindingId = readStringAttribute(attributes, 'bindingId');
+
+  return bindingId ? bindings.get(bindingId) : undefined;
+}
+
+function readStructuredAttribute(
+  attributes: Readonly<Record<string, unknown>> | undefined,
+  name: string,
+): unknown {
+  const value = attributes?.[name];
+
+  if (typeof value !== 'string') {
+    return value;
+  }
+
+  try {
+    return JSON.parse(value) as unknown;
+  } catch {
+    return undefined;
+  }
 }
 
 function parseConditionalRuleString(value: string): unknown {

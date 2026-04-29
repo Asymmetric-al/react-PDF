@@ -1,7 +1,7 @@
 import type { PdfTemplateSchemaBoundary } from '@asym/pdf-template-schema';
 
 export type PdfRendererPackageName = '@asym/pdf-renderer';
-export type PdfRendererMaturity = 'phase-16-conditional-sections';
+export type PdfRendererMaturity = 'phase-17-repeaters';
 export type PdfRendererRuntime = 'browser-safe-root-with-server-subpath';
 export type PdfRendererOwnership = 'print-renderer';
 
@@ -15,7 +15,7 @@ export interface PdfRendererBoundary {
 
 export const pdfRendererBoundary: PdfRendererBoundary = {
   packageName: '@asym/pdf-renderer',
-  maturity: 'phase-16-conditional-sections',
+  maturity: 'phase-17-repeaters',
   owns: 'print-renderer',
   runtime: 'browser-safe-root-with-server-subpath',
   consumes: ['@asym/pdf-template-schema'],
@@ -37,6 +37,7 @@ export {
   type PdfDocumentRenderWarningCode,
   type PdfDocumentRenderWarningSeverity,
   type PdfDocumentRenderWarningSource,
+  type PdfDocumentVariableScope,
   type PdfDocumentVariableUsage,
 } from './compose-pdf-document-html';
 export {
@@ -70,6 +71,11 @@ export {
   composePrintDocumentHtml,
   type PrintDocumentPageBox,
 } from './print-shell';
+export {
+  type ResolvePdfDocumentRepeaterItemsInput,
+  type ResolvePdfDocumentRepeaterItemsResult,
+  resolvePdfDocumentRepeaterItems,
+} from './repeaters';
 export {
   type ResolvePdfDocumentVariablesInput,
   type ResolvePdfDocumentVariablesResult,

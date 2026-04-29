@@ -91,8 +91,10 @@ export const RepeaterBindingSchema = z
   .object({
     id: IdentifierSchema,
     sourcePath: DataPathSchema,
-    itemAlias: VariableKeySchema,
+    itemAlias: DataPathSchema,
+    indexAlias: DataPathSchema.optional(),
     emptyState: NonEmptyStringSchema.optional(),
+    filters: z.array(ConditionalRuleSchema).default([]),
     maxItems: PositiveIntegerSchema.max(1000).default(1000),
     sort: z
       .object({
@@ -105,6 +107,7 @@ export const RepeaterBindingSchema = z
   .strict();
 
 export type RepeaterBinding = z.infer<typeof RepeaterBindingSchema>;
+export type RepeaterBindingInput = z.input<typeof RepeaterBindingSchema>;
 
 export const TableColumnBindingSchema = z
   .object({

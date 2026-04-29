@@ -449,3 +449,24 @@ phase-level choices and tradeoffs found during implementation.
   than rendering with diagnostics during preview and preflight.
 - Constraint: Phase 16 does not add repeaters, financial tables, arbitrary
   JavaScript, DocRaptor orchestration, or slash-command UI wiring.
+
+## 2026-04-29: Phase 17 Adds Structured Repeaters
+
+- Decision: Implement repeater resolution in `@asym/pdf-template-schema` and
+  consume it from `@asym/pdf-renderer` and `@asym/pdf-editor`.
+- Reason: Repeaters introduce scoped data and nested variable behavior that
+  must stay deterministic and React-free before financial table and batch
+  phases build on it.
+- Decision: Repeater bindings use structured source paths, item aliases,
+  optional index aliases, structured filters, structured sorting, empty states,
+  and max-item guards.
+- Reason: This supports donation rows, invoice line items, financial rows,
+  missionaries, and funds without arbitrary JavaScript in template logic.
+- Decision: Renderer variable usage records repeater scope metadata but never
+  stores the repeated source value.
+- Reason: Donor and financial source data should remain in caller-provided
+  data contexts, while later preview/preflight code still needs enough scope
+  metadata to resolve repeated variables.
+- Constraint: Phase 17 does not add financial data table blocks, totals,
+  grouping, UI picker controls, DocRaptor orchestration, or variable text
+  substitution into HTML.

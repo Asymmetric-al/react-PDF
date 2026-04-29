@@ -215,6 +215,9 @@ describe('Phase 10 composePrintDocumentHtml', () => {
 .pdf-columns{box-sizing:border-box;display:table;width:100%;}
 .pdf-conditional-section{display:block;}
 .pdf-image{max-width:100%;}
+.pdf-repeater{display:block;}
+.pdf-repeater-empty{display:block;}
+.pdf-repeater-item{display:block;}
 .pdf-table{border-collapse:collapse;width:100%;}
 .pdf-variable{white-space:nowrap;}
 @page{size:8.5in 11in;margin:0.5in 0.5in 0.5in 0.5in;}
