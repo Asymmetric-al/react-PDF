@@ -41,6 +41,17 @@ describe('Phase 14 variable resolution and formatting', () => {
     });
   });
 
+  it('does not traverse arrays as object records in data paths', () => {
+    expect(
+      getValueAtDataPath(
+        {
+          recipient: ['not a recipient record'],
+        },
+        'recipient.0',
+      ),
+    ).toEqual({ found: false });
+  });
+
   it('uses fallback values for missing optional variables', () => {
     const data = coreVariableRegistry.createSampleData('donation_receipt');
     delete (data.donation as Record<string, unknown>).designation;
@@ -57,6 +68,27 @@ describe('Phase 14 variable resolution and formatting', () => {
         code: 'missing_optional_value',
         severity: 'warning',
         variableKey: 'donation.designation',
+      },
+    ]);
+  });
+
+  it('uses request fallback overrides for missing optional variables', () => {
+    const data = coreVariableRegistry.createSampleData('donation_receipt');
+    delete (data.document as Record<string, unknown>).footerText;
+
+    const result = resolveVariableValue({
+      context: data,
+      fallback: { mode: 'use_value', value: 'Custom footer fallback' },
+      key: 'document.footer_text',
+    });
+
+    expect(result.status).toBe('fallback');
+    expect(result.formattedValue).toBe('Custom footer fallback');
+    expect(result.diagnostics).toMatchObject([
+      {
+        code: 'missing_optional_value',
+        severity: 'warning',
+        variableKey: 'document.footer_text',
       },
     ]);
   });

@@ -1,4 +1,7 @@
-import type { DocumentContentNode } from '@asym/pdf-template-schema';
+import type {
+  DocumentContentNode,
+  FallbackBehavior,
+} from '@asym/pdf-template-schema';
 
 export type PdfDocumentCssMedia = 'all' | 'print';
 
@@ -44,6 +47,7 @@ export interface PdfDocumentAssetReference {
 export interface PdfDocumentVariableUsage {
   readonly key: string;
   readonly formatter?: string;
+  readonly fallback?: FallbackBehavior;
   readonly path: readonly string[];
 }
 
@@ -583,12 +587,17 @@ function renderVariable(context: PdfDocumentNodeRendererContext): string {
   }
 
   const formatter = readStringAttribute(context.node.attrs, 'formatter');
+  const fallback = readVariableFallback(context.node.attrs);
 
   context.addVariable({
     key,
     formatter,
+    ...(fallback ? { fallback } : {}),
     path: context.path,
   });
+
+  const fallbackAttribute =
+    fallback?.mode === 'use_value' ? String(fallback.value) : undefined;
 
   return renderElement(
     'span',
@@ -596,6 +605,9 @@ function renderVariable(context: PdfDocumentNodeRendererContext): string {
       class: 'pdf-variable',
       'data-variable-key': key,
       ...(formatter ? { 'data-variable-formatter': formatter } : {}),
+      ...(fallbackAttribute
+        ? { 'data-variable-fallback': fallbackAttribute }
+        : {}),
     },
     '',
   );
@@ -944,6 +956,22 @@ function readStringAttribute(
   return typeof value === 'string' && value.length > 0 ? value : undefined;
 }
 
+function readVariableFallback(
+  attributes: Readonly<Record<string, unknown>> | undefined,
+): FallbackBehavior | undefined {
+  const value = attributes?.fallback;
+
+  if (isFallbackBehavior(value)) {
+    return value;
+  }
+
+  if (typeof value === 'string' && value.length > 0) {
+    return { mode: 'use_value', value };
+  }
+
+  return undefined;
+}
+
 function readNumberAttribute(
   attributes: Readonly<Record<string, unknown>> | undefined,
   name: string,
@@ -1027,4 +1055,16 @@ function escapeAttribute(value: string): string {
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function isFallbackBehavior(value: unknown): value is FallbackBehavior {
+  if (!isRecord(value) || typeof value.mode !== 'string') {
+    return false;
+  }
+
+  if (value.mode === 'use_value') {
+    return 'value' in value;
+  }
+
+  return value.mode === 'none' || value.mode === 'omit';
 }

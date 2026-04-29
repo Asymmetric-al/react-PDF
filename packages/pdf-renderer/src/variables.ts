@@ -25,6 +25,7 @@ export function resolvePdfDocumentVariables(
   const values = input.variables.map((variable) =>
     resolver.resolve(
       {
+        fallback: variable.fallback,
         formatter: variable.formatter,
         key: variable.key,
       },

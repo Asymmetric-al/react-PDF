@@ -7,6 +7,7 @@ import {
 } from './formatters';
 import {
   coreVariableRegistry,
+  type FallbackBehavior,
   type RegistryVariableDefinition,
   type VariableRegistry,
 } from './variables';
@@ -30,6 +31,7 @@ export interface VariablePathLookupResult {
 export interface VariableResolutionRequest {
   readonly key: string;
   readonly formatter?: string;
+  readonly fallback?: FallbackBehavior;
 }
 
 export type VariableResolutionRequestInput = string | VariableResolutionRequest;
@@ -43,6 +45,7 @@ export interface ResolveVariableValueInput extends VariableResolverOptions {
   readonly key: string;
   readonly context: VariableDataContext;
   readonly formatter?: string;
+  readonly fallback?: FallbackBehavior;
 }
 
 export interface ResolveVariableValuesInput extends VariableResolverOptions {
@@ -116,6 +119,7 @@ export function resolveVariableValue(
 
   return resolver.resolve(
     {
+      fallback: input.fallback,
       formatter: input.formatter,
       key: input.key,
     },
@@ -164,7 +168,12 @@ function resolveWithOptions(
   const lookup = getValueAtDataPath(context, definition.sourcePath);
 
   if (!lookup.found || isMissingValue(lookup.value)) {
-    return resolveMissingValue(definition, request.formatter, options);
+    return resolveMissingValue(
+      definition,
+      request.formatter,
+      request.fallback,
+      options,
+    );
   }
 
   return resolvePresentValue(
@@ -204,6 +213,7 @@ function resolvePresentValue(
 function resolveMissingValue(
   definition: RegistryVariableDefinition,
   formatter: string | undefined,
+  fallbackOverride: FallbackBehavior | undefined,
   options: VariableResolverOptions,
 ): ResolvedVariableValue {
   if (definition.required) {
@@ -234,7 +244,9 @@ function resolveMissingValue(
     variableKey: definition.key,
   };
 
-  if (definition.fallback.mode !== 'use_value') {
+  const fallback = fallbackOverride ?? definition.fallback;
+
+  if (fallback.mode !== 'use_value') {
     return {
       definition,
       diagnostics: [missingDiagnostic],
@@ -250,7 +262,7 @@ function resolveMissingValue(
     ...options,
     definition,
     formatter,
-    value: definition.fallback.value,
+    value: fallback.value,
   });
 
   return {
@@ -259,7 +271,7 @@ function resolveMissingValue(
     formattedValue: formatted.formattedValue,
     formatter: formatter ?? definition.formatter,
     key: definition.key,
-    rawValue: definition.fallback.value,
+    rawValue: fallback.value,
     sourcePath: definition.sourcePath,
     status:
       formatted.diagnostics.length > 0
@@ -317,7 +329,7 @@ function isMissingValue(value: unknown): boolean {
 }
 
 function isRecord(value: unknown): value is Readonly<Record<string, unknown>> {
-  return value !== null && typeof value === 'object';
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
 
 function hasOwn(
