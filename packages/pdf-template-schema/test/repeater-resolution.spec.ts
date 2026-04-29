@@ -3,7 +3,7 @@ import {
   RepeaterBindingSchema,
   resolveRepeaterItems,
 } from '@asym/pdf-template-schema';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 const sampleContext = {
   donations: [
@@ -19,6 +19,10 @@ const sampleContext = {
     total: 70,
   },
 };
+
+afterEach(() => {
+  vi.restoreAllMocks();
+});
 
 describe('Phase 17 repeater binding schema and scoped resolver', () => {
   it('validates repeater aliases, index aliases, filters, and defaults', () => {
@@ -136,6 +140,57 @@ describe('Phase 17 repeater binding schema and scoped resolver', () => {
         sourcePath: 'financialSummary',
       },
     ]);
+  });
+
+  it('returns a structured diagnostic for invalid repeater bindings', () => {
+    const result = resolveRepeaterItems({
+      binding: {
+        id: 'too-many-items',
+        itemAlias: 'donation',
+        maxItems: 5000,
+        sourcePath: 'donations',
+      },
+      context: sampleContext,
+    });
+
+    expect(result.items).toEqual([]);
+    expect(result.diagnostics).toMatchObject([
+      {
+        bindingId: 'too-many-items',
+        code: 'invalid_repeater_binding',
+        severity: 'error',
+        sourcePath: 'donations',
+      },
+    ]);
+    expect(result.diagnostics[0]?.message).toContain(
+      'Repeater binding is invalid:',
+    );
+  });
+
+  it('sorts strings without locale-dependent lowercasing', () => {
+    vi.spyOn(String.prototype, 'toLocaleLowerCase').mockImplementation(
+      () => 'same-locale-value',
+    );
+
+    const result = resolveRepeaterItems({
+      binding: {
+        id: 'sorted-names',
+        itemAlias: 'organization',
+        maxItems: 1000,
+        sort: {
+          direction: 'asc',
+          fieldPath: 'name',
+        },
+        sourcePath: 'organizations',
+      },
+      context: {
+        organizations: [{ name: 'Beta' }, { name: 'alpha' }],
+      },
+    });
+
+    expect(result.diagnostics).toEqual([]);
+    expect(result.items.map((item) => item.sourceIndex)).toEqual([1, 0]);
+    expect(String.prototype.toLocaleLowerCase).not.toHaveBeenCalled();
   });
 
   it('truncates with a max-items warning and keeps output order deterministic', () => {

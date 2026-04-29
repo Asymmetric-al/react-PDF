@@ -9,6 +9,7 @@ import type { VariableDataContext } from './variable-resolution';
 import { getValueAtDataPath } from './variable-resolution';
 
 export type RepeaterResolutionDiagnosticCode =
+  | 'invalid_repeater_binding'
   | 'missing_repeater_source'
   | 'non_array_repeater_source'
   | 'repeater_filter_error'
@@ -66,7 +67,21 @@ interface NormalizedResolveRepeaterItemsInput {
 export function resolveRepeaterItems(
   input: ResolveRepeaterItemsInput,
 ): ResolveRepeaterItemsResult {
-  const binding = RepeaterBindingSchema.parse(input.binding);
+  const parseResult = RepeaterBindingSchema.safeParse(input.binding);
+
+  if (!parseResult.success) {
+    return {
+      diagnostics: [
+        createInvalidBindingDiagnostic(
+          input.binding,
+          parseResult.error.message,
+        ),
+      ],
+      items: [],
+    };
+  }
+
+  const binding = parseResult.data;
   const source = getValueAtDataPath(input.context, binding.sourcePath);
 
   if (!source.found || source.value === undefined || source.value === null) {
@@ -315,7 +330,7 @@ function normalizeSortValue(value: unknown):
   const timestamp = Date.parse(value);
 
   return Number.isNaN(timestamp)
-    ? { kind: 'string', value: value.toLocaleLowerCase() }
+    ? { kind: 'string', value: value.toLowerCase() }
     : { kind: 'number', value: timestamp };
 }
 
@@ -383,6 +398,34 @@ function createDiagnostic(input: {
     sourceIndex: input.sourceIndex,
     sourcePath: input.binding.sourcePath,
   };
+}
+
+function createInvalidBindingDiagnostic(
+  binding: RepeaterBindingInput,
+  message: string,
+): RepeaterResolutionDiagnostic {
+  const bindingRecord: Readonly<Record<string, unknown>> = isRecord(binding)
+    ? binding
+    : {};
+  const bindingId = readDiagnosticString(bindingRecord.id);
+  const itemAlias = readDiagnosticString(bindingRecord.itemAlias);
+  const sourcePath = readDiagnosticString(bindingRecord.sourcePath);
+
+  return {
+    bindingId,
+    code: 'invalid_repeater_binding',
+    details: {
+      validationError: message,
+    },
+    itemAlias: itemAlias || undefined,
+    message: `Repeater binding is invalid: ${message}`,
+    severity: 'error',
+    sourcePath,
+  };
+}
+
+function readDiagnosticString(value: unknown): string {
+  return value === undefined || value === null ? '' : String(value);
 }
 
 function isRecord(value: unknown): value is VariableDataContext {

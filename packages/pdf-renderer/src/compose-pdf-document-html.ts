@@ -26,6 +26,7 @@ export type PdfDocumentRenderWarningCode =
   | 'invalid_page_settings'
   | 'invalid_document'
   | 'missing_attribute'
+  | 'invalid_repeater_binding'
   | 'unknown_mark'
   | 'unknown_node'
   | 'unsupported_mark'
