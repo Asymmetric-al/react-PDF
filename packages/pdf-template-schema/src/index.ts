@@ -1,5 +1,5 @@
 export type PdfTemplateSchemaPackageName = '@asym/pdf-template-schema';
-export type PdfTemplateSchemaMaturity = 'phase-13-variable-registry';
+export type PdfTemplateSchemaMaturity = 'phase-14-variable-resolution';
 export type PdfTemplateSchemaRuntime = 'shared';
 export type PdfTemplateSchemaOwnership = 'template-schema';
 
@@ -12,7 +12,7 @@ export interface PdfTemplateSchemaBoundary {
 
 export const pdfTemplateSchemaBoundary: PdfTemplateSchemaBoundary = {
   packageName: '@asym/pdf-template-schema',
-  maturity: 'phase-13-variable-registry',
+  maturity: 'phase-14-variable-resolution',
   owns: 'template-schema',
   runtime: 'shared',
 };
@@ -30,7 +30,21 @@ export {
   TableColumnBindingSchema,
 } from './bindings';
 export { type TemplateCategory, TemplateCategorySchema } from './categories';
-
+export {
+  defaultVariableFormatters,
+  type FormatVariableValueInput,
+  formatVariableValue,
+  type NormalizedVariableFormatterOptions,
+  normalizeVariableFormatterOptions,
+  type VariableFormatResult,
+  type VariableFormatter,
+  type VariableFormatterContext,
+  type VariableFormatterMap,
+  type VariableFormatterOptions,
+  type VariableResolutionDiagnostic,
+  type VariableResolutionDiagnosticCode,
+  type VariableResolutionDiagnosticSeverity,
+} from './formatters';
 export {
   type AuditEvent,
   AuditEventSchema,
@@ -51,7 +65,6 @@ export {
   type RenderWarning,
   RenderWarningSchema,
 } from './rendering';
-
 export {
   type AssetReference,
   AssetReferenceSchema,
@@ -73,6 +86,24 @@ export {
   PageSizeSchema,
   PageUnitSchema,
 } from './template';
+
+export {
+  createVariableResolver,
+  getValueAtDataPath,
+  type ResolvedVariableValue,
+  type ResolveVariableValueInput,
+  type ResolveVariableValuesInput,
+  type ResolveVariableValuesResult,
+  resolveVariableValue,
+  resolveVariableValues,
+  type VariableDataContext,
+  type VariablePathLookupResult,
+  type VariableResolutionRequest,
+  type VariableResolutionRequestInput,
+  type VariableResolutionStatus,
+  type VariableResolver,
+  type VariableResolverOptions,
+} from './variable-resolution';
 
 export {
   coreVariableDefinitions,

@@ -44,8 +44,8 @@
 | 11 | Build the DocRaptor Client Package | Complete | `packages/docraptor-client/src` |
 | 12 | Build Browser Preview and DocRaptor Preview Strategy | Complete; validation recorded | `packages/pdf-renderer/src/preview`, `packages/pdf-renderer/src/docraptor-preview.ts` |
 | 13 | Build the Typed Variable Registry | Complete; validation recorded | `packages/pdf-template-schema/src/variables` |
-| 14 | Build Variable Resolution, Formatter, and Fallback System | Next | `packages/pdf-template-schema/src/formatters`, `packages/pdf-renderer/src/variables` |
-| 15 | Build the Variable Chip Editor Extension | Not started | `packages/pdf-editor/src/extensions/variable` |
+| 14 | Build Variable Resolution, Formatter, and Fallback System | Complete; validation recorded | `packages/pdf-template-schema/src/formatters`, `packages/pdf-renderer/src/variables` |
+| 15 | Build the Variable Chip Editor Extension | Next | `packages/pdf-editor/src/extensions/variable` |
 | 16 | Build Conditional Section Engine and Editor Extension | Not started | `packages/pdf-editor/src/extensions/conditional-section`, `packages/pdf-renderer/src/conditions` |
 | 17 | Build Repeater Extension and Scoped Data Resolver | Not started | `packages/pdf-editor/src/extensions/repeater`, `packages/pdf-renderer/src/repeaters` |
 | 18 | Build Financial Data Table Block | Not started | `packages/pdf-editor/src/extensions/data-table`, `packages/pdf-renderer/src/data-table` |
@@ -559,26 +559,26 @@ receipts, statements, invoices, and reports without React dependencies.
 
 ### Tasks
 
-- [ ] Support variable lookup from data contexts, nested source paths,
+- [x] Support variable lookup from data contexts, nested source paths,
       required/optional behavior, fallback values, missing value diagnostics,
       and type validation.
-- [ ] Support currency, date, date range, number, percentage, address, receipt
+- [x] Support currency, date, date range, number, percentage, address, receipt
       number, fiscal period, boolean labels, image URL validation, and
       deterministic output.
-- [ ] Do not evaluate arbitrary JavaScript from templates. Computed behavior
+- [x] Do not evaluate arbitrary JavaScript from templates. Computed behavior
       must remain structured and deterministic.
 
 ### Validation
 
-- [ ] Tests cover string resolution, nested source paths, optional fallback,
+- [x] Tests cover string resolution, nested source paths, optional fallback,
       missing required errors, USD currency, dates/ranges, fiscal years,
       addresses, percentages, booleans, image URLs, invalid types, unknown
       formatters, and React-free imports.
-- [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
+- [x] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
 
-- [ ] Resolver, formatter, and fallback behavior docs.
+- [x] Resolver, formatter, and fallback behavior docs.
 
 ## Phase 15: Build the Variable Chip Editor Extension
 

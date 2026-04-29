@@ -385,3 +385,20 @@ phase-level choices and tradeoffs found during implementation.
   fallbacks, add variable chips, run preflight, or wire editor UI. Phase 14
   owns resolution/formatting/fallback behavior, and Phase 15 owns variable
   chips.
+
+## 2026-04-29: Phase 14 Adds Shared Variable Resolution
+
+- Decision: Keep variable resolution, fallback handling, and formatters in
+  `@asym/pdf-template-schema`, with a thin renderer adapter in
+  `@asym/pdf-renderer`.
+- Reason: The resolver is part of the shared template/data language and must
+  stay React-free so editor, renderer, preview, preflight, fixtures, and future
+  core adapter code can reuse the same behavior.
+- Decision: Use deterministic formatter defaults of `en-US`, `USD`, and `UTC`.
+- Reason: Formatter output must be stable for tests, previews, and generated
+  document snapshots.
+- Decision: Required missing values always produce structured errors, while
+  optional missing values produce warnings and may use registry fallbacks.
+- Constraint: Phase 14 does not replace variable nodes in HTML, add editor
+  chips, evaluate arbitrary JavaScript, fetch real tenant data, or wire
+  DocRaptor behavior. Later phases own those behaviors.
