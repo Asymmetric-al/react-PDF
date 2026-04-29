@@ -442,8 +442,9 @@ phase-level choices and tradeoffs found during implementation.
   preflight, repeaters, tables, and future core adapters without pulling in
   editor UI.
 - Decision: Renderer false conditions omit nested content and skip nested
-  variable/asset collection, while invalid or missing condition context renders
-  nested content with structured warnings.
+  variable/asset collection, while invalid rules or missing condition context
+  render nested content with structured warnings. Missing fields in a supplied
+  context honor the evaluator's `matched: false` result.
 - Reason: Incorrectly hiding content on broken data would be harder to detect
   than rendering with diagnostics during preview and preflight.
 - Constraint: Phase 16 does not add repeaters, financial tables, arbitrary

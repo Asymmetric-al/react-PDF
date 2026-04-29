@@ -124,7 +124,10 @@ structured `conditionalSection` nodes. Matching conditions render nested
 content in a deterministic wrapper. False conditions omit nested content and
 skip nested variable or asset collection. Missing condition context or invalid
 rules render nested content with structured warnings so broken templates do not
-silently hide author-authored content.
+silently hide author-authored content. When a context is present but a
+condition field is missing, the renderer honors the evaluator's
+`matched: false` result and omits the section with a warning so editor preview
+and render output stay aligned.
 
 The renderer delegates all rule evaluation to
 `@asym/pdf-template-schema`. It does not evaluate arbitrary JavaScript and does

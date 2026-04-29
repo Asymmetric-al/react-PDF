@@ -46,7 +46,7 @@ export function evaluatePdfDocumentCondition(
   );
 
   return {
-    visible: warnings.length > 0 ? true : evaluation.matched,
+    visible: evaluation.matched,
     warnings,
   };
 }

@@ -81,6 +81,65 @@ describe('Phase 16 renderer conditional sections', () => {
     expect(result.warnings).toEqual([]);
   });
 
+  it('omits nested content when a supplied context is missing the condition field', () => {
+    const result = composePdfDocumentHtml({
+      dataContext: context,
+      document: {
+        type: 'doc',
+        content: [
+          {
+            type: 'conditionalSection',
+            attrs: {
+              rule: {
+                fieldPath: 'recipient.region',
+                operator: 'equals',
+                value: 'CA',
+              },
+            },
+            content: [
+              {
+                type: 'paragraph',
+                content: [{ type: 'text', text: 'Regional donor language' }],
+              },
+            ],
+          },
+        ],
+      },
+    });
+    const adapterResult = evaluatePdfDocumentCondition({
+      context,
+      path: ['content', '0'],
+      rule: {
+        fieldPath: 'recipient.region',
+        operator: 'equals',
+        value: 'CA',
+      },
+    });
+
+    expect(result.html).not.toContain('Regional donor language');
+    expect(result.warnings).toMatchObject([
+      {
+        code: 'condition_evaluation_warning',
+        details: {
+          conditionCode: 'missing_condition_field',
+          fieldPath: 'recipient.region',
+        },
+        severity: 'warning',
+      },
+    ]);
+    expect(adapterResult).toMatchObject({
+      visible: false,
+      warnings: [
+        {
+          code: 'condition_evaluation_warning',
+          details: {
+            conditionCode: 'missing_condition_field',
+          },
+        },
+      ],
+    });
+  });
+
   it('renders nested content with warnings when context or rules are invalid', () => {
     const noContext = composePdfDocumentHtml({
       document: {

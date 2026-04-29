@@ -32,8 +32,10 @@ browser preview fidelity claims, or React Email export changes.
 - Added built-in `conditionalSection` rendering. True sections render nested
   content in a deterministic wrapper; false sections are omitted and their
   nested variables/assets are not collected.
-- Missing or invalid renderer condition state renders nested content with
+- Missing renderer context or invalid renderer rules render nested content with
   structured warnings rather than silently hiding author content.
+- Missing fields in a supplied renderer context honor the evaluator's
+  `matched: false` result so editor preview and PDF rendering stay aligned.
 - Added `ConditionalSection` and `createConditionalSectionExtension` in
   `@asym/pdf-editor/extensions`.
 - Added `editor.commands.insertConditionalSection({ rule, content })`.
@@ -65,6 +67,7 @@ browser preview fidelity claims, or React Email export changes.
   - True condition renders nested content.
   - False condition omits nested content.
   - Variables and assets inside false sections are not collected.
+  - Missing fields in a supplied context omit nested content with diagnostics.
   - Missing context diagnostics are structured.
   - Deterministic output.
 - `packages/pdf-editor/test/conditional-section-extension.spec.tsx`
@@ -132,7 +135,7 @@ Result: passed. `tsdown` built CJS and ESM outputs successfully.
 pnpm --filter @asym/pdf-renderer test
 ```
 
-Result: passed. `10 passed (10)` test files, `59 passed (59)` tests.
+Result: passed. `10 passed (10)` test files, `60 passed (60)` tests.
 
 ```sh
 pnpm --filter @asym/pdf-renderer typecheck
