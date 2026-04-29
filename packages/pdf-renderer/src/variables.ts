@@ -1,5 +1,7 @@
 import {
+  createScopedRepeaterContext,
   createVariableResolver,
+  getValueAtDataPath,
   type ResolvedVariableValue,
   type VariableDataContext,
   type VariableResolutionDiagnostic,
@@ -29,7 +31,7 @@ export function resolvePdfDocumentVariables(
         formatter: variable.formatter,
         key: variable.key,
       },
-      input.context,
+      createScopedContextForVariable(input.context, variable),
     ),
   );
 
@@ -37,4 +39,35 @@ export function resolvePdfDocumentVariables(
     diagnostics: values.flatMap((value) => value.diagnostics),
     values,
   };
+}
+
+function createScopedContextForVariable(
+  context: VariableDataContext,
+  variable: PdfDocumentVariableUsage,
+): VariableDataContext {
+  let scopedContext = context;
+
+  for (const scope of variable.scopes ?? []) {
+    const source = getValueAtDataPath(scopedContext, scope.sourcePath);
+
+    if (!source.found || !Array.isArray(source.value)) {
+      return scopedContext;
+    }
+
+    const itemValue = source.value[scope.sourceIndex];
+
+    if (itemValue === undefined) {
+      return scopedContext;
+    }
+
+    scopedContext = createScopedRepeaterContext({
+      context: scopedContext,
+      indexAlias: scope.indexAlias,
+      itemAlias: scope.itemAlias,
+      itemValue,
+      renderedIndex: scope.renderedIndex,
+    });
+  }
+
+  return scopedContext;
 }

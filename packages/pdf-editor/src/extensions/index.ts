@@ -11,6 +11,18 @@ export {
   isValidConditionalRule,
 } from './conditional-section';
 export {
+  createRepeaterSectionExtension,
+  getRepeaterSectionPreview,
+  type InsertRepeaterSectionInput,
+  isValidRepeaterBinding,
+  RepeaterSection,
+  type RepeaterSectionAttributes,
+  type RepeaterSectionOptions,
+  type RepeaterSectionPreviewDiagnostic,
+  type RepeaterSectionPreviewInput,
+  type RepeaterSectionPreviewResult,
+} from './repeater';
+export {
   createVariableChipExtension,
   getVariableChipPreview,
   type InsertVariableChipInput,

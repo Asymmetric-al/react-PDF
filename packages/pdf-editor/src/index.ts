@@ -1,7 +1,7 @@
 import type { PdfTemplateSchemaBoundary } from '@asym/pdf-template-schema';
 
 export type PdfEditorPackageName = '@asym/pdf-editor';
-export type PdfEditorMaturity = 'phase-16-conditional-sections';
+export type PdfEditorMaturity = 'phase-17-repeaters';
 export type PdfEditorRuntime = 'browser-react';
 export type PdfEditorOwnership = 'pdf-editor';
 export type PdfEditorCompatibility = 'react-email-reference-adapter';
@@ -20,7 +20,7 @@ export interface PdfEditorBoundary {
 
 export const pdfEditorBoundary: PdfEditorBoundary = {
   packageName: '@asym/pdf-editor',
-  maturity: 'phase-16-conditional-sections',
+  maturity: 'phase-17-repeaters',
   owns: 'pdf-editor',
   runtime: 'browser-react',
   compatibility: 'react-email-reference-adapter',

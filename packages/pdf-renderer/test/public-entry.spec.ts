@@ -5,6 +5,7 @@ import {
   evaluatePdfDocumentCondition,
   type PdfRendererBoundary,
   pdfRendererBoundary,
+  resolvePdfDocumentRepeaterItems,
   resolvePdfDocumentVariables,
 } from '@asym/pdf-renderer';
 import { describe, expect, it } from 'vitest';
@@ -15,7 +16,7 @@ describe('@asym/pdf-renderer public entry', () => {
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-renderer',
-      maturity: 'phase-16-conditional-sections',
+      maturity: 'phase-17-repeaters',
       owns: 'print-renderer',
       runtime: 'browser-safe-root-with-server-subpath',
       consumes: ['@asym/pdf-template-schema'],
@@ -40,5 +41,50 @@ describe('@asym/pdf-renderer public entry', () => {
 
   it('exposes the Phase 16 conditional section adapter', () => {
     expect(evaluatePdfDocumentCondition).toBeDefined();
+  });
+
+  it('exposes the Phase 17 repeater adapter', () => {
+    expect(resolvePdfDocumentRepeaterItems).toBeDefined();
+  });
+
+  it('exposes Phase 17 scoped variable metadata through the serializer result', () => {
+    const result = composePdfDocumentHtml({
+      dataContext: {
+        donations: [{ amount: 25 }],
+      },
+      document: {
+        content: [
+          {
+            attrs: {
+              binding: {
+                id: 'donation-rows',
+                itemAlias: 'donation',
+                sourcePath: 'donations',
+              },
+            },
+            content: [
+              {
+                content: [
+                  {
+                    attrs: { key: 'donation.amount' },
+                    type: 'variable',
+                  },
+                ],
+                type: 'paragraph',
+              },
+            ],
+            type: 'repeater',
+          },
+        ],
+        type: 'doc',
+      },
+    });
+
+    expect(result.variables[0]?.scopes).toMatchObject([
+      {
+        itemAlias: 'donation',
+        sourcePath: 'donations',
+      },
+    ]);
   });
 });

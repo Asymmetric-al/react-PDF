@@ -1,6 +1,6 @@
 # @asym/pdf-renderer
 
-Phase 16 preview, variable resolution, and conditional rendering foundation for the Asym PDF Document
+Phase 17 preview, variable resolution, conditional rendering, and repeater foundation for the Asym PDF Document
 Builder print renderer.
 
 ## Purpose
@@ -9,6 +9,8 @@ This package owns deterministic document serialization, print-ready HTML,
 paged-media CSS foundations, browser-safe preview helpers, server-only
 DocRaptor test preview orchestration, renderer variable resolution adapters,
 conditional section rendering, and renderer fixtures.
+Phase 17 also owns structured repeater rendering and scoped variable metadata
+for repeated rows.
 
 DocRaptor remains the production PDF fidelity target. Browser preview is fast
 authoring feedback only and must never be treated as final PDF output.
@@ -27,6 +29,7 @@ server-only DocRaptor client:
 - `PdfDocumentRenderWarning`
 - `PdfDocumentAssetReference`
 - `PdfDocumentVariableUsage`
+- `PdfDocumentVariableScope`
 - `PdfDocumentNodeRenderer`
 - `PdfDocumentMarkRenderer`
 - `composePrintDocumentHtml`
@@ -46,6 +49,9 @@ server-only DocRaptor client:
 - `evaluatePdfDocumentCondition`
 - `EvaluatePdfDocumentConditionInput`
 - `PdfDocumentConditionEvaluation`
+- `resolvePdfDocumentRepeaterItems`
+- `ResolvePdfDocumentRepeaterItemsInput`
+- `ResolvePdfDocumentRepeaterItemsResult`
 
 The server-only DocRaptor test preview API is isolated behind:
 
@@ -133,6 +139,23 @@ The renderer delegates all rule evaluation to
 `@asym/pdf-template-schema`. It does not evaluate arbitrary JavaScript and does
 not perform string replacement.
 
+## Phase 17 Repeaters
+
+`composePdfDocumentHtml` accepts optional `repeaterBindings` and can render
+structured `repeater` nodes. A repeater resolves either inline
+`attrs.binding` or `attrs.bindingId` against the supplied bindings. Resolved
+items render nested content once per item with a scoped data context, so nested
+variables and conditionals use the current item alias. False nested
+conditionals skip nested variable and asset collection as they do outside a
+repeater.
+
+The renderer records repeater variable scopes as `sourcePath`, `itemAlias`,
+`sourceIndex`, `renderedIndex`, and optional `indexAlias`. It does not store
+private donor or financial source values in variable metadata. Missing or
+non-array sources render configured empty states with structured warnings.
+Invalid bindings render author content once with an error so content is not
+silently hidden.
+
 ## DocRaptor Test Preview
 
 `createDocRaptorTestPdfPreview` lives in the server-only subpath. It uses the
@@ -205,10 +228,11 @@ DocRaptor compatibility notes:
 - No tenant storage, auth, queue, or core app imports.
 - No string-replacement merge engine.
 - No arbitrary JavaScript condition execution.
+- No financial table block, totals, grouping, or batch renderer behavior.
 
 ## Maturity
 
-`phase-16-conditional-sections`. The package remains private to prevent accidental
+`phase-17-repeaters`. The package remains private to prevent accidental
 publication while renderer contracts are still being built.
 
 ## Development

@@ -1,7 +1,7 @@
 # @asym/pdf-template-schema
 
-Phase 16 schema, typed variable registry, variable resolution, and conditional
-rule foundation
+Phase 17 schema, typed variable registry, variable resolution, conditional
+rule, and repeater foundation
 for the Asym PDF Document Builder.
 
 ## Purpose
@@ -11,11 +11,12 @@ primitives, variable domains, variable resolution and formatting, page
 settings, asset references, render metadata, batch metadata, and
 audit-oriented model types.
 
-Phase 16 adds React-free conditional rule evaluation on top of the typed
-nonprofit document variable registry and resolver. The registry, resolver, and
-condition evaluator can be imported by the schema package, renderer, preview,
-future preflight, and future `Asymmetric-al/core` adapter code without pulling
-editor UI or DocRaptor behavior into browser bundles.
+Phase 17 adds React-free repeater resolution on top of the typed nonprofit
+document variable registry, resolver, and condition evaluator. The registry,
+resolver, condition evaluator, and repeater resolver can be imported by the
+schema package, renderer, preview, future preflight, and future
+`Asymmetric-al/core` adapter code without pulling editor UI or DocRaptor
+behavior into browser bundles.
 
 ## Public API Promise
 
@@ -51,7 +52,11 @@ TypeScript types are exported together:
 - `VariableReferenceSchema` / `VariableReference`
 - `DataBindingSchema` / `DataBinding`
 - `ConditionalRuleSchema` / `ConditionalRule`
-- `RepeaterBindingSchema` / `RepeaterBinding`
+- `RepeaterBindingSchema` / `RepeaterBinding` / `RepeaterBindingInput`
+- `resolveRepeaterItems`
+- `createScopedRepeaterContext`
+- `ResolvedRepeaterItem`
+- `RepeaterResolutionDiagnostic`
 - `TableBindingSchema` / `TableBinding`
 - `AssetReferenceSchema` / `AssetReference`
 - `RenderRequestSchema` / `RenderRequest`
@@ -112,6 +117,12 @@ Phase 16 conditional rules use structured operators only:
 uses dotted data paths, returns structured diagnostics, and treats
 JavaScript-looking strings as inert data.
 
+Phase 17 repeater bindings resolve array source paths, scoped item aliases,
+optional index aliases, structured filters, structured sorting, empty states,
+and max-item guards. Repeater filtering reuses `ConditionalRule` with
+deterministic AND semantics and never evaluates arbitrary JavaScript. Scoped
+contexts are created without mutating the root data context.
+
 ## Non-goals
 
 - No PDF editor UI.
@@ -126,10 +137,11 @@ JavaScript-looking strings as inert data.
 - No arbitrary JavaScript template logic.
 - No substitution of variable nodes into rendered HTML; later renderer,
   preview, and preflight phases decide where resolved values are applied.
+- No financial data table block; Phase 18 owns report-grade table behavior.
 
 ## Maturity
 
-`phase-16-conditional-sections`. The package is private to prevent accidental
+`phase-17-repeaters`. The package is private to prevent accidental
 publication while the shared model is still evolving.
 
 ## Development

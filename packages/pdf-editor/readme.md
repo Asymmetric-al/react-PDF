@@ -1,6 +1,6 @@
 # @asym/pdf-editor
 
-Phase 16 editor package for the Asym PDF Document Builder React editor.
+Phase 17 editor package for the Asym PDF Document Builder React editor.
 
 ## Purpose
 
@@ -22,8 +22,9 @@ The current public API is intentionally small:
 - `@asym/pdf-editor/extensions`
 - `@asym/pdf-editor/react-email-compat`
 
-The `extensions` subpath exports the Phase 15 variable chip extension and the
-Phase 16 conditional section extension:
+The `extensions` subpath exports the Phase 15 variable chip extension, the
+Phase 16 conditional section extension, and the Phase 17 repeater section
+extension:
 
 - `VariableChip`
 - `createVariableChipExtension`
@@ -35,6 +36,11 @@ Phase 16 conditional section extension:
 - `insertConditionalSection` command types
 - `getConditionalSectionPreview`
 - `isValidConditionalRule`
+- `RepeaterSection`
+- `createRepeaterSectionExtension`
+- `insertRepeaterSection` command types
+- `getRepeaterSectionPreview`
+- `isValidRepeaterBinding`
 
 Variable chips are structured inline atom nodes named `variable`. They store a
 registry key plus optional formatter, fallback, and label attrs. The editor
@@ -47,6 +53,12 @@ deterministic `data-asym-conditional-section` attributes. Preview display uses
 the shared Phase 16 condition evaluator; false conditions mark visibility but
 do not delete nested editor JSON.
 
+Repeater sections are structured block nodes named `repeater`. They store a
+`RepeaterBinding` attr, preserve nested editor content, and render
+deterministic `data-asym-repeater` attributes. Preview display uses the shared
+Phase 17 repeater resolver; missing data marks diagnostics but keeps editor
+content visible.
+
 The `react-email-compat` subpath re-exports public `@react-email/editor`
 primitives under explicit `Reference` names. These adapters are temporary and
 exist so future PDF work can depend on a package boundary without duplicating
@@ -58,9 +70,10 @@ change editor behavior or rendering output.
 
 ## Non-goals
 
-- No PDF-native editor shell implementation in Phase 16.
+- No PDF-native editor shell implementation in Phase 17.
 - No source import rewrites inside `@react-email/editor`.
-- No variable browser UI picker, condition builder UI, or inspector wiring.
+- No variable browser UI picker, condition builder UI, repeater picker UI, or
+  inspector wiring.
 - No default slash command wiring. The current slash command UI accepts
   caller-provided items, and a later editor shell can compose variable commands
   into that UI.
@@ -73,9 +86,9 @@ change editor behavior or rendering output.
 ## Maturity
 
 The package now has Phase 15 variable chip and Phase 16 conditional section
-extension surfaces. The package is private to prevent accidental publication
-while the editor API is still being designed, and Phase 16 does not change
-`@react-email/editor` exports.
+extension surfaces plus the Phase 17 repeater section extension. The package
+is private to prevent accidental publication while the editor API is still
+being designed, and Phase 17 does not change `@react-email/editor` exports.
 
 ## Development
 

@@ -1,5 +1,5 @@
 export type PdfTemplateSchemaPackageName = '@asym/pdf-template-schema';
-export type PdfTemplateSchemaMaturity = 'phase-16-conditional-sections';
+export type PdfTemplateSchemaMaturity = 'phase-17-repeaters';
 export type PdfTemplateSchemaRuntime = 'shared';
 export type PdfTemplateSchemaOwnership = 'template-schema';
 
@@ -12,7 +12,7 @@ export interface PdfTemplateSchemaBoundary {
 
 export const pdfTemplateSchemaBoundary: PdfTemplateSchemaBoundary = {
   packageName: '@asym/pdf-template-schema',
-  maturity: 'phase-16-conditional-sections',
+  maturity: 'phase-17-repeaters',
   owns: 'template-schema',
   runtime: 'shared',
 };
@@ -24,6 +24,7 @@ export {
   type DataBinding,
   DataBindingSchema,
   type RepeaterBinding,
+  type RepeaterBindingInput,
   RepeaterBindingSchema,
   type TableBinding,
   TableBindingSchema,
@@ -76,6 +77,17 @@ export {
   type RenderWarning,
   RenderWarningSchema,
 } from './rendering';
+export {
+  type CreateScopedRepeaterContextInput,
+  createScopedRepeaterContext,
+  type RepeaterResolutionDiagnostic,
+  type RepeaterResolutionDiagnosticCode,
+  type RepeaterResolutionDiagnosticSeverity,
+  type ResolvedRepeaterItem,
+  type ResolveRepeaterItemsInput,
+  type ResolveRepeaterItemsResult,
+  resolveRepeaterItems,
+} from './repeaters';
 export {
   type AssetReference,
   AssetReferenceSchema,
