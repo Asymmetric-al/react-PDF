@@ -97,6 +97,46 @@ describe('Phase 14 renderer variable resolution integration', () => {
     ]);
   });
 
+  it('preserves structured variable fallback overrides from serializer input', () => {
+    const serializedDocument = composePdfDocumentHtml({
+      document: {
+        type: 'doc',
+        content: [
+          {
+            type: 'paragraph',
+            content: [
+              {
+                type: 'variable',
+                attrs: {
+                  fallback: { mode: 'use_value', value: 'Friend' },
+                  key: 'document.footer_text',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    });
+    const resolvedVariables = resolvePdfDocumentVariables({
+      context: {},
+      variables: serializedDocument.variables,
+    });
+
+    expect(serializedDocument.variables).toMatchObject([
+      {
+        fallback: { mode: 'use_value', value: 'Friend' },
+        key: 'document.footer_text',
+      },
+    ]);
+    expect(resolvedVariables.values).toMatchObject([
+      {
+        formattedValue: 'Friend',
+        key: 'document.footer_text',
+        status: 'fallback',
+      },
+    ]);
+  });
+
   it('reports unknown serializer variable usages through resolver diagnostics', () => {
     const result = resolvePdfDocumentVariables({
       context: {},
