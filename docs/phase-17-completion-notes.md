@@ -172,6 +172,20 @@ Passed with line-ending warnings only for modified text files.
 - `docs/roadmap.md`
 - `openspec/changes/build-pdf-document-builder/tasks.md`
 
+## Post-Merge Hardening Addendum
+
+After Phase 17 merged into `canary`, commit `6f2d3569` added two narrow
+hardening fixes:
+
+- `resolveRepeaterItems` now returns an `invalid_repeater_binding` diagnostic
+  for invalid bindings instead of throwing.
+- Repeater string sorting now uses deterministic lowercasing and no longer
+  calls locale-dependent `toLocaleLowerCase()`.
+
+Pre-Phase 18 continues that hardening by checking renderer-level external
+binding diagnostics, URL safety, and deterministic date parsing before Phase
+18 financial table work begins.
+
 ## OpenSpec Tracking
 
 `openspec/changes/build-pdf-document-builder/tasks.md` now marks Phase 17

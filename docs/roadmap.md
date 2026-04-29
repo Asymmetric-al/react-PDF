@@ -57,6 +57,11 @@ Phase 17 is complete. It added structured repeater resolution in
 `@asym/pdf-editor`. The completion handoff is recorded in
 `docs/phase-17-completion-notes.md`.
 
+Pre-Phase 18 reconciles the Phase 17 merge state, URL safety, deterministic
+date parsing, and invalid external repeater binding diagnostics before
+financial table work starts. The reconciliation handoff is recorded in
+`docs/pre-phase-18-reconciliation.md`.
+
 Phase 18 should start from the Phase 17 repeater engine, Phase 16 conditional
 section engine, Phase 15 variable chip extension, Phase 14 resolver, Phase 13 registry, Phase 12 preview foundation,
 Phase 11 DocRaptor client, Phase 10 print shell and page model, Phase 9

@@ -69,6 +69,129 @@ describe('Phase 09 composePdfDocumentHtml', () => {
     expect(result.variables).toEqual([]);
   });
 
+  it('omits unsafe link and button href values while preserving safe href values', () => {
+    const result = composePdfDocumentHtml({
+      document: doc([
+        {
+          type: 'paragraph',
+          content: [
+            {
+              type: 'text',
+              text: 'Unsafe JavaScript link',
+              marks: [{ type: 'link', attrs: { href: 'javascript:alert(1)' } }],
+            },
+            { type: 'text', text: ' ' },
+            {
+              type: 'text',
+              text: 'Safe fragment',
+              marks: [{ type: 'link', attrs: { href: '#receipt-summary' } }],
+            },
+            { type: 'text', text: ' ' },
+            {
+              type: 'text',
+              text: 'Safe relative',
+              marks: [{ type: 'link', attrs: { href: '/receipts/2026' } }],
+            },
+            { type: 'text', text: ' ' },
+            {
+              type: 'text',
+              text: 'Safe plain relative',
+              marks: [{ type: 'link', attrs: { href: 'receipts/2026' } }],
+            },
+            { type: 'text', text: ' ' },
+            {
+              type: 'text',
+              text: 'Safe mail',
+              marks: [
+                { type: 'link', attrs: { href: 'mailto:team@example.test' } },
+              ],
+            },
+            { type: 'text', text: ' ' },
+            {
+              type: 'text',
+              text: 'Safe phone',
+              marks: [{ type: 'link', attrs: { href: 'tel:+15551234567' } }],
+            },
+          ],
+        },
+        {
+          type: 'button',
+          attrs: { href: 'data:text/html,<script>alert(1)</script>' },
+          content: [{ type: 'text', text: 'Unsafe data button' }],
+        },
+        {
+          type: 'button',
+          attrs: { href: 'https://example.test/donate' },
+          content: [{ type: 'text', text: 'Safe https button' }],
+        },
+        {
+          type: 'button',
+          attrs: { href: 'http://example.test/report' },
+          content: [{ type: 'text', text: 'Safe http button' }],
+        },
+        {
+          type: 'button',
+          attrs: { href: '//example.test/protocol-relative' },
+          content: [{ type: 'text', text: 'Unsafe protocol-relative button' }],
+        },
+        {
+          type: 'button',
+          attrs: { href: 'vbscript:msgbox("x")' },
+          content: [{ type: 'text', text: 'Unsafe vbscript button' }],
+        },
+        {
+          type: 'button',
+          attrs: { href: 'https://example.test/\u0000bad' },
+          content: [{ type: 'text', text: 'Unsafe control button' }],
+        },
+        {
+          type: 'button',
+          attrs: { href: 'https:\\example.test\\bad' },
+          content: [{ type: 'text', text: 'Unsafe malformed button' }],
+        },
+      ]),
+    });
+
+    expect(result.html).toContain('Unsafe JavaScript link');
+    expect(result.html).not.toContain('javascript:alert');
+    expect(result.html).not.toContain('data:text/html');
+    expect(result.html).not.toContain('vbscript:');
+    expect(result.html).not.toContain('//example.test/protocol-relative');
+    expect(result.html).not.toContain('https:\\example.test\\bad');
+    expect(result.html).toContain(
+      '<a href="#receipt-summary">Safe fragment</a>',
+    );
+    expect(result.html).toContain('<a href="/receipts/2026">Safe relative</a>');
+    expect(result.html).toContain(
+      '<a href="receipts/2026">Safe plain relative</a>',
+    );
+    expect(result.html).toContain(
+      '<a href="mailto:team@example.test">Safe mail</a>',
+    );
+    expect(result.html).toContain('<a href="tel:+15551234567">Safe phone</a>');
+    expect(result.html).toContain(
+      '<a class="pdf-button" href="https://example.test/donate">Safe https button</a>',
+    );
+    expect(result.html).toContain(
+      '<a class="pdf-button" href="http://example.test/report">Safe http button</a>',
+    );
+    expect(result.html).toContain(
+      '<span class="pdf-button">Unsafe data button</span>',
+    );
+    expect(result.html).toContain(
+      '<span class="pdf-button">Unsafe protocol-relative button</span>',
+    );
+    expect(result.warnings).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: 'unsafe_url',
+          severity: 'warning',
+          details: { attribute: 'href' },
+        }),
+      ]),
+    );
+  });
+
   it('serializes image nodes and collects asset references', () => {
     const result = composePdfDocumentHtml({
       document: doc([

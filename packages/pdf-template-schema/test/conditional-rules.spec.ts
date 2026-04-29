@@ -142,6 +142,64 @@ describe('Phase 16 conditional rule schema and evaluator', () => {
     });
   });
 
+  it('uses strict deterministic ISO dates for ordered comparisons', () => {
+    const validIsoDate = evaluateConditionalRule({
+      context: {
+        donation: {
+          date: '2026-01-02',
+        },
+      },
+      rule: {
+        fieldPath: 'donation.date',
+        operator: 'greater_than',
+        value: '2026-01-01',
+      },
+    });
+    const validIsoDateTime = evaluateConditionalRule({
+      context: {
+        donation: {
+          submittedAt: '2026-01-02T00:00:00Z',
+        },
+      },
+      rule: {
+        fieldPath: 'donation.submittedAt',
+        operator: 'greater_than',
+        value: '2026-01-01T00:00:00+00:00',
+      },
+    });
+    const informalDate = evaluateConditionalRule({
+      context: {
+        donation: {
+          date: '01/02/2026',
+        },
+      },
+      rule: {
+        fieldPath: 'donation.date',
+        operator: 'greater_than',
+        value: '2026-01-01',
+      },
+    });
+
+    expect(validIsoDate).toMatchObject({
+      matched: true,
+      diagnostics: [],
+    });
+    expect(validIsoDateTime).toMatchObject({
+      matched: true,
+      diagnostics: [],
+    });
+    expect(informalDate).toMatchObject({
+      matched: false,
+      diagnostics: [
+        {
+          code: 'invalid_condition_value',
+          severity: 'error',
+          fieldPath: 'donation.date',
+        },
+      ],
+    });
+  });
+
   it('combines rules with deterministic AND semantics', () => {
     const result = evaluateConditionalRules({
       context: sampleContext,

@@ -193,6 +193,27 @@ describe('Phase 17 repeater binding schema and scoped resolver', () => {
     expect(String.prototype.toLocaleLowerCase).not.toHaveBeenCalled();
   });
 
+  it('sorts informal date strings as deterministic strings, not parsed dates', () => {
+    const result = resolveRepeaterItems({
+      binding: {
+        id: 'informal-date-sort',
+        itemAlias: 'donation',
+        maxItems: 1000,
+        sort: {
+          direction: 'asc',
+          fieldPath: 'date',
+        },
+        sourcePath: 'donations',
+      },
+      context: {
+        donations: [{ date: '01/02/2026' }, { date: '12/31/2025' }],
+      },
+    });
+
+    expect(result.diagnostics).toEqual([]);
+    expect(result.items.map((item) => item.sourceIndex)).toEqual([0, 1]);
+  });
+
   it('truncates with a max-items warning and keeps output order deterministic', () => {
     const result = resolveRepeaterItems({
       binding: {

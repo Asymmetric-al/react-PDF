@@ -53,6 +53,16 @@ Observed repo facts:
   preview orchestration in the root entry and server-only DocRaptor test
   preview orchestration behind `@asym/pdf-renderer/docraptor-preview`. It
   remains unwired from editor UI and real donor or financial data resolution.
+- Phase 13 adds the typed nonprofit variable registry in
+  `@asym/pdf-template-schema`.
+- Phase 14 adds React-free variable resolution, deterministic formatters, and
+  fallback behavior for preview, renderer, preflight, and future adapter code.
+- Phase 15 adds protected structured variable chips in `@asym/pdf-editor`
+  without changing `@react-email/editor` exports.
+- Phase 16 adds structured conditional section evaluation and editor/renderer
+  support without arbitrary JavaScript.
+- Phase 17 adds structured repeaters, scoped data resolution, renderer
+  variable-scope metadata, and a protected repeater editor extension.
 
 The broader Asymmetric.al platform currently uses Unlayer document mode for
 PDF Studio. That platform shape includes or expects template CRUD, Unlayer
@@ -180,16 +190,17 @@ The canonical implementation sequence is now the 42-phase tracker in
 `openspec/changes/build-pdf-document-builder/tasks.md`. Phase 06 owns schema
 foundation, Phase 07 owns broader compatibility fixtures, Phase 08 owns safe
 document naming, Phase 09 owns the document serializer foundation, Phase 10
-owns the print shell, and Phase 11 owns the DocRaptor client package. Later
-Phase 12 owns browser and DocRaptor test preview. Later phases add typed
-variables, variable resolution and formatting, variable chips, conditionals,
-repeaters, tables, calculations, page flow, headers/footers, assets, branding,
-fixtures, preflight, render metadata, template lifecycle/versioning, batch,
-async rendering, Playwright local test rendering, metadata/accessibility,
-security, Unlayer coexistence, core adapter contracts, docs/examples,
-performance, API stability, browser bundle audits, OpenSpec reconciliation,
-mocked end-to-end package flows, core cutover planning, and final package
-sign-off.
+owns the print shell, Phase 11 owns the DocRaptor client package, Phase 12 owns
+browser and DocRaptor test preview, Phase 13 owns the typed variable registry,
+Phase 14 owns variable resolution and formatting, Phase 15 owns variable chips,
+Phase 16 owns conditionals, and Phase 17 owns repeaters. Phase 18 is next and
+owns the report-grade financial data table block. Later phases add
+calculations, page flow, headers/footers, assets, branding, fixtures,
+preflight, render metadata, template lifecycle/versioning, batch, async
+rendering, Playwright local test rendering, metadata/accessibility, security,
+Unlayer coexistence, core adapter contracts, docs/examples, performance, API
+stability, browser bundle audits, OpenSpec reconciliation, mocked end-to-end
+package flows, core cutover planning, and final package sign-off.
 
 ## 6. Target state
 

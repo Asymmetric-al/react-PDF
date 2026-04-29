@@ -28,8 +28,13 @@ foundation phase.
 - Phase 9 added the document serializer foundation.
 - Phase 10 added the deterministic print HTML shell and page model.
 - Phase 11 added the server-only DocRaptor client package.
-- Phase 12 is next and will define browser preview and DocRaptor test-mode
-  preview strategy.
+- Phase 12 added browser preview and DocRaptor test-mode preview strategy.
+- Phase 13 added the typed variable registry.
+- Phase 14 added shared variable resolution, formatting, and fallback behavior.
+- Phase 15 added protected structured variable chips in the PDF editor wrapper.
+- Phase 16 added structured conditional sections.
+- Phase 17 added structured repeaters and scoped data resolution.
+- Phase 18 is next and will add the report-grade financial data table block.
 - DocRaptor is the production PDF rendering target.
 - Puppeteer may be used later only for local preview, debugging, or fallback.
 
