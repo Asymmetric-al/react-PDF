@@ -1,0 +1,331 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Phase 13 typed variable registry > generates deterministic sample data for Phase 13 fixture categories > annual_giving_statement 1`] = `
+{
+  "asset": {
+    "logoAltText": "Asymmetric Giving logo",
+    "logoUrl": "https://assets.example.test/logo.png",
+    "portalUrl": "https://example.org/donor-portal",
+  },
+  "computed": {
+    "currentPage": 1,
+    "generatedAt": "2026-04-28T00:00:00.000Z",
+    "totalPages": 3,
+  },
+  "document": {
+    "date": "2026-04-28",
+    "footerText": "Thank you for partnering with our mission.",
+    "number": "DOC-2026-0001",
+    "title": "Sample Document",
+  },
+  "organization": {
+    "address": {
+      "city": "Franklin",
+      "country": "US",
+      "line1": "100 Mission Way",
+      "postalCode": "37064",
+      "region": "TN",
+    },
+    "name": "Asymmetric Giving",
+    "website": "https://example.org",
+  },
+  "recipient": {
+    "address": {
+      "city": "Austin",
+      "country": "US",
+      "line1": "42 Donor Lane",
+      "postalCode": "78701",
+      "region": "TX",
+    },
+    "email": "jordan.lee@example.test",
+    "fullName": "Jordan Lee",
+    "id": "recipient-1001",
+  },
+  "statement": {
+    "donationCount": 18,
+    "endDate": "2026-12-31",
+    "period": "2026 Year to Date",
+    "startDate": "2026-01-01",
+    "totalContributions": 2400,
+  },
+  "taxReceipt": {
+    "deductibleAmount": 125,
+    "taxYear": 2026,
+  },
+}
+`;
+
+exports[`Phase 13 typed variable registry > generates deterministic sample data for Phase 13 fixture categories > certificate 1`] = `
+{
+  "asset": {
+    "logoAltText": "Asymmetric Giving logo",
+    "logoUrl": "https://assets.example.test/logo.png",
+    "portalUrl": "https://example.org/donor-portal",
+    "signatureUrl": "https://assets.example.test/signature.png",
+  },
+  "computed": {
+    "currentPage": 1,
+    "generatedAt": "2026-04-28T00:00:00.000Z",
+    "totalPages": 3,
+  },
+  "document": {
+    "certificateTitle": "Certificate of Appreciation",
+    "date": "2026-04-28",
+    "footerText": "Thank you for partnering with our mission.",
+    "number": "DOC-2026-0001",
+    "title": "Sample Document",
+  },
+  "organization": {
+    "address": {
+      "city": "Franklin",
+      "country": "US",
+      "line1": "100 Mission Way",
+      "postalCode": "37064",
+      "region": "TN",
+    },
+    "name": "Asymmetric Giving",
+    "website": "https://example.org",
+  },
+  "recipient": {
+    "address": {
+      "city": "Austin",
+      "country": "US",
+      "line1": "42 Donor Lane",
+      "postalCode": "78701",
+      "region": "TX",
+    },
+    "email": "jordan.lee@example.test",
+    "fullName": "Jordan Lee",
+    "id": "recipient-1001",
+  },
+}
+`;
+
+exports[`Phase 13 typed variable registry > generates deterministic sample data for Phase 13 fixture categories > donation_receipt 1`] = `
+{
+  "asset": {
+    "logoAltText": "Asymmetric Giving logo",
+    "logoUrl": "https://assets.example.test/logo.png",
+    "portalUrl": "https://example.org/donor-portal",
+    "signatureUrl": "https://assets.example.test/signature.png",
+  },
+  "computed": {
+    "currentPage": 1,
+    "generatedAt": "2026-04-28T00:00:00.000Z",
+    "isTaxDeductible": true,
+    "totalPages": 3,
+  },
+  "document": {
+    "date": "2026-04-28",
+    "footerText": "Thank you for partnering with our mission.",
+    "number": "DOC-2026-0001",
+    "title": "Sample Document",
+  },
+  "donation": {
+    "amount": 125,
+    "date": "2026-04-15",
+    "designation": "General Fund",
+    "goodsServicesValue": 0,
+    "id": "gift-2001",
+    "method": "Credit card",
+    "receiptNumber": "REC-2026-0001",
+  },
+  "organization": {
+    "address": {
+      "city": "Franklin",
+      "country": "US",
+      "line1": "100 Mission Way",
+      "postalCode": "37064",
+      "region": "TN",
+    },
+    "ein": "12-3456789",
+    "legalName": "Asymmetric Giving Foundation",
+    "name": "Asymmetric Giving",
+    "website": "https://example.org",
+  },
+  "recipient": {
+    "address": {
+      "city": "Austin",
+      "country": "US",
+      "line1": "42 Donor Lane",
+      "postalCode": "78701",
+      "region": "TX",
+    },
+    "email": "jordan.lee@example.test",
+    "fullName": "Jordan Lee",
+    "id": "recipient-1001",
+  },
+  "taxReceipt": {
+    "goodsServicesStatement": "No goods or services were provided in exchange for this contribution.",
+    "issuedDate": "2026-04-28",
+  },
+}
+`;
+
+exports[`Phase 13 typed variable registry > generates deterministic sample data for Phase 13 fixture categories > financial_report 1`] = `
+{
+  "asset": {
+    "logoAltText": "Asymmetric Giving logo",
+    "logoUrl": "https://assets.example.test/logo.png",
+    "portalUrl": "https://example.org/donor-portal",
+  },
+  "computed": {
+    "currentPage": 1,
+    "generatedAt": "2026-04-28T00:00:00.000Z",
+    "totalPages": 3,
+  },
+  "document": {
+    "date": "2026-04-28",
+    "footerText": "Thank you for partnering with our mission.",
+    "number": "DOC-2026-0001",
+    "title": "Sample Document",
+  },
+  "financialReport": {
+    "expenseTotal": 18250,
+    "fundName": "General Fund",
+    "incomeTotal": 25000,
+    "netBalance": 6750,
+    "period": "Q1 2026",
+    "rowCount": 12,
+    "variancePercentage": 0.08,
+  },
+  "organization": {
+    "address": {
+      "city": "Franklin",
+      "country": "US",
+      "line1": "100 Mission Way",
+      "postalCode": "37064",
+      "region": "TN",
+    },
+    "name": "Asymmetric Giving",
+    "website": "https://example.org",
+  },
+  "recipient": {
+    "address": {
+      "city": "Austin",
+      "country": "US",
+      "line1": "42 Donor Lane",
+      "postalCode": "78701",
+      "region": "TX",
+    },
+    "email": "jordan.lee@example.test",
+    "fullName": "Jordan Lee",
+    "id": "recipient-1001",
+  },
+}
+`;
+
+exports[`Phase 13 typed variable registry > generates deterministic sample data for Phase 13 fixture categories > invoice 1`] = `
+{
+  "asset": {
+    "logoAltText": "Asymmetric Giving logo",
+    "logoUrl": "https://assets.example.test/logo.png",
+    "portalUrl": "https://example.org/donor-portal",
+  },
+  "computed": {
+    "currentPage": 1,
+    "generatedAt": "2026-04-28T00:00:00.000Z",
+    "totalPages": 3,
+  },
+  "document": {
+    "date": "2026-04-28",
+    "footerText": "Thank you for partnering with our mission.",
+    "number": "DOC-2026-0001",
+    "title": "Sample Document",
+  },
+  "invoice": {
+    "dueDate": "2026-05-15",
+    "number": "INV-1001",
+    "paid": false,
+    "subtotal": 1200,
+    "taxRate": 0.0825,
+    "total": 1299,
+  },
+  "organization": {
+    "address": {
+      "city": "Franklin",
+      "country": "US",
+      "line1": "100 Mission Way",
+      "postalCode": "37064",
+      "region": "TN",
+    },
+    "name": "Asymmetric Giving",
+    "website": "https://example.org",
+  },
+  "recipient": {
+    "address": {
+      "city": "Austin",
+      "country": "US",
+      "line1": "42 Donor Lane",
+      "postalCode": "78701",
+      "region": "TX",
+    },
+    "email": "jordan.lee@example.test",
+    "fullName": "Jordan Lee",
+    "id": "recipient-1001",
+  },
+}
+`;
+
+exports[`Phase 13 typed variable registry > generates deterministic sample data for Phase 13 fixture categories > tax_receipt 1`] = `
+{
+  "asset": {
+    "logoAltText": "Asymmetric Giving logo",
+    "logoUrl": "https://assets.example.test/logo.png",
+    "portalUrl": "https://example.org/donor-portal",
+    "signatureUrl": "https://assets.example.test/signature.png",
+  },
+  "computed": {
+    "currentPage": 1,
+    "generatedAt": "2026-04-28T00:00:00.000Z",
+    "isTaxDeductible": true,
+    "totalPages": 3,
+  },
+  "document": {
+    "date": "2026-04-28",
+    "footerText": "Thank you for partnering with our mission.",
+    "number": "DOC-2026-0001",
+    "title": "Sample Document",
+  },
+  "donation": {
+    "amount": 125,
+    "date": "2026-04-15",
+    "designation": "General Fund",
+    "goodsServicesValue": 0,
+    "id": "gift-2001",
+    "method": "Credit card",
+    "receiptNumber": "REC-2026-0001",
+  },
+  "organization": {
+    "address": {
+      "city": "Franklin",
+      "country": "US",
+      "line1": "100 Mission Way",
+      "postalCode": "37064",
+      "region": "TN",
+    },
+    "ein": "12-3456789",
+    "legalName": "Asymmetric Giving Foundation",
+    "name": "Asymmetric Giving",
+    "website": "https://example.org",
+  },
+  "recipient": {
+    "address": {
+      "city": "Austin",
+      "country": "US",
+      "line1": "42 Donor Lane",
+      "postalCode": "78701",
+      "region": "TX",
+    },
+    "email": "jordan.lee@example.test",
+    "fullName": "Jordan Lee",
+    "id": "recipient-1001",
+  },
+  "taxReceipt": {
+    "deductibleAmount": 125,
+    "goodsServicesStatement": "No goods or services were provided in exchange for this contribution.",
+    "issuedDate": "2026-04-28",
+    "taxYear": 2026,
+  },
+}
+`;

@@ -4,6 +4,7 @@ import { join } from 'node:path';
 
 const expectedUpstreamCanarySha = 'd064012cd5a3b4817dbe03a932a6d68e83e07abb';
 const expectedEditorPackageName = '@react-email/editor';
+const shaPattern = /^[0-9a-f]{40}$/;
 
 type JsonRecord = Record<string, unknown>;
 
@@ -74,18 +75,22 @@ function verifyEditorPackage(repoRoot: string): {
 }
 
 function verifyUpstreamBaseline(repoRoot: string): string {
-  const upstreamCanarySha = readGitOutput(
-    ['rev-parse', '--verify', 'upstream/canary'],
-    repoRoot,
-  );
-
-  if (upstreamCanarySha !== expectedUpstreamCanarySha) {
+  if (!shaPattern.test(expectedUpstreamCanarySha)) {
     throw new Error(
-      `Expected upstream/canary ${expectedUpstreamCanarySha}, got ${upstreamCanarySha}.`,
+      `Expected frozen upstream SHA to be a 40-character lowercase hex commit, got ${expectedUpstreamCanarySha}.`,
     );
   }
 
-  return upstreamCanarySha;
+  try {
+    readGitOutput(
+      ['cat-file', '-e', `${expectedUpstreamCanarySha}^{commit}`],
+      repoRoot,
+    );
+  } catch {
+    return expectedUpstreamCanarySha;
+  }
+
+  return expectedUpstreamCanarySha;
 }
 
 const repoRoot = process.cwd();

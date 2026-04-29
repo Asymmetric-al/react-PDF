@@ -1,5 +1,5 @@
 export type PdfTemplateSchemaPackageName = '@asym/pdf-template-schema';
-export type PdfTemplateSchemaMaturity = 'phase-6-schema-foundation';
+export type PdfTemplateSchemaMaturity = 'phase-14-variable-resolution';
 export type PdfTemplateSchemaRuntime = 'shared';
 export type PdfTemplateSchemaOwnership = 'template-schema';
 
@@ -12,7 +12,7 @@ export interface PdfTemplateSchemaBoundary {
 
 export const pdfTemplateSchemaBoundary: PdfTemplateSchemaBoundary = {
   packageName: '@asym/pdf-template-schema',
-  maturity: 'phase-6-schema-foundation',
+  maturity: 'phase-14-variable-resolution',
   owns: 'template-schema',
   runtime: 'shared',
 };
@@ -29,7 +29,22 @@ export {
   TableBindingSchema,
   TableColumnBindingSchema,
 } from './bindings';
-
+export { type TemplateCategory, TemplateCategorySchema } from './categories';
+export {
+  defaultVariableFormatters,
+  type FormatVariableValueInput,
+  formatVariableValue,
+  type NormalizedVariableFormatterOptions,
+  normalizeVariableFormatterOptions,
+  type VariableFormatResult,
+  type VariableFormatter,
+  type VariableFormatterContext,
+  type VariableFormatterMap,
+  type VariableFormatterOptions,
+  type VariableResolutionDiagnostic,
+  type VariableResolutionDiagnosticCode,
+  type VariableResolutionDiagnosticSeverity,
+} from './formatters';
 export {
   type AuditEvent,
   AuditEventSchema,
@@ -50,7 +65,6 @@ export {
   type RenderWarning,
   RenderWarningSchema,
 } from './rendering';
-
 export {
   type AssetReference,
   AssetReferenceSchema,
@@ -71,16 +85,47 @@ export {
   PageOrientationSchema,
   PageSizeSchema,
   PageUnitSchema,
-  TemplateCategorySchema,
 } from './template';
 
 export {
+  createVariableResolver,
+  getValueAtDataPath,
+  type ResolvedVariableValue,
+  type ResolveVariableValueInput,
+  type ResolveVariableValuesInput,
+  type ResolveVariableValuesResult,
+  resolveVariableValue,
+  resolveVariableValues,
+  type VariableDataContext,
+  type VariablePathLookupResult,
+  type VariableResolutionRequest,
+  type VariableResolutionRequestInput,
+  type VariableResolutionStatus,
+  type VariableResolver,
+  type VariableResolverOptions,
+} from './variable-resolution';
+
+export {
+  coreVariableDefinitions,
+  coreVariableRegistry,
+  createVariableRegistry,
+  type FallbackBehavior,
   FallbackBehaviorSchema,
+  type PrivacyClassification,
   PrivacyClassificationSchema,
+  type RegistryVariableDefinition,
+  type RegistryVariableDefinitionInput,
+  RegistryVariableDefinitionSchema,
   type VariableDefinition,
   VariableDefinitionSchema,
+  type VariableGroup,
   VariableGroupSchema,
   type VariableReference,
   VariableReferenceSchema,
+  type VariableRegistry,
+  VariableRegistryError,
+  type VariableRegistryErrorCode,
+  type VariableSampleData,
+  type VariableValueType,
   VariableValueTypeSchema,
 } from './variables';

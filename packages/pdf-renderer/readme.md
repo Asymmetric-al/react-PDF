@@ -1,12 +1,14 @@
 # @asym/pdf-renderer
 
-Phase 12 preview foundation for the Asym PDF Document Builder print renderer.
+Phase 14 preview and variable resolution foundation for the Asym PDF Document
+Builder print renderer.
 
 ## Purpose
 
 This package owns deterministic document serialization, print-ready HTML,
 paged-media CSS foundations, browser-safe preview helpers, server-only
-DocRaptor test preview orchestration, and renderer fixtures.
+DocRaptor test preview orchestration, renderer variable resolution adapters,
+and renderer fixtures.
 
 DocRaptor remains the production PDF fidelity target. Browser preview is fast
 authoring feedback only and must never be treated as final PDF output.
@@ -38,6 +40,9 @@ server-only DocRaptor client:
 - `PdfPreviewPreflightHook`
 - `PdfPreviewSnapshots`
 - `PdfPreviewArtifact`
+- `resolvePdfDocumentVariables`
+- `ResolvePdfDocumentVariablesInput`
+- `ResolvePdfDocumentVariablesResult`
 
 The server-only DocRaptor test preview API is isolated behind:
 
@@ -86,7 +91,28 @@ Browser preview metadata always reports:
 - `docraptorTestMode: false`
 
 The browser path does not mutate the caller's template object and does not
-resolve real donor or financial data in Phase 12.
+fetch real donor or financial data in Phase 12.
+
+## Phase 14 Variable Resolution
+
+`resolvePdfDocumentVariables` resolves the structured variable usages collected
+by `composePdfDocumentHtml` against caller-provided data. It delegates to the
+React-free resolver in `@asym/pdf-template-schema` and returns resolved display
+values plus diagnostics. It does not mutate generated HTML and does not fetch
+real donor, financial, tenant, or asset data.
+
+```ts
+import {
+  composePdfDocumentHtml,
+  resolvePdfDocumentVariables,
+} from '@asym/pdf-renderer';
+
+const serialized = composePdfDocumentHtml({ document: template.content });
+const variables = resolvePdfDocumentVariables({
+  context: sampleData,
+  variables: serialized.variables,
+});
+```
 
 ## DocRaptor Test Preview
 
@@ -155,14 +181,14 @@ DocRaptor compatibility notes:
 - No product preview panel.
 - No full Phase 25 preflight implementation.
 - No production DocRaptor render orchestration.
-- No real donor, ministry, financial, or tenant data resolution.
+- No real donor, ministry, financial, or tenant data fetching.
 - No integrated header/footer system before Phase 21.
 - No tenant storage, auth, queue, or core app imports.
 - No string-replacement merge engine.
 
 ## Maturity
 
-`phase-12-preview`. The package remains private to prevent accidental
+`phase-14-variable-resolution`. The package remains private to prevent accidental
 publication while renderer contracts are still being built.
 
 ## Development

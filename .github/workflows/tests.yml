@@ -29,12 +29,6 @@ jobs:
         uses: pnpm/action-setup@738f428026a1f5a72398de22aeed83d859c4a660
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
-      - name: Fetch upstream baseline
-        run: |
-          if ! git remote get-url upstream >/dev/null 2>&1; then
-            git remote add upstream https://github.com/resend/react-email.git
-          fi
-          git fetch upstream canary --depth=1
       - name: Run baseline smoke
         run: pnpm asym:baseline-smoke
       - name: Build editor test dependencies

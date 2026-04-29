@@ -4,6 +4,7 @@ import {
   createBrowserPdfPreview,
   type PdfRendererBoundary,
   pdfRendererBoundary,
+  resolvePdfDocumentVariables,
 } from '@asym/pdf-renderer';
 import { describe, expect, it } from 'vitest';
 
@@ -13,7 +14,7 @@ describe('@asym/pdf-renderer public entry', () => {
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-renderer',
-      maturity: 'phase-12-preview',
+      maturity: 'phase-14-variable-resolution',
       owns: 'print-renderer',
       runtime: 'browser-safe-root-with-server-subpath',
       consumes: ['@asym/pdf-template-schema'],
@@ -30,5 +31,9 @@ describe('@asym/pdf-renderer public entry', () => {
 
   it('exposes the Phase 12 browser-safe preview foundation', () => {
     expect(createBrowserPdfPreview).toBeDefined();
+  });
+
+  it('exposes the Phase 14 variable resolution adapter', () => {
+    expect(resolvePdfDocumentVariables).toBeDefined();
   });
 });
