@@ -1,6 +1,7 @@
 # @asym/pdf-template-schema
 
-Phase 14 schema, typed variable registry, and variable resolution foundation
+Phase 16 schema, typed variable registry, variable resolution, and conditional
+rule foundation
 for the Asym PDF Document Builder.
 
 ## Purpose
@@ -10,11 +11,11 @@ primitives, variable domains, variable resolution and formatting, page
 settings, asset references, render metadata, batch metadata, and
 audit-oriented model types.
 
-Phase 14 adds React-free variable resolution, formatter, and fallback behavior
-on top of the typed nonprofit document variable registry. The registry and
-resolver can be imported by the schema package, renderer, preview, future
-preflight, and future `Asymmetric-al/core` adapter code without pulling editor
-UI or DocRaptor behavior into browser bundles.
+Phase 16 adds React-free conditional rule evaluation on top of the typed
+nonprofit document variable registry and resolver. The registry, resolver, and
+condition evaluator can be imported by the schema package, renderer, preview,
+future preflight, and future `Asymmetric-al/core` adapter code without pulling
+editor UI or DocRaptor behavior into browser bundles.
 
 ## Public API Promise
 
@@ -43,6 +44,10 @@ TypeScript types are exported together:
 - `VariableResolver`
 - `ResolvedVariableValue`
 - `VariableResolutionDiagnostic`
+- `evaluateConditionalRule`
+- `evaluateConditionalRules`
+- `ConditionalRuleEvaluationResult`
+- `ConditionalEvaluationDiagnostic`
 - `VariableReferenceSchema` / `VariableReference`
 - `DataBindingSchema` / `DataBinding`
 - `ConditionalRuleSchema` / `ConditionalRule`
@@ -100,6 +105,13 @@ Missing values are paths that are not found or values that are `null` or
 variables produce warnings and may use fallback values when the registry
 definition allows it.
 
+Phase 16 conditional rules use structured operators only:
+`exists`, `not_exists`, `equals`, `not_equals`, `greater_than`,
+`greater_than_or_equal`, `less_than`, `less_than_or_equal`, `contains`,
+`not_contains`, `is_empty`, `is_not_empty`, `in`, and `not_in`. The evaluator
+uses dotted data paths, returns structured diagnostics, and treats
+JavaScript-looking strings as inert data.
+
 ## Non-goals
 
 - No PDF editor UI.
@@ -117,7 +129,7 @@ definition allows it.
 
 ## Maturity
 
-`phase-14-variable-resolution`. The package is private to prevent accidental
+`phase-16-conditional-sections`. The package is private to prevent accidental
 publication while the shared model is still evolving.
 
 ## Development

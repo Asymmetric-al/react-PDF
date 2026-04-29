@@ -5,6 +5,7 @@ import {
   DocumentPageSettingsSchema,
   DocumentTemplateV1Schema,
   defaultVariableFormatters,
+  evaluateConditionalRule,
   formatVariableValue,
   type PdfTemplateSchemaBoundary,
   pdfTemplateSchemaBoundary,
@@ -20,7 +21,7 @@ describe('@asym/pdf-template-schema public entry', () => {
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-template-schema',
-      maturity: 'phase-14-variable-resolution',
+      maturity: 'phase-16-conditional-sections',
       owns: 'template-schema',
       runtime: 'shared',
     });
@@ -37,5 +38,6 @@ describe('@asym/pdf-template-schema public entry', () => {
     expect(resolveVariableValue).toBeDefined();
     expect(formatVariableValue).toBeDefined();
     expect(defaultVariableFormatters).toHaveProperty('currency.usd');
+    expect(evaluateConditionalRule).toBeDefined();
   });
 });

@@ -1,7 +1,7 @@
 import type { PdfTemplateSchemaBoundary } from '@asym/pdf-template-schema';
 
 export type PdfRendererPackageName = '@asym/pdf-renderer';
-export type PdfRendererMaturity = 'phase-14-variable-resolution';
+export type PdfRendererMaturity = 'phase-16-conditional-sections';
 export type PdfRendererRuntime = 'browser-safe-root-with-server-subpath';
 export type PdfRendererOwnership = 'print-renderer';
 
@@ -15,7 +15,7 @@ export interface PdfRendererBoundary {
 
 export const pdfRendererBoundary: PdfRendererBoundary = {
   packageName: '@asym/pdf-renderer',
-  maturity: 'phase-14-variable-resolution',
+  maturity: 'phase-16-conditional-sections',
   owns: 'print-renderer',
   runtime: 'browser-safe-root-with-server-subpath',
   consumes: ['@asym/pdf-template-schema'],
@@ -39,6 +39,11 @@ export {
   type PdfDocumentRenderWarningSource,
   type PdfDocumentVariableUsage,
 } from './compose-pdf-document-html';
+export {
+  type EvaluatePdfDocumentConditionInput,
+  evaluatePdfDocumentCondition,
+  type PdfDocumentConditionEvaluation,
+} from './conditions';
 export {
   type BasePdfPreviewRequest,
   type CreateBrowserPdfPreviewRequest,

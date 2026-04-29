@@ -26,10 +26,15 @@ export const ConditionalOperatorSchema = z.enum([
   'equals',
   'not_equals',
   'greater_than',
+  'greater_than_or_equal',
   'less_than',
+  'less_than_or_equal',
   'contains',
+  'not_contains',
   'is_empty',
   'is_not_empty',
+  'in',
+  'not_in',
 ]);
 
 const operatorsWithoutValue = new Set([
@@ -38,6 +43,8 @@ const operatorsWithoutValue = new Set([
   'is_empty',
   'is_not_empty',
 ]);
+
+const operatorsWithArrayValue = new Set(['in', 'not_in']);
 
 export const ConditionalRuleSchema = z
   .object({
@@ -62,6 +69,17 @@ export const ConditionalRuleSchema = z
       context.addIssue({
         code: 'custom',
         message: `Operator "${rule.operator}" must not define a value.`,
+        path: ['value'],
+      });
+    }
+
+    if (
+      operatorsWithArrayValue.has(rule.operator) &&
+      !Array.isArray(rule.value)
+    ) {
+      context.addIssue({
+        code: 'custom',
+        message: `Operator "${rule.operator}" requires an array comparison value.`,
         path: ['value'],
       });
     }

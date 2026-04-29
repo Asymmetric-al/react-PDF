@@ -213,6 +213,7 @@ describe('Phase 10 composePrintDocumentHtml', () => {
 ".pdf-button{display:inline-block;text-decoration:none;}
 .pdf-column{box-sizing:border-box;display:table-cell;vertical-align:top;width:50%;}
 .pdf-columns{box-sizing:border-box;display:table;width:100%;}
+.pdf-conditional-section{display:block;}
 .pdf-image{max-width:100%;}
 .pdf-table{border-collapse:collapse;width:100%;}
 .pdf-variable{white-space:nowrap;}

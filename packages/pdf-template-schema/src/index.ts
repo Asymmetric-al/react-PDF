@@ -1,5 +1,5 @@
 export type PdfTemplateSchemaPackageName = '@asym/pdf-template-schema';
-export type PdfTemplateSchemaMaturity = 'phase-14-variable-resolution';
+export type PdfTemplateSchemaMaturity = 'phase-16-conditional-sections';
 export type PdfTemplateSchemaRuntime = 'shared';
 export type PdfTemplateSchemaOwnership = 'template-schema';
 
@@ -12,7 +12,7 @@ export interface PdfTemplateSchemaBoundary {
 
 export const pdfTemplateSchemaBoundary: PdfTemplateSchemaBoundary = {
   packageName: '@asym/pdf-template-schema',
-  maturity: 'phase-14-variable-resolution',
+  maturity: 'phase-16-conditional-sections',
   owns: 'template-schema',
   runtime: 'shared',
 };
@@ -30,6 +30,17 @@ export {
   TableColumnBindingSchema,
 } from './bindings';
 export { type TemplateCategory, TemplateCategorySchema } from './categories';
+export {
+  type ConditionalEvaluationDiagnostic,
+  type ConditionalEvaluationDiagnosticCode,
+  type ConditionalEvaluationDiagnosticSeverity,
+  type ConditionalRuleEvaluationResult,
+  type ConditionalRulesEvaluationResult,
+  type EvaluateConditionalRuleInput,
+  type EvaluateConditionalRulesInput,
+  evaluateConditionalRule,
+  evaluateConditionalRules,
+} from './conditions';
 export {
   defaultVariableFormatters,
   type FormatVariableValueInput,
