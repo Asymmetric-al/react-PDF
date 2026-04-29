@@ -1,6 +1,6 @@
 # @asym/pdf-editor
 
-Phase 08 compatibility package for the Asym PDF Document Builder React editor.
+Phase 15 editor package for the Asym PDF Document Builder React editor.
 
 ## Purpose
 
@@ -19,7 +19,21 @@ The current public API is intentionally small:
 - `DocumentEditor`, `DocumentEditorProps`, `DocumentEditorRef`
 - `DocumentNode`
 - `DocumentMark`
+- `@asym/pdf-editor/extensions`
 - `@asym/pdf-editor/react-email-compat`
+
+The `extensions` subpath exports the Phase 15 variable chip extension:
+
+- `VariableChip`
+- `createVariableChipExtension`
+- `insertVariableChip` command types
+- `getVariableChipPreview`
+- `isKnownVariableChipKey`
+
+Variable chips are structured inline atom nodes named `variable`. They store a
+registry key plus optional formatter, fallback, and label attrs. The editor
+renders them visibly as non-editable chips and preview display uses the shared
+Phase 13 registry and Phase 14 resolver.
 
 The `react-email-compat` subpath re-exports public `@react-email/editor`
 primitives under explicit `Reference` names. These adapters are temporary and
@@ -32,10 +46,13 @@ change editor behavior or rendering output.
 
 ## Non-goals
 
-- No PDF-native editor shell implementation in Phase 08.
+- No PDF-native editor shell implementation in Phase 15.
 - No source import rewrites inside `@react-email/editor`.
-- No PDF renderer implementation.
-- No `composePdfDocumentHtml`; Phase 9 owns the print/PDF serializer.
+- No variable browser UI picker or inspector wiring.
+- No default slash command wiring. The current slash command UI accepts
+  caller-provided items, and a later editor shell can compose variable commands
+  into that UI.
+- No PDF renderer implementation in this package.
 - No `DocumentTheming`; the branding/theme phase owns PDF-specific theme
   semantics.
 - No DocRaptor credentials or server-side API calls.
@@ -43,9 +60,7 @@ change editor behavior or rendering output.
 
 ## Maturity
 
-The package now has a Phase 08 compatibility surface. The
-`pdfEditorBoundary.maturity` metadata remains `phase-3-boundary` until a later
-phase updates boundary metadata alongside real editor behavior. The package is
+The package now has a Phase 15 variable chip extension surface. The package is
 private to prevent accidental publication while the editor API is still being
 designed.
 
@@ -55,7 +70,6 @@ designed.
 pnpm --filter @asym/pdf-editor build
 pnpm --filter @asym/pdf-editor typecheck
 pnpm --filter @asym/pdf-editor test
-pnpm asym:phase-08-document-names-smoke
 ```
 
 Later `Asymmetric-al/core` support may add Bun or different task runners, but

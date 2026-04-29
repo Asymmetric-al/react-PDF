@@ -1,4 +1,7 @@
-import type { DocumentContentNode } from '@asym/pdf-template-schema';
+import type {
+  DocumentContentNode,
+  FallbackBehavior,
+} from '@asym/pdf-template-schema';
 
 export type PdfDocumentCssMedia = 'all' | 'print';
 
@@ -44,6 +47,7 @@ export interface PdfDocumentAssetReference {
 export interface PdfDocumentVariableUsage {
   readonly key: string;
   readonly formatter?: string;
+  readonly fallback?: FallbackBehavior;
   readonly path: readonly string[];
 }
 
@@ -583,10 +587,12 @@ function renderVariable(context: PdfDocumentNodeRendererContext): string {
   }
 
   const formatter = readStringAttribute(context.node.attrs, 'formatter');
+  const fallback = readStringAttribute(context.node.attrs, 'fallback');
 
   context.addVariable({
     key,
     formatter,
+    ...(fallback ? { fallback: { mode: 'use_value', value: fallback } } : {}),
     path: context.path,
   });
 
@@ -596,6 +602,7 @@ function renderVariable(context: PdfDocumentNodeRendererContext): string {
       class: 'pdf-variable',
       'data-variable-key': key,
       ...(formatter ? { 'data-variable-formatter': formatter } : {}),
+      ...(fallback ? { 'data-variable-fallback': fallback } : {}),
     },
     '',
   );

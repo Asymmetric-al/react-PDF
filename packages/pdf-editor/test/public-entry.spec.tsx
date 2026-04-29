@@ -31,7 +31,7 @@ describe('@asym/pdf-editor public entry', () => {
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-editor',
-      maturity: 'phase-3-boundary',
+      maturity: 'phase-15-variable-chip',
       owns: 'pdf-editor',
       runtime: 'browser-react',
       compatibility: 'react-email-reference-adapter',
@@ -52,6 +52,7 @@ describe('@asym/pdf-editor public entry', () => {
     expect(packageJson.dependencies['@react-email/editor']).toBe('workspace:*');
     expect(Object.keys(packageJson.exports).sort()).toEqual([
       '.',
+      './extensions',
       './react-email-compat',
     ]);
     expect(pdfEditorBoundary.compatibility).toBe(

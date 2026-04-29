@@ -402,3 +402,28 @@ phase-level choices and tradeoffs found during implementation.
 - Constraint: Phase 14 does not replace variable nodes in HTML, add editor
   chips, evaluate arbitrary JavaScript, fetch real tenant data, or wire
   DocRaptor behavior. Later phases own those behaviors.
+
+## 2026-04-29: Phase 15 Adds Structured Variable Chips
+
+- Decision: Implement variable chips in `@asym/pdf-editor` rather than
+  modifying `@react-email/editor`.
+- Reason: The wrapper-first migration strategy keeps upstream editor exports
+  stable while giving future PDF consumers a document-first extension surface.
+- Decision: Use a TipTap inline atom node named `variable` with structured
+  attrs for key, formatter, fallback, and label.
+- Reason: This aligns editor JSON with the Phase 6 `VariableReferenceSchema`
+  and Phase 9 serializer variable collection while preventing users from
+  accidentally editing registry keys as plain text.
+- Decision: Expose command/API insertion and preview helpers through
+  `@asym/pdf-editor/extensions`, but do not wire a default slash command item
+  in Phase 15.
+- Reason: The current slash command UI already supports caller-provided items.
+  A later editor shell can compose variable browsing UI without making Phase
+  15 depend on unfinished picker or inspector behavior.
+- Decision: Allow request-level fallback overrides in the shared resolver and
+  propagate variable fallback attrs through the renderer variable adapter.
+- Reason: Chip-level fallback preview must use the same deterministic
+  resolver behavior as later preview, preflight, and render paths.
+- Constraint: Phase 15 does not implement variable browsing UI, full preflight,
+  real platform data resolution, conditionals, repeaters, DocRaptor wiring, or
+  raw merge-tag conversion.

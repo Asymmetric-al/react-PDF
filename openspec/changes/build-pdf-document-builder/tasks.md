@@ -45,8 +45,8 @@
 | 12 | Build Browser Preview and DocRaptor Preview Strategy | Complete; validation recorded | `packages/pdf-renderer/src/preview`, `packages/pdf-renderer/src/docraptor-preview.ts` |
 | 13 | Build the Typed Variable Registry | Complete; validation recorded | `packages/pdf-template-schema/src/variables` |
 | 14 | Build Variable Resolution, Formatter, and Fallback System | Complete; validation recorded | `packages/pdf-template-schema/src/formatters`, `packages/pdf-renderer/src/variables` |
-| 15 | Build the Variable Chip Editor Extension | Next | `packages/pdf-editor/src/extensions/variable` |
-| 16 | Build Conditional Section Engine and Editor Extension | Not started | `packages/pdf-editor/src/extensions/conditional-section`, `packages/pdf-renderer/src/conditions` |
+| 15 | Build the Variable Chip Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/variable` |
+| 16 | Build Conditional Section Engine and Editor Extension | Next | `packages/pdf-editor/src/extensions/conditional-section`, `packages/pdf-renderer/src/conditions` |
 | 17 | Build Repeater Extension and Scoped Data Resolver | Not started | `packages/pdf-editor/src/extensions/repeater`, `packages/pdf-renderer/src/repeaters` |
 | 18 | Build Financial Data Table Block | Not started | `packages/pdf-editor/src/extensions/data-table`, `packages/pdf-renderer/src/data-table` |
 | 19 | Build Totals, Subtotals, Grouping, and Summary Blocks | Not started | `packages/pdf-renderer/src/calculations`, `packages/pdf-template-schema/src/calculations` |
@@ -593,26 +593,26 @@ backed by the registry and resolver.
 
 ### Tasks
 
-- [ ] Add structured inline variable nodes that reference registry keys,
+- [x] Add structured inline variable nodes that reference registry keys,
       render visibly, serialize to JSON, deserialize from JSON, and preview
       sample/fallback values.
-- [ ] Add command/API insertion and slash command integration only if it fits
+- [x] Add command/API insertion and slash command integration only if it fits
       current UI patterns.
-- [ ] Detect missing or broken variable keys and prevent accidental key edits
+- [x] Detect missing or broken variable keys and prevent accidental key edits
       inside the chip.
 
 ### Validation
 
-- [ ] Tests cover insertion, serialization, deserialization, chip rendering,
+- [x] Tests cover insertion, serialization, deserialization, chip rendering,
       sample preview value rendering, unknown key warnings, fallback display,
       keyboard behavior, copy/paste behavior where practical, and stable
       package exports.
-- [ ] Run `pnpm --filter @react-email/editor test`, `pnpm build`, and
+- [x] Run `pnpm --filter @react-email/editor test`, `pnpm build`, and
       `pnpm lint`.
 
 ### Handoff output
 
-- [ ] Variable chip extension docs and fixture notes.
+- [x] Variable chip extension docs and fixture notes.
 
 ## Phase 16: Build Conditional Section Engine and Editor Extension
 

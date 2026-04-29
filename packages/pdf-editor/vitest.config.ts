@@ -10,6 +10,10 @@ export default defineConfig({
   resolve: {
     alias: [
       {
+        find: '@asym/pdf-editor/extensions',
+        replacement: resolve(currentDirectory, 'src/extensions/index.ts'),
+      },
+      {
         find: '@asym/pdf-editor/react-email-compat',
         replacement: resolve(currentDirectory, 'src/react-email-compat.ts'),
       },

@@ -20,6 +20,16 @@
         "default": "./dist/index.cjs"
       }
     },
+    "./extensions": {
+      "import": {
+        "types": "./dist/extensions.d.mts",
+        "default": "./dist/extensions.mjs"
+      },
+      "require": {
+        "types": "./dist/extensions.d.cts",
+        "default": "./dist/extensions.cjs"
+      }
+    },
     "./react-email-compat": {
       "import": {
         "types": "./dist/react-email-compat.d.mts",
@@ -62,10 +72,14 @@
   },
   "dependencies": {
     "@asym/pdf-template-schema": "workspace:*",
-    "@react-email/editor": "workspace:*"
+    "@react-email/editor": "workspace:*",
+    "@tiptap/core": "^3.17.1"
   },
   "devDependencies": {
     "@testing-library/react": "16.3.2",
+    "@tiptap/extension-document": "3.17.1",
+    "@tiptap/extension-paragraph": "3.17.1",
+    "@tiptap/extension-text": "3.17.1",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
