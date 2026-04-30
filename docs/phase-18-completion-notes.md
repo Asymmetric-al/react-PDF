@@ -104,8 +104,8 @@ At the time of the split, Phase 19 was defined to audit, harden, document, and
 formally complete the existing TipTap-facing data table extension rather than
 duplicate it.
 
-Phase 20 should audit, harden, document, and formally complete the existing
-renderer and print markup behavior rather than duplicate it.
+Phase 20 has now audited, hardened, documented, and formally completed the
+existing renderer and print markup behavior rather than duplicating it.
 
 Totals, subtotals, grouping calculations, and summary rendering remain future
 work under Phases 22 and 23.
@@ -150,9 +150,10 @@ TipTap-facing data table editor extension that Phase 18 introduced ahead of
 the split roadmap. The Phase 19 handoff is recorded in
 `docs/phase-19-completion-notes.md`.
 
-Phase 20 remains the next renderer-facing gate for semantic table markup,
+Phase 20 has now completed the renderer-facing gate for semantic table markup,
 repeated headers, empty states, row limit warnings, deterministic diagnostics,
-and continued deferral of financial calculations.
+and continued deferral of financial calculations. Phase 21 is next for
+end-to-end data table preview fixtures.
 
 ## Known Gaps
 

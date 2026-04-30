@@ -553,3 +553,23 @@ phase-level choices and tradeoffs found during implementation.
   blocks, and table total rendering deferred to Phases 22 and 23.
 - Constraint: Phase 19 changes editor behavior and docs only. Phase 20 owns
   renderer and print markup hardening.
+
+## 2026-04-30: Phase 20 Hardens Data Table Renderer Markup
+
+- Decision: Treat Phase 20 as the formal renderer-facing data-table hardening
+  gate over the existing Phase 18 renderer artifacts rather than replacing the
+  table rendering path.
+- Reason: Phase 18 already introduced inline and external table binding
+  support, so Phase 20 needed targeted tests for semantic markup,
+  repeated-header classes, empty states, source diagnostics, formatter
+  diagnostics, and deterministic output.
+- Decision: Preserve the declarative total placeholder rows without computing
+  sums, counts, grouped subtotals, or grand totals.
+- Reason: Calculation contracts remain reserved for Phase 22, and summary/table
+  total rendering remains reserved for Phase 23. Keeping Phase 20 renderer-only
+  prevents hidden aggregation logic and keeps auditability boundaries clear.
+- Decision: Keep the browser-safe root renderer entry free of DocRaptor and
+  calculation imports while continuing to delegate row resolution and formatter
+  behavior to `@asym/pdf-template-schema`.
+- Constraint: Phase 20 changes renderer behavior, tests, docs, and OpenSpec
+  state only. Phase 21 owns end-to-end table preview fixtures.

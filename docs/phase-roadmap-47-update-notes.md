@@ -68,8 +68,9 @@ Phase 19 should verify command insertion, JSON attrs, deterministic HTML round
 trip, shared `TableBindingSchema` diagnostics, extension exports, and no
 renderer/DocRaptor/server-only imports from browser-facing editor exports.
 
-Phase 20 should consume the same node shape and serialized attributes for the
-renderer/print-markup gate. Phase 22 remains the calculation entry point.
+At the time of this roadmap reconciliation, Phase 20 was expected to consume
+the same node shape and serialized attributes for the renderer/print-markup
+gate. Phase 22 remains the calculation entry point.
 
 ## Files Updated
 
@@ -156,8 +157,9 @@ Markdown/OpenSpec files, but no whitespace errors.
 
 ## Known Gaps
 
-- Phase 19 and Phase 20 are not complete. They remain future verification and
-  hardening gates for ahead-of-plan data-table artifacts from Phase 18.
+- At the time of this note, Phase 19 and Phase 20 were not complete. Later
+  completion notes now record Phase 19 editor hardening and Phase 20 renderer
+  hardening.
 - Financial calculations remain unimplemented until Phase 22.
 - Summary blocks and computed table totals remain unimplemented until Phase 23.
 

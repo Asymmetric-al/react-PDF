@@ -50,8 +50,8 @@
 | 17 | Build Repeater Extension and Scoped Data Resolver | Complete; validation recorded | `packages/pdf-editor/src/extensions/repeater`, `packages/pdf-renderer/src/repeaters` |
 | 18 | Build Financial Data Table Block | Complete; validation recorded | `packages/pdf-editor/src/extensions/data-table`, `packages/pdf-renderer/src/data-table` |
 | 19 | Build Financial Data Table Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/data-table` |
-| 20 | Build Financial Data Table Renderer and Print Markup | Next | `packages/pdf-renderer/src/data-table` |
-| 21 | Build Data Table End-to-End Preview Fixtures | Not started | table fixtures and preview tests |
+| 20 | Build Financial Data Table Renderer and Print Markup | Complete; validation recorded | `packages/pdf-renderer/src/data-table` |
+| 21 | Build Data Table End-to-End Preview Fixtures | Next | table fixtures and preview tests |
 | 22 | Build Calculation Engine for Totals, Subtotals, and Grouping | Not started | calculation contracts and helpers |
 | 23 | Build Summary Blocks and Table Total Rendering | Not started | summary blocks and table totals |
 | 24 | Build Form Field, Signature, and QR Placeholder Contracts | Not started | placeholder contracts |
@@ -811,30 +811,30 @@ gaps, and do not duplicate code blindly.
 
 ### Tasks
 
-- [ ] Accept `tableBindings?: readonly TableBindingInput[]` in document
+- [x] Accept `tableBindings?: readonly TableBindingInput[]` in document
       composition where appropriate.
-- [ ] Render `dataTable` nodes from inline binding or `bindingId`.
-- [ ] Emit deterministic semantic `table`, `thead`, `tbody`, `tr`, `th`, and
+- [x] Render `dataTable` nodes from inline binding or `bindingId`.
+- [x] Emit deterministic semantic `table`, `thead`, `tbody`, `tr`, `th`, and
       `td` markup with repeated-header-friendly classes.
-- [ ] Handle empty states, row limits, missing source, non-array source,
+- [x] Handle empty states, row limits, missing source, non-array source,
       invalid bindings, unsupported columns, and formatter display metadata
       with structured warnings.
-- [ ] Keep totals/subtotals as declarative placeholders only.
-- [ ] Do not implement calculations, aggregation, DocRaptor orchestration, or
+- [x] Keep totals/subtotals as declarative placeholders only.
+- [x] Do not implement calculations, aggregation, DocRaptor orchestration, or
       browser-preview-as-production behavior.
 
 ### Validation
 
-- [ ] Tests cover donation table, invoice table, financial report table, empty
+- [x] Tests cover donation table, invoice table, financial report table, empty
       state, invalid/missing binding, repeated header markup, max-row warning,
       formatter display, deterministic snapshots, and totals placeholders
       without computed values.
-- [ ] Run focused `@asym/pdf-renderer` tests before broader package
+- [x] Run focused `@asym/pdf-renderer` tests before broader package
       validation.
 
 ### Handoff output
 
-- [ ] Renderer markup contract, diagnostics, unresolved calculation behavior,
+- [x] Renderer markup contract, diagnostics, unresolved calculation behavior,
       and Phase 21 fixture handoff notes.
 
 ## Phase 21: Build Data Table End-to-End Preview Fixtures
