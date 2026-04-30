@@ -35,8 +35,12 @@ foundation phase.
 - Phase 16 added structured conditional sections.
 - Phase 17 added structured repeaters and scoped data resolution.
 - Phase 18 added the report-grade financial data table block.
-- Phase 19 is next and will add safe totals, subtotals, grouping, and summary
-  calculation contracts.
+- Phase 19 audited, hardened, and formally completed the TipTap-facing
+  financial data table editor extension.
+- Phase 20 is next and will audit, harden, and formally complete financial
+  data table renderer and print markup behavior.
+- Financial calculations now start in Phase 22; Phase 18 table totals remain
+  declarative placeholders until then.
 - DocRaptor is the production PDF rendering target.
 - Puppeteer may be used later only for local preview, debugging, or fallback.
 
@@ -92,7 +96,7 @@ pull request scoped to the current phase.
   DocRaptor paged-media basis, and current PDF Studio expectations
 - `docs/decision-log.md`: durable decisions and tradeoffs discovered during
   implementation
-- `docs/roadmap.md`: 42-phase roadmap status
+- `docs/roadmap.md`: 47-phase roadmap status
 - `docs/baseline-test-results.md`: upstream SHA, machine details, command
   results, skipped checks, known baseline risks, and handoff notes
 - `MAINTAINERS.md`: current ownership and governance expectations

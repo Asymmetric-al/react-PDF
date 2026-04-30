@@ -78,10 +78,10 @@ completion notes.
 - The roadmap needed a clearer Pre-Phase 12 note and sharper guardrails before
   preview implementation begins.
 - A later Pre-Phase 12 plan update expanded the remaining roadmap from 36 to
-  42 phases, adding explicit gates for template lifecycle/versioning, release
-  and API stability, security/bundle audit, OpenSpec reconciliation, mocked
-  end-to-end package validation, core cutover planning, and final package
-  sign-off.
+  the historical 42-phase tracker, adding explicit gates for template
+  lifecycle/versioning, release and API stability, security/bundle audit,
+  OpenSpec reconciliation, mocked end-to-end package validation, core cutover
+  planning, and final package sign-off.
 
 ## Readiness Decision
 
@@ -89,8 +89,9 @@ Go for Phase 12 after this reconciliation.
 
 Phase 12 should start from the merged Phase 11 DocRaptor client, Phase 10
 print shell, Phase 9 document serializer, Phase 8 document naming aliases, and
-Phase 6 template schema foundation. The active roadmap now contains 42 phases;
-Phase 12 remains the next implementation phase.
+Phase 6 template schema foundation. At the time, the active roadmap contained
+42 phases and Phase 12 remained the next implementation phase. The current
+roadmap now contains 47 phases.
 
 Phase 12 must remain scoped to preview infrastructure. Browser preview must be
 non-authoritative, DocRaptor preview must run through server-only test-mode
@@ -107,8 +108,8 @@ integration phases define those contracts.
 - Corrected the document theming phase reference.
 - Added Pre-Phase 12 guardrails to the roadmap and OpenSpec task tracker.
 - Recorded the reconciliation decision in `docs/decision-log.md`.
-- Updated the canonical task tracker and mirrored roadmap from 36 phases to 42
-  phases after the phase plan was expanded.
+- Updated the canonical task tracker and mirrored roadmap from 36 phases to the
+  historical 42-phase tracker after the phase plan was expanded.
 
 ## Test Summary
 
@@ -123,8 +124,8 @@ Validation results:
   warnings for touched markdown files.
 - `git status --short --branch`: showed only the intended documentation and
   OpenSpec files after edits.
-- Phase table count check: `tasks.md` has 42 canonical phase rows and
-  `docs/roadmap.md` has 42 mirrored phase rows.
+- Phase table count check: `tasks.md` had 42 canonical phase rows and
+  `docs/roadmap.md` had 42 mirrored phase rows at the time.
 - Live planning stale-reference scan: no stale old-count references remain in
   `AGENTS.md`, `README.md`, current roadmap/package docs, or active OpenSpec
   proposal/design/tasks.
@@ -185,7 +186,8 @@ Validation results:
 - `docs/phase-04-readiness.md`, `docs/phase-5-completion-notes.md`,
   `docs/phase-11-completion-notes.md`, and
   `docs/phase-roadmap-update-notes.md`: restore the previous historical phase
-  references only if intentionally reverting the 42-phase roadmap alignment.
+  references only if intentionally reverting the historical 42-phase roadmap
+  alignment.
 - `openspec/changes/build-pdf-document-builder/proposal.md` and
   `openspec/changes/build-pdf-document-builder/design.md`: restore previous
   rollout wording only if the canonical tracker reverts.

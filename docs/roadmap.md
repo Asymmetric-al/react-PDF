@@ -24,32 +24,37 @@ that list with current phase status for handoff visibility.
 | 16 | Build Conditional Section Engine and Editor Extension | Complete; validation recorded | Conditional editor and renderer support |
 | 17 | Build Repeater Extension and Scoped Data Resolver | Complete; validation recorded | Repeater editor and renderer support |
 | 18 | Build Financial Data Table Block | Complete; validation recorded | Financial table node and renderer support |
-| 19 | Build Totals, Subtotals, Grouping, and Summary Blocks | Next | Safe calculation contracts |
-| 20 | Build Page Break and Keep-Together Controls | Not started | Page-flow controls and print CSS |
-| 21 | Build Header and Footer System | Not started | Header/footer schema and serializer |
-| 22 | Build Image and Asset Pipeline | Not started | PDF image model and asset adapters |
-| 23 | Build Branding and Theme System | Not started | Document theme model and print tokens |
-| 24 | Build Starter Templates and Golden Fixtures | Not started | Starter templates and golden fixtures |
-| 25 | Build Preflight Validation | Not started | `packages/pdf-renderer/src/preflight` |
-| 26 | Build Render Logs, Artifact Metadata, and Audit Contracts | Not started | Render metadata and audit schemas |
-| 27 | Build Template Lifecycle, Versioning, and Publishing Contracts | Not started | Template lifecycle and publishing contracts |
-| 28 | Build Batch Generation Framework | Not started | Queue-agnostic batch framework |
-| 29 | Build Async DocRaptor Rendering and Retry System | Not started | Async render and retry helpers |
-| 30 | Build Playwright Local Fallback and Test Renderer | Not started | Local development/test renderer |
-| 31 | Build Accessibility, Metadata, and PDF Profile Support | Not started | Metadata and PDF profile contracts |
-| 32 | Build Security and Tenant Integration Contracts | Not started | Security and tenant adapter contracts |
-| 33 | Build Unlayer Migration and Coexistence Path | Not started | Migration/coexistence contracts |
-| 34 | Build `Asymmetric-al/core` Adapter Package and Feature Flag Contract | Not started | Core adapter contract |
-| 35 | Build Documentation, Playground, and Developer Examples | Not started | PDF-first docs, examples, playground |
-| 36 | Build Performance, Load, and Large Document Tests | Not started | Performance smoke and opt-in load tests |
-| 37 | Build Release, Versioning, and API Stability Review | Not started | API stability and release readiness review |
-| 38 | Run Security, Secret, and Browser Bundle Audit | Not started | Boundary and secret-safety audit |
-| 39 | OpenSpec Current-State Reconciliation and Archive Readiness | Not started | OpenSpec alignment and archive-readiness notes |
-| 40 | End-to-End Package Validation with Mocked Production Flows | Not started | Mocked package-level production-flow tests |
-| 41 | `Asymmetric-al/core` Cutover Playbook and Integration PR Plan | Not started | Core cutover playbook |
-| 42 | Production Hardening, Launch Readiness, and Final Package Sign-Off | Not started | Final package readiness report |
+| 19 | Build Financial Data Table Editor Extension | Complete; validation recorded | Data table editor extension hardening |
+| 20 | Build Financial Data Table Renderer and Print Markup | Next | Data table renderer hardening |
+| 21 | Build Data Table End-to-End Preview Fixtures | Not started | Table fixture preview flow |
+| 22 | Build Calculation Engine for Totals, Subtotals, and Grouping | Not started | Calculation contracts and helpers |
+| 23 | Build Summary Blocks and Table Total Rendering | Not started | Summary blocks and table totals |
+| 24 | Build Form Field, Signature, and QR Placeholder Contracts | Not started | Placeholder contracts |
+| 25 | Build Page Break and Keep-Together Controls | Not started | Page-flow controls and print CSS |
+| 26 | Build Header and Footer System | Not started | Header/footer schema and serializer |
+| 27 | Build Image and Asset Pipeline | Not started | PDF image model and asset adapters |
+| 28 | Build Branding and Theme System | Not started | Document theme model and print tokens |
+| 29 | Build Starter Templates and Golden Fixtures | Not started | Starter templates and golden fixtures |
+| 30 | Build Preflight Validation | Not started | Preflight diagnostics |
+| 31 | Build Render Logs, Artifact Metadata, and Audit Contracts | Not started | Render metadata and audit schemas |
+| 32 | Build Template Lifecycle, Versioning, and Publishing Contracts | Not started | Template lifecycle and publishing contracts |
+| 33 | Build Batch Generation Framework | Not started | Queue-agnostic batch framework |
+| 34 | Build Async DocRaptor Rendering and Retry System | Not started | Async render and retry helpers |
+| 35 | Build Playwright Local Fallback and Test Renderer | Not started | Local development/test renderer |
+| 36 | Build Accessibility, Metadata, and PDF Profile Support | Not started | Metadata and PDF profile contracts |
+| 37 | Build Security and Tenant Integration Contracts | Not started | Security and tenant adapter contracts |
+| 38 | Build Unlayer Migration and Coexistence Path | Not started | Migration/coexistence contracts |
+| 39 | Build `Asymmetric-al/core` Adapter Package and Feature Flag Contract | Not started | Core adapter contract |
+| 40 | Build Documentation, Playground, and Developer Examples | Not started | PDF-first docs, examples, playground |
+| 41 | Build Performance, Load, and Large Document Tests | Not started | Performance smoke and opt-in load tests |
+| 42 | Build Release, Versioning, and API Stability Review | Not started | API stability and release readiness review |
+| 43 | Run Security, Secret, and Browser Bundle Audit | Not started | Boundary and secret-safety audit |
+| 44 | OpenSpec Current-State Reconciliation and Archive Readiness | Not started | OpenSpec alignment and archive-readiness notes |
+| 45 | End-to-End Package Validation with Mocked Production Flows | Not started | Mocked package-level production-flow tests |
+| 46 | `Asymmetric-al/core` Cutover Playbook and Integration PR Plan | Not started | Core cutover playbook |
+| 47 | Production Hardening, Launch Readiness, and Final Package Sign-Off | Not started | Final package readiness report |
 
-## Phase 19 Entry Point
+## Phase 20 Entry Point
 
 Phase 18 is complete. Phase 17 added structured repeater resolution in
 `@asym/pdf-template-schema`, repeater rendering and scoped variable metadata in
@@ -68,9 +73,10 @@ Phase 18 added table bindings and row resolution in
 `@asym/pdf-renderer`. The completion handoff is recorded in
 `docs/phase-18-completion-notes.md`.
 
-Phase 19 should start from the Phase 18 data table contract, Phase 17 repeater
-engine, Phase 16 conditional
-section engine, Phase 15 variable chip extension, Phase 14 resolver, Phase 13 registry, Phase 12 preview foundation,
+Phase 20 should start from the Phase 19 data table editor handoff, Phase 18
+data table renderer artifacts, Phase 17 repeater engine, Phase 16 conditional
+section engine, Phase 15 variable chip extension, Phase 14 resolver, Phase 13
+registry, Phase 12 preview foundation,
 Phase 11 DocRaptor client, Phase 10 print shell and page model, Phase 9
 document serializer foundation, Phase 8 naming compatibility aliases, Phase 7
 compatibility harness, Phase 6 schema foundation, Phase 5 package strategy, and
@@ -90,6 +96,7 @@ Phase 4 editor boundary artifacts:
 - `docs/phase-16-completion-notes.md`
 - `docs/phase-17-completion-notes.md`
 - `docs/phase-18-completion-notes.md`
+- `docs/phase-19-completion-notes.md`
 - `docs/phase-7-completion-notes.md`
 - `docs/phase-6-completion-notes.md`
 - `openspec/changes/build-pdf-document-builder/tasks.md`
@@ -138,8 +145,20 @@ Phase 4 editor boundary artifacts:
 - `packages/docraptor-client`
 - `packages/editor/package.json`
 
-Phase 19 should add safe totals, subtotals, grouping, and summary calculation
-contracts on top of the Phase 18 table block. It should preserve Phase 18
-placeholder behavior, structured diagnostics, deterministic ordering,
-schema-validated column widths, and the rule that arbitrary JavaScript is never
-evaluated in template logic.
+Phase 19 audited, hardened, and formally completed the TipTap-facing data
+table editor extension. It preserved the Phase 18 custom atom node approach,
+added binding-ID-only coverage, preserved invalid-preview `bindingId`
+attribution, updated editor boundary maturity metadata, and kept the editor
+surface free of renderer, DocRaptor, calculation, and aggregation imports. The
+completion handoff is recorded in `docs/phase-19-completion-notes.md`.
+
+Phase 20 should start from the Phase 18 table renderer artifacts and the Phase
+19 editor node shape, then audit, harden, and formally complete the data table
+renderer and print markup. Phase 20 remains the canonical gate for semantic
+table markup, repeated headers, empty states, row limit warnings,
+deterministic diagnostics, and the continued absence of financial
+calculations.
+
+Totals, subtotals, grouping calculations, and summary rendering now start in
+Phases 22 and 23. Until then, table totals remain declarative placeholders and
+arbitrary JavaScript must never be evaluated in template logic.

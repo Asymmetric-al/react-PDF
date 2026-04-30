@@ -66,8 +66,10 @@ Observed repo facts:
 - Phase 18 adds report-grade financial data table bindings and row resolution
   in `@asym/pdf-template-schema`, a protected `dataTable` TipTap block in
   `@asym/pdf-editor`, and deterministic table rendering in
-  `@asym/pdf-renderer`. It renders totals placeholders only; Phase 19 owns
-  safe totals, subtotals, grouping calculations, and summary blocks.
+  `@asym/pdf-renderer`. It renders totals placeholders only. The now-split
+  Phase 19 and Phase 20 remain the canonical gates to audit, harden, and
+  formally complete the existing editor and renderer table surfaces; financial
+  calculations now start in Phase 22.
 
 The broader Asymmetric.al platform currently uses Unlayer document mode for
 PDF Studio. That platform shape includes or expects template CRUD, Unlayer
@@ -191,22 +193,27 @@ The active package migration rule is wrapper-first. New PDF-first code should
 target `@asym/*` package names, but `@react-email/editor` must continue to
 build and export its existing public subpaths during the compatibility window.
 
-The canonical implementation sequence is now the 42-phase tracker in
+The canonical implementation sequence is now the 47-phase tracker in
 `openspec/changes/build-pdf-document-builder/tasks.md`. Phase 06 owns schema
 foundation, Phase 07 owns broader compatibility fixtures, Phase 08 owns safe
 document naming, Phase 09 owns the document serializer foundation, Phase 10
 owns the print shell, Phase 11 owns the DocRaptor client package, Phase 12 owns
 browser and DocRaptor test preview, Phase 13 owns the typed variable registry,
 Phase 14 owns variable resolution and formatting, Phase 15 owns variable chips,
-Phase 16 owns conditionals, Phase 17 owns repeaters, and Phase 18 owns the
-report-grade financial data table block. Phase 19 is next and owns safe totals,
-subtotals, grouping calculations, and summary blocks. Later phases add page
-flow, headers/footers, assets, branding, fixtures,
-preflight, render metadata, template lifecycle/versioning, batch, async
-rendering, Playwright local test rendering, metadata/accessibility, security,
-Unlayer coexistence, core adapter contracts, docs/examples, performance, API
-stability, browser bundle audits, OpenSpec reconciliation, mocked end-to-end
-package flows, core cutover planning, and final package sign-off.
+Phase 16 owns conditionals, Phase 17 owns repeaters, Phase 18 owns the
+report-grade financial data table block, and Phase 19 owns the completed
+TipTap-facing data table editor extension audit/hardening gate. Phase 20 is
+next and owns the data table renderer and print markup audit/hardening gate,
+and Phase 21
+owns end-to-end data table preview fixtures. Phase 22 introduces deterministic
+calculation primitives, and Phase 23 renders summary blocks and table totals.
+Later phases add form/signature/QR placeholders, page flow, headers/footers,
+assets, branding, fixtures, preflight, render metadata, template
+lifecycle/versioning, batch, async rendering, Playwright local test rendering,
+metadata/accessibility, security, Unlayer coexistence, core adapter contracts,
+docs/examples, performance, API stability, browser bundle audits, OpenSpec
+reconciliation, mocked end-to-end package flows, core cutover planning, and
+final package sign-off.
 
 ## 6. Target state
 

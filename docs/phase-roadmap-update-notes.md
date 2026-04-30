@@ -3,8 +3,9 @@
 Status: complete.
 
 Supersession note: this historical Phase 05 roadmap update expanded the plan
-from 33 phases to 36 phases. The current canonical plan has since expanded to
-42 phases in `openspec/changes/build-pdf-document-builder/tasks.md`.
+from 33 phases to 36 phases. The canonical plan later expanded to a historical
+42-phase tracker and now to the current 47-phase tracker in
+`openspec/changes/build-pdf-document-builder/tasks.md`.
 
 ## Scope Completed
 
@@ -134,6 +135,6 @@ apps\web\src\app\editor\editor-overrides.css:7:21 lint/complexity/noImportantSty
 
 - Any remaining references to the old 33-phase tracker should be historical
   Phase 5 completion notes, not current planning guidance.
-- Current planning references should use the 42-phase tracker. References in
-  this file to the 36-phase tracker are preserved as historical Phase 05
-  validation output.
+- Current planning references should use the 47-phase tracker. References in
+  this file to the 36-phase and historical 42-phase trackers are preserved as
+  historical validation output.
