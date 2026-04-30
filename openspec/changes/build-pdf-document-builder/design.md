@@ -66,10 +66,10 @@ Observed repo facts:
 - Phase 18 adds report-grade financial data table bindings and row resolution
   in `@asym/pdf-template-schema`, a protected `dataTable` TipTap block in
   `@asym/pdf-editor`, and deterministic table rendering in
-  `@asym/pdf-renderer`. It renders totals placeholders only. The now-split
-  Phase 19 and Phase 20 remain the canonical gates to audit, harden, and
-  formally complete the existing editor and renderer table surfaces; financial
-  calculations now start in Phase 22.
+  `@asym/pdf-renderer`. It renders totals placeholders only. Phase 19 has
+  formally completed the editor table surface, and Phase 20 has formally
+  completed the renderer table surface. Phase 21 is next for end-to-end table
+  preview fixtures; financial calculations now start in Phase 22.
 
 The broader Asymmetric.al platform currently uses Unlayer document mode for
 PDF Studio. That platform shape includes or expects template CRUD, Unlayer
@@ -203,9 +203,9 @@ Phase 14 owns variable resolution and formatting, Phase 15 owns variable chips,
 Phase 16 owns conditionals, Phase 17 owns repeaters, Phase 18 owns the
 report-grade financial data table block, and Phase 19 owns the completed
 TipTap-facing data table editor extension audit/hardening gate. Phase 20 is
-next and owns the data table renderer and print markup audit/hardening gate,
-and Phase 21
-owns end-to-end data table preview fixtures. Phase 22 introduces deterministic
+complete and owns the data table renderer and print markup audit/hardening
+gate. Phase 21 is next and owns end-to-end data table preview fixtures. Phase
+22 introduces deterministic
 calculation primitives, and Phase 23 renders summary blocks and table totals.
 Later phases add form/signature/QR placeholders, page flow, headers/footers,
 assets, branding, fixtures, preflight, render metadata, template

@@ -25,8 +25,8 @@ that list with current phase status for handoff visibility.
 | 17 | Build Repeater Extension and Scoped Data Resolver | Complete; validation recorded | Repeater editor and renderer support |
 | 18 | Build Financial Data Table Block | Complete; validation recorded | Financial table node and renderer support |
 | 19 | Build Financial Data Table Editor Extension | Complete; validation recorded | Data table editor extension hardening |
-| 20 | Build Financial Data Table Renderer and Print Markup | Next | Data table renderer hardening |
-| 21 | Build Data Table End-to-End Preview Fixtures | Not started | Table fixture preview flow |
+| 20 | Build Financial Data Table Renderer and Print Markup | Complete; validation recorded | Data table renderer hardening |
+| 21 | Build Data Table End-to-End Preview Fixtures | Next | Table fixture preview flow |
 | 22 | Build Calculation Engine for Totals, Subtotals, and Grouping | Not started | Calculation contracts and helpers |
 | 23 | Build Summary Blocks and Table Total Rendering | Not started | Summary blocks and table totals |
 | 24 | Build Form Field, Signature, and QR Placeholder Contracts | Not started | Placeholder contracts |
@@ -54,7 +54,7 @@ that list with current phase status for handoff visibility.
 | 46 | `Asymmetric-al/core` Cutover Playbook and Integration PR Plan | Not started | Core cutover playbook |
 | 47 | Production Hardening, Launch Readiness, and Final Package Sign-Off | Not started | Final package readiness report |
 
-## Phase 20 Entry Point
+## Phase 21 Entry Point
 
 Phase 18 is complete. Phase 17 added structured repeater resolution in
 `@asym/pdf-template-schema`, repeater rendering and scoped variable metadata in
@@ -73,7 +73,7 @@ Phase 18 added table bindings and row resolution in
 `@asym/pdf-renderer`. The completion handoff is recorded in
 `docs/phase-18-completion-notes.md`.
 
-Phase 20 should start from the Phase 19 data table editor handoff, Phase 18
+Phase 20 started from the Phase 19 data table editor handoff, Phase 18
 data table renderer artifacts, Phase 17 repeater engine, Phase 16 conditional
 section engine, Phase 15 variable chip extension, Phase 14 resolver, Phase 13
 registry, Phase 12 preview foundation,
@@ -152,13 +152,17 @@ attribution, updated editor boundary maturity metadata, and kept the editor
 surface free of renderer, DocRaptor, calculation, and aggregation imports. The
 completion handoff is recorded in `docs/phase-19-completion-notes.md`.
 
-Phase 20 should start from the Phase 18 table renderer artifacts and the Phase
-19 editor node shape, then audit, harden, and formally complete the data table
-renderer and print markup. Phase 20 remains the canonical gate for semantic
-table markup, repeated headers, empty states, row limit warnings,
-deterministic diagnostics, and the continued absence of financial
-calculations.
+Phase 20 audited, hardened, and formally completed the data table renderer and
+print markup surface. It locked semantic table markup, repeated headers, empty
+states, row limit warnings, missing/non-array source diagnostics, formatter
+diagnostics, deterministic snapshots, and the continued absence of financial
+calculations. The completion handoff is recorded in
+`docs/phase-20-completion-notes.md`.
 
 Totals, subtotals, grouping calculations, and summary rendering now start in
 Phases 22 and 23. Until then, table totals remain declarative placeholders and
 arbitrary JavaScript must never be evaluated in template logic.
+
+Phase 21 should connect the table schema, editor node, renderer, browser
+preview, and mocked DocRaptor preview into deterministic end-to-end fixtures
+without adding calculation behavior or real network calls.

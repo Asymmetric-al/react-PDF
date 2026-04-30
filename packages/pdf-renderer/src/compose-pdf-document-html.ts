@@ -680,7 +680,7 @@ function renderDataTable(
         validationError: bindingResult.reference.validationError,
       },
       message:
-        'Phase 18 data table rendered a diagnostic placeholder because the referenced binding is invalid.',
+        'Phase 20 data table renderer emitted a diagnostic placeholder because the referenced binding is invalid.',
       nodeType: node.type,
       path,
       severity: 'error',
@@ -699,7 +699,7 @@ function renderDataTable(
     state.warnings.push({
       code: 'missing_table_binding',
       message:
-        'Phase 18 data table rendered a diagnostic placeholder because the binding is missing or invalid.',
+        'Phase 20 data table renderer emitted a diagnostic placeholder because the binding is missing or invalid.',
       nodeType: node.type,
       path,
       severity: 'error',
@@ -720,7 +720,7 @@ function renderDataTable(
     state.warnings.push({
       code: 'missing_table_context',
       message:
-        'Phase 18 data table rendered only headers because no data context was provided.',
+        'Phase 20 data table renderer emitted headers and placeholders because no data context was provided.',
       nodeType: node.type,
       path,
       severity: 'warning',

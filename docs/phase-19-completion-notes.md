@@ -99,8 +99,8 @@ test expectation. The minimal implementation then made the focused specs pass.
 
 ## Known Gaps
 
-- Phase 20 still needs to audit and harden data table renderer and print
-  markup behavior.
+- Phase 20 has now audited and hardened data table renderer and print markup
+  behavior. The handoff is recorded in `docs/phase-20-completion-notes.md`.
 - Calculations, subtotals, grouping computation, summary blocks, and table
   total rendering remain deferred to Phases 22 and 23.
 - No table inspector UI, slash command wiring, DocRaptor orchestration,
@@ -117,10 +117,14 @@ roadmap, decision log, OpenSpec task, and completion-note updates listed
 above. After rollback, rerun the `@asym/pdf-editor` focused tests, package
 build, export smoke, OpenSpec validation, lint, and `git diff --check`.
 
-## Phase 20 Entry Point
+## Phase 21 Entry Point
 
-Phase 20 should start from the Phase 19 editor node shape and the existing
-Phase 18 renderer artifacts. It owns semantic table markup, repeated headers,
-empty states, row limit diagnostics, missing/non-array source diagnostics,
-formatter display coverage, deterministic renderer snapshots, and continued
-deferral of financial calculations.
+Phase 20 started from the Phase 19 editor node shape and the existing Phase 18
+renderer artifacts. It completed semantic table markup, repeated headers, empty
+states, row limit diagnostics, missing/non-array source diagnostics, formatter
+display coverage, deterministic renderer snapshots, and continued deferral of
+financial calculations.
+
+Phase 21 should connect the table schema, editor node, renderer, browser
+preview, and mocked DocRaptor preview into deterministic end-to-end fixtures
+without adding calculation behavior or real network calls.

@@ -1,6 +1,6 @@
 # @asym/pdf-renderer
 
-Phase 18 preview, variable resolution, conditional rendering, repeater, and financial data table foundation for the Asym PDF Document
+Phase 20 preview, variable resolution, conditional rendering, repeater, and financial data table renderer foundation for the Asym PDF Document
 Builder print renderer.
 
 ## Purpose
@@ -11,9 +11,9 @@ DocRaptor test preview orchestration, renderer variable resolution adapters,
 conditional section rendering, and renderer fixtures.
 Phase 17 also owns structured repeater rendering and scoped variable metadata
 for repeated rows.
-Phase 18 adds deterministic data-bound table rendering for financial reports,
-annual statements, invoices, and donation rows. Totals rows are placeholders
-only; Phase 19 owns calculations.
+Phase 20 formally hardens deterministic data-bound table rendering for
+financial reports, annual statements, invoices, and donation rows. Total rows
+are placeholders only; Phase 22 owns calculations.
 
 DocRaptor remains the production PDF fidelity target. Browser preview is fast
 authoring feedback only and must never be treated as final PDF output.
@@ -162,7 +162,7 @@ non-array sources render configured empty states with structured warnings.
 Invalid bindings render author content once with an error so content is not
 silently hidden.
 
-## Phase 18 Financial Data Tables
+## Phase 20 Financial Data Tables
 
 `composePdfDocumentHtml` accepts optional `tableBindings` and can render
 structured `dataTable` nodes. A table resolves either inline `attrs.binding` or
@@ -171,9 +171,9 @@ deterministic print-ready table markup with repeated-header-friendly `<thead>`,
 empty-state rows, max-row guards, formatter-driven display cells, and
 structured warnings for invalid bindings or unsupported column values.
 
-Phase 18 renders totals placeholders as explicit marker rows but does not
+Phase 20 renders totals placeholders as explicit marker rows but does not
 calculate sums, counts, subtotals, grouped totals, or grand totals. Those safe
-calculation contracts belong to Phase 19.
+calculation contracts belong to Phase 22.
 
 ## DocRaptor Test Preview
 
@@ -243,7 +243,7 @@ DocRaptor compatibility notes:
 - No full Phase 25 preflight implementation.
 - No production DocRaptor render orchestration.
 - No real donor, ministry, financial, or tenant data fetching.
-- No integrated header/footer system before Phase 21.
+- No integrated header/footer system before Phase 26.
 - No tenant storage, auth, queue, or core app imports.
 - No string-replacement merge engine.
 - No arbitrary JavaScript condition execution.
@@ -251,7 +251,7 @@ DocRaptor compatibility notes:
 
 ## Maturity
 
-`phase-18-financial-data-table`. The package remains private to prevent accidental
+`phase-20-financial-data-table-renderer`. The package remains private to prevent accidental
 publication while renderer contracts are still being built.
 
 ## Development

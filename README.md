@@ -37,8 +37,10 @@ foundation phase.
 - Phase 18 added the report-grade financial data table block.
 - Phase 19 audited, hardened, and formally completed the TipTap-facing
   financial data table editor extension.
-- Phase 20 is next and will audit, harden, and formally complete financial
-  data table renderer and print markup behavior.
+- Phase 20 audited, hardened, and formally completed financial data table
+  renderer and print markup behavior.
+- Phase 21 is next and will validate the full data table preview flow with
+  deterministic fixtures.
 - Financial calculations now start in Phase 22; Phase 18 table totals remain
   declarative placeholders until then.
 - DocRaptor is the production PDF rendering target.

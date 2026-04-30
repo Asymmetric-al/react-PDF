@@ -17,7 +17,7 @@ describe('@asym/pdf-renderer public entry', () => {
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-renderer',
-      maturity: 'phase-18-financial-data-table',
+      maturity: 'phase-20-financial-data-table-renderer',
       owns: 'print-renderer',
       runtime: 'browser-safe-root-with-server-subpath',
       consumes: ['@asym/pdf-template-schema'],
@@ -48,7 +48,7 @@ describe('@asym/pdf-renderer public entry', () => {
     expect(resolvePdfDocumentRepeaterItems).toBeDefined();
   });
 
-  it('exposes the Phase 18 data table adapter', () => {
+  it('exposes the Phase 20 data table renderer adapter', () => {
     expect(resolvePdfDocumentTableRows).toBeDefined();
   });
 
