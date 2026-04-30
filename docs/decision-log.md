@@ -159,7 +159,7 @@ phase-level choices and tradeoffs found during implementation.
   surfaces before PDF package behavior exists would make the fork harder to
   validate against the React Email baseline.
 - Tradeoff: The repository still contains legacy email-oriented guidance until
-  Phase 35 or earlier feature-specific docs phases replace those surfaces.
+  Phase 40 or earlier feature-specific docs phases replace those surfaces.
 
 ## 2026-04-25: Editor Boundary Is Internal Before PDF Behavior
 
@@ -214,17 +214,17 @@ phase-level choices and tradeoffs found during implementation.
 
 ## 2026-04-26: Roadmap Uses 42 Phases
 
-- Decision: The canonical OpenSpec tracker now uses the 42-phase course of
-  action, keeping Phase 12 as the next implementation phase after the
-  Post-Phase-11 reconciliation.
+- Decision: The canonical OpenSpec tracker used the 42-phase course of action,
+  keeping Phase 12 as the next implementation phase after the Post-Phase-11
+  reconciliation.
 - Reason: The expanded roadmap separates template lifecycle/versioning,
   release and API stability, security and browser-bundle audit, OpenSpec
   current-state reconciliation, mocked end-to-end package validation, core
   cutover planning, and final package sign-off into explicit reviewable gates.
-- Tradeoff: Historical phase notes still reference older 33-phase and
-  36-phase trackers as completed validation artifacts. Current planning docs
-  and future agents should follow the 42-phase tracker in
-  `openspec/changes/build-pdf-document-builder/tasks.md`.
+- Tradeoff: Historical phase notes still reference older 33-phase,
+  36-phase, and 42-phase trackers as completed validation artifacts. This
+  decision is historical and was superseded by the 47-phase tracker decision
+  below.
 
 ## 2026-04-26: Phase 6 Schema Foundation Uses Zod
 
@@ -512,3 +512,26 @@ phase-level choices and tradeoffs found during implementation.
   without introducing financial aggregation behavior early.
 - Constraint: Phase 18 does not add table inspector UI, DocRaptor production
   orchestration, batch behavior, arbitrary JavaScript, or runtime aggregation.
+
+## 2026-04-30: Roadmap Splits From 42 To 47 Phases
+
+- Decision: Replace the future tail of the canonical tracker with a 47-phase
+  roadmap while preserving completed Phases 1-18 as implemented.
+- Reason: The remaining work needed more explicit gates for data-table editor
+  hardening, data-table renderer hardening, end-to-end table fixtures,
+  calculations, summary rendering, placeholders, and final production
+  readiness.
+- Decision: Keep Phase 19 and Phase 20 as future gates even though Phase 18
+  already introduced data-table editor and renderer artifacts.
+- Reason: Those phases now audit, harden, document, and formally complete the
+  existing ahead-of-plan artifacts instead of pretending they do not exist or
+  duplicating them.
+- Decision: Move financial calculation work to Phase 22 and summary/table-total
+  rendering to Phase 23.
+- Reason: Phase 18 table totals remain declarative placeholders until the
+  calculation contract exists, preserving deterministic output and avoiding
+  arbitrary template JavaScript.
+- Constraint: This roadmap reconciliation changes documentation and OpenSpec
+  tracker state only. It does not change package source, schemas, renderer
+  behavior, editor behavior, build configuration, lockfiles, generated
+  artifacts, or runtime output.

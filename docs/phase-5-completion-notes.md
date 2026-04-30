@@ -282,7 +282,7 @@ not a Phase 5 package strategy regression.
 - `@asym/pdf-editor` is the future PDF editor import target and currently
   wraps public React Email editor exports.
 - No changeset is added while all `@asym/*` packages remain private.
-- The Phase 5 package strategy remains valid under the current 42-phase
+- The Phase 5 package strategy remains valid under the current 47-phase
   tracker; schema foundation is Phase 6.
 
 ## Remaining Risks

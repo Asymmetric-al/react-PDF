@@ -115,7 +115,7 @@ Retained reference surfaces:
 - `examples/*`
 
 These surfaces remain classified as `replace-later`. Email sending/provider
-examples are not part of the PDF builder product path. Phase 35 owns broad
+examples are not part of the PDF builder product path. Phase 40 owns broad
 documentation and examples replacement. Earlier feature phases may add focused
 PDF examples only when the matching package behavior exists.
 

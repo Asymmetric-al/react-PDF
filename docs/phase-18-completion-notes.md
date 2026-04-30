@@ -8,7 +8,7 @@ Phase 18: Build Financial Data Table Block.
 
 Phase 18 added the first report-grade financial data table contract across the schema, editor, and renderer packages. The table block is structured JSON backed by `TableBindingSchema`; it is not raw HTML and it does not run arbitrary JavaScript.
 
-This phase intentionally stops before totals, subtotals, grouping calculations, aggregation, and DocRaptor orchestration. Phase 19 owns calculated totals/subtotals/grouping behavior.
+This phase intentionally stops before totals, subtotals, grouping calculations, aggregation, and DocRaptor orchestration. After the roadmap split to 47 phases, Phase 19 owns the formal editor-extension audit/hardening gate, Phase 20 owns the formal renderer/print-markup audit/hardening gate, and Phase 22 owns calculated totals/subtotals/grouping behavior.
 
 ## Implementation Notes
 
@@ -94,6 +94,21 @@ This matches the previously documented Windows `.react-email` symlink caveat and
 - `docs/decision-log.md` records the Phase 18 decision to keep table calculations out of the table block foundation.
 - Package readmes for schema, editor, and renderer document the Phase 18 table APIs.
 
+## Roadmap Split Addendum
+
+The 47-phase tracker keeps the Phase 18 implementation facts above intact, but
+splits the remaining work more finely. Phase 18 landed broad data-table
+foundation work ahead of the now-separated Phase 19 and Phase 20 gates.
+
+Phase 19 should therefore audit, harden, document, and formally complete the
+existing TipTap-facing data table extension rather than duplicate it.
+
+Phase 20 should audit, harden, document, and formally complete the existing
+renderer and print markup behavior rather than duplicate it.
+
+Totals, subtotals, grouping calculations, and summary rendering remain future
+work under Phases 22 and 23.
+
 ## Phase 19 Handoff
 
 Phase 19 should start from:
@@ -111,6 +126,7 @@ Phase 19 must preserve:
 - Diagnostics-as-return-values behavior.
 - No arbitrary JavaScript in table logic.
 - No DocRaptor secret exposure.
+- No renderer-only or server-only imports in browser-facing editor exports.
 
 Phase 19 should extend tests in:
 
@@ -118,7 +134,13 @@ Phase 19 should extend tests in:
 - `packages/pdf-renderer/test/data-table.spec.ts`
 - `packages/pdf-editor/test/data-table-extension.spec.tsx`
 
-Phase 19 should add totals/subtotals/grouping calculation on top of the declarative placeholders created in Phase 18.
+Phase 19 should focus on editor command insertion, JSON attrs, deterministic
+HTML round trip, invalid/missing binding diagnostics, extension exports, and
+regression safety for variable, conditional, and repeater extensions.
+
+Phase 20 should consume the same node shape and binding attributes to verify
+renderer markup. Phase 22 should add totals/subtotals/grouping calculation on
+top of the declarative placeholders created in Phase 18.
 
 ## Known Gaps
 
