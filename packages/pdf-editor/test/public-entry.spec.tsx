@@ -31,7 +31,7 @@ describe('@asym/pdf-editor public entry', () => {
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-editor',
-      maturity: 'phase-18-financial-data-table',
+      maturity: 'phase-19-financial-data-table-editor',
       owns: 'pdf-editor',
       runtime: 'browser-react',
       compatibility: 'react-email-reference-adapter',

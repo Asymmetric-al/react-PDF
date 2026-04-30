@@ -200,10 +200,11 @@ document naming, Phase 09 owns the document serializer foundation, Phase 10
 owns the print shell, Phase 11 owns the DocRaptor client package, Phase 12 owns
 browser and DocRaptor test preview, Phase 13 owns the typed variable registry,
 Phase 14 owns variable resolution and formatting, Phase 15 owns variable chips,
-Phase 16 owns conditionals, Phase 17 owns repeaters, and Phase 18 owns the
-report-grade financial data table block. Phase 19 is next and owns the
-TipTap-facing data table editor extension audit/hardening gate, Phase 20 owns
-the data table renderer and print markup audit/hardening gate, and Phase 21
+Phase 16 owns conditionals, Phase 17 owns repeaters, Phase 18 owns the
+report-grade financial data table block, and Phase 19 owns the completed
+TipTap-facing data table editor extension audit/hardening gate. Phase 20 is
+next and owns the data table renderer and print markup audit/hardening gate,
+and Phase 21
 owns end-to-end data table preview fixtures. Phase 22 introduces deterministic
 calculation primitives, and Phase 23 renders summary blocks and table totals.
 Later phases add form/signature/QR placeholders, page flow, headers/footers,

@@ -35,10 +35,10 @@ foundation phase.
 - Phase 16 added structured conditional sections.
 - Phase 17 added structured repeaters and scoped data resolution.
 - Phase 18 added the report-grade financial data table block.
-- Phase 19 is next and will audit, harden, and formally complete the
-  TipTap-facing financial data table editor extension.
-- Phase 20 will audit, harden, and formally complete financial data table
-  renderer and print markup behavior.
+- Phase 19 audited, hardened, and formally completed the TipTap-facing
+  financial data table editor extension.
+- Phase 20 is next and will audit, harden, and formally complete financial
+  data table renderer and print markup behavior.
 - Financial calculations now start in Phase 22; Phase 18 table totals remain
   declarative placeholders until then.
 - DocRaptor is the production PDF rendering target.

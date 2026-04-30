@@ -49,8 +49,8 @@
 | 16 | Build Conditional Section Engine and Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/conditional-section`, `packages/pdf-renderer/src/conditions` |
 | 17 | Build Repeater Extension and Scoped Data Resolver | Complete; validation recorded | `packages/pdf-editor/src/extensions/repeater`, `packages/pdf-renderer/src/repeaters` |
 | 18 | Build Financial Data Table Block | Complete; validation recorded | `packages/pdf-editor/src/extensions/data-table`, `packages/pdf-renderer/src/data-table` |
-| 19 | Build Financial Data Table Editor Extension | Next | `packages/pdf-editor/src/extensions/data-table` |
-| 20 | Build Financial Data Table Renderer and Print Markup | Not started | `packages/pdf-renderer/src/data-table` |
+| 19 | Build Financial Data Table Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/data-table` |
+| 20 | Build Financial Data Table Renderer and Print Markup | Next | `packages/pdf-renderer/src/data-table` |
 | 21 | Build Data Table End-to-End Preview Fixtures | Not started | table fixtures and preview tests |
 | 22 | Build Calculation Engine for Totals, Subtotals, and Grouping | Not started | calculation contracts and helpers |
 | 23 | Build Summary Blocks and Table Total Rendering | Not started | summary blocks and table totals |
@@ -764,31 +764,31 @@ not duplicate code blindly.
 
 ### Tasks
 
-- [ ] Verify or harden the protected/selectable/isolating `dataTable` node
+- [x] Verify or harden the protected/selectable/isolating `dataTable` node
       following the existing variable, conditional, and repeater extension
       patterns.
-- [ ] Support insertion commands such as `insertDataTable`.
-- [ ] Serialize a shared-schema-valid `TableBinding` or `bindingId` with
+- [x] Support insertion commands such as `insertDataTable`.
+- [x] Serialize a shared-schema-valid `TableBinding` or `bindingId` with
       deterministic JSON and HTML round trips.
-- [ ] Preserve `data-asym-data-table`, `data-table-binding`,
+- [x] Preserve `data-asym-data-table`, `data-table-binding`,
       `data-table-binding-id`, and deterministic source/column metadata attrs.
-- [ ] Provide preview diagnostics backed by the shared `TableBindingSchema`.
-- [ ] Export from `@asym/pdf-editor/extensions`.
-- [ ] Avoid renderer, DocRaptor, server-only, calculation, aggregation, and
+- [x] Provide preview diagnostics backed by the shared `TableBindingSchema`.
+- [x] Export from `@asym/pdf-editor/extensions`.
+- [x] Avoid renderer, DocRaptor, server-only, calculation, aggregation, and
       arbitrary JavaScript imports or behavior.
 
 ### Validation
 
-- [ ] Tests cover command insertion, JSON attrs, HTML round trip, invalid
+- [x] Tests cover command insertion, JSON attrs, HTML round trip, invalid
       binding diagnostics, missing binding diagnostics, extension export, and
       no renderer/DocRaptor import.
-- [ ] Confirm existing variable, conditional, and repeater extension tests
+- [x] Confirm existing variable, conditional, and repeater extension tests
       still pass.
-- [ ] Run focused `@asym/pdf-editor` tests before broader package validation.
+- [x] Run focused `@asym/pdf-editor` tests before broader package validation.
 
 ### Handoff output
 
-- [ ] Editor node shape, serialized attrs, schema validation behavior,
+- [x] Editor node shape, serialized attrs, schema validation behavior,
       diagnostics behavior, and Phase 20 renderer handoff notes.
 
 ## Phase 20: Build Financial Data Table Renderer and Print Markup

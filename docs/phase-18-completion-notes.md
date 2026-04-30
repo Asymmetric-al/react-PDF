@@ -100,8 +100,9 @@ The 47-phase tracker keeps the Phase 18 implementation facts above intact, but
 splits the remaining work more finely. Phase 18 landed broad data-table
 foundation work ahead of the now-separated Phase 19 and Phase 20 gates.
 
-Phase 19 should therefore audit, harden, document, and formally complete the
-existing TipTap-facing data table extension rather than duplicate it.
+At the time of the split, Phase 19 was defined to audit, harden, document, and
+formally complete the existing TipTap-facing data table extension rather than
+duplicate it.
 
 Phase 20 should audit, harden, document, and formally complete the existing
 renderer and print markup behavior rather than duplicate it.
@@ -109,9 +110,9 @@ renderer and print markup behavior rather than duplicate it.
 Totals, subtotals, grouping calculations, and summary rendering remain future
 work under Phases 22 and 23.
 
-## Phase 19 Handoff
+## Original Phase 19 Handoff
 
-Phase 19 should start from:
+Before Phase 19 began, the handoff identified these starting files:
 
 - `packages/pdf-template-schema/src/bindings.ts`
 - `packages/pdf-template-schema/src/tables.ts`
@@ -119,7 +120,7 @@ Phase 19 should start from:
 - `packages/pdf-renderer/src/data-table.ts`
 - `packages/pdf-editor/src/extensions/data-table/index.ts`
 
-Phase 19 must preserve:
+Phase 19 was required to preserve:
 
 - Structured `TableBindingSchema` validation.
 - Deterministic row order and display values.
@@ -128,19 +129,30 @@ Phase 19 must preserve:
 - No DocRaptor secret exposure.
 - No renderer-only or server-only imports in browser-facing editor exports.
 
-Phase 19 should extend tests in:
+Phase 19 was expected to extend tests in:
 
 - `packages/pdf-template-schema/test/table-resolution.spec.ts`
 - `packages/pdf-renderer/test/data-table.spec.ts`
 - `packages/pdf-editor/test/data-table-extension.spec.tsx`
 
-Phase 19 should focus on editor command insertion, JSON attrs, deterministic
+Phase 19 was expected to focus on editor command insertion, JSON attrs, deterministic
 HTML round trip, invalid/missing binding diagnostics, extension exports, and
 regression safety for variable, conditional, and repeater extensions.
 
 Phase 20 should consume the same node shape and binding attributes to verify
 renderer markup. Phase 22 should add totals/subtotals/grouping calculation on
 top of the declarative placeholders created in Phase 18.
+
+## Phase 19 Completion Addendum
+
+Phase 19 has now audited, hardened, documented, and formally completed the
+TipTap-facing data table editor extension that Phase 18 introduced ahead of
+the split roadmap. The Phase 19 handoff is recorded in
+`docs/phase-19-completion-notes.md`.
+
+Phase 20 remains the next renderer-facing gate for semantic table markup,
+repeated headers, empty states, row limit warnings, deterministic diagnostics,
+and continued deferral of financial calculations.
 
 ## Known Gaps
 

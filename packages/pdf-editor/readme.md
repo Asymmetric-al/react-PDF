@@ -1,6 +1,6 @@
 # @asym/pdf-editor
 
-Phase 18 editor package for the Asym PDF Document Builder React editor.
+Phase 19 editor package for the Asym PDF Document Builder React editor.
 
 ## Purpose
 
@@ -24,8 +24,7 @@ The current public API is intentionally small:
 
 The `extensions` subpath exports the Phase 15 variable chip extension, the
 Phase 16 conditional section extension, the Phase 17 repeater section, and the
-Phase 18 data table
-extension:
+Phase 19-hardened data table extension:
 
 - `VariableChip`
 - `createVariableChipExtension`
@@ -68,8 +67,10 @@ content visible.
 Data table blocks are protected structured block nodes named `dataTable`. They
 store an inline `TableBinding` or a stable `bindingId`, render deterministic
 `data-asym-data-table` attributes, and use the shared Phase 18 table schema for
-preview diagnostics. Phase 18 does not add table inspector UI, calculations,
-or DocRaptor wiring.
+preview diagnostics. Phase 19 formally hardens the editor command, JSON attrs,
+HTML round trip, binding-ID-only references, invalid-binding diagnostics, and
+extension exports. It does not add table inspector UI, renderer behavior,
+calculations, aggregation, or DocRaptor wiring.
 
 The `react-email-compat` subpath re-exports public `@react-email/editor`
 primitives under explicit `Reference` names. These adapters are temporary and
@@ -82,7 +83,7 @@ change editor behavior or rendering output.
 
 ## Non-goals
 
-- No PDF-native editor shell implementation in Phase 18.
+- No PDF-native editor shell implementation in Phase 19.
 - No source import rewrites inside `@react-email/editor`.
 - No variable browser UI picker, condition builder UI, repeater picker UI, or
   data-table inspector wiring.
@@ -99,10 +100,10 @@ change editor behavior or rendering output.
 ## Maturity
 
 The package now has Phase 15 variable chip, Phase 16 conditional section,
-Phase 17 repeater section, and Phase 18 data table extension surfaces. The
-package is private to prevent accidental publication while the editor API is
-still being designed, and Phase 18 does not change `@react-email/editor`
-exports.
+Phase 17 repeater section, and Phase 19-hardened data table extension
+surfaces. The package is private to prevent accidental publication while the
+editor API is still being designed, and Phase 19 does not change
+`@react-email/editor` exports.
 
 ## Development
 

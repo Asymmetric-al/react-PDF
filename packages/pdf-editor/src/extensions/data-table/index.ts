@@ -193,6 +193,7 @@ export function getDataTablePreview(
     });
 
     return {
+      bindingId: input.bindingId,
       diagnostics: result.diagnostics,
       rowCount: 0,
       status: 'invalid_binding',

@@ -24,8 +24,8 @@ that list with current phase status for handoff visibility.
 | 16 | Build Conditional Section Engine and Editor Extension | Complete; validation recorded | Conditional editor and renderer support |
 | 17 | Build Repeater Extension and Scoped Data Resolver | Complete; validation recorded | Repeater editor and renderer support |
 | 18 | Build Financial Data Table Block | Complete; validation recorded | Financial table node and renderer support |
-| 19 | Build Financial Data Table Editor Extension | Next | Data table editor extension hardening |
-| 20 | Build Financial Data Table Renderer and Print Markup | Not started | Data table renderer hardening |
+| 19 | Build Financial Data Table Editor Extension | Complete; validation recorded | Data table editor extension hardening |
+| 20 | Build Financial Data Table Renderer and Print Markup | Next | Data table renderer hardening |
 | 21 | Build Data Table End-to-End Preview Fixtures | Not started | Table fixture preview flow |
 | 22 | Build Calculation Engine for Totals, Subtotals, and Grouping | Not started | Calculation contracts and helpers |
 | 23 | Build Summary Blocks and Table Total Rendering | Not started | Summary blocks and table totals |
@@ -54,7 +54,7 @@ that list with current phase status for handoff visibility.
 | 46 | `Asymmetric-al/core` Cutover Playbook and Integration PR Plan | Not started | Core cutover playbook |
 | 47 | Production Hardening, Launch Readiness, and Final Package Sign-Off | Not started | Final package readiness report |
 
-## Phase 19 Entry Point
+## Phase 20 Entry Point
 
 Phase 18 is complete. Phase 17 added structured repeater resolution in
 `@asym/pdf-template-schema`, repeater rendering and scoped variable metadata in
@@ -73,9 +73,10 @@ Phase 18 added table bindings and row resolution in
 `@asym/pdf-renderer`. The completion handoff is recorded in
 `docs/phase-18-completion-notes.md`.
 
-Phase 19 should start from the Phase 18 data table contract, Phase 17 repeater
-engine, Phase 16 conditional
-section engine, Phase 15 variable chip extension, Phase 14 resolver, Phase 13 registry, Phase 12 preview foundation,
+Phase 20 should start from the Phase 19 data table editor handoff, Phase 18
+data table renderer artifacts, Phase 17 repeater engine, Phase 16 conditional
+section engine, Phase 15 variable chip extension, Phase 14 resolver, Phase 13
+registry, Phase 12 preview foundation,
 Phase 11 DocRaptor client, Phase 10 print shell and page model, Phase 9
 document serializer foundation, Phase 8 naming compatibility aliases, Phase 7
 compatibility harness, Phase 6 schema foundation, Phase 5 package strategy, and
@@ -95,6 +96,7 @@ Phase 4 editor boundary artifacts:
 - `docs/phase-16-completion-notes.md`
 - `docs/phase-17-completion-notes.md`
 - `docs/phase-18-completion-notes.md`
+- `docs/phase-19-completion-notes.md`
 - `docs/phase-7-completion-notes.md`
 - `docs/phase-6-completion-notes.md`
 - `openspec/changes/build-pdf-document-builder/tasks.md`
@@ -143,17 +145,19 @@ Phase 4 editor boundary artifacts:
 - `packages/docraptor-client`
 - `packages/editor/package.json`
 
-Phase 19 should audit, harden, and formally complete the TipTap-facing data
-table editor extension. Phase 18 already introduced ahead-of-plan data-table
-editor artifacts, but Phase 19 remains the canonical gate for command
-insertion, JSON/HTML round-trip behavior, shared schema diagnostics, exports,
-and regression safety.
+Phase 19 audited, hardened, and formally completed the TipTap-facing data
+table editor extension. It preserved the Phase 18 custom atom node approach,
+added binding-ID-only coverage, preserved invalid-preview `bindingId`
+attribution, updated editor boundary maturity metadata, and kept the editor
+surface free of renderer, DocRaptor, calculation, and aggregation imports. The
+completion handoff is recorded in `docs/phase-19-completion-notes.md`.
 
-Phase 20 should audit, harden, and formally complete the data table renderer
-and print markup. Phase 18 already introduced ahead-of-plan renderer artifacts,
-but Phase 20 remains the canonical gate for semantic table markup, repeated
-headers, empty states, row limit warnings, deterministic diagnostics, and the
-continued absence of financial calculations.
+Phase 20 should start from the Phase 18 table renderer artifacts and the Phase
+19 editor node shape, then audit, harden, and formally complete the data table
+renderer and print markup. Phase 20 remains the canonical gate for semantic
+table markup, repeated headers, empty states, row limit warnings,
+deterministic diagnostics, and the continued absence of financial
+calculations.
 
 Totals, subtotals, grouping calculations, and summary rendering now start in
 Phases 22 and 23. Until then, table totals remain declarative placeholders and

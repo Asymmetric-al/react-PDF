@@ -508,7 +508,7 @@ phase-level choices and tradeoffs found during implementation.
   totals placeholders in Phase 18, but do not calculate totals, subtotals,
   grouped totals, or grand totals.
 - Reason: The canonical tracker reserves safe computation contracts for Phase
-  19, so Phase 18 establishes the table block contract and print-safe markup
+  22, so Phase 18 establishes the table block contract and print-safe markup
   without introducing financial aggregation behavior early.
 - Constraint: Phase 18 does not add table inspector UI, DocRaptor production
   orchestration, batch behavior, arbitrary JavaScript, or runtime aggregation.
@@ -535,3 +535,21 @@ phase-level choices and tradeoffs found during implementation.
   tracker state only. It does not change package source, schemas, renderer
   behavior, editor behavior, build configuration, lockfiles, generated
   artifacts, or runtime output.
+
+## 2026-04-30: Phase 19 Hardens Data Table Editor Extension
+
+- Decision: Treat Phase 19 as the formal editor-facing data-table hardening
+  gate over the existing Phase 18 `dataTable` TipTap node rather than
+  introducing a new table implementation or dependency.
+- Reason: Phase 18 already landed the custom atom node, command, JSON/HTML
+  serialization, and shared-schema preview path. Phase 19 needed to prove and
+  close editor-surface gaps with targeted tests.
+- Decision: Preserve dependency direction by keeping the editor extension on
+  `@asym/pdf-template-schema` only for table validation and row diagnostics.
+- Reason: Renderer, DocRaptor, calculation, aggregation, and server-only
+  behavior belong to later phases and must not enter browser-facing editor
+  exports.
+- Decision: Keep calculations, subtotals, grouping computation, summary
+  blocks, and table total rendering deferred to Phases 22 and 23.
+- Constraint: Phase 19 changes editor behavior and docs only. Phase 20 owns
+  renderer and print markup hardening.
