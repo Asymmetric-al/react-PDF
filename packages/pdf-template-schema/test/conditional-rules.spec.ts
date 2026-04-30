@@ -3,7 +3,7 @@ import {
   evaluateConditionalRule,
   evaluateConditionalRules,
 } from '@asym/pdf-template-schema';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 const sampleContext = {
   donation: {
@@ -25,6 +25,10 @@ const sampleContext = {
     fullName: 'Avery Carter',
   },
 };
+
+afterEach(() => {
+  vi.restoreAllMocks();
+});
 
 describe('Phase 16 conditional rule schema and evaluator', () => {
   it('validates Phase 16 operators and comparison value requirements', () => {
@@ -198,6 +202,45 @@ describe('Phase 16 conditional rule schema and evaluator', () => {
         },
       ],
     });
+  });
+
+  it('rejects out-of-range ISO time parts before Date.parse', () => {
+    const dateParse = vi.spyOn(Date, 'parse');
+    const invalidDateTimes = [
+      '2026-01-02T25:00:00Z',
+      '2026-01-02T23:60:00Z',
+      '2026-01-02T23:59:60Z',
+      '2026-01-02T23:59:00+99:99',
+      '2026-01-02T23:59:00+14:99',
+    ];
+
+    for (const submittedAt of invalidDateTimes) {
+      const result = evaluateConditionalRule({
+        context: {
+          donation: {
+            submittedAt,
+          },
+        },
+        rule: {
+          fieldPath: 'donation.submittedAt',
+          operator: 'greater_than',
+          value: submittedAt,
+        },
+      });
+
+      expect(result).toMatchObject({
+        matched: false,
+        diagnostics: [
+          {
+            code: 'invalid_condition_value',
+            severity: 'error',
+            fieldPath: 'donation.submittedAt',
+          },
+        ],
+      });
+    }
+
+    expect(dateParse).not.toHaveBeenCalled();
   });
 
   it('combines rules with deterministic AND semantics', () => {
