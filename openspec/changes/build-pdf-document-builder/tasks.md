@@ -48,8 +48,8 @@
 | 15 | Build the Variable Chip Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/variable` |
 | 16 | Build Conditional Section Engine and Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/conditional-section`, `packages/pdf-renderer/src/conditions` |
 | 17 | Build Repeater Extension and Scoped Data Resolver | Complete; validation recorded | `packages/pdf-editor/src/extensions/repeater`, `packages/pdf-renderer/src/repeaters` |
-| 18 | Build Financial Data Table Block | Next | `packages/pdf-editor/src/extensions/data-table`, `packages/pdf-renderer/src/data-table` |
-| 19 | Build Totals, Subtotals, Grouping, and Summary Blocks | Not started | `packages/pdf-renderer/src/calculations`, `packages/pdf-template-schema/src/calculations` |
+| 18 | Build Financial Data Table Block | Complete; validation recorded | `packages/pdf-editor/src/extensions/data-table`, `packages/pdf-renderer/src/data-table` |
+| 19 | Build Totals, Subtotals, Grouping, and Summary Blocks | Next | `packages/pdf-renderer/src/calculations`, `packages/pdf-template-schema/src/calculations` |
 | 20 | Build Page Break and Keep-Together Controls | Not started | `packages/pdf-editor/src/extensions/page-flow`, `packages/pdf-renderer/src/page-flow` |
 | 21 | Build Header and Footer System | Not started | `packages/pdf-editor/src/extensions/header-footer`, `packages/pdf-renderer/src/header-footer` |
 | 22 | Build Image and Asset Pipeline | Not started | `packages/pdf-editor/src/extensions/media`, `packages/pdf-renderer/src/assets` |
@@ -717,22 +717,25 @@ giving statements.
 
 ### Tasks
 
-- [ ] Support data source binding, columns, labels, widths, alignment,
+- [x] Support data source binding, columns, labels, widths, alignment,
       formatters, grouping, totals, empty state, repeated headers, page-safe
       classes, unsupported-column warnings, and deterministic order.
-- [ ] Cover annual giving statements, invoices, financial reports, and fund
+- [x] Cover annual giving statements, invoices, financial reports, and fund
       activity reports.
 
 ### Validation
 
-- [ ] Tests cover table schema, donation table render, invoice table render,
+- [x] Tests cover table schema, donation table render, invoice table render,
       financial report table render, empty state, invalid binding, totals row
       placeholder, and repeated header markup.
-- [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
+- [x] Run focused package tests, package builds, broad tests, OpenSpec
+      validation, and lint; exact output is recorded in
+      `docs/phase-18-completion-notes.md`.
 
 ### Handoff output
 
-- [ ] Data table block contract and financial table fixtures.
+- [x] Data table block contract, financial table tests, and Phase 19
+      calculation handoff notes.
 
 ## Phase 19: Build Totals, Subtotals, Grouping, and Summary Blocks
 

@@ -11,6 +11,19 @@ export {
   isValidConditionalRule,
 } from './conditional-section';
 export {
+  createDataTableExtension,
+  type DataTableAttributes,
+  DataTableBlock,
+  type DataTableOptions,
+  type DataTablePreviewDiagnostic,
+  type DataTablePreviewInput,
+  type DataTablePreviewResult,
+  type DataTablePreviewStatus,
+  getDataTablePreview,
+  type InsertDataTableInput,
+  isValidTableBinding,
+} from './data-table';
+export {
   createRepeaterSectionExtension,
   getRepeaterSectionPreview,
   type InsertRepeaterSectionInput,

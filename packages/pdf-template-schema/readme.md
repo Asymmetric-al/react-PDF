@@ -1,7 +1,7 @@
 # @asym/pdf-template-schema
 
-Phase 17 schema, typed variable registry, variable resolution, conditional
-rule, and repeater foundation
+Phase 18 schema, typed variable registry, variable resolution, conditional
+rule, repeater, and financial data table foundation
 for the Asym PDF Document Builder.
 
 ## Purpose
@@ -17,6 +17,12 @@ resolver, condition evaluator, and repeater resolver can be imported by the
 schema package, renderer, preview, future preflight, and future
 `Asymmetric-al/core` adapter code without pulling editor UI or DocRaptor
 behavior into browser bundles.
+
+Phase 18 adds React-free financial data table bindings and row resolution.
+Table bindings define source paths, stable columns, labels, value types,
+formatter hints, width hints, alignment, repeated header behavior, max-row
+guards, empty-state text, grouping metadata, and totals placeholders. Totals
+remain declarative placeholders in Phase 18; Phase 19 owns calculations.
 
 ## Public API Promise
 
@@ -57,7 +63,14 @@ TypeScript types are exported together:
 - `createScopedRepeaterContext`
 - `ResolvedRepeaterItem`
 - `RepeaterResolutionDiagnostic`
-- `TableBindingSchema` / `TableBinding`
+- `TableBindingSchema` / `TableBinding` / `TableBindingInput`
+- `TableColumnBindingSchema` / `TableColumnBinding`
+- `TableGroupingBindingSchema` / `TableGroupingBinding`
+- `TableTotalBindingSchema` / `TableTotalBinding`
+- `resolveTableRows`
+- `ResolvedTableRow`
+- `ResolvedTableCell`
+- `TableResolutionDiagnostic`
 - `AssetReferenceSchema` / `AssetReference`
 - `RenderRequestSchema` / `RenderRequest`
 - `RenderResultSchema` / `RenderResult`
@@ -123,6 +136,12 @@ and max-item guards. Repeater filtering reuses `ConditionalRule` with
 deterministic AND semantics and never evaluates arbitrary JavaScript. Scoped
 contexts are created without mutating the root data context.
 
+Phase 18 table bindings resolve array source paths into deterministic rows and
+formatted display cells. Missing sources, non-array sources, invalid bindings,
+row truncation, and unsupported column values return structured diagnostics
+instead of throwing. Column widths are schema-validated CSS lengths or
+percentages so table output cannot inject arbitrary inline CSS.
+
 ## Non-goals
 
 - No PDF editor UI.
@@ -137,11 +156,12 @@ contexts are created without mutating the root data context.
 - No arbitrary JavaScript template logic.
 - No substitution of variable nodes into rendered HTML; later renderer,
   preview, and preflight phases decide where resolved values are applied.
-- No financial data table block; Phase 18 owns report-grade table behavior.
+- No totals, subtotals, grouping calculations, or summary blocks; Phase 19
+  owns safe calculations.
 
 ## Maturity
 
-`phase-17-repeaters`. The package is private to prevent accidental
+`phase-18-financial-data-table`. The package is private to prevent accidental
 publication while the shared model is still evolving.
 
 ## Development

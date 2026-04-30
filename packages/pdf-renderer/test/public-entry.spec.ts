@@ -6,6 +6,7 @@ import {
   type PdfRendererBoundary,
   pdfRendererBoundary,
   resolvePdfDocumentRepeaterItems,
+  resolvePdfDocumentTableRows,
   resolvePdfDocumentVariables,
 } from '@asym/pdf-renderer';
 import { describe, expect, it } from 'vitest';
@@ -16,7 +17,7 @@ describe('@asym/pdf-renderer public entry', () => {
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-renderer',
-      maturity: 'phase-17-repeaters',
+      maturity: 'phase-18-financial-data-table',
       owns: 'print-renderer',
       runtime: 'browser-safe-root-with-server-subpath',
       consumes: ['@asym/pdf-template-schema'],
@@ -45,6 +46,10 @@ describe('@asym/pdf-renderer public entry', () => {
 
   it('exposes the Phase 17 repeater adapter', () => {
     expect(resolvePdfDocumentRepeaterItems).toBeDefined();
+  });
+
+  it('exposes the Phase 18 data table adapter', () => {
+    expect(resolvePdfDocumentTableRows).toBeDefined();
   });
 
   it('exposes Phase 17 scoped variable metadata through the serializer result', () => {
