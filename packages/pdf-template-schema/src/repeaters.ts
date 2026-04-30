@@ -5,6 +5,7 @@ import {
 } from './bindings';
 import type { ConditionalEvaluationDiagnostic } from './conditions';
 import { evaluateConditionalRules } from './conditions';
+import { parseDeterministicIsoDate } from './dates';
 import type { VariableDataContext } from './variable-resolution';
 import { getValueAtDataPath } from './variable-resolution';
 
@@ -327,9 +328,9 @@ function normalizeSortValue(value: unknown):
     return undefined;
   }
 
-  const timestamp = Date.parse(value);
+  const timestamp = parseDeterministicIsoDate(value);
 
-  return Number.isNaN(timestamp)
+  return timestamp === undefined
     ? { kind: 'string', value: value.toLowerCase() }
     : { kind: 'number', value: timestamp };
 }

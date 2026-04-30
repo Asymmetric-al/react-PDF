@@ -470,3 +470,24 @@ phase-level choices and tradeoffs found during implementation.
 - Constraint: Phase 17 does not add financial data table blocks, totals,
   grouping, UI picker controls, DocRaptor orchestration, or variable text
   substitution into HTML.
+
+## 2026-04-29: Pre-Phase 18 Reconciles Phase 17 Safety Gates
+
+- Decision: Treat link and button `href` attributes in
+  `composePdfDocumentHtml` as allowlisted URLs before they are serialized.
+- Reason: Browser preview is a planned package surface, so `javascript:`,
+  `data:`, `vbscript:`, protocol-relative, malformed, and control-character
+  URLs must not become executable or ambiguous preview HTML.
+- Decision: Ordered condition comparisons and repeater date sorting only parse
+  strict ISO date strings; informal date strings remain deterministic strings
+  or structured invalid comparison diagnostics.
+- Reason: Phase 18 financial tables depend on stable ordering and condition
+  behavior across developer machines, CI, and production hosts.
+- Decision: Renderer external repeater bindings retain invalid binding
+  diagnostics by binding ID instead of silently dropping invalid entries from
+  the binding map.
+- Reason: Referenced invalid bindings should fail visibly with structured
+  diagnostics, while still rendering author content once to avoid hiding
+  template content during preview and preflight.
+- Constraint: Pre-Phase 18 does not add financial data table blocks, totals,
+  grouping, editor table UI, DocRaptor orchestration, or batch behavior.

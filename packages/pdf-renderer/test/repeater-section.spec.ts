@@ -281,4 +281,49 @@ describe('Phase 17 renderer repeater sections', () => {
       },
     ]);
   });
+
+  it('reports invalid external repeater bindings instead of silently dropping them', () => {
+    const result = composePdfDocumentHtml({
+      dataContext,
+      document: doc([
+        {
+          attrs: {
+            bindingId: 'too-many-items',
+          },
+          content: [
+            {
+              type: 'paragraph',
+              content: [{ type: 'text', text: 'External fallback content' }],
+            },
+          ],
+          type: 'repeater',
+        },
+      ]),
+      repeaterBindings: [
+        {
+          id: 'too-many-items',
+          itemAlias: 'donation',
+          maxItems: 5000,
+          sourcePath: 'donations',
+        },
+      ],
+    });
+
+    expect(result.html).toContain('External fallback content');
+    expect(result.warnings).toMatchObject([
+      {
+        code: 'invalid_repeater_binding',
+        severity: 'error',
+        details: {
+          bindingId: 'too-many-items',
+          sourcePath: 'donations',
+        },
+      },
+    ]);
+    expect(result.warnings).not.toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ code: 'missing_repeater_binding' }),
+      ]),
+    );
+  });
 });

@@ -677,6 +677,32 @@ resolution for item aliases and nested variables.
 
 - [x] Repeater schema, collection resolver behavior, and fixtures.
 
+## Pre-Phase 18: Post-Phase-17 Reconciliation, Safety Fixes, and OpenSpec Alignment
+
+### Purpose
+
+Verify the repository after the Phase 17 merge before any Phase 18 financial
+data table work begins.
+
+### Tasks
+
+- [x] Confirm the active phase is Pre-Phase 18 and that Phase 18 remains next.
+- [x] Reconcile stale README and OpenSpec design status through Phase 17.
+- [x] Record repository, PR, issue, and validation review in
+      `docs/pre-phase-18-reconciliation.md`.
+- [x] Add renderer URL-scheme safety for link and button `href` output.
+- [x] Replace environment-dependent date parsing in conditional comparisons
+      and repeater sorting with strict deterministic ISO parsing.
+- [x] Surface invalid external repeater binding diagnostics instead of
+      silently treating referenced invalid bindings as missing.
+- [x] Do not implement financial table blocks, totals, grouping, or Phase 18
+      runtime behavior.
+
+### Handoff output
+
+- [x] Pre-Phase 18 reconciliation notes, safety tests, and Phase 18 go/no-go
+      decision.
+
 ## Phase 18: Build Financial Data Table Block
 
 ### Purpose

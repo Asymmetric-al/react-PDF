@@ -27,6 +27,7 @@ export type PdfDocumentRenderWarningCode =
   | 'invalid_document'
   | 'missing_attribute'
   | 'invalid_repeater_binding'
+  | 'unsafe_url'
   | 'unknown_mark'
   | 'unknown_node'
   | 'unsupported_mark'
@@ -137,10 +138,32 @@ export interface ComposePdfDocumentHtmlResult {
 type AttributeMap = Record<string, string>;
 type StyleMap = Record<string, string>;
 
+interface InvalidRepeaterBindingReference {
+  readonly bindingId: string;
+  readonly sourcePath: string;
+  readonly validationError: string;
+}
+
+interface RepeaterBindingRegistry {
+  readonly bindings: ReadonlyMap<string, RepeaterBinding>;
+  readonly invalidBindings: ReadonlyMap<
+    string,
+    InvalidRepeaterBindingReference
+  >;
+}
+
+type RepeaterBindingReadResult =
+  | { readonly status: 'valid'; readonly binding: RepeaterBinding }
+  | {
+      readonly status: 'invalid';
+      readonly reference: InvalidRepeaterBindingReference;
+    }
+  | { readonly status: 'missing' };
+
 interface RenderState {
   readonly nodeRenderers: ReadonlyMap<string, PdfDocumentNodeRenderer>;
   readonly markRenderers: ReadonlyMap<string, PdfDocumentMarkRenderer>;
-  readonly repeaterBindings: ReadonlyMap<string, RepeaterBinding>;
+  readonly repeaterBindings: RepeaterBindingRegistry;
   readonly dataContext?: VariableDataContext;
   readonly scopes: readonly PdfDocumentVariableScope[];
   readonly warnings: PdfDocumentRenderWarning[];
@@ -174,6 +197,13 @@ const safeAlignmentValues: ReadonlySet<string> = new Set([
   'justify',
 ]);
 
+const safeHrefSchemes: ReadonlySet<string> = new Set([
+  'http',
+  'https',
+  'mailto',
+  'tel',
+]);
+
 export function composePdfDocumentHtml(
   input: ComposePdfDocumentHtmlInput,
 ): ComposePdfDocumentHtmlResult {
@@ -182,7 +212,9 @@ export function composePdfDocumentHtml(
   const variables: PdfDocumentVariableUsage[] = [];
   const nodeRenderers = createNodeRendererMap(input.nodeRenderers);
   const markRenderers = createMarkRendererMap(input.markRenderers);
-  const repeaterBindings = createRepeaterBindingMap(input.repeaterBindings);
+  const repeaterBindings = createRepeaterBindingRegistry(
+    input.repeaterBindings,
+  );
   const state: RenderState = {
     dataContext: input.dataContext,
     nodeRenderers,
@@ -265,20 +297,47 @@ function createMarkRendererMap(
   return renderers;
 }
 
-function createRepeaterBindingMap(
+function createRepeaterBindingRegistry(
   bindings: readonly RepeaterBindingInput[] | undefined,
-): ReadonlyMap<string, RepeaterBinding> {
+): RepeaterBindingRegistry {
   const bindingMap = new Map<string, RepeaterBinding>();
+  const invalidBindings = new Map<string, InvalidRepeaterBindingReference>();
 
   for (const binding of bindings ?? []) {
     const result = RepeaterBindingSchema.safeParse(binding);
 
     if (result.success) {
       bindingMap.set(result.data.id, result.data);
+      continue;
+    }
+
+    const reference = createInvalidRepeaterBindingReference(
+      binding,
+      result.error.message,
+    );
+
+    if (reference.bindingId) {
+      invalidBindings.set(reference.bindingId, reference);
     }
   }
 
-  return bindingMap;
+  return {
+    bindings: bindingMap,
+    invalidBindings,
+  };
+}
+
+function createInvalidRepeaterBindingReference(
+  binding: unknown,
+  validationError: string,
+): InvalidRepeaterBindingReference {
+  const bindingRecord = isRecord(binding) ? binding : {};
+
+  return {
+    bindingId: readDiagnosticString(bindingRecord.id),
+    sourcePath: readDiagnosticString(bindingRecord.sourcePath),
+    validationError,
+  };
 }
 
 function renderNode(
@@ -356,9 +415,32 @@ function renderRepeater(
   path: readonly string[],
   state: RenderState,
 ): string {
-  const binding = readRepeaterBinding(node.attrs, state.repeaterBindings);
+  const bindingResult = readRepeaterBinding(node.attrs, state.repeaterBindings);
 
-  if (!binding) {
+  if (bindingResult.status === 'invalid') {
+    state.warnings.push({
+      code: 'invalid_repeater_binding',
+      details: {
+        bindingId: bindingResult.reference.bindingId,
+        sourcePath: bindingResult.reference.sourcePath,
+        validationError: bindingResult.reference.validationError,
+      },
+      message:
+        'Phase 17 repeater rendered author content once because the referenced binding is invalid.',
+      nodeType: node.type,
+      path,
+      severity: 'error',
+    });
+
+    return renderRepeaterElement({
+      binding: undefined,
+      childrenHtml: renderChildren(node.content, path, state),
+      node,
+      path,
+    });
+  }
+
+  if (bindingResult.status === 'missing') {
     state.warnings.push({
       code: 'missing_repeater_binding',
       message:
@@ -375,6 +457,8 @@ function renderRepeater(
       path,
     });
   }
+
+  const binding = bindingResult.binding;
 
   if (!state.dataContext) {
     state.warnings.push({
@@ -743,19 +827,32 @@ function renderImage(context: PdfDocumentNodeRendererContext): string {
 }
 
 function renderButton(context: PdfDocumentNodeRendererContext): string {
-  const href = readStringAttribute(context.node.attrs, 'href');
+  const hrefResult = readSafeHrefAttribute(context.node.attrs);
   const alignment = readAlignmentAttribute(context.node.attrs);
   const alignmentStyle = alignment ? { 'text-align': alignment } : undefined;
 
-  if (!href) {
+  if (hrefResult.unsafeHref) {
     context.addWarning({
-      code: 'missing_attribute',
+      code: 'unsafe_url',
       severity: 'warning',
-      message: 'Phase 09 button node is missing an href attribute.',
+      message: 'Pre-Phase 18 button node omitted an unsafe href attribute.',
       path: context.path,
       nodeType: context.node.type,
       details: { attribute: 'href' },
     });
+  }
+
+  if (!hrefResult.href) {
+    if (!hrefResult.unsafeHref) {
+      context.addWarning({
+        code: 'missing_attribute',
+        severity: 'warning',
+        message: 'Phase 09 button node is missing an href attribute.',
+        path: context.path,
+        nodeType: context.node.type,
+        details: { attribute: 'href' },
+      });
+    }
 
     return renderElement(
       'span',
@@ -776,7 +873,7 @@ function renderButton(context: PdfDocumentNodeRendererContext): string {
         excludedAttributeNames: ['alignment', 'href'],
         extraStyle: alignmentStyle,
       }),
-      href,
+      href: hrefResult.href,
     },
     context.childrenHtml,
   );
@@ -911,9 +1008,22 @@ function addVariableUsage(
 }
 
 function renderLinkMark(context: PdfDocumentMarkRendererContext): string {
-  const href = readStringAttribute(context.mark.attrs, 'href');
+  const hrefResult = readSafeHrefAttribute(context.mark.attrs);
 
-  if (!href) {
+  if (hrefResult.unsafeHref) {
+    context.addWarning({
+      code: 'unsafe_url',
+      severity: 'warning',
+      message: 'Pre-Phase 18 link mark omitted an unsafe href attribute.',
+      path: context.path,
+      markType: context.mark.type,
+      details: { attribute: 'href' },
+    });
+
+    return context.childrenHtml;
+  }
+
+  if (!hrefResult.href) {
     context.addWarning({
       code: 'missing_attribute',
       severity: 'warning',
@@ -928,7 +1038,7 @@ function renderLinkMark(context: PdfDocumentMarkRendererContext): string {
   return renderElement(
     'a',
     getMarkAttributes(context.mark, {
-      href,
+      href: hrefResult.href,
       excludedAttributeNames: ['href'],
     }),
     context.childrenHtml,
@@ -1253,6 +1363,94 @@ function readStringAttribute(
   return typeof value === 'string' && value.length > 0 ? value : undefined;
 }
 
+function readSafeHrefAttribute(
+  attributes: Readonly<Record<string, unknown>> | undefined,
+):
+  | { readonly href: string; readonly unsafeHref?: undefined }
+  | { readonly href?: undefined; readonly unsafeHref?: string } {
+  const href = readStringAttribute(attributes, 'href');
+
+  if (!href) {
+    return {};
+  }
+
+  const safeHref = normalizeSafeHref(href);
+
+  return safeHref ? { href: safeHref } : { unsafeHref: href };
+}
+
+function normalizeSafeHref(value: string): string | undefined {
+  const href = value.trim();
+
+  if (
+    href.length === 0 ||
+    hasUnsafeHrefCharacters(href) ||
+    href.includes('\\') ||
+    href.startsWith('//')
+  ) {
+    return undefined;
+  }
+
+  if (href.startsWith('#')) {
+    return href;
+  }
+
+  const scheme = readHrefScheme(href);
+
+  if (scheme) {
+    return isSafeSchemeHref(href, scheme) ? href : undefined;
+  }
+
+  return isSafeRelativeHref(href) ? href : undefined;
+}
+
+function hasUnsafeHrefCharacters(value: string): boolean {
+  return Array.from(value).some((character) => {
+    const codePoint = character.codePointAt(0);
+
+    return codePoint !== undefined && (codePoint <= 0x20 || codePoint === 0x7f);
+  });
+}
+
+function readHrefScheme(value: string): string | undefined {
+  const match = /^([A-Za-z][A-Za-z0-9+.-]*):/.exec(value);
+
+  return match?.[1].toLowerCase();
+}
+
+function isSafeSchemeHref(href: string, scheme: string): boolean {
+  if (!safeHrefSchemes.has(scheme)) {
+    return false;
+  }
+
+  if (scheme === 'http' || scheme === 'https') {
+    return isValidAbsoluteHref(href, scheme);
+  }
+
+  return href.length > `${scheme}:`.length;
+}
+
+function isValidAbsoluteHref(href: string, scheme: string): boolean {
+  try {
+    return new URL(href).protocol === `${scheme}:`;
+  } catch {
+    return false;
+  }
+}
+
+function isSafeRelativeHref(href: string): boolean {
+  return (
+    href.startsWith('/') ||
+    href.startsWith('./') ||
+    href.startsWith('../') ||
+    /^[A-Za-z0-9._~-]/.test(href)
+  );
+}
+
+function readDiagnosticString(value: unknown): string {
+  return value === undefined || value === null ? '' : String(value);
+}
+
 function readVariableFallback(
   attributes: Readonly<Record<string, unknown>> | undefined,
 ): FallbackBehavior | undefined {
@@ -1282,18 +1480,43 @@ function readConditionalRule(
 
 function readRepeaterBinding(
   attributes: Readonly<Record<string, unknown>> | undefined,
-  bindings: ReadonlyMap<string, RepeaterBinding>,
-): RepeaterBinding | undefined {
+  registry: RepeaterBindingRegistry,
+): RepeaterBindingReadResult {
   const inlineBinding = readStructuredAttribute(attributes, 'binding');
-  const inlineResult = RepeaterBindingSchema.safeParse(inlineBinding);
 
-  if (inlineResult.success) {
-    return inlineResult.data;
+  if (inlineBinding !== undefined) {
+    const inlineResult = RepeaterBindingSchema.safeParse(inlineBinding);
+
+    if (inlineResult.success) {
+      return { binding: inlineResult.data, status: 'valid' };
+    }
+
+    return {
+      reference: createInvalidRepeaterBindingReference(
+        inlineBinding,
+        inlineResult.error.message,
+      ),
+      status: 'invalid',
+    };
   }
 
   const bindingId = readStringAttribute(attributes, 'bindingId');
 
-  return bindingId ? bindings.get(bindingId) : undefined;
+  if (!bindingId) {
+    return { status: 'missing' };
+  }
+
+  const binding = registry.bindings.get(bindingId);
+
+  if (binding) {
+    return { binding, status: 'valid' };
+  }
+
+  const invalidBinding = registry.invalidBindings.get(bindingId);
+
+  return invalidBinding
+    ? { reference: invalidBinding, status: 'invalid' }
+    : { status: 'missing' };
 }
 
 function readStructuredAttribute(

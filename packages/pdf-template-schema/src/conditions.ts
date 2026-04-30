@@ -1,4 +1,5 @@
 import type { ConditionalRule } from './bindings';
+import { parseDeterministicIsoDate } from './dates';
 import type { JsonValue } from './primitives';
 import {
   getValueAtDataPath,
@@ -404,9 +405,9 @@ function toComparableValue(value: unknown): ComparableValue | undefined {
     return undefined;
   }
 
-  const timestamp = Date.parse(value);
+  const timestamp = parseDeterministicIsoDate(value);
 
-  return Number.isNaN(timestamp)
+  return timestamp === undefined
     ? undefined
     : { kind: 'date', value: timestamp };
 }
