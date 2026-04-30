@@ -34,7 +34,9 @@ foundation phase.
 - Phase 15 added protected structured variable chips in the PDF editor wrapper.
 - Phase 16 added structured conditional sections.
 - Phase 17 added structured repeaters and scoped data resolution.
-- Phase 18 is next and will add the report-grade financial data table block.
+- Phase 18 added the report-grade financial data table block.
+- Phase 19 is next and will add safe totals, subtotals, grouping, and summary
+  calculation contracts.
 - DocRaptor is the production PDF rendering target.
 - Puppeteer may be used later only for local preview, debugging, or fallback.
 

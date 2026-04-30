@@ -63,6 +63,11 @@ Observed repo facts:
   support without arbitrary JavaScript.
 - Phase 17 adds structured repeaters, scoped data resolution, renderer
   variable-scope metadata, and a protected repeater editor extension.
+- Phase 18 adds report-grade financial data table bindings and row resolution
+  in `@asym/pdf-template-schema`, a protected `dataTable` TipTap block in
+  `@asym/pdf-editor`, and deterministic table rendering in
+  `@asym/pdf-renderer`. It renders totals placeholders only; Phase 19 owns
+  safe totals, subtotals, grouping calculations, and summary blocks.
 
 The broader Asymmetric.al platform currently uses Unlayer document mode for
 PDF Studio. That platform shape includes or expects template CRUD, Unlayer
@@ -193,9 +198,10 @@ document naming, Phase 09 owns the document serializer foundation, Phase 10
 owns the print shell, Phase 11 owns the DocRaptor client package, Phase 12 owns
 browser and DocRaptor test preview, Phase 13 owns the typed variable registry,
 Phase 14 owns variable resolution and formatting, Phase 15 owns variable chips,
-Phase 16 owns conditionals, and Phase 17 owns repeaters. Phase 18 is next and
-owns the report-grade financial data table block. Later phases add
-calculations, page flow, headers/footers, assets, branding, fixtures,
+Phase 16 owns conditionals, Phase 17 owns repeaters, and Phase 18 owns the
+report-grade financial data table block. Phase 19 is next and owns safe totals,
+subtotals, grouping calculations, and summary blocks. Later phases add page
+flow, headers/footers, assets, branding, fixtures,
 preflight, render metadata, template lifecycle/versioning, batch, async
 rendering, Playwright local test rendering, metadata/accessibility, security,
 Unlayer coexistence, core adapter contracts, docs/examples, performance, API

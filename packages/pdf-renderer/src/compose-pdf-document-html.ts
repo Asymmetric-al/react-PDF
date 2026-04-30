@@ -4,13 +4,19 @@ import type {
   FallbackBehavior,
   RepeaterBinding,
   RepeaterBindingInput,
+  ResolvedTableCell,
+  ResolvedTableRow,
+  TableBinding,
+  TableBindingInput,
   VariableDataContext,
 } from '@asym/pdf-template-schema';
 import {
   ConditionalRuleSchema,
   RepeaterBindingSchema,
+  TableBindingSchema,
 } from '@asym/pdf-template-schema';
 import { evaluatePdfDocumentCondition } from './conditions';
+import { resolvePdfDocumentTableRows } from './data-table';
 import { resolvePdfDocumentRepeaterItems } from './repeaters';
 
 export type PdfDocumentCssMedia = 'all' | 'print';
@@ -27,6 +33,7 @@ export type PdfDocumentRenderWarningCode =
   | 'invalid_document'
   | 'missing_attribute'
   | 'invalid_repeater_binding'
+  | 'invalid_table_binding'
   | 'unsafe_url'
   | 'unknown_mark'
   | 'unknown_node'
@@ -39,10 +46,16 @@ export type PdfDocumentRenderWarningCode =
   | 'missing_repeater_binding'
   | 'missing_repeater_context'
   | 'missing_repeater_source'
+  | 'missing_table_binding'
+  | 'missing_table_context'
+  | 'missing_table_source'
   | 'non_array_repeater_source'
+  | 'non_array_table_source'
   | 'repeater_filter_error'
   | 'repeater_filter_warning'
-  | 'repeater_max_items_exceeded';
+  | 'repeater_max_items_exceeded'
+  | 'table_max_rows_exceeded'
+  | 'unsupported_table_column_value';
 
 export type PdfDocumentRenderWarningSeverity = 'warning' | 'error';
 export type PdfDocumentRenderWarningSource = 'serializer' | 'print-shell';
@@ -123,6 +136,7 @@ export interface ComposePdfDocumentHtmlInput {
   readonly document: DocumentContentNode;
   readonly dataContext?: VariableDataContext;
   readonly repeaterBindings?: readonly RepeaterBindingInput[];
+  readonly tableBindings?: readonly TableBindingInput[];
   readonly nodeRenderers?: readonly PdfDocumentNodeRenderer[];
   readonly markRenderers?: readonly PdfDocumentMarkRenderer[];
 }
@@ -160,10 +174,30 @@ type RepeaterBindingReadResult =
     }
   | { readonly status: 'missing' };
 
+interface InvalidTableBindingReference {
+  readonly bindingId: string;
+  readonly sourcePath: string;
+  readonly validationError: string;
+}
+
+interface TableBindingRegistry {
+  readonly bindings: ReadonlyMap<string, TableBinding>;
+  readonly invalidBindings: ReadonlyMap<string, InvalidTableBindingReference>;
+}
+
+type TableBindingReadResult =
+  | { readonly status: 'valid'; readonly binding: TableBinding }
+  | {
+      readonly status: 'invalid';
+      readonly reference: InvalidTableBindingReference;
+    }
+  | { readonly status: 'missing' };
+
 interface RenderState {
   readonly nodeRenderers: ReadonlyMap<string, PdfDocumentNodeRenderer>;
   readonly markRenderers: ReadonlyMap<string, PdfDocumentMarkRenderer>;
   readonly repeaterBindings: RepeaterBindingRegistry;
+  readonly tableBindings: TableBindingRegistry;
   readonly dataContext?: VariableDataContext;
   readonly scopes: readonly PdfDocumentVariableScope[];
   readonly warnings: PdfDocumentRenderWarning[];
@@ -180,6 +214,10 @@ const phase09Css = [
   '.pdf-repeater{display:block;}',
   '.pdf-repeater-empty{display:block;}',
   '.pdf-repeater-item{display:block;}',
+  '.pdf-data-table{border-collapse:collapse;width:100%;}',
+  '.pdf-data-table-empty{display:block;}',
+  '.pdf-data-table-footer{display:table-footer-group;}',
+  '.pdf-data-table-header{display:table-header-group;}',
   '.pdf-table{border-collapse:collapse;width:100%;}',
   '.pdf-variable{white-space:nowrap;}',
 ].join('\n');
@@ -215,11 +253,13 @@ export function composePdfDocumentHtml(
   const repeaterBindings = createRepeaterBindingRegistry(
     input.repeaterBindings,
   );
+  const tableBindings = createTableBindingRegistry(input.tableBindings);
   const state: RenderState = {
     dataContext: input.dataContext,
     nodeRenderers,
     markRenderers,
     repeaterBindings,
+    tableBindings,
     scopes: [],
     warnings,
     assets,
@@ -340,6 +380,49 @@ function createInvalidRepeaterBindingReference(
   };
 }
 
+function createTableBindingRegistry(
+  bindings: readonly TableBindingInput[] | undefined,
+): TableBindingRegistry {
+  const bindingMap = new Map<string, TableBinding>();
+  const invalidBindings = new Map<string, InvalidTableBindingReference>();
+
+  for (const binding of bindings ?? []) {
+    const result = TableBindingSchema.safeParse(binding);
+
+    if (result.success) {
+      bindingMap.set(result.data.id, result.data);
+      continue;
+    }
+
+    const reference = createInvalidTableBindingReference(
+      binding,
+      result.error.message,
+    );
+
+    if (reference.bindingId) {
+      invalidBindings.set(reference.bindingId, reference);
+    }
+  }
+
+  return {
+    bindings: bindingMap,
+    invalidBindings,
+  };
+}
+
+function createInvalidTableBindingReference(
+  binding: unknown,
+  validationError: string,
+): InvalidTableBindingReference {
+  const bindingRecord = isRecord(binding) ? binding : {};
+
+  return {
+    bindingId: readDiagnosticString(bindingRecord.id),
+    sourcePath: readDiagnosticString(bindingRecord.sourcePath),
+    validationError,
+  };
+}
+
 function renderNode(
   value: unknown,
   path: readonly string[],
@@ -365,6 +448,10 @@ function renderNode(
 
   if (value.type === 'repeater') {
     return renderRepeater(value, path, state);
+  }
+
+  if (value.type === 'dataTable') {
+    return renderDataTable(value, path, state);
   }
 
   const childrenHtml = renderChildren(value.content, path, state);
@@ -575,6 +662,254 @@ function renderRepeaterEmptyState(binding: RepeaterBinding): string {
     },
     escapeHtml(binding.emptyState),
   );
+}
+
+function renderDataTable(
+  node: DocumentContentNode,
+  path: readonly string[],
+  state: RenderState,
+): string {
+  const bindingResult = readTableBinding(node.attrs, state.tableBindings);
+
+  if (bindingResult.status === 'invalid') {
+    state.warnings.push({
+      code: 'invalid_table_binding',
+      details: {
+        bindingId: bindingResult.reference.bindingId,
+        sourcePath: bindingResult.reference.sourcePath,
+        validationError: bindingResult.reference.validationError,
+      },
+      message:
+        'Phase 18 data table rendered a diagnostic placeholder because the referenced binding is invalid.',
+      nodeType: node.type,
+      path,
+      severity: 'error',
+    });
+
+    return renderDataTableShell({
+      binding: undefined,
+      bodyHtml: '',
+      node,
+      path,
+      totalPlaceholdersHtml: '',
+    });
+  }
+
+  if (bindingResult.status === 'missing') {
+    state.warnings.push({
+      code: 'missing_table_binding',
+      message:
+        'Phase 18 data table rendered a diagnostic placeholder because the binding is missing or invalid.',
+      nodeType: node.type,
+      path,
+      severity: 'error',
+    });
+
+    return renderDataTableShell({
+      binding: undefined,
+      bodyHtml: '',
+      node,
+      path,
+      totalPlaceholdersHtml: '',
+    });
+  }
+
+  const binding = bindingResult.binding;
+
+  if (!state.dataContext) {
+    state.warnings.push({
+      code: 'missing_table_context',
+      message:
+        'Phase 18 data table rendered only headers because no data context was provided.',
+      nodeType: node.type,
+      path,
+      severity: 'warning',
+    });
+
+    return renderDataTableShell({
+      binding,
+      bodyHtml: renderDataTableEmptyState(binding),
+      node,
+      path,
+      totalPlaceholdersHtml: renderDataTableTotalPlaceholders(binding),
+    });
+  }
+
+  const result = resolvePdfDocumentTableRows({
+    binding,
+    context: state.dataContext,
+    nodeType: node.type,
+    path,
+  });
+  state.warnings.push(...result.warnings);
+
+  const bodyHtml =
+    result.rows.length === 0
+      ? renderDataTableEmptyState(binding)
+      : renderDataTableRows(result.rows);
+
+  return renderDataTableShell({
+    binding,
+    bodyHtml,
+    node,
+    path,
+    totalPlaceholdersHtml: renderDataTableTotalPlaceholders(binding),
+  });
+}
+
+function renderDataTableShell(input: {
+  readonly binding: TableBinding | undefined;
+  readonly bodyHtml: string;
+  readonly node: DocumentContentNode;
+  readonly path: readonly string[];
+  readonly totalPlaceholdersHtml: string;
+}): string {
+  const headerHtml = input.binding ? renderDataTableHeader(input.binding) : '';
+  const footerHtml = input.totalPlaceholdersHtml
+    ? renderElement(
+        'tfoot',
+        { class: 'pdf-data-table-footer' },
+        input.totalPlaceholdersHtml,
+      )
+    : '';
+  const bodyHtml = renderElement(
+    'tbody',
+    { class: 'pdf-data-table-body' },
+    input.bodyHtml,
+  );
+
+  return renderElement(
+    'table',
+    {
+      ...getElementAttributes(input.node, {
+        className: 'pdf-data-table',
+        excludedAttributeNames: ['binding', 'bindingId'],
+      }),
+      'data-asym-data-table': 'true',
+      'data-data-table-path': input.path.join('.'),
+      ...(input.binding
+        ? {
+            'data-table-binding-id': input.binding.id,
+            'data-table-repeat-header': String(input.binding.repeatHeader),
+            'data-table-source-path': input.binding.sourcePath,
+          }
+        : {}),
+    },
+    `${headerHtml}${bodyHtml}${footerHtml}`,
+  );
+}
+
+function renderDataTableHeader(binding: TableBinding): string {
+  const cellsHtml = binding.columns
+    .map((column) =>
+      renderElement(
+        'th',
+        {
+          class: 'pdf-data-table-heading',
+          'data-table-column-key': column.key,
+          scope: 'col',
+          ...getDataTableCellStyleAttributes(column),
+        },
+        escapeHtml(column.label),
+      ),
+    )
+    .join('');
+  const rowHtml = renderElement('tr', {}, cellsHtml);
+
+  return renderElement('thead', { class: 'pdf-data-table-header' }, rowHtml);
+}
+
+function renderDataTableRows(rows: readonly ResolvedTableRow[]): string {
+  return rows
+    .map((row) =>
+      renderElement(
+        'tr',
+        {
+          class: 'pdf-data-table-row',
+          'data-table-rendered-index': String(row.renderedIndex),
+          'data-table-source-index': String(row.sourceIndex),
+        },
+        row.cells.map(renderDataTableCell).join(''),
+      ),
+    )
+    .join('');
+}
+
+function renderDataTableCell(cell: ResolvedTableCell): string {
+  return renderElement(
+    'td',
+    {
+      class: 'pdf-data-table-cell',
+      'data-table-column-key': cell.columnKey,
+      ...getDataTableCellStyleAttributes(cell),
+    },
+    escapeHtml(cell.displayValue),
+  );
+}
+
+function renderDataTableEmptyState(binding: TableBinding): string {
+  if (!binding.emptyState) {
+    return '';
+  }
+
+  return renderElement(
+    'tr',
+    {
+      class: 'pdf-data-table-empty',
+      'data-table-empty-state': 'true',
+    },
+    renderElement(
+      'td',
+      {
+        colspan: String(binding.columns.length),
+      },
+      escapeHtml(binding.emptyState),
+    ),
+  );
+}
+
+function renderDataTableTotalPlaceholders(binding: TableBinding): string {
+  if (binding.totals.length === 0) {
+    return '';
+  }
+
+  return binding.totals
+    .map((total) =>
+      renderElement(
+        'tr',
+        {
+          class: 'pdf-data-table-total-placeholder',
+          'data-table-total-column-key': total.columnKey,
+          'data-table-total-operation': total.operation,
+          'data-table-total-placeholder': 'true',
+        },
+        renderElement(
+          'td',
+          {
+            colspan: String(binding.columns.length),
+          },
+          escapeHtml(total.label ?? total.columnKey),
+        ),
+      ),
+    )
+    .join('');
+}
+
+function getDataTableCellStyleAttributes(input: {
+  readonly align: 'left' | 'center' | 'right';
+  readonly width?: string;
+}): AttributeMap {
+  const style: StyleMap = {
+    'text-align': input.align,
+  };
+
+  if (input.width) {
+    style.width = input.width;
+  }
+
+  return {
+    style: serializeStyle(style),
+  };
 }
 
 function renderChildren(
@@ -1493,6 +1828,47 @@ function readRepeaterBinding(
 
     return {
       reference: createInvalidRepeaterBindingReference(
+        inlineBinding,
+        inlineResult.error.message,
+      ),
+      status: 'invalid',
+    };
+  }
+
+  const bindingId = readStringAttribute(attributes, 'bindingId');
+
+  if (!bindingId) {
+    return { status: 'missing' };
+  }
+
+  const binding = registry.bindings.get(bindingId);
+
+  if (binding) {
+    return { binding, status: 'valid' };
+  }
+
+  const invalidBinding = registry.invalidBindings.get(bindingId);
+
+  return invalidBinding
+    ? { reference: invalidBinding, status: 'invalid' }
+    : { status: 'missing' };
+}
+
+function readTableBinding(
+  attributes: Readonly<Record<string, unknown>> | undefined,
+  registry: TableBindingRegistry,
+): TableBindingReadResult {
+  const inlineBinding = readStructuredAttribute(attributes, 'binding');
+
+  if (inlineBinding !== undefined) {
+    const inlineResult = TableBindingSchema.safeParse(inlineBinding);
+
+    if (inlineResult.success) {
+      return { binding: inlineResult.data, status: 'valid' };
+    }
+
+    return {
+      reference: createInvalidTableBindingReference(
         inlineBinding,
         inlineResult.error.message,
       ),

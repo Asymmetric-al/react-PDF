@@ -8,6 +8,7 @@ import {
   PositiveIntegerSchema,
   VariableKeySchema,
 } from './primitives';
+import { VariableValueTypeSchema } from './variables';
 
 export const DataBindingSchema = z
   .object({
@@ -109,16 +110,45 @@ export const RepeaterBindingSchema = z
 export type RepeaterBinding = z.infer<typeof RepeaterBindingSchema>;
 export type RepeaterBindingInput = z.input<typeof RepeaterBindingSchema>;
 
+const TableColumnWidthSchema = z
+  .string()
+  .regex(
+    /^(?:auto|(?:0|[1-9]\d*)(?:\.\d+)?(?:%|px|pt|in|cm|mm))$/,
+    'Table column width must be auto or a positive CSS length/percentage.',
+  );
+
 export const TableColumnBindingSchema = z
   .object({
     key: IdentifierSchema,
     label: NonEmptyStringSchema,
     sourcePath: DataPathSchema,
+    type: VariableValueTypeSchema.default('string'),
     formatter: NonEmptyStringSchema.optional(),
-    width: NonEmptyStringSchema.optional(),
+    width: TableColumnWidthSchema.optional(),
     align: z.enum(['left', 'center', 'right']).default('left'),
   })
   .strict();
+
+export type TableColumnBinding = z.infer<typeof TableColumnBindingSchema>;
+
+export const TableGroupingBindingSchema = z
+  .object({
+    fieldPath: DataPathSchema,
+    label: NonEmptyStringSchema.optional(),
+  })
+  .strict();
+
+export type TableGroupingBinding = z.infer<typeof TableGroupingBindingSchema>;
+
+export const TableTotalBindingSchema = z
+  .object({
+    columnKey: IdentifierSchema,
+    operation: z.enum(['sum', 'count']),
+    label: NonEmptyStringSchema.optional(),
+  })
+  .strict();
+
+export type TableTotalBinding = z.infer<typeof TableTotalBindingSchema>;
 
 export const TableBindingSchema = z
   .object({
@@ -126,20 +156,25 @@ export const TableBindingSchema = z
     sourcePath: DataPathSchema,
     columns: z.array(TableColumnBindingSchema).min(1),
     emptyState: NonEmptyStringSchema.optional(),
+    grouping: TableGroupingBindingSchema.optional(),
     repeatHeader: z.boolean().default(true),
     maxRows: NonNegativeIntegerSchema.max(5000).default(5000),
-    totals: z
-      .array(
-        z
-          .object({
-            columnKey: IdentifierSchema,
-            operation: z.enum(['sum', 'count']),
-            label: NonEmptyStringSchema.optional(),
-          })
-          .strict(),
-      )
-      .default([]),
+    totals: z.array(TableTotalBindingSchema).default([]),
   })
-  .strict();
+  .strict()
+  .superRefine((binding, context) => {
+    const columnKeys = new Set(binding.columns.map((column) => column.key));
+
+    for (const total of binding.totals) {
+      if (!columnKeys.has(total.columnKey)) {
+        context.addIssue({
+          code: 'custom',
+          message: `Total references unknown table column "${total.columnKey}".`,
+          path: ['totals'],
+        });
+      }
+    }
+  });
 
 export type TableBinding = z.infer<typeof TableBindingSchema>;
+export type TableBindingInput = z.input<typeof TableBindingSchema>;

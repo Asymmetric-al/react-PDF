@@ -1,6 +1,6 @@
 # @asym/pdf-renderer
 
-Phase 17 preview, variable resolution, conditional rendering, and repeater foundation for the Asym PDF Document
+Phase 18 preview, variable resolution, conditional rendering, repeater, and financial data table foundation for the Asym PDF Document
 Builder print renderer.
 
 ## Purpose
@@ -11,6 +11,9 @@ DocRaptor test preview orchestration, renderer variable resolution adapters,
 conditional section rendering, and renderer fixtures.
 Phase 17 also owns structured repeater rendering and scoped variable metadata
 for repeated rows.
+Phase 18 adds deterministic data-bound table rendering for financial reports,
+annual statements, invoices, and donation rows. Totals rows are placeholders
+only; Phase 19 owns calculations.
 
 DocRaptor remains the production PDF fidelity target. Browser preview is fast
 authoring feedback only and must never be treated as final PDF output.
@@ -52,6 +55,9 @@ server-only DocRaptor client:
 - `resolvePdfDocumentRepeaterItems`
 - `ResolvePdfDocumentRepeaterItemsInput`
 - `ResolvePdfDocumentRepeaterItemsResult`
+- `resolvePdfDocumentTableRows`
+- `ResolvePdfDocumentTableRowsInput`
+- `ResolvePdfDocumentTableRowsResult`
 
 The server-only DocRaptor test preview API is isolated behind:
 
@@ -156,6 +162,19 @@ non-array sources render configured empty states with structured warnings.
 Invalid bindings render author content once with an error so content is not
 silently hidden.
 
+## Phase 18 Financial Data Tables
+
+`composePdfDocumentHtml` accepts optional `tableBindings` and can render
+structured `dataTable` nodes. A table resolves either inline `attrs.binding` or
+`attrs.bindingId` against the supplied bindings. Resolved rows render as
+deterministic print-ready table markup with repeated-header-friendly `<thead>`,
+empty-state rows, max-row guards, formatter-driven display cells, and
+structured warnings for invalid bindings or unsupported column values.
+
+Phase 18 renders totals placeholders as explicit marker rows but does not
+calculate sums, counts, subtotals, grouped totals, or grand totals. Those safe
+calculation contracts belong to Phase 19.
+
 ## DocRaptor Test Preview
 
 `createDocRaptorTestPdfPreview` lives in the server-only subpath. It uses the
@@ -228,11 +247,11 @@ DocRaptor compatibility notes:
 - No tenant storage, auth, queue, or core app imports.
 - No string-replacement merge engine.
 - No arbitrary JavaScript condition execution.
-- No financial table block, totals, grouping, or batch renderer behavior.
+- No totals, subtotals, grouping calculations, or batch renderer behavior.
 
 ## Maturity
 
-`phase-17-repeaters`. The package remains private to prevent accidental
+`phase-18-financial-data-table`. The package remains private to prevent accidental
 publication while renderer contracts are still being built.
 
 ## Development

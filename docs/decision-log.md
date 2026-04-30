@@ -491,3 +491,24 @@ phase-level choices and tradeoffs found during implementation.
   template content during preview and preflight.
 - Constraint: Pre-Phase 18 does not add financial data table blocks, totals,
   grouping, editor table UI, DocRaptor orchestration, or batch behavior.
+
+## 2026-04-30: Phase 18 Adds Financial Data Table Blocks
+
+- Decision: Implement data table binding and row resolution in
+  `@asym/pdf-template-schema`, then consume that shared contract from
+  `@asym/pdf-editor` and `@asym/pdf-renderer`.
+- Reason: Financial tables are part of the shared structured template language
+  and must remain reusable by editor preview, renderer output, future preflight,
+  and future core adapter code without React or DocRaptor dependencies.
+- Decision: Use a protected TipTap block node named `dataTable` that stores an
+  inline `TableBinding` or a stable `bindingId`.
+- Reason: This matches the Phase 17 repeater pattern while keeping structured
+  JSON as the source of truth instead of raw HTML table markup.
+- Decision: Render table rows, headers, empty states, max-row diagnostics, and
+  totals placeholders in Phase 18, but do not calculate totals, subtotals,
+  grouped totals, or grand totals.
+- Reason: The canonical tracker reserves safe computation contracts for Phase
+  19, so Phase 18 establishes the table block contract and print-safe markup
+  without introducing financial aggregation behavior early.
+- Constraint: Phase 18 does not add table inspector UI, DocRaptor production
+  orchestration, batch behavior, arbitrary JavaScript, or runtime aggregation.

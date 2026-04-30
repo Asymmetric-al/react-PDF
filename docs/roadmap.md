@@ -23,8 +23,8 @@ that list with current phase status for handoff visibility.
 | 15 | Build the Variable Chip Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/variable` |
 | 16 | Build Conditional Section Engine and Editor Extension | Complete; validation recorded | Conditional editor and renderer support |
 | 17 | Build Repeater Extension and Scoped Data Resolver | Complete; validation recorded | Repeater editor and renderer support |
-| 18 | Build Financial Data Table Block | Next | Financial table node and renderer support |
-| 19 | Build Totals, Subtotals, Grouping, and Summary Blocks | Not started | Safe calculation contracts |
+| 18 | Build Financial Data Table Block | Complete; validation recorded | Financial table node and renderer support |
+| 19 | Build Totals, Subtotals, Grouping, and Summary Blocks | Next | Safe calculation contracts |
 | 20 | Build Page Break and Keep-Together Controls | Not started | Page-flow controls and print CSS |
 | 21 | Build Header and Footer System | Not started | Header/footer schema and serializer |
 | 22 | Build Image and Asset Pipeline | Not started | PDF image model and asset adapters |
@@ -49,9 +49,9 @@ that list with current phase status for handoff visibility.
 | 41 | `Asymmetric-al/core` Cutover Playbook and Integration PR Plan | Not started | Core cutover playbook |
 | 42 | Production Hardening, Launch Readiness, and Final Package Sign-Off | Not started | Final package readiness report |
 
-## Phase 18 Entry Point
+## Phase 19 Entry Point
 
-Phase 17 is complete. It added structured repeater resolution in
+Phase 18 is complete. Phase 17 added structured repeater resolution in
 `@asym/pdf-template-schema`, repeater rendering and scoped variable metadata in
 `@asym/pdf-renderer`, and a protected repeater section TipTap node in
 `@asym/pdf-editor`. The completion handoff is recorded in
@@ -62,7 +62,14 @@ date parsing, and invalid external repeater binding diagnostics before
 financial table work starts. The reconciliation handoff is recorded in
 `docs/pre-phase-18-reconciliation.md`.
 
-Phase 18 should start from the Phase 17 repeater engine, Phase 16 conditional
+Phase 18 added table bindings and row resolution in
+`@asym/pdf-template-schema`, a protected `dataTable` TipTap block in
+`@asym/pdf-editor`, and deterministic data table rendering in
+`@asym/pdf-renderer`. The completion handoff is recorded in
+`docs/phase-18-completion-notes.md`.
+
+Phase 19 should start from the Phase 18 data table contract, Phase 17 repeater
+engine, Phase 16 conditional
 section engine, Phase 15 variable chip extension, Phase 14 resolver, Phase 13 registry, Phase 12 preview foundation,
 Phase 11 DocRaptor client, Phase 10 print shell and page model, Phase 9
 document serializer foundation, Phase 8 naming compatibility aliases, Phase 7
@@ -82,6 +89,7 @@ Phase 4 editor boundary artifacts:
 - `docs/phase-15-completion-notes.md`
 - `docs/phase-16-completion-notes.md`
 - `docs/phase-17-completion-notes.md`
+- `docs/phase-18-completion-notes.md`
 - `docs/phase-7-completion-notes.md`
 - `docs/phase-6-completion-notes.md`
 - `openspec/changes/build-pdf-document-builder/tasks.md`
@@ -98,8 +106,10 @@ Phase 4 editor boundary artifacts:
 - `packages/pdf-renderer/src/variables.ts`
 - `packages/pdf-renderer/src/conditions.ts`
 - `packages/pdf-renderer/src/repeaters.ts`
+- `packages/pdf-renderer/src/data-table.ts`
 - `packages/pdf-renderer/test/conditional-section.spec.ts`
 - `packages/pdf-renderer/test/repeater-section.spec.ts`
+- `packages/pdf-renderer/test/data-table.spec.ts`
 - `packages/pdf-renderer/test/variable-resolution.spec.ts`
 - `packages/pdf-renderer/src/compose-pdf-document-html.ts`
 - `packages/pdf-renderer/test/compose-pdf-document-html.spec.ts`
@@ -107,24 +117,29 @@ Phase 4 editor boundary artifacts:
 - `packages/pdf-editor/src/extensions/variable`
 - `packages/pdf-editor/src/extensions/conditional-section`
 - `packages/pdf-editor/src/extensions/repeater`
+- `packages/pdf-editor/src/extensions/data-table`
 - `packages/pdf-editor/test/variable-chip-extension.spec.tsx`
 - `packages/pdf-editor/test/conditional-section-extension.spec.tsx`
 - `packages/pdf-editor/test/repeater-extension.spec.tsx`
+- `packages/pdf-editor/test/data-table-extension.spec.tsx`
 - `packages/pdf-editor/test/document-naming-compatibility.spec.tsx`
 - `packages/editor/src/compatibility`
 - `packages/pdf-template-schema`
 - `packages/pdf-template-schema/src/conditions.ts`
 - `packages/pdf-template-schema/src/repeaters.ts`
+- `packages/pdf-template-schema/src/tables.ts`
 - `packages/pdf-template-schema/src/formatters.ts`
 - `packages/pdf-template-schema/src/variable-resolution.ts`
 - `packages/pdf-template-schema/test/variable-resolution.spec.ts`
 - `packages/pdf-template-schema/test/repeater-resolution.spec.ts`
+- `packages/pdf-template-schema/test/table-resolution.spec.ts`
 - `packages/pdf-editor`
 - `packages/pdf-renderer`
 - `packages/docraptor-client`
 - `packages/editor/package.json`
 
-Phase 18 should build the first report-grade data table block on top of the
-Phase 17 scoped repeater behavior. It should not add arbitrary JavaScript,
-DocRaptor production orchestration, totals/subtotals, or batch behavior before
-the later phases that own those contracts.
+Phase 19 should add safe totals, subtotals, grouping, and summary calculation
+contracts on top of the Phase 18 table block. It should preserve Phase 18
+placeholder behavior, structured diagnostics, deterministic ordering,
+schema-validated column widths, and the rule that arbitrary JavaScript is never
+evaluated in template logic.

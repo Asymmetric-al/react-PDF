@@ -218,6 +218,10 @@ describe('Phase 10 composePrintDocumentHtml', () => {
 .pdf-repeater{display:block;}
 .pdf-repeater-empty{display:block;}
 .pdf-repeater-item{display:block;}
+.pdf-data-table{border-collapse:collapse;width:100%;}
+.pdf-data-table-empty{display:block;}
+.pdf-data-table-footer{display:table-footer-group;}
+.pdf-data-table-header{display:table-header-group;}
 .pdf-table{border-collapse:collapse;width:100%;}
 .pdf-variable{white-space:nowrap;}
 @page{size:8.5in 11in;margin:0.5in 0.5in 0.5in 0.5in;}
