@@ -24,7 +24,7 @@ type MockFetch = ((
   readonly calls: FetchCall[];
 };
 
-    const mockCredential = 'phase-21-docraptor-mock-value';
+const mockCredential = 'phase-21-docraptor-mock-value';
 const pdfBytes = new Uint8Array([37, 80, 68, 70, 45, 50, 49]);
 
 describe('Phase 21 data table end-to-end preview fixtures', () => {
