@@ -3,7 +3,7 @@ import {
   docraptorPreviewBoundary,
 } from '@asym/pdf-renderer/docraptor-preview';
 import { describe, expect, it, vi } from 'vitest';
-import { donationReceiptTemplate } from '../../pdf-template-schema/test/fixtures/templates';
+import { donationReceiptTemplate } from './fixtures/templates';
 
 type FetchCall = {
   readonly url: string;
@@ -25,7 +25,7 @@ describe('Phase 12 DocRaptor test PDF preview', () => {
   it('exposes a server-only subpath boundary', () => {
     expect(docraptorPreviewBoundary).toEqual({
       packageName: '@asym/pdf-renderer/docraptor-preview',
-      maturity: 'phase-12-preview',
+      maturity: 'phase-21-data-table-preview-fixtures',
       owns: 'docraptor-test-preview',
       runtime: 'server-only',
       consumes: ['@asym/pdf-template-schema', '@asym/docraptor-client'],

@@ -39,10 +39,10 @@ foundation phase.
   financial data table editor extension.
 - Phase 20 audited, hardened, and formally completed financial data table
   renderer and print markup behavior.
-- Phase 21 is next and will validate the full data table preview flow with
-  deterministic fixtures.
-- Financial calculations now start in Phase 22; Phase 18 table totals remain
-  declarative placeholders until then.
+- Phase 21 added deterministic end-to-end data table preview fixtures across
+  schema, editor, renderer, browser preview, and mocked DocRaptor preview.
+- Phase 22 is next for deterministic financial calculations; Phase 18 table
+  totals remain declarative placeholders until then.
 - DocRaptor is the production PDF rendering target.
 - Puppeteer may be used later only for local preview, debugging, or fallback.
 

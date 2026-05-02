@@ -158,8 +158,8 @@ Markdown/OpenSpec files, but no whitespace errors.
 ## Known Gaps
 
 - At the time of this note, Phase 19 and Phase 20 were not complete. Later
-  completion notes now record Phase 19 editor hardening and Phase 20 renderer
-  hardening.
+  completion notes now record Phase 19 editor hardening, Phase 20 renderer
+  hardening, and Phase 21 end-to-end table preview fixtures.
 - Financial calculations remain unimplemented until Phase 22.
 - Summary blocks and computed table totals remain unimplemented until Phase 23.
 

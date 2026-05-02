@@ -72,6 +72,11 @@ HTML round trip, binding-ID-only references, invalid-binding diagnostics, and
 extension exports. It does not add table inspector UI, renderer behavior,
 calculations, aggregation, or DocRaptor wiring.
 
+Phase 21 adds cross-package fixture coverage that round-trips annual giving
+statement, invoice, and financial report `dataTable` nodes through the editor
+extension before rendering and preview validation. This does not change the
+editor public API or add table inspector UI.
+
 The `react-email-compat` subpath re-exports public `@react-email/editor`
 primitives under explicit `Reference` names. These adapters are temporary and
 exist so future PDF work can depend on a package boundary without duplicating

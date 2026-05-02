@@ -51,8 +51,8 @@
 | 18 | Build Financial Data Table Block | Complete; validation recorded | `packages/pdf-editor/src/extensions/data-table`, `packages/pdf-renderer/src/data-table` |
 | 19 | Build Financial Data Table Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/data-table` |
 | 20 | Build Financial Data Table Renderer and Print Markup | Complete; validation recorded | `packages/pdf-renderer/src/data-table` |
-| 21 | Build Data Table End-to-End Preview Fixtures | Next | table fixtures and preview tests |
-| 22 | Build Calculation Engine for Totals, Subtotals, and Grouping | Not started | calculation contracts and helpers |
+| 21 | Build Data Table End-to-End Preview Fixtures | Complete; validation recorded | table fixtures and preview tests |
+| 22 | Build Calculation Engine for Totals, Subtotals, and Grouping | Next | calculation contracts and helpers |
 | 23 | Build Summary Blocks and Table Total Rendering | Not started | summary blocks and table totals |
 | 24 | Build Form Field, Signature, and QR Placeholder Contracts | Not started | placeholder contracts |
 | 25 | Build Page Break and Keep-Together Controls | Not started | page-flow controls |
@@ -850,23 +850,23 @@ end-to-end fixtures.
 
 ### Tasks
 
-- [ ] Create annual giving statement, invoice, and financial report table
+- [x] Create annual giving statement, invoice, and financial report table
       fixtures.
-- [ ] Validate editor round trip, render output, browser preview, and mocked
+- [x] Validate editor round trip, render output, browser preview, and mocked
       DocRaptor preview.
-- [ ] Propagate structured warnings to preview diagnostics.
-- [ ] Avoid calculation logic and real network calls.
+- [x] Propagate structured warnings to preview diagnostics.
+- [x] Avoid calculation logic and real network calls.
 
 ### Validation
 
-- [ ] Tests cover E2E table fixture preview, no template mutation, warnings
+- [x] Tests cover E2E table fixture preview, no template mutation, warnings
       propagation, deterministic snapshots, and mocked DocRaptor behavior.
-- [ ] Run focused schema, editor, and renderer checks before broader package
+- [x] Run focused schema, editor, and renderer checks before broader package
       validation.
 
 ### Handoff output
 
-- [ ] Fixture catalog and Phase 22 calculation-engine entry notes.
+- [x] Fixture catalog and Phase 22 calculation-engine entry notes.
 
 ## Phase 22: Build Calculation Engine for Totals, Subtotals, and Grouping
 

@@ -1,7 +1,7 @@
 import type { PdfTemplateSchemaBoundary } from '@asym/pdf-template-schema';
 
 export type PdfRendererPackageName = '@asym/pdf-renderer';
-export type PdfRendererMaturity = 'phase-20-financial-data-table-renderer';
+export type PdfRendererMaturity = 'phase-21-data-table-preview-fixtures';
 export type PdfRendererRuntime = 'browser-safe-root-with-server-subpath';
 export type PdfRendererOwnership = 'print-renderer';
 
@@ -15,7 +15,7 @@ export interface PdfRendererBoundary {
 
 export const pdfRendererBoundary: PdfRendererBoundary = {
   packageName: '@asym/pdf-renderer',
-  maturity: 'phase-20-financial-data-table-renderer',
+  maturity: 'phase-21-data-table-preview-fixtures',
   owns: 'print-renderer',
   runtime: 'browser-safe-root-with-server-subpath',
   consumes: ['@asym/pdf-template-schema'],

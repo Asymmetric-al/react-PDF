@@ -18,7 +18,7 @@ import {
 
 export type DocRaptorPreviewPackageName =
   '@asym/pdf-renderer/docraptor-preview';
-export type DocRaptorPreviewMaturity = 'phase-12-preview';
+export type DocRaptorPreviewMaturity = 'phase-21-data-table-preview-fixtures';
 export type DocRaptorPreviewRuntime = 'server-only';
 export type DocRaptorPreviewOwnership = 'docraptor-test-preview';
 
@@ -35,7 +35,7 @@ export interface DocRaptorPreviewBoundary {
 
 export const docraptorPreviewBoundary: DocRaptorPreviewBoundary = {
   packageName: '@asym/pdf-renderer/docraptor-preview',
-  maturity: 'phase-12-preview',
+  maturity: 'phase-21-data-table-preview-fixtures',
   owns: 'docraptor-test-preview',
   runtime: 'server-only',
   consumes: ['@asym/pdf-template-schema', '@asym/docraptor-client'],

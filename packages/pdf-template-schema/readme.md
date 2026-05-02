@@ -22,7 +22,12 @@ Phase 18 adds React-free financial data table bindings and row resolution.
 Table bindings define source paths, stable columns, labels, value types,
 formatter hints, width hints, alignment, repeated header behavior, max-row
 guards, empty-state text, grouping metadata, and totals placeholders. Totals
-remain declarative placeholders in Phase 18; Phase 19 owns calculations.
+remain declarative placeholders; Phase 22 owns calculations.
+
+Phase 21 adds deterministic annual giving statement, invoice, and financial
+report table preview fixtures under `test/fixtures`. These fixtures are
+package test data for schema, editor, renderer, browser preview, and mocked
+DocRaptor preview coverage; they are not public starter templates.
 
 ## Public API Promise
 
@@ -156,7 +161,7 @@ percentages so table output cannot inject arbitrary inline CSS.
 - No arbitrary JavaScript template logic.
 - No substitution of variable nodes into rendered HTML; later renderer,
   preview, and preflight phases decide where resolved values are applied.
-- No totals, subtotals, grouping calculations, or summary blocks; Phase 19
+- No totals, subtotals, grouping calculations, or summary blocks; Phase 22
   owns safe calculations.
 
 ## Maturity

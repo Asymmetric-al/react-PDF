@@ -1,6 +1,7 @@
 import {
   type DocumentTemplateV1,
   DocumentTemplateV1Schema,
+  type VariableDataContext,
 } from '@asym/pdf-template-schema';
 import {
   composePdfDocumentHtml,
@@ -96,6 +97,7 @@ export type PdfPreviewPreflightHook = (
 
 export interface BasePdfPreviewRequest {
   readonly template: unknown;
+  readonly dataContext?: VariableDataContext;
   readonly previewId?: string;
   readonly title?: string;
   readonly preflight?: PdfPreviewPreflightHook;
@@ -199,7 +201,10 @@ export async function preparePdfPreviewDocument(
 
   const template = templateParseResult.data;
   const serializedDocument = composePdfDocumentHtml({
+    dataContext: request.dataContext,
     document: template.content,
+    repeaterBindings: template.repeaterBindings,
+    tableBindings: template.tableBindings,
   });
   const printDocument = composePrintDocumentHtml({
     document: serializedDocument,
