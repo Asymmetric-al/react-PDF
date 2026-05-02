@@ -590,3 +590,26 @@ phase-level choices and tradeoffs found during implementation.
   real donor and financial data outside this package.
 - Constraint: Phase 21 does not calculate totals, subtotals, grouped totals,
   or grand totals. Phase 22 remains the calculation entry point.
+
+## 2026-05-02: Phase 22 Adds Schema-Owned Calculation Primitives
+
+- Decision: Keep calculation primitives in `@asym/pdf-template-schema` as
+  React-free, browser-safe helpers exported from the schema root.
+- Reason: Totals, subtotals, invoice totals, financial net totals, and
+  tax-deductible amounts are data contracts that renderer, preview, future
+  preflight, and future core adapter code can share without importing editor
+  UI or server-only DocRaptor behavior.
+- Decision: Use internal BigInt decimal arithmetic with fixed decimal string
+  output instead of adding a decimal dependency in Phase 22.
+- Reason: The current scope is structured path-based add/subtract, count,
+  average, min/max, grouping, and invoice quantity-rate multiplication. BigInt
+  minor units cover the deterministic precision requirements without adding
+  package weight or a new dependency decision.
+- Decision: Keep calculated values out of rendered table total rows until Phase
+  23.
+- Reason: Phase 22 defines auditable calculation contracts only. Phase 23 owns
+  summary block declarations and table total rendering so display integration
+  stays reviewable.
+- Constraint: Calculations use structured data paths and diagnostics only.
+  They do not evaluate arbitrary JavaScript, execute template expressions,
+  fetch donor or financial data, or expose DocRaptor credentials.

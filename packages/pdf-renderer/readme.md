@@ -14,8 +14,9 @@ for repeated rows.
 Phase 20 formally hardens deterministic data-bound table rendering for
 financial reports, annual statements, invoices, and donation rows. Phase 21
 adds deterministic end-to-end table preview fixtures through browser preview
-and mocked DocRaptor test preview. Total rows are placeholders only; Phase 22
-owns calculations.
+and mocked DocRaptor test preview. Phase 22 adds shared calculation helpers in
+`@asym/pdf-template-schema`, but renderer total rows remain placeholders until
+Phase 23 wires summary and table-total rendering.
 
 DocRaptor remains the production PDF fidelity target. Browser preview is fast
 authoring feedback only and must never be treated as final PDF output.
@@ -176,8 +177,9 @@ empty-state rows, max-row guards, formatter-driven display cells, and
 structured warnings for invalid bindings or unsupported column values.
 
 Phase 20 renders totals placeholders as explicit marker rows but does not
-calculate sums, counts, subtotals, grouped totals, or grand totals. Those safe
-calculation contracts belong to Phase 22.
+calculate sums, counts, subtotals, grouped totals, or grand totals. Phase 22
+adds those safe calculation contracts in `@asym/pdf-template-schema`; Phase 23
+owns rendering them into document output.
 
 ## Phase 21 Table Preview Fixtures
 
@@ -261,7 +263,7 @@ DocRaptor compatibility notes:
 - No tenant storage, auth, queue, or core app imports.
 - No string-replacement merge engine.
 - No arbitrary JavaScript condition execution.
-- No totals, subtotals, grouping calculations, or batch renderer behavior.
+- No rendered summary blocks, table total rows, or batch renderer behavior.
 
 ## Maturity
 

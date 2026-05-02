@@ -1,5 +1,5 @@
 export type PdfTemplateSchemaPackageName = '@asym/pdf-template-schema';
-export type PdfTemplateSchemaMaturity = 'phase-18-financial-data-table';
+export type PdfTemplateSchemaMaturity = 'phase-22-calculation-engine';
 export type PdfTemplateSchemaRuntime = 'shared';
 export type PdfTemplateSchemaOwnership = 'template-schema';
 
@@ -12,7 +12,7 @@ export interface PdfTemplateSchemaBoundary {
 
 export const pdfTemplateSchemaBoundary: PdfTemplateSchemaBoundary = {
   packageName: '@asym/pdf-template-schema',
-  maturity: 'phase-18-financial-data-table',
+  maturity: 'phase-22-calculation-engine',
   owns: 'template-schema',
   runtime: 'shared',
 };
@@ -36,6 +36,35 @@ export {
   type TableTotalBinding,
   TableTotalBindingSchema,
 } from './bindings';
+export {
+  type CalculatedTableGroupTotal,
+  type CalculatedTableTotal,
+  type CalculateFinancialTotalsInput,
+  type CalculateFinancialTotalsResult,
+  type CalculateGroupedTableTotalsInput,
+  type CalculateGroupedTableTotalsResult,
+  type CalculateInvoiceTotalsInput,
+  type CalculateInvoiceTotalsResult,
+  type CalculateNumericAggregateInput,
+  type CalculateNumericAggregateResult,
+  type CalculateTableTotalsInput,
+  type CalculateTableTotalsResult,
+  type CalculateTaxDeductibleAmountInput,
+  type CalculateTaxDeductibleAmountResult,
+  type CalculationDecimalValue,
+  type CalculationDiagnostic,
+  type CalculationDiagnosticCode,
+  type CalculationDiagnosticSeverity,
+  type CalculationOperation,
+  type CalculationPrecision,
+  type CalculationRoundingMode,
+  calculateFinancialTotals,
+  calculateGroupedTableTotals,
+  calculateInvoiceTotals,
+  calculateNumericAggregate,
+  calculateTableTotals,
+  calculateTaxDeductibleAmount,
+} from './calculations';
 export { type TemplateCategory, TemplateCategorySchema } from './categories';
 export {
   type ConditionalEvaluationDiagnostic,

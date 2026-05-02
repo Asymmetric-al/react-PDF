@@ -1,7 +1,7 @@
 # @asym/pdf-template-schema
 
-Phase 18 schema, typed variable registry, variable resolution, conditional
-rule, repeater, and financial data table foundation
+Phase 22 schema, typed variable registry, variable resolution, conditional
+rule, repeater, financial data table, and calculation foundation
 for the Asym PDF Document Builder.
 
 ## Purpose
@@ -22,12 +22,18 @@ Phase 18 adds React-free financial data table bindings and row resolution.
 Table bindings define source paths, stable columns, labels, value types,
 formatter hints, width hints, alignment, repeated header behavior, max-row
 guards, empty-state text, grouping metadata, and totals placeholders. Totals
-remain declarative placeholders; Phase 22 owns calculations.
+remain declarative placeholders until renderer integration in Phase 23.
 
 Phase 21 adds deterministic annual giving statement, invoice, and financial
 report table preview fixtures under `test/fixtures`. These fixtures are
 package test data for schema, editor, renderer, browser preview, and mocked
 DocRaptor preview coverage; they are not public starter templates.
+
+Phase 22 adds React-free deterministic calculation helpers for sums, counts,
+practical averages, min/max, grouped subtotals, invoice subtotal/total,
+income/expense/net, and tax-deductible amount. Calculations operate on
+structured data paths and return structured diagnostics; they do not evaluate
+template JavaScript or render total rows.
 
 ## Public API Promise
 
@@ -76,6 +82,14 @@ TypeScript types are exported together:
 - `ResolvedTableRow`
 - `ResolvedTableCell`
 - `TableResolutionDiagnostic`
+- `calculateNumericAggregate`
+- `calculateTableTotals`
+- `calculateGroupedTableTotals`
+- `calculateInvoiceTotals`
+- `calculateFinancialTotals`
+- `calculateTaxDeductibleAmount`
+- `CalculationDecimalValue`
+- `CalculationDiagnostic`
 - `AssetReferenceSchema` / `AssetReference`
 - `RenderRequestSchema` / `RenderRequest`
 - `RenderResultSchema` / `RenderResult`
@@ -147,6 +161,14 @@ row truncation, and unsupported column values return structured diagnostics
 instead of throwing. Column widths are schema-validated CSS lengths or
 percentages so table output cannot inject arbitrary inline CSS.
 
+Phase 22 calculation helpers use deterministic decimal arithmetic with BigInt
+minor units. The default precision is scale `2` with `half_away_from_zero`
+rounding. Public calculation values expose fixed decimal strings,
+integer-string minor units, scale, and contributing count so callers do not
+depend on floating-point display. No decimal dependency is added because the
+current operations only need path-based add/subtract, min/max, average,
+grouping, and invoice quantity-rate multiplication.
+
 ## Non-goals
 
 - No PDF editor UI.
@@ -161,12 +183,12 @@ percentages so table output cannot inject arbitrary inline CSS.
 - No arbitrary JavaScript template logic.
 - No substitution of variable nodes into rendered HTML; later renderer,
   preview, and preflight phases decide where resolved values are applied.
-- No totals, subtotals, grouping calculations, or summary blocks; Phase 22
-  owns safe calculations.
+- No rendered summary blocks or table total rows; Phase 23 owns rendering
+  calculated values into documents.
 
 ## Maturity
 
-`phase-18-financial-data-table`. The package is private to prevent accidental
+`phase-22-calculation-engine`. The package is private to prevent accidental
 publication while the shared model is still evolving.
 
 ## Development

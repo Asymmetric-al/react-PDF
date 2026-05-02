@@ -881,22 +881,22 @@ financial reports.
 
 ### Tasks
 
-- [ ] Implement structured operations for sum, count, useful averages, min/max
+- [x] Implement structured operations for sum, count, useful averages, min/max
       where useful, group subtotal, invoice subtotal/total, income/expense/net,
       and tax-deductible amount.
-- [ ] Define precision rules and justify any decimal dependency.
-- [ ] Avoid arbitrary JavaScript and hidden expression evaluation.
+- [x] Define precision rules and justify any decimal dependency.
+- [x] Avoid arbitrary JavaScript and hidden expression evaluation.
 
 ### Validation
 
-- [ ] Tests cover donation sums, invoice totals, grouped subtotals,
+- [x] Tests cover donation sums, invoice totals, grouped subtotals,
       income/expense/net, empty arrays, invalid fields, non-number fields, and
       precision behavior.
-- [ ] Run focused schema/renderer checks before broader package validation.
+- [x] Run focused schema/renderer checks before broader package validation.
 
 ### Handoff output
 
-- [ ] Calculation contracts, precision notes, and Phase 23 summary/table-total
+- [x] Calculation contracts, precision notes, and Phase 23 summary/table-total
       handoff notes.
 
 ## Phase 23: Build Summary Blocks and Table Total Rendering

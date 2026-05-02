@@ -1,4 +1,5 @@
 import {
+  calculateNumericAggregate,
   coreVariableDefinitions,
   coreVariableRegistry,
   createVariableResolver,
@@ -18,12 +19,12 @@ import {
 import { describe, expect, it } from 'vitest';
 
 describe('@asym/pdf-template-schema public entry', () => {
-  it('exposes the Phase 13 package boundary', () => {
+  it('exposes the Phase 22 package boundary', () => {
     const boundary: PdfTemplateSchemaBoundary = pdfTemplateSchemaBoundary;
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-template-schema',
-      maturity: 'phase-18-financial-data-table',
+      maturity: 'phase-22-calculation-engine',
       owns: 'template-schema',
       runtime: 'shared',
     });
@@ -43,5 +44,6 @@ describe('@asym/pdf-template-schema public entry', () => {
     expect(evaluateConditionalRule).toBeDefined();
     expect(resolveRepeaterItems).toBeDefined();
     expect(resolveTableRows).toBeDefined();
+    expect(calculateNumericAggregate).toBeDefined();
   });
 });

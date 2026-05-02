@@ -41,8 +41,8 @@ foundation phase.
   renderer and print markup behavior.
 - Phase 21 added deterministic end-to-end data table preview fixtures across
   schema, editor, renderer, browser preview, and mocked DocRaptor preview.
-- Phase 22 is next for deterministic financial calculations; Phase 18 table
-  totals remain declarative placeholders until then.
+- Phase 22 added deterministic financial calculation primitives in the shared
+  schema package. Phase 23 is next for summary blocks and rendered table totals.
 - DocRaptor is the production PDF rendering target.
 - Puppeteer may be used later only for local preview, debugging, or fallback.
 

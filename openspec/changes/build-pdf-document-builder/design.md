@@ -70,8 +70,9 @@ Observed repo facts:
   formally completed the editor table surface, and Phase 20 has formally
   completed the renderer table surface. Phase 21 has completed deterministic
   end-to-end table preview fixtures across schema, editor, renderer, browser
-  preview, and mocked DocRaptor preview; financial calculations now start in
-  Phase 22.
+  preview, and mocked DocRaptor preview. Phase 22 has completed shared
+  deterministic calculation primitives; summary blocks and rendered table
+  totals now start in Phase 23.
 
 The broader Asymmetric.al platform currently uses Unlayer document mode for
 PDF Studio. That platform shape includes or expects template CRUD, Unlayer
@@ -207,8 +208,8 @@ report-grade financial data table block, and Phase 19 owns the completed
 TipTap-facing data table editor extension audit/hardening gate. Phase 20 is
 complete and owns the data table renderer and print markup audit/hardening
 gate. Phase 21 is complete and owns end-to-end data table preview fixtures.
-Phase 22 introduces deterministic
-calculation primitives, and Phase 23 renders summary blocks and table totals.
+Phase 22 is complete and introduced deterministic calculation primitives.
+Phase 23 renders summary blocks and table totals.
 Later phases add form/signature/QR placeholders, page flow, headers/footers,
 assets, branding, fixtures, preflight, render metadata, template
 lifecycle/versioning, batch, async rendering, Playwright local test rendering,
