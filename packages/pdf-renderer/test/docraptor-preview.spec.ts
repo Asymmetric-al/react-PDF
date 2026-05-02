@@ -3,7 +3,7 @@ import {
   docraptorPreviewBoundary,
 } from '@asym/pdf-renderer/docraptor-preview';
 import { describe, expect, it, vi } from 'vitest';
-import { donationReceiptTemplate } from '../../pdf-template-schema/test/fixtures/templates';
+import { donationReceiptTemplate } from './fixtures/templates';
 
 type FetchCall = {
   readonly url: string;

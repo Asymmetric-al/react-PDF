@@ -9,7 +9,7 @@ import {
   annualGivingStatementTablePreviewFixture,
   invoiceTablePreviewFixture,
   tablePreviewFixtures,
-} from '../../pdf-template-schema/test/fixtures/table-preview-fixtures';
+} from './fixtures/table-preview-fixtures';
 
 type FetchCall = {
   readonly url: string;
