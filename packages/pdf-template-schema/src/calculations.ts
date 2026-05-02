@@ -349,8 +349,6 @@ export function calculateGroupedTableTotals(
       valuePath: input.valuePath,
     });
 
-    diagnostics.push(...aggregate.diagnostics);
-
     return {
       diagnostics: aggregate.diagnostics,
       key: groupKey,
@@ -948,8 +946,12 @@ function parseDecimalValue(
   }
 
   const source = String(value).trim();
-  const expandedSource = expandExponentialDecimal(source);
-  const match = /^([+-])?(\d+)(?:\.(\d+))?$/.exec(expandedSource);
+
+  if (/[eE]/.test(source)) {
+    return undefined;
+  }
+
+  const match = /^([+-])?(\d+)(?:\.(\d+))?$/.exec(source);
 
   if (!match) {
     return undefined;
@@ -973,20 +975,6 @@ function parseDecimalValue(
     minorUnits,
     scale: precision.scale,
   };
-}
-
-function expandExponentialDecimal(source: string): string {
-  if (!/[eE]/.test(source)) {
-    return source;
-  }
-
-  const numericValue = Number(source);
-
-  if (!Number.isFinite(numericValue)) {
-    return source;
-  }
-
-  return numericValue.toFixed(20).replace(/\.?0+$/, '');
 }
 
 function multiplyDecimalValues(

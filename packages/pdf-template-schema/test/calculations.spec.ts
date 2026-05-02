@@ -105,6 +105,48 @@ describe('Phase 22 deterministic calculation engine', () => {
     expect(result.grandTotal.decimal).toBe('1125.00');
   });
 
+  it('keeps grouped aggregate diagnostics out of the outer diagnostics list', () => {
+    const result = calculateGroupedTableTotals({
+      context: {
+        rows: [
+          { amount: '10.00', fund: 'Operating' },
+          { amount: 'not a number', fund: 'Operating' },
+          { fund: 'Outreach' },
+        ],
+      },
+      groupPath: 'fund',
+      sourcePath: 'rows',
+      valuePath: 'amount',
+    });
+
+    expect(result.groups).toHaveLength(2);
+    expect(result.groups[0]?.diagnostics).toEqual([
+      expect.objectContaining({
+        code: 'non_numeric_calculation_value',
+        fieldPath: 'amount',
+        sourceIndex: 1,
+      }),
+    ]);
+    expect(result.groups[1]?.diagnostics).toEqual([
+      expect.objectContaining({
+        code: 'missing_calculation_field',
+        fieldPath: 'amount',
+      }),
+    ]);
+    expect(result.diagnostics).toEqual([
+      expect.objectContaining({
+        code: 'non_numeric_calculation_value',
+        fieldPath: 'amount',
+        sourceIndex: 1,
+      }),
+      expect.objectContaining({
+        code: 'missing_calculation_field',
+        fieldPath: 'amount',
+        sourceIndex: 2,
+      }),
+    ]);
+  });
+
   it('calculates income, expense, and net financial totals', () => {
     const result = calculateFinancialTotals({
       amountPath: 'amount',
@@ -248,6 +290,30 @@ describe('Phase 22 deterministic calculation engine', () => {
     });
     expect(positiveRound.value?.decimal).toBe('1.01');
     expect(negativeRound.value?.decimal).toBe('-1.01');
+  });
+
+  it('rejects exponential notation instead of parsing through floating point', () => {
+    const result = calculateNumericAggregate({
+      context: {
+        rows: [{ amount: '1.23456789012345678901e2' }, { amount: '1.00' }],
+      },
+      operation: 'sum',
+      sourcePath: 'rows',
+      valuePath: 'amount',
+    });
+
+    expect(result.value).toMatchObject({
+      count: 1,
+      decimal: '1.00',
+      minorUnits: '100',
+    });
+    expect(result.diagnostics).toEqual([
+      expect.objectContaining({
+        code: 'non_numeric_calculation_value',
+        fieldPath: 'amount',
+        sourceIndex: 0,
+      }),
+    ]);
   });
 
   it('calculates tax-deductible amounts with a zero floor', () => {
