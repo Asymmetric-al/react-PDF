@@ -1,6 +1,6 @@
 # @asym/pdf-renderer
 
-Phase 20 preview, variable resolution, conditional rendering, repeater, and financial data table renderer foundation for the Asym PDF Document
+Phase 21 preview, variable resolution, conditional rendering, repeater, and financial data table renderer foundation for the Asym PDF Document
 Builder print renderer.
 
 ## Purpose
@@ -12,8 +12,10 @@ conditional section rendering, and renderer fixtures.
 Phase 17 also owns structured repeater rendering and scoped variable metadata
 for repeated rows.
 Phase 20 formally hardens deterministic data-bound table rendering for
-financial reports, annual statements, invoices, and donation rows. Total rows
-are placeholders only; Phase 22 owns calculations.
+financial reports, annual statements, invoices, and donation rows. Phase 21
+adds deterministic end-to-end table preview fixtures through browser preview
+and mocked DocRaptor test preview. Total rows are placeholders only; Phase 22
+owns calculations.
 
 DocRaptor remains the production PDF fidelity target. Browser preview is fast
 authoring feedback only and must never be treated as final PDF output.
@@ -83,6 +85,7 @@ generated HTML/CSS snapshots plus structured diagnostics.
 import { createBrowserPdfPreview } from '@asym/pdf-renderer';
 
 const preview = await createBrowserPdfPreview({
+  dataContext: sampleData,
   template,
   preflight: async () => [
     {
@@ -105,8 +108,9 @@ Browser preview metadata always reports:
 - `productionRender: false`
 - `docraptorTestMode: false`
 
-The browser path does not mutate the caller's template object and does not
-fetch real donor or financial data in Phase 12.
+The browser path does not mutate the caller's template object. Phase 21 passes
+caller-provided sample data into the serializer for deterministic fixture
+preview, but it does not fetch real donor or financial data.
 
 ## Phase 14 Variable Resolution
 
@@ -174,6 +178,16 @@ structured warnings for invalid bindings or unsupported column values.
 Phase 20 renders totals placeholders as explicit marker rows but does not
 calculate sums, counts, subtotals, grouped totals, or grand totals. Those safe
 calculation contracts belong to Phase 22.
+
+## Phase 21 Table Preview Fixtures
+
+`createBrowserPdfPreview` and `createDocRaptorTestPdfPreview` now share the
+same fixture-friendly data path: parsed template table/repeater bindings plus
+caller-provided `dataContext` are passed to `composePdfDocumentHtml`. This
+allows annual giving statement, invoice, and financial report table fixtures to
+validate schema, editor round trips, renderer output, browser preview, warning
+diagnostics, and mocked DocRaptor preview without real network calls or
+calculation logic.
 
 ## DocRaptor Test Preview
 
@@ -251,7 +265,7 @@ DocRaptor compatibility notes:
 
 ## Maturity
 
-`phase-20-financial-data-table-renderer`. The package remains private to prevent accidental
+`phase-21-data-table-preview-fixtures`. The package remains private to prevent accidental
 publication while renderer contracts are still being built.
 
 ## Development

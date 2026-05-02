@@ -26,8 +26,8 @@ that list with current phase status for handoff visibility.
 | 18 | Build Financial Data Table Block | Complete; validation recorded | Financial table node and renderer support |
 | 19 | Build Financial Data Table Editor Extension | Complete; validation recorded | Data table editor extension hardening |
 | 20 | Build Financial Data Table Renderer and Print Markup | Complete; validation recorded | Data table renderer hardening |
-| 21 | Build Data Table End-to-End Preview Fixtures | Next | Table fixture preview flow |
-| 22 | Build Calculation Engine for Totals, Subtotals, and Grouping | Not started | Calculation contracts and helpers |
+| 21 | Build Data Table End-to-End Preview Fixtures | Complete; validation recorded | Table fixture preview flow |
+| 22 | Build Calculation Engine for Totals, Subtotals, and Grouping | Next | Calculation contracts and helpers |
 | 23 | Build Summary Blocks and Table Total Rendering | Not started | Summary blocks and table totals |
 | 24 | Build Form Field, Signature, and QR Placeholder Contracts | Not started | Placeholder contracts |
 | 25 | Build Page Break and Keep-Together Controls | Not started | Page-flow controls and print CSS |
@@ -54,9 +54,9 @@ that list with current phase status for handoff visibility.
 | 46 | `Asymmetric-al/core` Cutover Playbook and Integration PR Plan | Not started | Core cutover playbook |
 | 47 | Production Hardening, Launch Readiness, and Final Package Sign-Off | Not started | Final package readiness report |
 
-## Phase 21 Entry Point
+## Phase 22 Entry Point
 
-Phase 18 is complete. Phase 17 added structured repeater resolution in
+Phase 21 is complete. Phase 17 added structured repeater resolution in
 `@asym/pdf-template-schema`, repeater rendering and scoped variable metadata in
 `@asym/pdf-renderer`, and a protected repeater section TipTap node in
 `@asym/pdf-editor`. The completion handoff is recorded in
@@ -163,6 +163,11 @@ Totals, subtotals, grouping calculations, and summary rendering now start in
 Phases 22 and 23. Until then, table totals remain declarative placeholders and
 arbitrary JavaScript must never be evaluated in template logic.
 
-Phase 21 should connect the table schema, editor node, renderer, browser
-preview, and mocked DocRaptor preview into deterministic end-to-end fixtures
-without adding calculation behavior or real network calls.
+Phase 21 connected the table schema, editor node, renderer, browser preview,
+and mocked DocRaptor preview into deterministic end-to-end fixtures without
+adding calculation behavior or real network calls. Its completion handoff is
+recorded in `docs/phase-21-completion-notes.md`.
+
+Phase 22 should build deterministic calculation primitives for totals,
+subtotals, and grouping on top of the Phase 21 fixtures while preserving the
+same no-arbitrary-JavaScript and deterministic-output constraints.

@@ -573,3 +573,20 @@ phase-level choices and tradeoffs found during implementation.
   behavior to `@asym/pdf-template-schema`.
 - Constraint: Phase 20 changes renderer behavior, tests, docs, and OpenSpec
   state only. Phase 21 owns end-to-end table preview fixtures.
+
+## 2026-05-02: Phase 21 Uses Deterministic Table Preview Fixtures
+
+- Decision: Phase 21 keeps annual giving statement, invoice, and financial
+  report table fixtures as package test data under
+  `packages/pdf-template-schema/test/fixtures`, not as public starter
+  templates.
+- Reason: The phase needed end-to-end schema, editor, renderer, browser
+  preview, and mocked DocRaptor coverage without making starter-template API
+  promises before the later fixture and docs phases.
+- Decision: Preview requests now accept caller-supplied sample `dataContext`
+  and pass template repeater/table bindings into the shared serializer path.
+- Reason: Browser preview and DocRaptor test preview should exercise the same
+  deterministic table row resolution as direct renderer tests while keeping
+  real donor and financial data outside this package.
+- Constraint: Phase 21 does not calculate totals, subtotals, grouped totals,
+  or grand totals. Phase 22 remains the calculation entry point.

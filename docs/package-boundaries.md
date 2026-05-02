@@ -14,7 +14,7 @@ DocRaptor test preview behind a server-only renderer subpath.
 | Package | Runtime | Owns | Current maturity |
 |---|---|---|---|
 | `@asym/pdf-template-schema` | shared | Template schema, document domain types, variables, page settings, assets, render metadata, batch metadata, and audit-oriented model types | `phase-6-schema-foundation` |
-| `@asym/pdf-renderer` | browser-safe root with server-only DocRaptor preview subpath | Document serialization, deterministic print HTML, paged-media CSS, preview diagnostics, browser preview, DocRaptor test preview orchestration, and renderer fixtures | `phase-12-preview` |
+| `@asym/pdf-renderer` | browser-safe root with server-only DocRaptor preview subpath | Document serialization, deterministic print HTML, paged-media CSS, preview diagnostics, browser preview, DocRaptor test preview orchestration, and renderer fixtures | `phase-21-data-table-preview-fixtures` |
 | `@asym/docraptor-client` | server only | DocRaptor API client, sync and async render calls, status polling, test mode, timeouts, abort signals, and error normalization | `phase-11-client` |
 | `@asym/pdf-editor` | browser React | Future PDF editor shell, TipTap extensions, document UI, slash commands, inspector controls, and compatibility shims | `phase-3-boundary` |
 | `@asym/pdf-studio-adapter` | future app adapter | Future `Asymmetric-al/core` integration boundary for storage, permissions, assets, audit, feature flags, and render jobs | not created in Phase 3 |

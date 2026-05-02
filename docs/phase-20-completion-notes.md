@@ -116,8 +116,8 @@ expectation. The minimal implementation then made the focused specs pass.
 
 ## Known Gaps
 
-- Phase 21 still needs end-to-end table preview fixtures across schema, editor,
-  renderer, browser preview, and mocked DocRaptor preview.
+- Phase 21 has now completed end-to-end table preview fixtures across schema,
+  editor, renderer, browser preview, and mocked DocRaptor preview.
 - Calculations, subtotals, grouping computation, summary blocks, and table
   total rendering remain deferred to Phases 22 and 23.
 - No table inspector UI, slash command wiring, DocRaptor orchestration, tenant
@@ -134,9 +134,16 @@ roadmap, decision log, OpenSpec task, and completion-note updates listed above.
 After rollback, rerun the focused `@asym/pdf-renderer` tests, package build,
 export smoke, OpenSpec validation, lint, and `git diff --check`.
 
-## Phase 21 Entry Point
+## Original Phase 21 Entry Point
 
-Phase 21 should create deterministic table preview fixtures that connect the
-table schema, Phase 19 editor node, Phase 20 renderer markup, browser preview,
-and mocked DocRaptor preview. It should avoid real network calls and continue
-to leave calculations to Phase 22.
+Phase 21 was expected to create deterministic table preview fixtures that
+connect the table schema, Phase 19 editor node, Phase 20 renderer markup,
+browser preview, and mocked DocRaptor preview. It should avoid real network
+calls and continue to leave calculations to Phase 22.
+
+## Phase 21 Completion Addendum
+
+Phase 21 has now completed the deterministic table preview fixture handoff.
+The completion notes are recorded in `docs/phase-21-completion-notes.md`.
+Phase 22 is the next entry point for deterministic totals, subtotals, and
+grouping calculations.

@@ -125,6 +125,7 @@ states, row limit diagnostics, missing/non-array source diagnostics, formatter
 display coverage, deterministic renderer snapshots, and continued deferral of
 financial calculations.
 
-Phase 21 should connect the table schema, editor node, renderer, browser
+Phase 21 has now connected the table schema, editor node, renderer, browser
 preview, and mocked DocRaptor preview into deterministic end-to-end fixtures
-without adding calculation behavior or real network calls.
+without adding calculation behavior or real network calls. Its completion
+handoff is recorded in `docs/phase-21-completion-notes.md`.

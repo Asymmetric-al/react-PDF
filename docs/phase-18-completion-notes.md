@@ -152,8 +152,9 @@ the split roadmap. The Phase 19 handoff is recorded in
 
 Phase 20 has now completed the renderer-facing gate for semantic table markup,
 repeated headers, empty states, row limit warnings, deterministic diagnostics,
-and continued deferral of financial calculations. Phase 21 is next for
-end-to-end data table preview fixtures.
+and continued deferral of financial calculations. Phase 21 has now completed
+end-to-end data table preview fixtures, recorded in
+`docs/phase-21-completion-notes.md`.
 
 ## Known Gaps
 
