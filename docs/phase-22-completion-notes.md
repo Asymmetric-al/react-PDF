@@ -22,6 +22,11 @@
   expressions, data fetching, or DocRaptor behavior was added.
 - Used internal BigInt decimal arithmetic with default scale `2` and
   `half_away_from_zero` rounding. No decimal dependency was added.
+- Preserved original source-array indexes in grouped-total diagnostics so
+  future editor, preflight, audit, and `Asymmetric-al/core` adapter surfaces can
+  point back to the correct source row.
+- Scoped grouped grand totals to rows with valid group keys so rendered
+  grouped subtotals and grand totals reconcile in Phase 23.
 - Kept renderer table output unchanged; Phase 23 owns summary block and table
   total rendering.
 - Replaced BigInt literal/exponent syntax with `BigInt(...)` and a looped scale
@@ -54,6 +59,8 @@ Tests were added before implementation:
 The focused red run failed for the expected missing calculation exports and
 Phase 22 maturity metadata. The implementation then added the smallest
 schema-only calculation engine and public export update needed to pass.
+Follow-up red runs covered grouped diagnostic source indexes and grouped grand
+total reconciliation before the review fixes were applied.
 
 ## Validation Summary
 

@@ -131,6 +131,7 @@ describe('Phase 22 deterministic calculation engine', () => {
       expect.objectContaining({
         code: 'missing_calculation_field',
         fieldPath: 'amount',
+        sourceIndex: 2,
       }),
     ]);
     expect(result.diagnostics).toEqual([
@@ -141,6 +142,53 @@ describe('Phase 22 deterministic calculation engine', () => {
       }),
       expect.objectContaining({
         code: 'missing_calculation_field',
+        fieldPath: 'amount',
+        sourceIndex: 2,
+      }),
+    ]);
+  });
+
+  it('keeps grouped grand totals aligned with grouped rows', () => {
+    const result = calculateGroupedTableTotals({
+      context: {
+        rows: [
+          { amount: '10.00', fund: 'Operating' },
+          { amount: '15.00' },
+          { amount: 'not a number', fund: 'Outreach' },
+        ],
+      },
+      groupPath: 'fund',
+      sourcePath: 'rows',
+      valuePath: 'amount',
+    });
+
+    expect(result.groups).toHaveLength(2);
+    expect(result.groups[0]?.total).toMatchObject({
+      count: 1,
+      decimal: '10.00',
+    });
+    expect(result.groups[1]?.total).toMatchObject({
+      count: 0,
+      decimal: '0.00',
+    });
+    expect(result.groups[1]?.diagnostics).toEqual([
+      expect.objectContaining({
+        code: 'non_numeric_calculation_value',
+        sourceIndex: 2,
+      }),
+    ]);
+    expect(result.grandTotal).toMatchObject({
+      count: 1,
+      decimal: '10.00',
+    });
+    expect(result.diagnostics).toEqual([
+      expect.objectContaining({
+        code: 'missing_calculation_field',
+        fieldPath: 'fund',
+        sourceIndex: 1,
+      }),
+      expect.objectContaining({
+        code: 'non_numeric_calculation_value',
         fieldPath: 'amount',
         sourceIndex: 2,
       }),

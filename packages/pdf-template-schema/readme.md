@@ -168,6 +168,8 @@ integer-string minor units, scale, and contributing count so callers do not
 depend on floating-point display. No decimal dependency is added because the
 current operations only need path-based add/subtract, min/max, average,
 grouping, and invoice quantity-rate multiplication.
+Grouped calculations preserve original source-array indexes in diagnostics and
+keep grand totals aligned with rows that have valid group keys.
 
 ## Non-goals
 

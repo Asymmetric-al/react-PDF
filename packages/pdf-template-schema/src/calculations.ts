@@ -306,8 +306,13 @@ export function calculateGroupedTableTotals(
     sourcePath: input.sourcePath,
   });
   const diagnostics: CalculationDiagnostic[] = [...rowsResult.diagnostics];
-  const groups = new Map<string, unknown[]>();
+  const groups = new Map<
+    string,
+    { readonly rows: unknown[]; readonly sourceIndexes: number[] }
+  >();
   const groupOrder: string[] = [];
+  const groupedRows: unknown[] = [];
+  const groupedSourceIndexes: number[] = [];
 
   rowsResult.rows.forEach((row, sourceIndex) => {
     const lookup = getValueAtDataPath(
@@ -332,20 +337,26 @@ export function calculateGroupedTableTotals(
     const groupKey = String(lookup.value);
 
     if (!groups.has(groupKey)) {
-      groups.set(groupKey, []);
+      groups.set(groupKey, { rows: [], sourceIndexes: [] });
       groupOrder.push(groupKey);
     }
 
-    groups.get(groupKey)?.push(row);
+    const group = groups.get(groupKey);
+    group?.rows.push(row);
+    group?.sourceIndexes.push(sourceIndex);
+    groupedRows.push(row);
+    groupedSourceIndexes.push(sourceIndex);
   });
 
   const calculatedGroups = groupOrder.map((groupKey) => {
-    const rows = groups.get(groupKey) ?? [];
+    const group = groups.get(groupKey);
+    const rows = group?.rows ?? [];
     const aggregate = calculateRowsAggregate({
       operation: 'sum',
       precision,
       rows,
       sourcePath: input.sourcePath,
+      sourceIndexes: group?.sourceIndexes,
       valuePath: input.valuePath,
     });
 
@@ -360,8 +371,9 @@ export function calculateGroupedTableTotals(
   const grandAggregate = calculateRowsAggregate({
     operation: 'sum',
     precision,
-    rows: rowsResult.rows,
+    rows: groupedRows,
     sourcePath: input.sourcePath,
+    sourceIndexes: groupedSourceIndexes,
     valuePath: input.valuePath,
   });
 
@@ -576,6 +588,7 @@ export function calculateTaxDeductibleAmount(
 function calculateRowsAggregate(input: {
   readonly rows: readonly unknown[];
   readonly sourcePath: string;
+  readonly sourceIndexes?: readonly number[];
   readonly valuePath?: string;
   readonly operation: CalculationOperation;
   readonly precision: NormalizedPrecision;
@@ -616,7 +629,8 @@ function calculateRowsAggregate(input: {
     };
   }
 
-  const values = input.rows.flatMap((row, sourceIndex) => {
+  const values = input.rows.flatMap((row, rowIndex) => {
+    const sourceIndex = input.sourceIndexes?.[rowIndex] ?? rowIndex;
     const value = resolveRowDecimalValue({
       diagnostics,
       fieldPath: input.valuePath ?? '',

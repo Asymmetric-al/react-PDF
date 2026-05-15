@@ -610,6 +610,12 @@ phase-level choices and tradeoffs found during implementation.
 - Reason: Phase 22 defines auditable calculation contracts only. Phase 23 owns
   summary block declarations and table total rendering so display integration
   stays reviewable.
+- Decision: Grouped calculation diagnostics report source-array indexes, and
+  grouped grand totals include only rows with valid group keys.
+- Reason: Future editor, preflight, audit, renderer, and
+  `Asymmetric-al/core` adapter surfaces need row diagnostics that point to the
+  original tenant data, and financial group subtotals must reconcile with the
+  displayed grand total.
 - Constraint: Calculations use structured data paths and diagnostics only.
   They do not evaluate arbitrary JavaScript, execute template expressions,
   fetch donor or financial data, or expose DocRaptor credentials.
