@@ -108,10 +108,12 @@ This change adds six OpenSpec spec areas:
 The rollout should proceed through the canonical 47-phase tracker in
 `openspec/changes/build-pdf-document-builder/tasks.md`:
 
-Current checkpoint: Phase 21 has completed deterministic end-to-end data table
-preview fixtures across schema, editor, renderer, browser preview, and mocked
-DocRaptor preview. Phase 22 is next for deterministic calculation primitives.
-Financial calculations remained deferred throughout Phase 21.
+Current checkpoint: Phase 22 has completed deterministic calculation
+primitives in the shared schema package for totals, subtotals, grouping,
+invoice totals, income/expense/net, and tax-deductible amounts. Phase 23 is
+next for summary blocks and rendered table total rows. Financial calculations
+remain structured helpers only; arbitrary JavaScript expressions are not
+evaluated.
 
 1. Document the product intent in OpenSpec.
 2. Preserve the current React Email baseline.
