@@ -296,7 +296,7 @@
   "liveProviderCalls": false,
   "materialLimits": [
     "Historical 47phase product roadmap remains historical intent. This change maintains already-consumed functionality only.",
-    "Versioned artifacts must be generated from committed, clean qualified source and independently reproduced before Core ingestion.",
+    "The five versioned artifacts are built from clean committed source cc171a and independently reproduced; Core ingestion and downstream qualification remain required.",
     "Owner current-head CI/review/merge and full Core install/browser/provider qualification remain required."
   ],
   "docsIndependentReview": {
@@ -305,7 +305,7 @@
     "qualificationLimit": "Earlier check locka2e853 is historical. Final gates must bind current lock and source; exact JSON/YAML/Markdown/code preservation independently checked."
   },
   "currentLockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
-  "historicalCheckpointLimit": "Earlier lock checks remain dated evidence. finalLocalChecks and security.finalAudit bind the current ac608b lock after Rolldown and PostCSS peer updates. Independent committed-source cold reproduction, owner current-head CI/review/merge and downstream Core qualification remain open.",
+  "historicalCheckpointLimit": "Earlier lock checks remain dated evidence. finalLocalChecks/security.finalAudit bind ac608b; artifact-release.json binds clean committed source cc171a and two independent reproduced checkouts. Final owner PR head CI/review/merge and downstream Core qualification remain required.",
   "priorQualifiedLocalChecks": {
     "final-frozen": {
       "path": "/tmp/core-modernization-pdf-final-frozen-proof.json",
@@ -607,5 +607,24 @@
       ]
     },
     "result": "Source-only whole-project in-memory schema declarations preserve public syntax except unique member/union order and retain identical runtime JS/maps. Three forced build/pack rounds and byte/mode/link source guards pass. Independent clean committed-source reproduction remains required."
+  },
+  "committedSourceReproduction": {
+    "sourceCommit": "cc171a147b8deef364bac8b5b70bb70410766f4f",
+    "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+    "independentRoots": 2,
+    "roundsPerRoot": 3,
+    "allFiveArtifactHashesMatch": true,
+    "gitStatusClean": true,
+    "record": "artifact-release.json",
+    "sourceCi": {
+      "path": "/tmp/core-modernization-pdf-pr25-cc171a-qualified-ci.json",
+      "sha256": "20895b7ba8e2fc26b33da50e53c5c5930b2e8fa1e2e5d4eb64bb7938d9319ccb",
+      "checks": 7,
+      "allPassed": true
+    },
+    "builderReview": {
+      "path": "/tmp/core-modernization-pdf-final-builder-refresh-review.json",
+      "sha256": "c5c0f73155a034fd75420d30f8cea96098d848210ee78ec438d1f1a81a491c04"
+    }
   }
 }

@@ -26,7 +26,7 @@
     "@rolldown/binding-win32-x64-msvc@1.2.15",
     "@oxc-project/types@0.155.0"
   ],
-  "qualification": "Local frozen installation, all five package gates, upstream editor regressions, real browser/retained printing and three-round reproduction pass at lock ac608b. Owner committed-source cold reproduction/CI/review/merge and Core ingestion remain required.",
+  "qualification": "Local checks, two independent clean committed-source checkouts and three matching artifact rounds in each pass at lock ac608b/source cc171a. All seven source-head CI checks passed. artifact-release.json records immutable hashes and qualification. Final owner PR-head CI/review/merge and Core ingestion/deployment remain required.",
   "postcssSecurityCorrection": {
     "previous": "8.5.10",
     "selected": "8.5.31",

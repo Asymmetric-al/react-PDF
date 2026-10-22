@@ -7,9 +7,9 @@
 - [x] Add failing regression checks against those independently shipped contracts.
 - [x] Restore implementation, erased types and export entries with complete provenance.
 - [x] Prove restored-source baseline exports, schemas, calculations and document rendering.
-- [ ] Refresh and qualify supported dependency/build/browser versions as a coordinated cohort.
-- [ ] Preserve existing upstream workspace tests and public package boundaries.
-- [ ] Run browser, print, mocked-provider, security and clean-install qualification.
+- [x] Refresh and qualify supported dependency/build/browser versions as a coordinated cohort.
+- [x] Preserve existing upstream workspace tests and public package boundaries.
+- [x] Run browser, print, mocked-provider, security and clean-install qualification.
 - [ ] Build immutable versioned artifacts from committed source and import them into Core.
 - [ ] Verify clean Core installation without compatibility aliases/repairs and unchanged rollout.
 - [ ] Complete independent review, owner PR/CI reconciliation, release notes and final readback.

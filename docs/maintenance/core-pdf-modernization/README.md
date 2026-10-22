@@ -2,8 +2,9 @@
 
 The restored five-package cohort is versioned at `0.1.0`. Local installation,
 package builds, native TypeScript checks, unit tests, real Chromium editor and
-retained document print contracts pass. Owner PR/CI, final source reproduction,
-versioned artifact ingestion and Core deployment qualification remain open.
+retained document print contracts pass. Two independent clean checkouts reproduce
+all five artifact bytes across three rounds each. Owner final-head CI/review/merge,
+Core artifact ingestion and deployment qualification remain open.
 The existing native-builder rollout setting stays disabled.
 
 Use Node 24.22.1 and the exact pnpm 12.14.0 release recorded with integrity in
@@ -60,9 +61,10 @@ see [bundler-release-refresh.json](bundler-release-refresh.json).
 The full owner workspace still has advisories in untouched legacy applications;
 this maintenance result does not qualify that separate graph or downstream Core.
 The [active maintenance change](../../../openspec/changes/restore-core-pdf-packages/proposal.md)
-limits work to Core's consumed functionality. Final committed-source artifact
-reproduction, owner review/CI, Core ingestion, clean installation and deployed
-checks remain required.
+limits work to Core's consumed functionality. [artifact-release.json](artifact-release.json) binds the clean committed source,
+independent reproduction, exact artifact hashes and passing source CI. Owner
+final-head review/CI/merge, Core ingestion and downstream deployed checks remain
+required.
 
 ## Reproducible declaration builds
 
