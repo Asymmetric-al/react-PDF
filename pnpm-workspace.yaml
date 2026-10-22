@@ -30,7 +30,7 @@ catalog:
   next: 16.2.3
   nypm: 0.6.5
   ora: ^8.0.0
-  postcss: 8.5.10
+  postcss: 8.5.31
   prism-react-renderer: 2.4.1
   react: 19.3.1
   react-dom: 19.3.1
@@ -99,4 +99,21 @@ minimumReleaseAgeExclude:
   - "@biomejs/cli-win32-arm64@2.6.2"
   - "@biomejs/cli-win32-x64@2.6.2"
   - vite@8.3.5
+  - "rolldown@1.2.15"
+  - "@rolldown/binding-android-arm-eabi@1.2.15"
+  - "@rolldown/binding-android-arm64@1.2.15"
+  - "@rolldown/binding-darwin-arm64@1.2.15"
+  - "@rolldown/binding-darwin-x64@1.2.15"
+  - "@rolldown/binding-freebsd-x64@1.2.15"
+  - "@rolldown/binding-linux-arm-gnueabihf@1.2.15"
+  - "@rolldown/binding-linux-arm64-gnu@1.2.15"
+  - "@rolldown/binding-linux-arm64-musl@1.2.15"
+  - "@rolldown/binding-linux-ppc64-gnu@1.2.15"
+  - "@rolldown/binding-linux-s390x-gnu@1.2.15"
+  - "@rolldown/binding-linux-x64-gnu@1.2.15"
+  - "@rolldown/binding-linux-x64-musl@1.2.15"
+  - "@rolldown/binding-openharmony-arm64@1.2.15"
+  - "@rolldown/binding-win32-arm64-msvc@1.2.15"
+  - "@rolldown/binding-win32-x64-msvc@1.2.15"
+  - "@oxc-project/types@0.155.0"
 minimumReleaseAgeStrict: true

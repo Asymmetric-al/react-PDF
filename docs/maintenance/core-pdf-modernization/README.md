@@ -14,7 +14,8 @@ Chromium is installed with `pnpm --filter @asym/pdf-editor exec playwright insta
 These are maintenance checks; they make no live DocRaptor calls.
 
 The current cohort uses React 19.3.1, React Email 6.11.3, its public editor 1.7.14,
-Tiptap 3.32.0 and Zod 4.6.7. Product typechecks use TypeScript 7.0.2. The current
+Tiptap 3.32.0 and Zod 4.6.7. Builds use tsdown 0.23.1, Rolldown 1.2.15
+and PostCSS 8.5.31. Product typechecks use TypeScript 7.0.2. The current
 declaration builder needs the supported TypeScript 6.0.3 JavaScript AST API;
 explicit ownership, physical-identity tests and its recheck condition are in
 [dependency-qualification.json](dependency-qualification.json).
@@ -52,7 +53,10 @@ other network requests fail the check. Chromium is not Prince/DocRaptor page
 counter or production-fidelity qualification. Live provider boundaries remain
 mocked, and Core still owns authentication, tenant context and authorization.
 
-The fresh audit has zero production advisories on consumed package paths.
+Fresh full and production audits have zero advisories on the five consumed
+package paths, including their build tools. The shared PostCSS catalog and editor
+development peer seed now resolve the patched version throughout that graph;
+see [bundler-release-refresh.json](bundler-release-refresh.json).
 The full owner workspace still has advisories in untouched legacy applications;
 this maintenance result does not qualify that separate graph or downstream Core.
 The [active maintenance change](../../../openspec/changes/restore-core-pdf-packages/proposal.md)

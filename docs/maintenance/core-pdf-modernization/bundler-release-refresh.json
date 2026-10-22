@@ -1,0 +1,154 @@
+{
+  "checkedAt": "2026-10-22T09:32:36.803558+00:00",
+  "version": "1.2.15",
+  "previous": "1.2.14",
+  "upstream": "https://github.com/rolldown/rolldown/releases/tag/v1.2.15",
+  "commit": "89d821c",
+  "registry": "https://registry.npmjs.org/rolldown/1.2.15",
+  "registryIntegrity": "sha512-6odND+fel5zVw3I4Yc2e69gvguDnX0CAAGiNDZSq4ik5WUcaLrkD2GLuog0XcODbor31hZ5ayEMgVDno+KPV5g==",
+  "reason": "Current supported patch, released 2026-10-21; exact release/platform exceptions preserve the default age policy while the coordinated cohort is explicitly qualified. No wildcard or lifecycle-script approval.",
+  "exactEarlyReleasePackages": [
+    "rolldown@1.2.15",
+    "@rolldown/binding-android-arm-eabi@1.2.15",
+    "@rolldown/binding-android-arm64@1.2.15",
+    "@rolldown/binding-darwin-arm64@1.2.15",
+    "@rolldown/binding-darwin-x64@1.2.15",
+    "@rolldown/binding-freebsd-x64@1.2.15",
+    "@rolldown/binding-linux-arm-gnueabihf@1.2.15",
+    "@rolldown/binding-linux-arm64-gnu@1.2.15",
+    "@rolldown/binding-linux-arm64-musl@1.2.15",
+    "@rolldown/binding-linux-ppc64-gnu@1.2.15",
+    "@rolldown/binding-linux-s390x-gnu@1.2.15",
+    "@rolldown/binding-linux-x64-gnu@1.2.15",
+    "@rolldown/binding-linux-x64-musl@1.2.15",
+    "@rolldown/binding-openharmony-arm64@1.2.15",
+    "@rolldown/binding-win32-arm64-msvc@1.2.15",
+    "@rolldown/binding-win32-x64-msvc@1.2.15",
+    "@oxc-project/types@0.155.0"
+  ],
+  "qualification": "Local frozen installation, all five package gates, upstream editor regressions, real browser/retained printing and three-round reproduction pass at lock ac608b. Owner committed-source cold reproduction/CI/review/merge and Core ingestion remain required.",
+  "postcssSecurityCorrection": {
+    "previous": "8.5.10",
+    "selected": "8.5.31",
+    "source": "https://github.com/postcss/postcss",
+    "registry": "https://registry.npmjs.org/postcss/8.5.31",
+    "reason": "Full development-graph audit found the old shared catalog seed on tsdown CSS optional-peer paths; update the catalog directly so supported parent ranges resolve the current patched release without an override.",
+    "advisories": [
+      "https://github.com/advisories/GHSA-6g55-p6wh-862q",
+      "https://github.com/advisories/GHSA-fxqj-rqcc-2cmp",
+      "https://github.com/advisories/GHSA-r28c-9q8g-f849"
+    ],
+    "peerResolution": "Align the workspace editor development seed with the shared catalog, then pnpm filtered dedupe rebinding. All five physical tsdown CSS peer paths resolve8.5.31; fresh full and production audits have zero consumed advisory paths.",
+    "proof": {
+      "path": "/tmp/core-modernization-pdf-css-peer-fixed-qualification.json",
+      "sha256": "368d40ab42863d6475b34406fdb8b77df5e520ca18a74762aad4d8f3b83d6dc4"
+    }
+  },
+  "checks": {
+    "gates": {
+      "path": "/tmp/core-modernization-pdf-final-source-cohort-gates-proof.json",
+      "sha256": "2a34f32e827748f7f1ea9f1d0fc6e62385c2476eb1a5ea0a11d390e2c581ced5",
+      "startedAt": "2026-10-22T09:45:08.517858+00:00",
+      "completedAt": "2026-10-22T09:45:23.524169+00:00",
+      "exitCode": 0,
+      "command": ["pnpm", "core-pdf:check"],
+      "head": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+      "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+      "logSha256": "d7bbe5d8baeed336f11527f8bf15c1e384f2e914f770e8f0ca9211689f397708"
+    },
+    "upstream-editor": {
+      "path": "/tmp/core-modernization-pdf-final-source-cohort-upstream-editor-proof.json",
+      "sha256": "a74f96dd964202146a6661c974f4ecd5c23deaec2fbc3a091f188c59d2500fd3",
+      "startedAt": "2026-10-22T09:45:23.527391+00:00",
+      "completedAt": "2026-10-22T09:45:31.693251+00:00",
+      "exitCode": 0,
+      "command": ["pnpm", "--filter", "@react-email/editor", "test:unit"],
+      "head": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+      "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+      "logSha256": "c69ab9cdde450d7f6088c7311340498fa4581ace642bf95588679ec0b086f19a"
+    },
+    "browser": {
+      "path": "/tmp/core-modernization-pdf-final-source-cohort-browser-proof.json",
+      "sha256": "f54c124ad442b8c0762e625fcfb6dafb343dc514365e36d85e344cbd13f13071",
+      "startedAt": "2026-10-22T09:45:31.698779+00:00",
+      "completedAt": "2026-10-22T09:45:36.480596+00:00",
+      "exitCode": 0,
+      "command": ["pnpm", "core-pdf:browser"],
+      "head": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+      "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+      "logSha256": "d2835750b0268d33caa704bfe9f029fc8dae5637a49368ff14a5b3b357280135"
+    },
+    "render": {
+      "path": "/tmp/core-modernization-pdf-final-source-cohort-render-proof.json",
+      "sha256": "fc7910bc236e1e30be1f5616d817d2f0c1afbadf6ebb5394c3f8bd402d66cd92",
+      "startedAt": "2026-10-22T09:45:36.483560+00:00",
+      "completedAt": "2026-10-22T09:45:43.525106+00:00",
+      "exitCode": 0,
+      "command": ["pnpm", "core-pdf:render"],
+      "head": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+      "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+      "logSha256": "c99acad5f0c6ff2e9589c40cb050abf23080c4d3f784fc5022b090eb5af61a89",
+      "result": {
+        "passed": true,
+        "documents": 8,
+        "outputDirectory": "/home/conrad/code/react-pdf-modernization-2026-10-22/tmp/pdfs/core-modernization"
+      }
+    },
+    "reproduce": {
+      "path": "/tmp/core-modernization-pdf-final-source-cohort-reproduce-proof.json",
+      "sha256": "4e700cd500cb947a4fa6ad89225571d39f1b9544d07caec3096a5ab92069b352",
+      "startedAt": "2026-10-22T09:45:43.530212+00:00",
+      "completedAt": "2026-10-22T09:46:09.974397+00:00",
+      "exitCode": 0,
+      "command": ["pnpm", "core-pdf:reproduce"],
+      "head": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+      "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+      "logSha256": "093f765183ae25ba3d6a16818aa7ef1dfc677b1c27a4129dd00280c183562f3c",
+      "result": {
+        "passed": true,
+        "head": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+        "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+        "rounds": [
+          {
+            "@asym/docraptor-client": "9c54d6cbdee785eb4faf59e28f71377c261da6f042712b5cf828aaeed4a9f6f4",
+            "@asym/pdf-template-schema": "852d80398c7f87a895acffd19ac5254d0566925165068cc657bdb38ed3019ff9",
+            "@asym/pdf-renderer": "7497b38399d8af660209a161a35d0a33b425c6124340e73b67da9fa14e2ee785",
+            "@asym/pdf-editor": "c14bb06ae724a5a1de232a04fb08044051dda4d3f3a163dd7d675c8828ade2c2",
+            "@asym/pdf-studio-adapter": "b47e215f22a539a539e004f1f36c0bc300015b4912f0f96ac501603b735dccb7"
+          },
+          {
+            "@asym/docraptor-client": "9c54d6cbdee785eb4faf59e28f71377c261da6f042712b5cf828aaeed4a9f6f4",
+            "@asym/pdf-template-schema": "852d80398c7f87a895acffd19ac5254d0566925165068cc657bdb38ed3019ff9",
+            "@asym/pdf-renderer": "7497b38399d8af660209a161a35d0a33b425c6124340e73b67da9fa14e2ee785",
+            "@asym/pdf-editor": "c14bb06ae724a5a1de232a04fb08044051dda4d3f3a163dd7d675c8828ade2c2",
+            "@asym/pdf-studio-adapter": "b47e215f22a539a539e004f1f36c0bc300015b4912f0f96ac501603b735dccb7"
+          },
+          {
+            "@asym/docraptor-client": "9c54d6cbdee785eb4faf59e28f71377c261da6f042712b5cf828aaeed4a9f6f4",
+            "@asym/pdf-template-schema": "852d80398c7f87a895acffd19ac5254d0566925165068cc657bdb38ed3019ff9",
+            "@asym/pdf-renderer": "7497b38399d8af660209a161a35d0a33b425c6124340e73b67da9fa14e2ee785",
+            "@asym/pdf-editor": "c14bb06ae724a5a1de232a04fb08044051dda4d3f3a163dd7d675c8828ade2c2",
+            "@asym/pdf-studio-adapter": "b47e215f22a539a539e004f1f36c0bc300015b4912f0f96ac501603b735dccb7"
+          }
+        ]
+      }
+    },
+    "pins": {
+      "path": "/tmp/core-modernization-pdf-final-source-cohort-pins-proof.json",
+      "sha256": "14a958a9e27053b75215a1d7721e8404315d741edc428df1b18534d0e531dd88",
+      "startedAt": "2026-10-22T09:46:09.977248+00:00",
+      "completedAt": "2026-10-22T09:46:10.292268+00:00",
+      "exitCode": 0,
+      "command": [
+        "pnpm",
+        "exec",
+        "tsx",
+        "scripts/check-dependency-versions.ts"
+      ],
+      "head": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+      "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+      "logSha256": "acf6bfb6d54e7a3ece75890a1f3e43fd854a32622eee287bbe80edaea82a9a2b"
+    }
+  },
+  "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb"
+}
