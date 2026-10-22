@@ -116,7 +116,6 @@ Authoritative fork PR inspection used `--repo Asymmetric-al/react-PDF`.
 ```
 
 Reviewed fork PRs:
-
 - PR #1, `[codex] Add OpenSpec foundation for PDF document builder`, merged
   2026-04-25 11:49:40 UTC. Added `AGENTS.md`, `openspec/project.md`, the
   active `build-pdf-document-builder` proposal, design, initial task tracker,
@@ -168,7 +167,6 @@ this reconciliation.
 ## 5. OpenSpec Alignment Check
 
 Alignment amendments made in this reconciliation:
-
 - `openspec/changes/build-pdf-document-builder/design.md` now reflects that
   Phase 3 private package shells exist while no final PDF behavior exists yet.
 - `openspec/changes/build-pdf-document-builder/tasks.md` now marks Phases 1-3
@@ -242,7 +240,6 @@ The lint warning is the known existing warning and is non-blocking for Phase 4.
 Go.
 
 Phase 4 can safely begin after this reconciliation because:
-
 - Phase 3 is merged into `origin/canary`.
 - The canonical OpenSpec tracker now reflects Phases 1-3 as complete and
   Phase 4 as next.

@@ -8,6 +8,10 @@ export default defineConfig({
   resolve: {
     alias: {
       '@asym/docraptor-client': resolve(currentDirectory, 'src/index.ts'),
+      '@asym/pdf-template-schema': resolve(
+        currentDirectory,
+        '../pdf-template-schema/src/index.ts',
+      ),
     },
   },
   test: {

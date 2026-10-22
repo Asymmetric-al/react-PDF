@@ -38,7 +38,6 @@ export class EmailNode<
 > extends Node<Options, Storage> {
   declare config: EmailNodeConfig<Options, Storage>;
 
-  // biome-ignore lint/complexity/noUselessConstructor: This is only meant to change the types for config, hence why we keep it
   constructor(config: ConfigParameter<Options, Storage>) {
     super(config);
   }

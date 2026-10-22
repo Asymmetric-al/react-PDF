@@ -33,5 +33,6 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
     globals: true,
+    exclude: ['**/*.browser.spec.tsx', '**/node_modules/**', '**/dist/**'],
   },
 });

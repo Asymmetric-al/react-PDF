@@ -158,6 +158,7 @@ export const TableBindingSchema = z
     emptyState: NonEmptyStringSchema.optional(),
     grouping: TableGroupingBindingSchema.optional(),
     repeatHeader: z.boolean().default(true),
+    avoidRowSplit: z.boolean().default(true),
     maxRows: NonNegativeIntegerSchema.max(5000).default(5000),
     totals: z.array(TableTotalBindingSchema).default([]),
   })

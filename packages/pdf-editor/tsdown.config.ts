@@ -5,9 +5,10 @@ export default defineConfig({
     extensions: 'src/extensions/index.ts',
     index: 'src/index.ts',
     'react-email-compat': 'src/react-email-compat.ts',
+    'migration/unlayer': 'src/migration/unlayer/index.ts',
   },
   format: ['esm', 'cjs'],
-  dts: true,
+  dts: { generator: 'tsc' },
   deps: {
     neverBundle: [
       '@asym/pdf-template-schema',

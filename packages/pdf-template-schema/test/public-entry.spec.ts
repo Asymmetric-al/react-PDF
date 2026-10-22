@@ -19,12 +19,12 @@ import {
 import { describe, expect, it } from 'vitest';
 
 describe('@asym/pdf-template-schema public entry', () => {
-  it('exposes the Phase 22 package boundary', () => {
+  it('exposes the restored shipped package boundary', () => {
     const boundary: PdfTemplateSchemaBoundary = pdfTemplateSchemaBoundary;
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-template-schema',
-      maturity: 'phase-22-calculation-engine',
+      maturity: 'phase-38-unlayer-migration',
       owns: 'template-schema',
       runtime: 'shared',
     });

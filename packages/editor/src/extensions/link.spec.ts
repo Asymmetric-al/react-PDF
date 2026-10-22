@@ -114,7 +114,7 @@ describe('Link mark theming', () => {
     editor = createEditor('basic');
     const mark = findLinkMark(editor);
     expect(mark?.type).toBe('link');
-    expect((mark?.attrs as Record<string, unknown>).style).toBe('');
+    expect(mark?.attrs).toHaveProperty('style', '');
   });
 
   it('round-trips a plain <a href> through setContent+getHTML with themed style', () => {

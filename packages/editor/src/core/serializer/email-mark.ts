@@ -41,7 +41,6 @@ export class EmailMark<
 > extends Mark<Options, Storage> {
   declare config: EmailMarkConfig<Options, Storage>;
 
-  // biome-ignore lint/complexity/noUselessConstructor: This is only meant to change the types for config, hence why we keep it
   constructor(config: ConfigParameter<Options, Storage>) {
     super(config);
   }

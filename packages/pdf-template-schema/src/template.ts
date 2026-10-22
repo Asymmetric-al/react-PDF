@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { AssetReferenceSchema } from './assets';
 import {
   ConditionalRuleSchema,
   DataBindingSchema,
@@ -7,14 +8,21 @@ import {
 } from './bindings';
 import { type TemplateCategory, TemplateCategorySchema } from './categories';
 import {
+  DocumentHeaderFooterSettingsSchema,
+  defaultDocumentHeaderFooterSettings,
+} from './header-footer';
+import { PdfDocumentOutputSettingsSchema } from './pdf-metadata';
+import { DocumentPlaceholderSchema } from './placeholders';
+import {
   IdentifierSchema,
   IsoDateTimeSchema,
   JsonValueSchema,
   NonEmptyStringSchema,
   PositiveIntegerSchema,
   UnitLengthSchema,
-  UrlSchema,
 } from './primitives';
+import { SummaryBlockBindingSchema } from './summary-blocks';
+import { DocumentThemeSchema } from './themes';
 import { VariableDefinitionSchema } from './variables';
 
 const defaultPageMargins = {
@@ -24,17 +32,11 @@ const defaultPageMargins = {
   left: '0.5in',
 } as const;
 
-const defaultThemeColors = {
-  primary: '#1f2937',
-  accent: '#2563eb',
-  text: '#111827',
-  background: '#ffffff',
-} as const;
-
-const defaultThemeFonts = {
-  body: 'Arial',
-  heading: 'Arial',
-  fallback: ['sans-serif'],
+const defaultPageSettings = {
+  pageSize: 'letter' as const,
+  orientation: 'portrait' as const,
+  margins: defaultPageMargins,
+  headerFooter: defaultDocumentHeaderFooterSettings,
 };
 
 export const DocumentEngineSchema = z.enum([
@@ -72,13 +74,10 @@ export const DocumentPageSettingsSchema = z
     orientation: PageOrientationSchema.default('portrait'),
     margins: PageMarginsSchema,
     customSize: CustomPageSizeSchema.optional(),
+    headerFooter: DocumentHeaderFooterSettingsSchema,
   })
   .strict()
-  .default({
-    pageSize: 'letter',
-    orientation: 'portrait',
-    margins: defaultPageMargins,
-  })
+  .default(defaultPageSettings)
   .superRefine((settings, context) => {
     if (settings.pageSize === 'custom' && settings.customSize === undefined) {
       context.addIssue({
@@ -98,72 +97,9 @@ export const DocumentPageSettingsSchema = z
   });
 
 export type DocumentPageSettings = z.infer<typeof DocumentPageSettingsSchema>;
-
-export const DocumentThemeSchema = z
-  .object({
-    name: NonEmptyStringSchema.default('Default'),
-    colors: z
-      .object({
-        primary: NonEmptyStringSchema.default('#1f2937'),
-        accent: NonEmptyStringSchema.default('#2563eb'),
-        text: NonEmptyStringSchema.default('#111827'),
-        background: NonEmptyStringSchema.default('#ffffff'),
-      })
-      .strict()
-      .default(defaultThemeColors),
-    fonts: z
-      .object({
-        body: NonEmptyStringSchema.default('Arial'),
-        heading: NonEmptyStringSchema.default('Arial'),
-        fallback: z.array(NonEmptyStringSchema).default(['sans-serif']),
-      })
-      .strict()
-      .default(defaultThemeFonts),
-    logoAssetId: IdentifierSchema.optional(),
-    footerText: z.string().optional(),
-  })
-  .strict()
-  .default({
-    name: 'Default',
-    colors: defaultThemeColors,
-    fonts: defaultThemeFonts,
-  });
-
-export type DocumentTheme = z.infer<typeof DocumentThemeSchema>;
-
-export const AssetRoleSchema = z.enum([
-  'logo',
-  'signature',
-  'image',
-  'font',
-  'qr',
-  'attachment',
-]);
-
-export const AssetReferenceSchema = z
-  .object({
-    id: IdentifierSchema,
-    role: AssetRoleSchema,
-    assetId: IdentifierSchema.optional(),
-    url: UrlSchema.optional(),
-    mimeType: NonEmptyStringSchema.optional(),
-    altText: z.string().optional(),
-    width: PositiveIntegerSchema.optional(),
-    height: PositiveIntegerSchema.optional(),
-    renderSafe: z.boolean().default(false),
-  })
-  .strict()
-  .superRefine((asset, context) => {
-    if (asset.assetId === undefined && asset.url === undefined) {
-      context.addIssue({
-        code: 'custom',
-        message: 'Asset references require either assetId or url.',
-        path: ['assetId'],
-      });
-    }
-  });
-
-export type AssetReference = z.infer<typeof AssetReferenceSchema>;
+export type DocumentPageSettingsInput = z.input<
+  typeof DocumentPageSettingsSchema
+>;
 
 export const DocumentMarkSchema: z.ZodType<{
   readonly type: string;
@@ -215,12 +151,15 @@ export const DocumentTemplateV1Schema = z
     status: z.enum(['draft', 'published', 'archived']).default('draft'),
     pageSettings: DocumentPageSettingsSchema,
     theme: DocumentThemeSchema,
+    pdfSettings: PdfDocumentOutputSettingsSchema,
     content: DocumentContentSchema,
     variables: z.array(VariableDefinitionSchema).default([]),
     dataBindings: z.array(DataBindingSchema).default([]),
     conditionalRules: z.array(ConditionalRuleSchema).default([]),
     repeaterBindings: z.array(RepeaterBindingSchema).default([]),
     tableBindings: z.array(TableBindingSchema).default([]),
+    summaryBlockBindings: z.array(SummaryBlockBindingSchema).default([]),
+    placeholderBindings: z.array(DocumentPlaceholderSchema).default([]),
     assets: z.array(AssetReferenceSchema).default([]),
     metadata: z
       .object({
@@ -237,4 +176,6 @@ export const DocumentTemplateV1Schema = z
   .strict();
 
 export type DocumentTemplateV1 = z.infer<typeof DocumentTemplateV1Schema>;
+export type DocumentTemplateV1Input = z.input<typeof DocumentTemplateV1Schema>;
+export type { DocumentTheme, DocumentThemeInput } from './themes';
 export type { TemplateCategory };

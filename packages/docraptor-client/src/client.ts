@@ -1,5 +1,9 @@
 import { Buffer } from 'node:buffer';
 import {
+  PdfDocumentMetadataSchema,
+  PdfDocumentProfileOptionsSchema,
+} from '@asym/pdf-template-schema';
+import {
   DocRaptorClientError,
   type DocRaptorClientErrorCode,
   isRetryableHttpStatus,
@@ -307,9 +311,19 @@ function createDocumentPayload(
 ): DocRaptorDocumentPayload {
   const media = input.media ?? 'print';
   const tag = input.tag ?? input.idempotency?.key;
+  const pdfMetadata =
+    input.pdfMetadata === undefined
+      ? undefined
+      : parsePdfMetadata(input.pdfMetadata);
+  const pdfProfile =
+    input.pdfProfile === undefined
+      ? undefined
+      : parsePdfProfile(input.pdfProfile);
   const princeOptions: DocRaptorDocumentPayload['prince_options'] = {
     media,
     ...(input.baseUrl ? { baseurl: input.baseUrl } : {}),
+    ...(pdfMetadata?.title ? { pdf_title: pdfMetadata.title } : {}),
+    ...(pdfProfile?.profile ? { profile: pdfProfile.profile } : {}),
   };
 
   return {
@@ -332,15 +346,60 @@ function createRequestMetadata(
   url: string,
   method: 'POST' | 'GET',
 ): DocRaptorRequestMetadata {
+  const pdfMetadata =
+    input.pdfMetadata === undefined
+      ? undefined
+      : parsePdfMetadata(input.pdfMetadata);
+  const pdfProfile =
+    input.pdfProfile === undefined
+      ? undefined
+      : parsePdfProfile(input.pdfProfile);
+
   return {
     idempotency: input.idempotency,
     media: input.media ?? 'print',
     method,
     mode: config.mode,
+    ...(pdfMetadata ? { pdfMetadata } : {}),
+    ...(pdfProfile ? { pdfProfile } : {}),
     tag: input.tag ?? input.idempotency?.key,
     test: config.mode === 'test',
     url,
   };
+}
+
+function parsePdfMetadata(
+  metadata: DocRaptorRenderRequest['pdfMetadata'],
+): ReturnType<typeof PdfDocumentMetadataSchema.parse> {
+  try {
+    return PdfDocumentMetadataSchema.parse(metadata ?? {});
+  } catch (error) {
+    throw createInvalidRequestError('Invalid PDF metadata.', error);
+  }
+}
+
+function parsePdfProfile(
+  profile: DocRaptorRenderRequest['pdfProfile'],
+): ReturnType<typeof PdfDocumentProfileOptionsSchema.parse> {
+  try {
+    return PdfDocumentProfileOptionsSchema.parse(profile ?? {});
+  } catch (error) {
+    throw createInvalidRequestError('Invalid PDF profile options.', error);
+  }
+}
+
+function createInvalidRequestError(
+  message: string,
+  error: unknown,
+): DocRaptorClientError {
+  return new DocRaptorClientError({
+    code: 'invalid_request',
+    details: {
+      message: error instanceof Error ? error.message : String(error),
+    },
+    message,
+    retryable: false,
+  });
 }
 
 function createJsonHeaders(

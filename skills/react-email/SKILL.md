@@ -76,7 +76,7 @@ import {
   Text,
   Button,
   Tailwind,
-  pixelBasedPreset
+  pixelBasedPreset,
 } from 'react-email';
 
 interface WelcomeEmailProps {
@@ -84,7 +84,10 @@ interface WelcomeEmailProps {
   verificationUrl: string;
 }
 
-export default function WelcomeEmail({ name, verificationUrl }: WelcomeEmailProps) {
+export default function WelcomeEmail({
+  name,
+  verificationUrl,
+}: WelcomeEmailProps) {
   return (
     <Html lang="en">
       <Tailwind
@@ -103,9 +106,7 @@ export default function WelcomeEmail({ name, verificationUrl }: WelcomeEmailProp
         <Body className="bg-gray-100 font-sans">
           <Preview>Welcome - Verify your email</Preview>
           <Container className="max-w-xl mx-auto p-5">
-            <Heading className="text-2xl text-gray-800">
-              Welcome!
-            </Heading>
+            <Heading className="text-2xl text-gray-800">Welcome!</Heading>
             <Text className="text-base text-gray-800">
               Hi {name}, thanks for signing up!
             </Text>
@@ -125,7 +126,7 @@ export default function WelcomeEmail({ name, verificationUrl }: WelcomeEmailProp
 // Preview props for testing
 WelcomeEmail.PreviewProps = {
   name: 'John Doe',
-  verificationUrl: 'https://example.com/verify/abc123'
+  verificationUrl: 'https://example.com/verify/abc123',
 } satisfies WelcomeEmailProps;
 
 export { WelcomeEmail };
@@ -184,7 +185,6 @@ See [references/COMPONENTS.md](references/COMPONENTS.md) for complete component 
 ## Before Writing Code
 
 When a user requests an email template, ask clarifying questions FIRST if they haven't provided:
-
 1. **Brand colors** - Ask for primary brand color (hex code like #007bff)
 2. **Logo** - Ask if they have a logo file and its format (PNG/JPG only - warn if SVG/WEBP)
 3. **Style preference** - Professional, casual, or minimal tone
@@ -209,9 +209,10 @@ project/
 Use this pattern for images that work in both dev preview and production:
 
 ```tsx
-const baseURL = process.env.NODE_ENV === "production"
-  ? "https://cdn.example.com"  // User's production CDN
-  : "";
+const baseURL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://cdn.example.com' // User's production CDN
+    : '';
 
 export default function Email() {
   return (
@@ -247,13 +248,14 @@ See [references/STYLING.md](references/STYLING.md) for comprehensive styling doc
 
 ### Required Classes
 
-| Component | Required Class | Why |
-|-----------|---------------|-----|
-| `Button` | `box-border` | Prevents padding from overflowing the button width |
-| `Hr` / any border | `border-solid` (or `border-dashed`, etc.) | Email clients don't inherit border type |
-| Single-side borders | `border-none` + the side | Resets default borders on other sides |
+| Component           | Required Class                            | Why                                                |
+| ------------------- | ----------------------------------------- | -------------------------------------------------- |
+| `Button`            | `box-border`                              | Prevents padding from overflowing the button width |
+| `Hr` / any border   | `border-solid` (or `border-dashed`, etc.) | Email clients don't inherit border type            |
+| Single-side borders | `border-none` + the side                  | Resets default borders on other sides              |
 
 ### Structure Notes
+
 - Always define `<Head />` inside `<Tailwind>` when using Tailwind CSS
 - `<Preview>` should always be the first element inside `<Body>`
 - Only include props in `PreviewProps` that the component actually uses
@@ -268,14 +270,17 @@ import { render } from 'react-email';
 import { WelcomeEmail } from './emails/welcome';
 
 const html = await render(
-  <WelcomeEmail name="John" verificationUrl="https://example.com/verify" />
+  <WelcomeEmail name="John" verificationUrl="https://example.com/verify" />,
 );
 ```
 
 ### Convert to Plain Text
 
 ```tsx
-const text = await render(<WelcomeEmail name="John" verificationUrl="https://example.com/verify" />, { plainText: true });
+const text = await render(
+  <WelcomeEmail name="John" verificationUrl="https://example.com/verify" />,
+  { plainText: true },
+);
 ```
 
 ## Sending
@@ -294,7 +299,9 @@ const { data, error } = await resend.emails.send({
   from: 'Acme <onboarding@resend.dev>',
   to: ['user@example.com'],
   subject: 'Welcome to Acme',
-  react: <WelcomeEmail name="John" verificationUrl="https://example.com/verify" />
+  react: (
+    <WelcomeEmail name="John" verificationUrl="https://example.com/verify" />
+  ),
 });
 ```
 
@@ -304,14 +311,14 @@ The Resend Node SDK automatically handles both HTML and plain-text rendering.
 
 The `react-email` package provides a CLI accessible via the `email` command:
 
-| Command | Description |
-|---------|-------------|
-| `email dev --dir <path> --port <port>` | Start the preview development server (default: `./emails`, port 3000) |
-| `email build --dir <path>` | Build the preview app for production deployment |
-| `email start` | Run the built preview app |
-| `email export --outDir <path> --pretty --plainText --dir <path>` | Export templates to static HTML files |
-| `email resend setup` | Connect the CLI to your Resend account via API key |
-| `email resend reset` | Remove the stored Resend API key |
+| Command                                                          | Description                                                           |
+| ---------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `email dev --dir <path> --port <port>`                           | Start the preview development server (default: `./emails`, port 3000) |
+| `email build --dir <path>`                                       | Build the preview app for production deployment                       |
+| `email start`                                                    | Run the built preview app                                             |
+| `email export --outDir <path> --pretty --plainText --dir <path>` | Export templates to static HTML files                                 |
+| `email resend setup`                                             | Connect the CLI to your Resend account via API key                    |
+| `email resend reset`                                             | Remove the stored Resend API key                                      |
 
 ## Internationalization
 
@@ -340,11 +347,7 @@ export function MyEditor() {
   const ref = useRef<EmailEditorRef>(null);
 
   return (
-    <EmailEditor
-      ref={ref}
-      content="<p>Start typing...</p>"
-      theme="basic"
-    />
+    <EmailEditor ref={ref} content="<p>Start typing...</p>" theme="basic" />
   );
 }
 ```

@@ -1,5 +1,11 @@
 # @asym/pdf-renderer
 
+> Historical phase-baseline notes follow. For the current restored 0.1.0 API,
+> exports, supported toolchain and qualification, see
+> [Core PDF modernization](../../docs/maintenance/core-pdf-modernization/README.md)
+> and this package's `src/index.ts` and `package.json`. Later shipped functionality
+> supersedes the phase-specific omissions below; native-builder rollout remains unchanged.
+
 Phase 21 preview, variable resolution, conditional rendering, repeater, and financial data table renderer foundation for the Asym PDF Document
 Builder print renderer.
 
@@ -25,7 +31,6 @@ authoring feedback only and must never be treated as final PDF output.
 
 The root package entry is browser-safe and intentionally does not import the
 server-only DocRaptor client:
-
 - `pdfRendererBoundary`
 - `PdfRendererBoundary`
 - `composePdfDocumentHtml`
@@ -103,7 +108,6 @@ if (preview.status !== 'error') {
 ```
 
 Browser preview metadata always reports:
-
 - `renderer: "browser"`
 - `finalPdfFidelity: false`
 - `productionRender: false`
@@ -215,7 +219,6 @@ request metadata only; API keys are constructor input and are never serialized
 into preview results.
 
 DocRaptor test preview metadata reports:
-
 - `renderer: "docraptor"`
 - `finalPdfFidelity: true`
 - `productionRender: false`
@@ -244,7 +247,6 @@ deterministic print CSS. Page settings are parsed through
 `DocumentPageSettingsSchema` from `@asym/pdf-template-schema`.
 
 DocRaptor compatibility notes:
-
 - DocRaptor and Prince support `@page` for page size, orientation, and margins:
   https://docraptor.com/css-paged-media
 - DocRaptor applies print media rules by default for PDF output:

@@ -44,6 +44,7 @@ describe('DocumentTemplateV1Schema', () => {
     expect(parsed).toEqual({
       pageSize: 'letter',
       orientation: 'portrait',
+      headerFooter: { regions: [] },
       margins: {
         top: '0.5in',
         right: '0.5in',

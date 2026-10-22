@@ -2,12 +2,12 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "tsconfig/base.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "lib": ["ESNext"],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
-      "@asym/docraptor-client": ["./src/index.ts"]
+      "@asym/docraptor-client": ["./src/index.ts"],
+      "@asym/pdf-template-schema": ["../pdf-template-schema/src/index.ts"]
     },
     "target": "ES2022",
     "types": ["node", "vitest/globals"]

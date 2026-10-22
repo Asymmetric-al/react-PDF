@@ -23,7 +23,6 @@ packages/editor/src/
 ## Entry Points
 
 The package exposes multiple entry points for granular imports:
-
 - `@react-email/editor` - main editor component and top-level API
 - `@react-email/editor/core` - serializer, types, and event bus
 - `@react-email/editor/extensions` - Tiptap extensions for current baseline

@@ -577,6 +577,7 @@ export function calculateTaxDeductibleAmount(
     value: input.goodsOrServicesValue ?? '0',
   });
   const deductible = contribution.minorUnits - goodsOrServices.minorUnits;
+  // biome-ignore lint/complexity/useMathMinMax: Math.max cannot accept bigint; preserve exact minor units.
   const flooredDeductible = deductible < zeroBigInt ? zeroBigInt : deductible;
 
   return {
@@ -694,10 +695,12 @@ function calculateMinorUnitAggregate(
       );
     case 'max':
       return values.reduce((maximum, value) =>
+        // biome-ignore lint/complexity/useMathMinMax: Math.max cannot accept bigint; preserve exact minor units.
         value > maximum ? value : maximum,
       );
     case 'min':
       return values.reduce((minimum, value) =>
+        // biome-ignore lint/complexity/useMathMinMax: Math.min cannot accept bigint; preserve exact minor units.
         value < minimum ? value : minimum,
       );
     case 'sum':

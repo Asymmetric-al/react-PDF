@@ -106,7 +106,6 @@ pnpm test
 Result: Passed. Turbo reported `16 successful, 16 total`.
 
 Known existing warnings during root tests:
-
 - Vitest warnings in upstream `@react-email/render` tests about nested
   `vi.mock("react-dom/server")`.
 - Existing React key warnings in `@react-email/editor` serializer tests.

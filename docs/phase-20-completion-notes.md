@@ -73,7 +73,6 @@ PASS
 
 Tests were added before production changes. The corrected red run failed for
 the expected production gaps:
-
 - `pdfRendererBoundary.maturity` still reported
   `phase-18-financial-data-table`.
 - Data table missing/invalid binding diagnostics still used Phase 18 warning

@@ -152,7 +152,6 @@ Phase 7 should expand the current `@react-email/editor` compatibility fixture
 and regression harness before safe naming and serializer changes begin.
 
 Source-of-truth files for Phase 7:
-
 - `AGENTS.md`
 - `openspec/project.md`
 - `openspec/changes/build-pdf-document-builder/proposal.md`

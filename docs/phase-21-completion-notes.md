@@ -43,7 +43,6 @@
 ## TDD Notes
 
 Tests were added before the renderer preview plumbing implementation:
-
 - Schema fixture validation in `packages/pdf-template-schema/test/table-preview-fixtures.spec.ts`.
 - Editor data table round-trip coverage in `packages/pdf-editor/test/data-table-preview-fixtures.spec.tsx`.
 - Renderer and preview end-to-end coverage in `packages/pdf-renderer/test/data-table-preview.spec.ts`.
@@ -53,7 +52,6 @@ The renderer preview tests initially failed because the preview pipeline did not
 ## Validation Summary
 
 All Phase 21 focused checks passed with `corepack pnpm`:
-
 - `corepack pnpm --filter @asym/pdf-template-schema test -- table-preview-fixtures.spec.ts`
 - `corepack pnpm --filter @asym/pdf-editor test -- data-table-preview-fixtures.spec.tsx`
 - `corepack pnpm --filter @asym/pdf-renderer test -- data-table-preview.spec.ts preview.spec.ts`
@@ -74,7 +72,6 @@ All Phase 21 focused checks passed with `corepack pnpm`:
 - `corepack pnpm dlx @fission-ai/openspec@latest validate --all`
 
 Notes:
-
 - Bare `pnpm` was unavailable on PATH, so `corepack pnpm` was used as the pnpm-compatible fallback.
 - Turbo needed a temporary `%TEMP%\codex-pnpm-shim\pnpm.cmd` shim for nested package commands.
 - Forced broad `turbo run test --force` runs exposed unrelated `@react-email/ui` timeout failures under Turbo load, including `get-tailwind-config.spec.ts` timing out at 5000ms. Rerunning `corepack pnpm --filter @react-email/ui test` passed, and the normal `corepack pnpm test` pass completed afterward.

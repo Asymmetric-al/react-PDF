@@ -1,0 +1,630 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-22T09:50:09.484925+00:00",
+  "status": "Local versioned cohort passes; final clean source build, immutable artifacts, owner PR/CI, Core ingestion and deployed qualification remain open.",
+  "owner": "Core PDF package maintenance in Asymmetric-al/react-PDF",
+  "restorationCommit": "ca79063bd679599573a2eba563dcfa9a304e8605",
+  "formatOnlyCommit": "e5d92073ffdcabbe09178f4e98407700c1a4ceca",
+  "packages": {
+    "@asym/docraptor-client": "0.1.0",
+    "@asym/pdf-template-schema": "0.1.0",
+    "@asym/pdf-renderer": "0.1.0",
+    "@asym/pdf-editor": "0.1.0",
+    "@asym/pdf-studio-adapter": "0.1.0"
+  },
+  "versions": {
+    "node": "24.22.1",
+    "pnpm": "12.14.0",
+    "react": "19.3.1",
+    "reactDom": "19.3.1",
+    "reactEmailEditor": "1.7.14",
+    "reactEmail": "6.11.3",
+    "tiptap": "3.32.0",
+    "zod": "4.6.7",
+    "productCompiler": "7.0.2",
+    "declarationCompilerApi": "6.0.3",
+    "tsdown": "0.23.1",
+    "vite": "8.3.5",
+    "vitest": "5.0.5",
+    "playwright": "1.64.1",
+    "biome": "2.6.2",
+    "turbo": "2.11.10",
+    "rolldown": "1.2.15",
+    "postcss": "8.5.31"
+  },
+  "compatibility": [
+    {
+      "dependency": "typescript@6.0.3",
+      "owner": "PDF declaration-build tooling",
+      "requiredBy": "tsdown / rolldown-plugin-dts JavaScript compiler API",
+      "evidence": "Explicit dts generator tsc; actual native product compiler remains7.0.2; compiler-runtime-identity regression exercises AST parsing and physical declaration compiler6.0.3 across all5packages.",
+      "recheck": "When upstream declaration builder supports TypeScript7 JavaScript API; rerun identity/AST/type/build/clean-install qualification."
+    },
+    {
+      "dependency": "happy-dom@20.14.6",
+      "owner": "Retained editor HTML tests",
+      "requiredBy": "@tiptap/html3.32.0 supported ^20.8.9 range",
+      "recheck": "When current Tiptap HTML supports21; rerun HTML and browser contracts."
+    }
+  ],
+  "changes": [
+    "Update shared toolchain, runtime, all reachable Tiptap packages and current editor dependency as a cohort.",
+    "Remove obsolete brace-expansion/socket.io-parser overrides; current parent releases supply fixed dependencies.",
+    "Update UI development seed source-map-js to1.2.2 so css-tree resolves its supported fixed range without an override.",
+    "Restore one physical Tiptap/ProseMirror identity and verify real mutation steps.",
+    "Keep exact consumed exports and public document schema versions; runtime graph and current wrappers have no installation aliases.",
+    "Use Node24.22.1/pnpm12.14.0 with immutable Action SHAs; retain disabled publication workflows.",
+    "Add all5lint/type/test/build, real Chromium editor and eight print-contract checks to CI."
+  ],
+  "checks": {
+    "versioned-frozen": {
+      "path": "/tmp/core-modernization-pdf-versioned-frozen-proof.json",
+      "sha256": "5773faca735e79120f5097a838922c825871ead9fc5e2bbbe4738628996b5471",
+      "startedAt": "2026-10-22T07:30:08.138502+00:00",
+      "completedAt": "2026-10-22T07:30:19.293089+00:00",
+      "command": [
+        "npx",
+        "--yes",
+        "pnpm@12.14.0",
+        "install",
+        "--frozen-lockfile",
+        "--offline"
+      ],
+      "exitCode": 0,
+      "lockSha256": "a2e853acbb1278255f0e59d5fca4840a19dadb4a9b9fc48985eb1b7eb1dc6c9e",
+      "logSha256": "1080d42e002538dfa5a3688687cde0ea3a42a9cf9f881128d106d633f0cce0f7"
+    },
+    "versioned-core-check-rerun": {
+      "path": "/tmp/core-modernization-pdf-versioned-core-check-rerun-proof.json",
+      "sha256": "808b57feb0a04fdbeb8de814213c1dd41df49c9536206593d621b9303528f2ab",
+      "startedAt": "2026-10-22T07:31:17.960792+00:00",
+      "completedAt": "2026-10-22T07:31:59.790615+00:00",
+      "command": ["npx", "--yes", "pnpm@12.14.0", "core-pdf:check"],
+      "exitCode": 0,
+      "lockSha256": "a2e853acbb1278255f0e59d5fca4840a19dadb4a9b9fc48985eb1b7eb1dc6c9e",
+      "logSha256": "d21b667dfbaaba714ce1267c8b18c29e0d37a6f536bb4d72058da95df9848a99"
+    },
+    "upstream-pin-check": {
+      "path": "/tmp/core-modernization-pdf-upstream-pin-check-proof.json",
+      "sha256": "d97bf4afdaa9794251ed255d6dbf7e50c8448371385654d5a8df5d209be4f3e0",
+      "startedAt": "2026-10-22T07:31:59.792680+00:00",
+      "completedAt": "2026-10-22T07:32:11.334269+00:00",
+      "command": [
+        "npx",
+        "--yes",
+        "pnpm@12.14.0",
+        "exec",
+        "tsx",
+        "scripts/check-dependency-versions.ts"
+      ],
+      "exitCode": 0,
+      "lockSha256": "a2e853acbb1278255f0e59d5fca4840a19dadb4a9b9fc48985eb1b7eb1dc6c9e",
+      "logSha256": "acf6bfb6d54e7a3ece75890a1f3e43fd854a32622eee287bbe80edaea82a9a2b"
+    },
+    "openspec": {
+      "path": "/tmp/core-modernization-pdf-openspec-proof.json",
+      "sha256": "f3924fe62e979a75330116504ebafdad12315eab1c16d3d62c138b9b7f0fbf6b",
+      "startedAt": "2026-10-22T07:32:11.337203+00:00",
+      "completedAt": "2026-10-22T07:32:22.423515+00:00",
+      "command": [
+        "npx",
+        "--yes",
+        "pnpm@12.14.0",
+        "dlx",
+        "@fission-ai/openspec@1.14.3",
+        "validate",
+        "--all"
+      ],
+      "exitCode": 0,
+      "lockSha256": "a2e853acbb1278255f0e59d5fca4840a19dadb4a9b9fc48985eb1b7eb1dc6c9e",
+      "logSha256": "d7593dfa73c7d90ed3b129fe505e0d3f7cfdae49adeb9dfeed951077d2318ab3"
+    },
+    "versioned-browser": {
+      "path": "/tmp/core-modernization-pdf-versioned-browser-proof.json",
+      "sha256": "9108a804531aef455e99fc809224f6116c5e1ba0e256cc9fe9ef735375d49ca3",
+      "startedAt": "2026-10-22T07:32:22.425153+00:00",
+      "completedAt": "2026-10-22T07:32:32.326027+00:00",
+      "command": ["npx", "--yes", "pnpm@12.14.0", "core-pdf:render"],
+      "exitCode": 0,
+      "lockSha256": "a2e853acbb1278255f0e59d5fca4840a19dadb4a9b9fc48985eb1b7eb1dc6c9e",
+      "logSha256": "d4da784ff29cdefb57fa6d3108cd370112fcc05554f0026552c1e1614e84b374"
+    }
+  },
+  "browserPageBreakCorrection": {
+    "failure": "Specific hr[data-asym-page-break] was consumed by the generic horizontalRule parse rule; pageBreak IDs lost on HTML round-trip.",
+    "fix": "Specific parse rule priority100 precedes default50; unrelated hr remains horizontalRule.",
+    "red": {
+      "path": "/tmp/core-modernization-pdf-editor-page-break-red-proof.json",
+      "sha256": "2ee45c0e441934a5b0945c48f8836dbfd669ac41efe6ae41428538f1c50a82ee",
+      "at": "2026-10-22T07:57:40.597678+00:00",
+      "exitCode": 1,
+      "logSha256": "f7f8c328051472643487ac61d0443ac36ad27678d3dc74f984c7f8d4b0749664",
+      "sourceSha256": "5acbae4d7e385f8db8598277252ff02d283a72827906996fd97debab801fba47",
+      "testSha256": "4ac5b0d7d73189ab8e2f44fa5fbf6bdc7e84e8957b1c4918d07b17ecb028accf"
+    },
+    "green": {
+      "path": "/tmp/core-modernization-pdf-page-break-qualified-browser-proof.json",
+      "sha256": "d24861af6c4193fc507b39ec83328ce8596ca1b5d4c1ae0334cea3a11793260c",
+      "at": "2026-10-22T08:01:16.296454+00:00",
+      "exitCode": 0,
+      "logSha256": "f7e95dfa69586b93a9f5bae83963103b1d4b2944c9bf5413747051399715d6c5",
+      "sourceSha256": "3292467ef71133bbc34f34867b052a40f2039403639b7b1f07cb4b80f6ae418e",
+      "testSha256": "19d31241d8efa9df063417fde2af656ddccca3acddae93d3115676ed96884902"
+    },
+    "harnessCorrections": "Use documented explicit StarterKit plus existing container shape and canonical paragraph/repeater defaults. After source fix, DOM text assertion uses the actual textbox DOM; ordinary hr assertion reflects direct setContent HTML parsing. No product normalization/format contract changed."
+  },
+  "security": {
+    "report": {
+      "path": "/tmp/core-modernization-pdf-production-audit-fixed-consumed.json",
+      "sha256": "0fdf395093bfa23731898ad401a01fc066326fd9c23dc615ee4223a335aa50b6"
+    },
+    "consumedProductionAdvisories": 0,
+    "ownerAllWorkspaceProductionAdvisories": 144,
+    "scope": "The five exact consumed importer labels have zero advisory paths in both full (including build dependencies) and production audit reports. All156full/144production advisories remain on excluded upstream workspaces/release tooling; that separate graph and downstream Core are not qualified by this result.",
+    "independentParentReview": {
+      "path": "/tmp/core-modernization-pdf-parent-security-independent-review.json",
+      "sha256": "7e36e6551b877195ad267488181fd646fef0c0d8e20f976c5058599522bb69cf"
+    },
+    "priorProductionAuditCheckpoint": {
+      "path": "/tmp/core-modernization-pdf-final-production-audit-scoped-proof.json",
+      "sha256": "3e5577a0c71764d2b3d8f8207ac0e8a50cbec1464e8f9afa8ae3be38c3fe5a65",
+      "at": "2026-10-22T08:41:32.689209+00:00",
+      "reportSha256": "25090c886f63ec30f002c89f436d576cd86027db82456b29cf813135d5831455",
+      "lockSha256": "fdd98e018ae2df171660f0177cc041d9974fc28e17be502ea7112853b1c19f48",
+      "workspaceLabels": [
+        "packages__pdf-editor",
+        "packages__pdf-renderer",
+        "packages__pdf-template-schema",
+        "packages__pdf-studio-adapter",
+        "packages__docraptor-client"
+      ],
+      "filter": "Exact importer label or label followed by >, using pnpm audit encoded workspace separator __.",
+      "consumedAdvisoryPaths": [],
+      "allWorkspaceAdvisoryRoots": ["apps__docs", "apps__web", "packages__ui"],
+      "allWorkspaceAdvisories": 144
+    },
+    "finalAudit": {
+      "path": "/tmp/core-modernization-pdf-css-peer-fixed-qualification.json",
+      "sha256": "368d40ab42863d6475b34406fdb8b77df5e520ca18a74762aad4d8f3b83d6dc4",
+      "checkedAt": "2026-10-22T09:44:12.980831+00:00",
+      "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+      "consumedLabels": [
+        "packages__docraptor-client",
+        "packages__pdf-editor",
+        "packages__pdf-renderer",
+        "packages__pdf-studio-adapter",
+        "packages__pdf-template-schema"
+      ],
+      "physicalPostcss": [
+        {
+          "package": "docraptor-client",
+          "version": "8.5.31",
+          "file": "/home/conrad/code/react-pdf-modernization-2026-10-22/node_modules/.pnpm/postcss@8.5.31/node_modules/postcss/package.json"
+        },
+        {
+          "package": "pdf-template-schema",
+          "version": "8.5.31",
+          "file": "/home/conrad/code/react-pdf-modernization-2026-10-22/node_modules/.pnpm/postcss@8.5.31/node_modules/postcss/package.json"
+        },
+        {
+          "package": "pdf-renderer",
+          "version": "8.5.31",
+          "file": "/home/conrad/code/react-pdf-modernization-2026-10-22/node_modules/.pnpm/postcss@8.5.31/node_modules/postcss/package.json"
+        },
+        {
+          "package": "pdf-editor",
+          "version": "8.5.31",
+          "file": "/home/conrad/code/react-pdf-modernization-2026-10-22/node_modules/.pnpm/postcss@8.5.31/node_modules/postcss/package.json"
+        },
+        {
+          "package": "pdf-studio-adapter",
+          "version": "8.5.31",
+          "file": "/home/conrad/code/react-pdf-modernization-2026-10-22/node_modules/.pnpm/postcss@8.5.31/node_modules/postcss/package.json"
+        }
+      ],
+      "reports": [
+        {
+          "kind": "full",
+          "exitCode": 1,
+          "report": "/tmp/core-modernization-pdf-css-peer-fixed-full-audit.json",
+          "sha256": "98569b9ba5a029ac45a674e11e7d34480398fe0eaa2c7db54622a2591d9af7bd",
+          "consumedPaths": [],
+          "roots": {
+            "apps__docs": 2443,
+            "apps__web": 182,
+            "packages__ui": 98,
+            "apps__demo": 42,
+            "packages__react-email": 62,
+            ".": 252
+          },
+          "metadata": {
+            "vulnerabilities": {
+              "info": 0,
+              "low": 12,
+              "moderate": 65,
+              "high": 74,
+              "critical": 5
+            },
+            "dependencies": 1148,
+            "devDependencies": 506,
+            "optionalDependencies": 268,
+            "totalDependencies": 1776
+          }
+        },
+        {
+          "kind": "production",
+          "exitCode": 1,
+          "report": "/tmp/core-modernization-pdf-css-peer-fixed-production-audit.json",
+          "sha256": "cd94b8059bf845c820bcfd48a4994cc749219d006ade9e392def9f036c2273c5",
+          "consumedPaths": [],
+          "roots": {
+            "apps__docs": 2443,
+            "apps__web": 137,
+            "packages__ui": 42
+          },
+          "metadata": {
+            "vulnerabilities": {
+              "info": 0,
+              "low": 9,
+              "moderate": 59,
+              "high": 71,
+              "critical": 5
+            },
+            "dependencies": 1143,
+            "devDependencies": 0,
+            "optionalDependencies": 127,
+            "totalDependencies": 1270
+          }
+        }
+      ]
+    },
+    "consumedBuildAdvisories": 0
+  },
+  "visualReview": {
+    "path": "/tmp/core-modernization-pdf-visual-review.json",
+    "sha256": "8308f8b62bc1fbca16b7dc1744c744a7e89a988faebdb0cfe412bfc8fbf4fdbb",
+    "documents": 8,
+    "pages": 9,
+    "outOfPageCharacters": 0,
+    "limits": [
+      "Local Chromium is not DocRaptor production fidelity; Prince page counters remain outside this fixture.",
+      "Raw placeholder HTML is the shipped serializer contract; public resolver checked separately.",
+      "Three local fixture assets use synthetic dimension-matched SVGs; all other network denied."
+    ]
+  },
+  "nativeBuilderActivated": false,
+  "liveProviderCalls": false,
+  "materialLimits": [
+    "Historical 47phase product roadmap remains historical intent. This change maintains already-consumed functionality only.",
+    "The five versioned artifacts are built from clean committed source cc171a and independently reproduced; Core ingestion and downstream qualification remain required.",
+    "Owner current-head CI/review/merge and full Core install/browser/provider qualification remain required."
+  ],
+  "docsIndependentReview": {
+    "path": "/tmp/core-modernization-pdf-docs-review.json",
+    "sha256": "f6e6aec8daa875630a68d5c4ea48217c8ed3a480c450b3456b388096b15d93c3",
+    "qualificationLimit": "Earlier check locka2e853 is historical. Final gates must bind current lock and source; exact JSON/YAML/Markdown/code preservation independently checked."
+  },
+  "currentLockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+  "historicalCheckpointLimit": "Earlier lock checks remain dated evidence. finalLocalChecks/security.finalAudit bind ac608b; artifact-release.json binds clean committed source cc171a and two independent reproduced checkouts. Final owner PR head CI/review/merge and downstream Core qualification remain required.",
+  "priorQualifiedLocalChecks": {
+    "final-frozen": {
+      "path": "/tmp/core-modernization-pdf-final-frozen-proof.json",
+      "sha256": "42133f1aa212cdf54926b8c82df87379cc4c0bc0d366f6c124cc5c78c5804623",
+      "startedAt": "2026-10-22T08:28:05.202906+00:00",
+      "completedAt": "2026-10-22T08:28:08.682606+00:00",
+      "command": [
+        "npx",
+        "--yes",
+        "pnpm@12.14.0",
+        "install",
+        "--frozen-lockfile",
+        "--offline"
+      ],
+      "exitCode": 0,
+      "lockSha256": "fdd98e018ae2df171660f0177cc041d9974fc28e17be502ea7112853b1c19f48",
+      "logSha256": "0b7950e3b3a61d9907872c6b44da48e08959e6c4e980862a5e5d8411cc40d9e7"
+    },
+    "final-core-gates": {
+      "path": "/tmp/core-modernization-pdf-final-core-gates-proof.json",
+      "sha256": "2348110ff65c1cf28ecf2e092667315a5e0b64fef78e4168357a631a0fdb44ef",
+      "startedAt": "2026-10-22T08:28:08.684301+00:00",
+      "completedAt": "2026-10-22T08:28:22.958234+00:00",
+      "command": ["npx", "--yes", "pnpm@12.14.0", "core-pdf:check"],
+      "exitCode": 0,
+      "lockSha256": "fdd98e018ae2df171660f0177cc041d9974fc28e17be502ea7112853b1c19f48",
+      "logSha256": "4626927b3ba047d209f0f103e0c86b350d3b953a64e0b091d802d387fa85006b"
+    },
+    "final-upstream-editor": {
+      "path": "/tmp/core-modernization-pdf-final-upstream-editor-proof.json",
+      "sha256": "8bda61cf5edde6e7bbb925779467ab77829e6780ad95bd4a3ce5f979fbcc4d0e",
+      "startedAt": "2026-10-22T08:28:22.960354+00:00",
+      "completedAt": "2026-10-22T08:28:34.224242+00:00",
+      "command": [
+        "npx",
+        "--yes",
+        "pnpm@12.14.0",
+        "--filter",
+        "@react-email/editor",
+        "test:unit"
+      ],
+      "exitCode": 0,
+      "lockSha256": "fdd98e018ae2df171660f0177cc041d9974fc28e17be502ea7112853b1c19f48",
+      "logSha256": "b4ad18629bbfffbdf95c85579e100781516f82f1f8145cc7e21a0638d2d0d01c"
+    },
+    "final-browser": {
+      "path": "/tmp/core-modernization-pdf-final-browser-proof.json",
+      "sha256": "49bd56fb188c9ab838b81419fa0797dd22fc4ad7bad6095d73f21fea83160afc",
+      "startedAt": "2026-10-22T08:28:34.225751+00:00",
+      "completedAt": "2026-10-22T08:28:42.776017+00:00",
+      "command": ["npx", "--yes", "pnpm@12.14.0", "core-pdf:browser"],
+      "exitCode": 0,
+      "lockSha256": "fdd98e018ae2df171660f0177cc041d9974fc28e17be502ea7112853b1c19f48",
+      "logSha256": "16b4e3a1c02980c7f9368a77a546e1c4112eb22f7fc933bb8dc70bf8516e9134"
+    },
+    "final-pin-check": {
+      "path": "/tmp/core-modernization-pdf-final-pin-check-proof.json",
+      "sha256": "904d0033ac60deb85d838c2c0c3b1e992a28af1609c7f5a52bfaeb585e63227a",
+      "at": "2026-10-22T08:35:03.448925+00:00",
+      "exitCode": 0,
+      "lockSha256": "fdd98e018ae2df171660f0177cc041d9974fc28e17be502ea7112853b1c19f48",
+      "logSha256": "acf6bfb6d54e7a3ece75890a1f3e43fd854a32622eee287bbe80edaea82a9a2b"
+    },
+    "final-openspec": {
+      "path": "/tmp/core-modernization-pdf-final-openspec-proof.json",
+      "sha256": "a1654f43b69e6e1dc6242e768e01464a8eb0e2f5ec9ed5bab97d7d390e6a1dce",
+      "at": "2026-10-22T08:35:15.329083+00:00",
+      "exitCode": 0,
+      "lockSha256": "fdd98e018ae2df171660f0177cc041d9974fc28e17be502ea7112853b1c19f48",
+      "logSha256": "575fe12e0f2117ad004571d14cf13596772c74213004e3a61e48eb5af712d154"
+    }
+  },
+  "finalLocalChecks": {
+    "gates": {
+      "path": "/tmp/core-modernization-pdf-final-source-cohort-gates-proof.json",
+      "sha256": "2a34f32e827748f7f1ea9f1d0fc6e62385c2476eb1a5ea0a11d390e2c581ced5",
+      "startedAt": "2026-10-22T09:45:08.517858+00:00",
+      "completedAt": "2026-10-22T09:45:23.524169+00:00",
+      "exitCode": 0,
+      "command": ["pnpm", "core-pdf:check"],
+      "head": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+      "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+      "logSha256": "d7bbe5d8baeed336f11527f8bf15c1e384f2e914f770e8f0ca9211689f397708"
+    },
+    "upstream-editor": {
+      "path": "/tmp/core-modernization-pdf-final-source-cohort-upstream-editor-proof.json",
+      "sha256": "a74f96dd964202146a6661c974f4ecd5c23deaec2fbc3a091f188c59d2500fd3",
+      "startedAt": "2026-10-22T09:45:23.527391+00:00",
+      "completedAt": "2026-10-22T09:45:31.693251+00:00",
+      "exitCode": 0,
+      "command": ["pnpm", "--filter", "@react-email/editor", "test:unit"],
+      "head": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+      "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+      "logSha256": "c69ab9cdde450d7f6088c7311340498fa4581ace642bf95588679ec0b086f19a"
+    },
+    "browser": {
+      "path": "/tmp/core-modernization-pdf-final-source-cohort-browser-proof.json",
+      "sha256": "f54c124ad442b8c0762e625fcfb6dafb343dc514365e36d85e344cbd13f13071",
+      "startedAt": "2026-10-22T09:45:31.698779+00:00",
+      "completedAt": "2026-10-22T09:45:36.480596+00:00",
+      "exitCode": 0,
+      "command": ["pnpm", "core-pdf:browser"],
+      "head": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+      "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+      "logSha256": "d2835750b0268d33caa704bfe9f029fc8dae5637a49368ff14a5b3b357280135"
+    },
+    "render": {
+      "path": "/tmp/core-modernization-pdf-final-source-cohort-render-proof.json",
+      "sha256": "fc7910bc236e1e30be1f5616d817d2f0c1afbadf6ebb5394c3f8bd402d66cd92",
+      "startedAt": "2026-10-22T09:45:36.483560+00:00",
+      "completedAt": "2026-10-22T09:45:43.525106+00:00",
+      "exitCode": 0,
+      "command": ["pnpm", "core-pdf:render"],
+      "head": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+      "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+      "logSha256": "c99acad5f0c6ff2e9589c40cb050abf23080c4d3f784fc5022b090eb5af61a89",
+      "result": {
+        "passed": true,
+        "documents": 8,
+        "outputDirectory": "/home/conrad/code/react-pdf-modernization-2026-10-22/tmp/pdfs/core-modernization"
+      }
+    },
+    "reproduce": {
+      "path": "/tmp/core-modernization-pdf-final-source-cohort-reproduce-proof.json",
+      "sha256": "4e700cd500cb947a4fa6ad89225571d39f1b9544d07caec3096a5ab92069b352",
+      "startedAt": "2026-10-22T09:45:43.530212+00:00",
+      "completedAt": "2026-10-22T09:46:09.974397+00:00",
+      "exitCode": 0,
+      "command": ["pnpm", "core-pdf:reproduce"],
+      "head": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+      "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+      "logSha256": "093f765183ae25ba3d6a16818aa7ef1dfc677b1c27a4129dd00280c183562f3c",
+      "result": {
+        "passed": true,
+        "head": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+        "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+        "rounds": [
+          {
+            "@asym/docraptor-client": "9c54d6cbdee785eb4faf59e28f71377c261da6f042712b5cf828aaeed4a9f6f4",
+            "@asym/pdf-template-schema": "852d80398c7f87a895acffd19ac5254d0566925165068cc657bdb38ed3019ff9",
+            "@asym/pdf-renderer": "7497b38399d8af660209a161a35d0a33b425c6124340e73b67da9fa14e2ee785",
+            "@asym/pdf-editor": "c14bb06ae724a5a1de232a04fb08044051dda4d3f3a163dd7d675c8828ade2c2",
+            "@asym/pdf-studio-adapter": "b47e215f22a539a539e004f1f36c0bc300015b4912f0f96ac501603b735dccb7"
+          },
+          {
+            "@asym/docraptor-client": "9c54d6cbdee785eb4faf59e28f71377c261da6f042712b5cf828aaeed4a9f6f4",
+            "@asym/pdf-template-schema": "852d80398c7f87a895acffd19ac5254d0566925165068cc657bdb38ed3019ff9",
+            "@asym/pdf-renderer": "7497b38399d8af660209a161a35d0a33b425c6124340e73b67da9fa14e2ee785",
+            "@asym/pdf-editor": "c14bb06ae724a5a1de232a04fb08044051dda4d3f3a163dd7d675c8828ade2c2",
+            "@asym/pdf-studio-adapter": "b47e215f22a539a539e004f1f36c0bc300015b4912f0f96ac501603b735dccb7"
+          },
+          {
+            "@asym/docraptor-client": "9c54d6cbdee785eb4faf59e28f71377c261da6f042712b5cf828aaeed4a9f6f4",
+            "@asym/pdf-template-schema": "852d80398c7f87a895acffd19ac5254d0566925165068cc657bdb38ed3019ff9",
+            "@asym/pdf-renderer": "7497b38399d8af660209a161a35d0a33b425c6124340e73b67da9fa14e2ee785",
+            "@asym/pdf-editor": "c14bb06ae724a5a1de232a04fb08044051dda4d3f3a163dd7d675c8828ade2c2",
+            "@asym/pdf-studio-adapter": "b47e215f22a539a539e004f1f36c0bc300015b4912f0f96ac501603b735dccb7"
+          }
+        ]
+      }
+    },
+    "pins": {
+      "path": "/tmp/core-modernization-pdf-final-source-cohort-pins-proof.json",
+      "sha256": "14a958a9e27053b75215a1d7721e8404315d741edc428df1b18534d0e531dd88",
+      "startedAt": "2026-10-22T09:46:09.977248+00:00",
+      "completedAt": "2026-10-22T09:46:10.292268+00:00",
+      "exitCode": 0,
+      "command": [
+        "pnpm",
+        "exec",
+        "tsx",
+        "scripts/check-dependency-versions.ts"
+      ],
+      "head": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+      "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+      "logSha256": "acf6bfb6d54e7a3ece75890a1f3e43fd854a32622eee287bbe80edaea82a9a2b"
+    }
+  },
+  "reproducibleBuildCorrection": {
+    "commit": "8b297c4e1ceb279ca62233705837f84a3f0fb915",
+    "review": {
+      "path": "/tmp/core-modernization-pdf-reproduction-fix-review.json",
+      "sha256": "a17f39cd994802abcdbf04e8be62e11e392d22563834f2572ace6c7ad3daaddc",
+      "schemaVersion": 1,
+      "recordedAt": "2026-10-22T09:25:19.207525+00:00",
+      "reviewer": "Independent Core review-and-ship reviewer",
+      "root": "/home/conrad/code/react-pdf-modernization-2026-10-22",
+      "baseCommit": "406410b6471353e20693a9d89518c44f100e08f7",
+      "status": "Approved scoped source/config/CI change after byte-level guard correction; no remaining important findings. Independent committed-source cold release qualification remains required.",
+      "importantFindings": [],
+      "sourceHashes": {
+        ".github/workflows/tests.yml": "47891d67a1111c8cc6452e60d2ef6896214d2f8ee75f72ca6b4e6e5b4476381e",
+        "docs/maintenance/core-pdf-modernization/README.md": "cd569a4c1d6007c1570fb1cc4a285f235c58bb7bea18cca8d083f3fb682a868a",
+        "package.json": "26f07066535f03f0cb927c4ef86f95e341ab9fd706dcdb5a5bf67d4c57c0596d",
+        "packages/pdf-template-schema/tsdown.config.ts": "aba400bbfd00733d0185cb64de50e73a41312b5e5549427313e497a606c74e6b",
+        "packages/pdf-template-schema/tsconfig.build.json": "cd141ba02ed719c709e68e8940a159d288827ae3e7df5db5411c4bd55e60ebb6",
+        "scripts/verify-core-pdf-reproducibility.mjs": "6927774303a6580f8b5cc165c434b3fc4c6ded5b5d8dd6e3445eaff38aeb80e9"
+      },
+      "lockSha256": "fdd98e018ae2df171660f0177cc041d9974fc28e17be502ea7112853b1c19f48",
+      "resolvedFinding": {
+        "priority": "P2",
+        "path": "scripts/verify-core-pdf-reproducibility.mjs",
+        "originalLines": [68, 72],
+        "problem": "Porcelain status equality misses content changes to paths already modified or inside existing untracked directories.",
+        "resolution": "Sorted Git-visible byte/mode/link snapshots now include tracked and nonignored untracked files, represent missing tracked files and hash symlink targets without dereferencing.",
+        "independentlyReproducedOldWeakness": true,
+        "independentExactGuardFixtureChecks": 10,
+        "allPassed": true,
+        "currentGuardLines": [36, 71],
+        "currentComparisonLines": [112, 116]
+      },
+      "declarationComparison": {
+        "method": "Read original hash-verified package tarball in memory and compare actual candidate ESM/CJS declarations using installed TypeScript6.0.3 AST. Normalize only union alternatives and uniquely named PropertySignature members inside type literals. Preserve every other node kind, identifier, literal/token, declaration, export, overload/call-signature, intersection and tuple ordering. No rewritten declarations are emitted.",
+        "files": [
+          {
+            "file": "index.d.mts",
+            "frozenOriginalSha256": "16fcb8a898c124a2114f0731d51b47a01bb5016bf27cf85b18c8c6c0c9c84495",
+            "currentSha256": "aeee41cb56e80ea6af81ae816e6c16263b32521db33dcc16b9e759a8362cba69",
+            "parseDiagnosticsBoth": 0,
+            "zodEnumReferenceCountBoth": 340,
+            "analysisOnlyCanonicalAstSha256Both": "1f35a887dcb803c379bf3a4e3c4c4049df64652721b4f9182e42cf5354866589",
+            "canonicalEqual": true
+          },
+          {
+            "file": "index.d.cts",
+            "frozenOriginalSha256": "7e9982bd4b33152f803fd0959b710a12dcb05837ccc361495fe0fb98eb6b6636",
+            "currentSha256": "3dfd0e6826148f19007dcf7747af34878a8b66165d8f58824dbb3e2a43e17623",
+            "parseDiagnosticsBoth": 0,
+            "zodEnumReferenceCountBoth": 340,
+            "analysisOnlyCanonicalAstSha256Both": "1f35a887dcb803c379bf3a4e3c4c4049df64652721b4f9182e42cf5354866589",
+            "canonicalEqual": true
+          }
+        ],
+        "runtimeJsAndMapsByteIdenticalToFrozenPackage": [
+          "index.mjs",
+          "index.cjs",
+          "index.mjs.map",
+          "index.d.mts.map",
+          "index.d.cts.map"
+        ],
+        "conclusion": "No public type-semantic change identified beyond property/union ordering; this structural evidence is separate from full consumer qualification."
+      },
+      "buildConfigReview": {
+        "sourceOnlyConfig": "Extends unchanged product config, restricts declaration roots to src and node ambient types; general native TypeScript7 test/source check remains unchanged.",
+        "wholeProjectMode": "Installed rolldown-plugin-dts0.28.8 README and source confirm build:true uses a solution-builder project emit. incremental:false selects its in-memory filesystem, and inherited incremental/tsBuildInfoFile settings are absent.",
+        "publicRuntimeSourceChanged": false,
+        "publicExportMappingsChanged": false
+      },
+      "reproductionAndCi": {
+        "pnpmInvocation": "npm_execpath is invoked directly as an executable with argv and shell disabled by spawnSync default; exact packageManager version is checked. This is compatible with the pinned pnpm12 native executable, unlike forcing it through Node.",
+        "pathPrerequisite": "Nested Turbo/pnpm calls need pnpm on PATH; CI pnpm/action-setup supplies it. Local qualification used only an external temporary shim.",
+        "forcedRounds": 3,
+        "packagesPerRound": 5,
+        "allTarballsIdentical": true,
+        "roundHashes": {
+          "@asym/docraptor-client": "cb1042679f6a5e29c520ba7ad3077af09fb3ce2689e292402e3e91d2817bdfd3",
+          "@asym/pdf-template-schema": "a66d03a3af25d77bcd64774d49ec1b3e0363a54c4b034405a9d20915d7590f39",
+          "@asym/pdf-renderer": "ad73cd6e3f4a1201dd8525d2aea64ce58a0aaa094287b0010361dcb026330405",
+          "@asym/pdf-editor": "fea0d0b66597f5c082c7a409f2e47d2454bdfde0b14829941353386a7da72305",
+          "@asym/pdf-studio-adapter": "1327313ea15f6732c84a8b92094f6c3c342bedd42cc4832612af4ac3f779efa8"
+        },
+        "qualifiedRuntimeLogSha256": "e252b522390f0f5b13aa9785f314934ec334750de83fa5d0049980a740bc8e11",
+        "sourceSnapshotComparisonPassed": true,
+        "workflowStep": "Runs core-pdf:reproduce after package gates and before browser checks; failure propagates and retains temporary package evidence.",
+        "cleanup": "Only the script-owned mkdtemp artifact directory is removed after success; failures retain evidence."
+      },
+      "proofs": {
+        "core-modernization-pdf-declaration-repro-review.json": {
+          "path": "/tmp/core-modernization-pdf-declaration-repro-review.json",
+          "sha256": "fdaf11950c642c820a490a3a10257fda526ee8c5b15d737edd49f73a69547de0"
+        },
+        "core-modernization-pdf-artifact-reproduction-proof.json": {
+          "path": "/tmp/core-modernization-pdf-artifact-reproduction-proof.json",
+          "sha256": "8ba80ad2965d9dbde9c6bb5b6df88679419c7e9a154a1a026e2831c4967b2501"
+        },
+        "core-modernization-pdf-project-dts-probe.json": {
+          "path": "/tmp/core-modernization-pdf-project-dts-probe.json",
+          "sha256": "d796e172b4e43a1bb8f8b7ee595d35307db291479126e9667a4335a6586a9c00"
+        },
+        "core-modernization-pdf-reproduction-qualified-runtime-proof.json": {
+          "path": "/tmp/core-modernization-pdf-reproduction-qualified-runtime-proof.json",
+          "sha256": "bc72c467112e5e72fe55110d3329b1ecf79005b224afdc2a056290d83e43f360"
+        },
+        "core-modernization-pdf-reproduction-byte-guard-proof.json": {
+          "path": "/tmp/core-modernization-pdf-reproduction-byte-guard-proof.json",
+          "sha256": "15cab45b04a2e40da818c8196ef3faaf461157022735b8aac637593755a434b9"
+        },
+        "core-modernization-pdf-source-guard-independent-fixture.json": {
+          "path": "/tmp/core-modernization-pdf-source-guard-independent-fixture.json",
+          "sha256": "83604eeb7fbb96c47358d478f5b53d50d0a6adc17938da940045a6e88e8bcb91"
+        }
+      },
+      "gitDiffCheckExitCode": 0,
+      "limits": [
+        "Three repeated processes in one working tree do not establish independent clean-checkout reproduction. Current changes are uncommitted at review; commit and qualify two clean roots before release/ingestion.",
+        "AST normalization is analysis only and supports order-only declaration drift; it is not a public API rewrite or universal TypeScript consumer-equivalence theorem.",
+        "No builds, installs, providers, credentials or actual repository source/Git changes were executed by this reviewer. The explicitly requested synthetic temporary Git fixture and in-memory AST analysis were run; the fixture was removed.",
+        "Only this scoped fix is approved. Owner current-head CI/review, downstream Core installation/preview/security qualification and DocRaptor fidelity remain separate."
+      ]
+    },
+    "result": "Source-only whole-project in-memory schema declarations preserve public syntax except unique member/union order and retain identical runtime JS/maps. Three forced build/pack rounds and byte/mode/link source guards pass. Independent clean committed-source reproduction remains required."
+  },
+  "committedSourceReproduction": {
+    "sourceCommit": "cc171a147b8deef364bac8b5b70bb70410766f4f",
+    "lockSha256": "ac608b85d7647d4368b7756cb56a7035f82ad74488846e12b2918d8d62d5b6bb",
+    "independentRoots": 2,
+    "roundsPerRoot": 3,
+    "allFiveArtifactHashesMatch": true,
+    "gitStatusClean": true,
+    "record": "artifact-release.json",
+    "sourceCi": {
+      "path": "/tmp/core-modernization-pdf-pr25-cc171a-qualified-ci.json",
+      "sha256": "20895b7ba8e2fc26b33da50e53c5c5930b2e8fa1e2e5d4eb64bb7938d9319ccb",
+      "checks": 7,
+      "allPassed": true
+    },
+    "builderReview": {
+      "path": "/tmp/core-modernization-pdf-final-builder-refresh-review.json",
+      "sha256": "c5c0f73155a034fd75420d30f8cea96098d848210ee78ec438d1f1a81a491c04"
+    }
+  }
+}

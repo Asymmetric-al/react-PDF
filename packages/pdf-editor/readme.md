@@ -1,5 +1,11 @@
 # @asym/pdf-editor
 
+> Historical phase-baseline notes follow. For the current restored 0.1.0 API,
+> exports, supported toolchain and qualification, see
+> [Core PDF modernization](../../docs/maintenance/core-pdf-modernization/README.md)
+> and this package's `src/index.ts` and `package.json`. Later shipped functionality
+> supersedes the phase-specific omissions below; native-builder rollout remains unchanged.
+
 Phase 19 editor package for the Asym PDF Document Builder React editor.
 
 ## Purpose
@@ -12,7 +18,6 @@ PDF-first.
 ## Public API Promise
 
 The current public API is intentionally small:
-
 - `pdfEditorBoundary`
 - `PdfEditorBoundary`
 - `PdfEditor`, `PdfEditorProps`, `PdfEditorRef`
@@ -25,7 +30,6 @@ The current public API is intentionally small:
 The `extensions` subpath exports the Phase 15 variable chip extension, the
 Phase 16 conditional section extension, the Phase 17 repeater section, and the
 Phase 19-hardened data table extension:
-
 - `VariableChip`
 - `createVariableChipExtension`
 - `insertVariableChip` command types

@@ -1,4 +1,16 @@
 export {
+  type AssetImageAttributes,
+  AssetImageNode,
+  type AssetImagePreviewDiagnostic,
+  type AssetImagePreviewInput,
+  type AssetImagePreviewResult,
+  type AssetImagePreviewStatus,
+  createAssetImageExtension,
+  getAssetImagePreview,
+  type InsertAssetImageInput,
+  isValidDocumentAssetImage,
+} from './asset-image';
+export {
   ConditionalSection,
   type ConditionalSectionAttributes,
   type ConditionalSectionOptions,
@@ -23,6 +35,40 @@ export {
   type InsertDataTableInput,
   isValidTableBinding,
 } from './data-table';
+export {
+  getHeaderFooterPreview,
+  type HeaderFooterPreviewDiagnostic,
+  type HeaderFooterPreviewInput,
+  type HeaderFooterPreviewResult,
+  type HeaderFooterPreviewStatus,
+  isValidDocumentHeaderFooterSettings,
+} from './header-footer';
+export {
+  createPageBreakExtension,
+  getPageBreakPreview,
+  type InsertPageBreakInput,
+  isValidDocumentPageBreakNode,
+  type PageBreakAttributes,
+  PageBreakNode,
+  type PageBreakOptions,
+  type PageBreakPreviewDiagnostic,
+  type PageBreakPreviewInput,
+  type PageBreakPreviewResult,
+  type PageBreakPreviewStatus,
+} from './page-flow';
+export {
+  createDocumentPlaceholderExtension,
+  type DocumentPlaceholderAttributes,
+  DocumentPlaceholderNode,
+  type DocumentPlaceholderOptions,
+  type DocumentPlaceholderPreviewDiagnostic,
+  type DocumentPlaceholderPreviewInput,
+  type DocumentPlaceholderPreviewResult,
+  type DocumentPlaceholderPreviewStatus,
+  getDocumentPlaceholderPreview,
+  type InsertDocumentPlaceholderInput,
+  isValidDocumentPlaceholder,
+} from './placeholder';
 export {
   createRepeaterSectionExtension,
   getRepeaterSectionPreview,

@@ -157,7 +157,6 @@ status=ok
 ```
 
 Implementation iterations:
-
 - First run failed because top-level await is not supported when `tsx` compiles
   the root script as CJS. Fixed by wrapping the smoke logic in `main()`.
 - Second run imported all JS subpaths but failed resolving
@@ -250,7 +249,6 @@ Totals: 1 passed, 0 failed (1 items)
 No required command was skipped.
 
 The test suites contain existing skipped cases:
-
 - `pnpm --filter @react-email/editor test:unit`: 1 skipped test.
 - `pnpm test`: skipped cases in `create-email:test`, `web:test`, and
   `@react-email/editor:test`.
@@ -269,7 +267,6 @@ The test suites contain existing skipped cases:
 ## Phase 3 Handoff
 
 Phase 3 should start from:
-
 - `docs/monorepo-inventory.md`
 - `docs/editor-dependency-graph.md`
 - `docs/public-export-map.md`

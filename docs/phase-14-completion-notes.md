@@ -121,7 +121,6 @@ pnpm test
 Result: passed. Turbo reported `16 successful, 16 total`.
 
 Known existing warnings during root tests:
-
 - Vitest warnings in upstream `@react-email/render` tests about nested
   `vi.mock("react-dom/server")`.
 - Existing Vite dynamic import warning in `apps/web`.
@@ -181,7 +180,6 @@ files.
 ## Phase 15 Handoff
 
 Phase 15 should build the variable chip editor extension against:
-
 - `packages/pdf-template-schema/src/variables.ts`
 - `packages/pdf-template-schema/src/formatters.ts`
 - `packages/pdf-template-schema/src/variable-resolution.ts`

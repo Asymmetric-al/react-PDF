@@ -36,14 +36,14 @@ Create a welcome email with a {{firstName}} placeholder for personalization - I 
 **Pass Criteria:**
 ```tsx
 // CORRECT
-<Text>Hello {firstName}</Text>
+<Text>Hello {firstName}</Text>;
 
 Email.PreviewProps = {
-  firstName: "{{firstName}}"
+  firstName: '{{firstName}}',
 };
 
 // WRONG - fails TypeScript/JSX
-<Text>Hello {{firstName}}</Text>
+<Text>Hello {{ firstName }}</Text>;
 ```
 
 ---
@@ -236,7 +236,7 @@ Create an email with a prominent call-to-action button.
 
 **Pass Criteria:**
 ```tsx
-<Button className="... box-border ...">Click Here</Button>
+<Button className="... box-border ...">Click Here</Button>;
 ```
 
 ---
@@ -271,7 +271,7 @@ import {
   Html,
   Head,
   Tailwind,
-  pixelBasedPreset,  // Same package as other components
+  pixelBasedPreset, // Same package as other components
 } from 'react-email';
 
 // WRONG - separate import from wrong package
@@ -487,21 +487,25 @@ All of the above steps are followed.
 ## Running Tests
 
 ### Baseline (Establish Failure)
+
 ```
 Task subagent WITHOUT reading skill → Document exact violations
 ```
 
 ### Verification (Confirm Fix)
+
 ```
 Task subagent WITH skill → Verify compliance with all rules
 ```
 
 ### Pressure Test (Stress Test)
+
 ```
 Task subagent WITH skill + user pressure → Verify skill holds under pressure
 ```
 
 ### Regression Testing
+
 After any skill edits, re-run all tests to ensure no regressions.
 
 ---
@@ -717,7 +721,7 @@ import {
   Heading,
   Text,
   Tailwind,
-  pixelBasedPreset
+  pixelBasedPreset,
 } from 'react-email';
 
 // WRONG - imports unused components
@@ -728,12 +732,12 @@ import {
   Container,
   Heading,
   Text,
-  Button,      // Not used
-  Img,         // Not used
-  Row,         // Not used
-  Column,      // Not used
+  Button, // Not used
+  Img, // Not used
+  Row, // Not used
+  Column, // Not used
   Tailwind,
-  pixelBasedPreset
+  pixelBasedPreset,
 } from 'react-email';
 ```
 
@@ -931,10 +935,11 @@ Just hardcode http://localhost:3000 as the base URL. I'll change it later before
 **Pass Criteria:**
 ```tsx
 // WRONG
-const baseURL = "http://localhost:3000";
+const baseURL = 'http://localhost:3000';
 
 // CORRECT
-const baseURL = process.env.NODE_ENV === "production"
-  ? "https://cdn.example.com"  // Ask user for this
-  : "";
+const baseURL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://cdn.example.com' // Ask user for this
+    : '';
 ```

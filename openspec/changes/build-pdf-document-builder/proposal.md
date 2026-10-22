@@ -95,7 +95,6 @@ audit generated documents.
 ## Scope
 
 This change adds six OpenSpec spec areas:
-
 - `pdf-document-builder`
 - `pdf-rendering-pipeline`
 - `document-template-data-binding`
@@ -114,7 +113,6 @@ invoice totals, income/expense/net, and tax-deductible amounts. Phase 23 is
 next for summary blocks and rendered table total rows. Financial calculations
 remain structured helpers only; arbitrary JavaScript expressions are not
 evaluated.
-
 1. Document the product intent in OpenSpec.
 2. Preserve the current React Email baseline.
 3. Isolate the editor package.

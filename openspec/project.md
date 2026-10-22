@@ -15,8 +15,14 @@ image and asset handling, DocRaptor rendering, and large batch generation.
 
 ## Current state
 
-The repo is still close to upstream React Email:
+The active [Core package restoration change](changes/restore-core-pdf-packages/proposal.md)
+recovers functionality already shipped by Core from committed source maps and
+declarations. Its five-package baseline, provenance and remaining modernization
+gates are recorded in [maintenance evidence](../docs/maintenance/core-pdf-modernization/README.md).
+The original 47-phase roadmap remains product intent; restored artifacts do not
+prove that every historical phase or rollout gate is complete.
 
+The retained upstream workspace foundation is:
 - Root package is still named `react-email-monorepo`.
 - `packages/editor` still publishes as `@react-email/editor`.
 - The editor is built on TipTap and ProseMirror.
@@ -29,7 +35,6 @@ The repo is still close to upstream React Email:
 ## Target state
 
 The repo should evolve into a PDF-first document builder with packages such as:
-
 - `@asym/pdf-template-schema`
 - `@asym/pdf-editor`
 - `@asym/pdf-renderer`
@@ -60,7 +65,6 @@ The product should become a serious Unlayer Document Builder competitor for
 Asymmetric.al use cases. It does not need to match every Unlayer feature
 exactly, but it must match the meaningful core capabilities needed for
 nonprofit and ministry operations:
-
 - branded document templates
 - dynamic variables and merge tags
 - repeatable data sections
@@ -87,7 +91,6 @@ editor-extension patterns unless a later OpenSpec change documents a reason to
 diverge.
 
 The project should move gradually:
-
 1. Preserve the React Email editor baseline.
 2. Isolate the editor package.
 3. Add PDF template schema.

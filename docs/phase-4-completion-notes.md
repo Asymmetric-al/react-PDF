@@ -221,7 +221,6 @@ CSS warning.
 ## Phase 5 Handoff
 
 Phase 5 can start from:
-
 - `docs/editor-package-isolation.md`
 - `docs/phase-4-completion-notes.md`
 - `packages/editor/src/boundary`

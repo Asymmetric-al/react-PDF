@@ -137,20 +137,21 @@ const expectedDonationTableHtml = [
   '<th class="pdf-data-table-heading" data-table-column-key="amount" scope="col" style="text-align:right">Amount</th>',
   '</tr></thead>',
   '<tbody class="pdf-data-table-body">',
-  '<tr class="pdf-data-table-row" data-table-rendered-index="0" data-table-source-index="0">',
+  '<tr class="pdf-data-table-row pdf-table-row-avoid-break" data-table-avoid-row-split="true" data-table-rendered-index="0" data-table-source-index="0">',
   '<td class="pdf-data-table-cell" data-table-column-key="date" style="text-align:left">Jan 15, 2026</td>',
   '<td class="pdf-data-table-cell" data-table-column-key="designation" style="text-align:left">Missions</td>',
   '<td class="pdf-data-table-cell" data-table-column-key="amount" style="text-align:right">$50.00</td>',
   '</tr>',
-  '<tr class="pdf-data-table-row" data-table-rendered-index="1" data-table-source-index="1">',
+  '<tr class="pdf-data-table-row pdf-table-row-avoid-break" data-table-avoid-row-split="true" data-table-rendered-index="1" data-table-source-index="1">',
   '<td class="pdf-data-table-cell" data-table-column-key="date" style="text-align:left">Jan 2, 2026</td>',
   '<td class="pdf-data-table-cell" data-table-column-key="designation" style="text-align:left">General</td>',
   '<td class="pdf-data-table-cell" data-table-column-key="amount" style="text-align:right">$125.00</td>',
   '</tr>',
   '</tbody>',
   '<tfoot class="pdf-data-table-footer">',
-  '<tr class="pdf-data-table-total-placeholder" data-table-total-column-key="amount" data-table-total-operation="sum" data-table-total-placeholder="true">',
-  '<td colspan="3">Total gifts</td>',
+  '<tr class="pdf-data-table-total-row pdf-table-row-avoid-break" data-table-avoid-row-split="true" data-table-total-column-key="amount" data-table-total-count="2" data-table-total-decimal="175.00" data-table-total-minor-units="17500" data-table-total-operation="sum" data-table-total-scale="2">',
+  '<td class="pdf-data-table-total-label" colspan="2">Total gifts</td>',
+  '<td class="pdf-data-table-total-value" data-table-column-key="amount" style="text-align:right">$175.00</td>',
   '</tr>',
   '</tfoot>',
   '</table>',
@@ -163,11 +164,11 @@ const expectedInvoiceTableHtml = [
   '<th class="pdf-data-table-heading" data-table-column-key="total" scope="col" style="text-align:right">Total</th>',
   '</tr></thead>',
   '<tbody class="pdf-data-table-body">',
-  '<tr class="pdf-data-table-row" data-table-rendered-index="0" data-table-source-index="0">',
+  '<tr class="pdf-data-table-row pdf-table-row-avoid-break" data-table-avoid-row-split="true" data-table-rendered-index="0" data-table-source-index="0">',
   '<td class="pdf-data-table-cell" data-table-column-key="description" style="text-align:left">Design</td>',
   '<td class="pdf-data-table-cell" data-table-column-key="total" style="text-align:right">$700.00</td>',
   '</tr>',
-  '<tr class="pdf-data-table-row" data-table-rendered-index="1" data-table-source-index="1">',
+  '<tr class="pdf-data-table-row pdf-table-row-avoid-break" data-table-avoid-row-split="true" data-table-rendered-index="1" data-table-source-index="1">',
   '<td class="pdf-data-table-cell" data-table-column-key="description" style="text-align:left">Print</td>',
   '<td class="pdf-data-table-cell" data-table-column-key="total" style="text-align:right">$300.00</td>',
   '</tr>',
@@ -183,12 +184,12 @@ const expectedFinancialReportTableHtml = [
   '<th class="pdf-data-table-heading" data-table-column-key="amount" scope="col" style="text-align:right;width:30%">Amount</th>',
   '</tr></thead>',
   '<tbody class="pdf-data-table-body">',
-  '<tr class="pdf-data-table-row" data-table-rendered-index="0" data-table-source-index="0">',
+  '<tr class="pdf-data-table-row pdf-table-row-avoid-break" data-table-avoid-row-split="true" data-table-rendered-index="0" data-table-source-index="0">',
   '<td class="pdf-data-table-cell" data-table-column-key="fund" style="text-align:left;width:25%">General</td>',
   '<td class="pdf-data-table-cell" data-table-column-key="account" style="text-align:left;width:45%">Income</td>',
   '<td class="pdf-data-table-cell" data-table-column-key="amount" style="text-align:right;width:30%">$1,200.00</td>',
   '</tr>',
-  '<tr class="pdf-data-table-row" data-table-rendered-index="1" data-table-source-index="1">',
+  '<tr class="pdf-data-table-row pdf-table-row-avoid-break" data-table-avoid-row-split="true" data-table-rendered-index="1" data-table-source-index="1">',
   '<td class="pdf-data-table-cell" data-table-column-key="fund" style="text-align:left;width:25%">Outreach</td>',
   '<td class="pdf-data-table-cell" data-table-column-key="account" style="text-align:left;width:45%">Expense</td>',
   '<td class="pdf-data-table-cell" data-table-column-key="amount" style="text-align:right;width:30%">-$350.00</td>',
@@ -223,7 +224,7 @@ function renderInlineTable(binding: TableBindingInput) {
 }
 
 describe('Phase 20 renderer data tables', () => {
-  it('renders a deterministic donation table with repeated header markup and total placeholders', () => {
+  it('renders a deterministic donation table with repeated header markup and calculated totals', () => {
     const firstResult = renderInlineTable(donationTableBinding);
     const secondResult = renderInlineTable(donationTableBinding);
     const tableCss = firstResult.cssRequirements[0]?.css;
@@ -237,7 +238,7 @@ describe('Phase 20 renderer data tables', () => {
     expect(tableCss).toContain(
       '.pdf-data-table-footer{display:table-footer-group;}',
     );
-    expect(firstResult.html).not.toContain('$175.00');
+    expect(firstResult.html).toContain('$175.00');
   });
 
   it('renders invoice line items through an external table binding id', () => {
@@ -393,7 +394,7 @@ describe('Phase 20 renderer data tables', () => {
     });
 
     expect(missing.html).toContain(
-      '<tr class="pdf-data-table-empty" data-table-empty-state="true"><td colspan="1">No rows.</td></tr>',
+      '<tr class="pdf-data-table-empty pdf-table-row-avoid-break" data-table-avoid-row-split="true" data-table-empty-state="true"><td colspan="1">No rows.</td></tr>',
     );
     expect(missing.warnings).toEqual([
       expect.objectContaining({
@@ -466,7 +467,7 @@ describe('Phase 20 renderer data tables', () => {
     ]);
   });
 
-  it('keeps the browser-safe renderer path free of DocRaptor and calculation imports', () => {
+  it('keeps the browser-safe renderer path free of DocRaptor imports', () => {
     const rendererSourceFiles = [
       new URL('../src/compose-pdf-document-html.ts', import.meta.url),
       new URL('../src/data-table.ts', import.meta.url),
@@ -478,6 +479,6 @@ describe('Phase 20 renderer data tables', () => {
 
     expect(source).not.toMatch(/@asym\/docraptor-client/);
     expect(source).not.toMatch(/docraptor/i);
-    expect(source).not.toMatch(/calculate|aggregate|subtotal/i);
+    // Calculations are already part of the shipped browser renderer; provider access stays server-only.
   });
 });

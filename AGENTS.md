@@ -8,7 +8,6 @@ editor fork, document templates, PDF Studio replacement, DocRaptor rendering,
 variables, repeaters, conditional sections, financial reports, branded
 documents, batch document generation, Unlayer migration, or eventual
 `Asymmetric-al/core` integration, read:
-
 - `openspec/project.md`
 - `openspec/changes/build-pdf-document-builder/proposal.md`
 - `openspec/changes/build-pdf-document-builder/design.md`

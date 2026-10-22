@@ -18,7 +18,7 @@ import {
 
 export type DocRaptorPreviewPackageName =
   '@asym/pdf-renderer/docraptor-preview';
-export type DocRaptorPreviewMaturity = 'phase-21-data-table-preview-fixtures';
+export type DocRaptorPreviewMaturity = 'phase-28-branding';
 export type DocRaptorPreviewRuntime = 'server-only';
 export type DocRaptorPreviewOwnership = 'docraptor-test-preview';
 
@@ -35,7 +35,7 @@ export interface DocRaptorPreviewBoundary {
 
 export const docraptorPreviewBoundary: DocRaptorPreviewBoundary = {
   packageName: '@asym/pdf-renderer/docraptor-preview',
-  maturity: 'phase-21-data-table-preview-fixtures',
+  maturity: 'phase-28-branding',
   owns: 'docraptor-test-preview',
   runtime: 'server-only',
   consumes: ['@asym/pdf-template-schema', '@asym/docraptor-client'],
@@ -71,6 +71,8 @@ export async function createDocRaptorTestPdfPreview(
       html: prepared.snapshots.html,
       media: 'print',
       name: request.name ?? prepared.template.name,
+      pdfMetadata: prepared.template.pdfSettings.metadata,
+      pdfProfile: prepared.template.pdfSettings.profile,
       signal: request.signal,
       tag: request.tag ?? prepared.previewId,
       timeoutMs: request.timeoutMs,

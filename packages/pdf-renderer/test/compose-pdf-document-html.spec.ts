@@ -44,7 +44,9 @@ describe('Phase 09 composePdfDocumentHtml', () => {
       ]),
     });
 
-    expect(result.html).toBe('<h2>Quarterly Update</h2>');
+    expect(result.html).toBe(
+      '<h2 class="pdf-heading-avoid-break-after" data-page-flow-avoid-break-after="true">Quarterly Update</h2>',
+    );
   });
 
   it('serializes link marks without using raw string replacement', () => {

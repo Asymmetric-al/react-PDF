@@ -1,7 +1,7 @@
 import type { PdfTemplateSchemaBoundary } from '@asym/pdf-template-schema';
 
 export type PdfRendererPackageName = '@asym/pdf-renderer';
-export type PdfRendererMaturity = 'phase-21-data-table-preview-fixtures';
+export type PdfRendererMaturity = 'phase-37-security-tenant-contracts';
 export type PdfRendererRuntime = 'browser-safe-root-with-server-subpath';
 export type PdfRendererOwnership = 'print-renderer';
 
@@ -15,7 +15,7 @@ export interface PdfRendererBoundary {
 
 export const pdfRendererBoundary: PdfRendererBoundary = {
   packageName: '@asym/pdf-renderer',
-  maturity: 'phase-21-data-table-preview-fixtures',
+  maturity: 'phase-37-security-tenant-contracts',
   owns: 'print-renderer',
   runtime: 'browser-safe-root-with-server-subpath',
   consumes: ['@asym/pdf-template-schema'],
@@ -25,7 +25,12 @@ export {
   type ComposePdfDocumentHtmlInput,
   type ComposePdfDocumentHtmlResult,
   composePdfDocumentHtml,
+  type PdfDocumentAssetDiagnostic,
+  type PdfDocumentAssetDiagnosticCode,
+  type PdfDocumentAssetDiagnosticSeverity,
+  type PdfDocumentAssetLookupReference,
   type PdfDocumentAssetReference,
+  type PdfDocumentAssetRenderMode,
   type PdfDocumentCssMedia,
   type PdfDocumentCssRequirement,
   type PdfDocumentMark,
@@ -39,6 +44,9 @@ export {
   type PdfDocumentRenderWarningSource,
   type PdfDocumentVariableScope,
   type PdfDocumentVariableUsage,
+  type PreflightPdfDocumentAssetsInput,
+  type PreflightPdfDocumentAssetsResult,
+  preflightPdfDocumentAssets,
 } from './compose-pdf-document-html';
 export {
   type EvaluatePdfDocumentConditionInput,
@@ -50,6 +58,23 @@ export {
   type ResolvePdfDocumentTableRowsResult,
   resolvePdfDocumentTableRows,
 } from './data-table';
+export {
+  type PdfTemplatePreflightDiagnostic,
+  type PdfTemplatePreflightDiagnosticCode,
+  type PdfTemplatePreflightMode,
+  type PdfTemplatePreflightResult,
+  type PdfTemplatePreflightSeverity,
+  type PdfTemplatePreflightSource,
+  type PdfTemplatePreflightStatus,
+  type PdfTemplatePreflightSummary,
+  type PdfTemplateRequiredSection,
+  type PreflightPdfDocumentAccessibilityInput,
+  type PreflightPdfDocumentAccessibilityResult,
+  type PreflightPdfTemplateInput,
+  type PreflightPdfTemplateResult,
+  preflightPdfDocumentAccessibility,
+  preflightPdfTemplate,
+} from './preflight';
 export {
   type BasePdfPreviewRequest,
   type CreateBrowserPdfPreviewRequest,

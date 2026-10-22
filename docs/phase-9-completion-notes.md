@@ -286,7 +286,6 @@ items.
 ## Phase 10 Handoff
 
 Phase 10 can start from:
-
 - `packages/pdf-renderer/src/compose-pdf-document-html.ts`
 - `packages/pdf-renderer/test/compose-pdf-document-html.spec.ts`
 - `packages/pdf-renderer/readme.md`
