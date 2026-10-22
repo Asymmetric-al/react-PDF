@@ -119,7 +119,6 @@ No unit tests were added or updated because this phase made no behavior
 changes.
 
 Validation results:
-
 - `git diff --check`: passed with Git's existing LF-to-CRLF normalization
   warnings for touched markdown files.
 - `git status --short --branch`: showed only the intended documentation and

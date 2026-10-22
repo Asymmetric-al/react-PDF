@@ -285,7 +285,6 @@ Validating...
 
 No requested command was skipped. Some existing test suites reported skipped
 test cases as part of normal execution:
-
 - `pnpm --filter @react-email/editor test:unit`: 1 skipped case
 - `pnpm test`: skipped cases in `web:test` and `@react-email/editor:test`
 

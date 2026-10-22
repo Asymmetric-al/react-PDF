@@ -20,35 +20,34 @@ Status: complete.
 
 ## Old To New Phase Mapping
 
-| Historical 42-phase item | Current 47-phase item |
-|---|---|
-| Phase 19 totals/subtotals/grouping/summary | Phase 22 calculation engine and Phase 23 summary/table-total rendering |
-| Phase 20 page breaks/keep-together | Phase 25 page breaks/keep-together |
-| Phase 21 header/footer | Phase 26 header/footer |
-| Phase 22 image/assets | Phase 27 image/assets |
-| Phase 23 branding/theme | Phase 28 branding/theme |
-| Phase 24 starter templates/golden fixtures | Phase 29 starter templates/golden fixtures |
-| Phase 25 preflight | Phase 30 preflight |
-| Phase 26 render logs/artifact/audit | Phase 31 render logs/artifact/audit |
-| Phase 27 lifecycle/versioning/publishing | Phase 32 lifecycle/versioning/publishing |
-| Phase 28 batch framework | Phase 33 batch framework |
-| Phase 29 async DocRaptor/retry | Phase 34 async DocRaptor/retry |
-| Phase 30 Playwright local fallback | Phase 35 Playwright local fallback |
-| Phase 31 accessibility/metadata/profile | Phase 36 accessibility/metadata/profile |
-| Phase 32 security/tenant contracts | Phase 37 security/tenant contracts |
-| Phase 33 Unlayer migration/coexistence | Phase 38 Unlayer migration/coexistence |
-| Phase 34 core adapter/feature flag | Phase 39 core adapter/feature flag |
-| Phase 35 docs/playground/examples | Phase 40 docs/playground/examples |
-| Phase 36 performance/load tests | Phase 41 performance/load tests |
-| Phase 37 release/API stability | Phase 42 release/API stability |
-| Phase 38 security/secret/browser bundle audit | Phase 43 security/secret/browser bundle audit |
-| Phase 39 OpenSpec reconciliation/archive readiness | Phase 44 OpenSpec reconciliation/archive readiness |
-| Phase 40 mocked production-flow E2E | Phase 45 mocked production-flow E2E |
-| Phase 41 core cutover playbook | Phase 46 core cutover playbook |
-| Phase 42 final package sign-off | Phase 47 final package sign-off |
+| Historical 42-phase item                           | Current 47-phase item                                                  |
+| -------------------------------------------------- | ---------------------------------------------------------------------- |
+| Phase 19 totals/subtotals/grouping/summary         | Phase 22 calculation engine and Phase 23 summary/table-total rendering |
+| Phase 20 page breaks/keep-together                 | Phase 25 page breaks/keep-together                                     |
+| Phase 21 header/footer                             | Phase 26 header/footer                                                 |
+| Phase 22 image/assets                              | Phase 27 image/assets                                                  |
+| Phase 23 branding/theme                            | Phase 28 branding/theme                                                |
+| Phase 24 starter templates/golden fixtures         | Phase 29 starter templates/golden fixtures                             |
+| Phase 25 preflight                                 | Phase 30 preflight                                                     |
+| Phase 26 render logs/artifact/audit                | Phase 31 render logs/artifact/audit                                    |
+| Phase 27 lifecycle/versioning/publishing           | Phase 32 lifecycle/versioning/publishing                               |
+| Phase 28 batch framework                           | Phase 33 batch framework                                               |
+| Phase 29 async DocRaptor/retry                     | Phase 34 async DocRaptor/retry                                         |
+| Phase 30 Playwright local fallback                 | Phase 35 Playwright local fallback                                     |
+| Phase 31 accessibility/metadata/profile            | Phase 36 accessibility/metadata/profile                                |
+| Phase 32 security/tenant contracts                 | Phase 37 security/tenant contracts                                     |
+| Phase 33 Unlayer migration/coexistence             | Phase 38 Unlayer migration/coexistence                                 |
+| Phase 34 core adapter/feature flag                 | Phase 39 core adapter/feature flag                                     |
+| Phase 35 docs/playground/examples                  | Phase 40 docs/playground/examples                                      |
+| Phase 36 performance/load tests                    | Phase 41 performance/load tests                                        |
+| Phase 37 release/API stability                     | Phase 42 release/API stability                                         |
+| Phase 38 security/secret/browser bundle audit      | Phase 43 security/secret/browser bundle audit                          |
+| Phase 39 OpenSpec reconciliation/archive readiness | Phase 44 OpenSpec reconciliation/archive readiness                     |
+| Phase 40 mocked production-flow E2E                | Phase 45 mocked production-flow E2E                                    |
+| Phase 41 core cutover playbook                     | Phase 46 core cutover playbook                                         |
+| Phase 42 final package sign-off                    | Phase 47 final package sign-off                                        |
 
 New current phases inserted before the shifted tail:
-
 - Phase 19: Build Financial Data Table Editor Extension.
 - Phase 20: Build Financial Data Table Renderer and Print Markup.
 - Phase 21: Build Data Table End-to-End Preview Fixtures.
@@ -58,7 +57,6 @@ New current phases inserted before the shifted tail:
 
 Phase 19 should treat existing Phase 18 data-table editor artifacts as starting
 material. It should audit, harden, document, and formally complete:
-
 - `packages/pdf-editor/src/extensions/data-table/index.ts`
 - `packages/pdf-editor/src/extensions/index.ts`
 - `packages/pdf-editor/test/data-table-extension.spec.tsx`

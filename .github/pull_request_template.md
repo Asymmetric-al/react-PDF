@@ -7,7 +7,7 @@ Describe the fork phase or product change and the user-facing behavior.
 - [ ] I read `AGENTS.md` and the active OpenSpec change before editing.
 - [ ] This PR stays inside the current roadmap phase scope.
 - [ ] This PR does not delete upstream React Email code unless the phase says
-      to do so.
+  to do so.
 - [ ] Any product decision or tradeoff is recorded in `docs/decision-log.md`.
 
 ## Tests and Baseline
@@ -15,7 +15,7 @@ Describe the fork phase or product change and the user-facing behavior.
 - [ ] I ran the smallest affected test set.
 - [ ] I ran broader checks or documented why they were skipped.
 - [ ] Command output or a concise result summary is recorded in the relevant
-      phase notes.
+  phase notes.
 
 ## PDF Builder Safety
 

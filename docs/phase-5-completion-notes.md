@@ -300,7 +300,6 @@ Phase 6 should create the first real PDF template schema foundation inside
 `@asym/pdf-template-schema`.
 
 Source-of-truth files for Phase 6:
-
 - `docs/package-strategy.md`
 - `docs/package-boundaries.md`
 - `docs/editor-package-isolation.md`

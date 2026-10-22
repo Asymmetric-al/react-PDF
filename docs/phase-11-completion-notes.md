@@ -7,7 +7,6 @@ Branch: `codex/phase-11-docraptor-client`
 Base commit: `47b4cd64` (`Merge pull request #10 from Asymmetric-al/codex/phase-10-print-shell`)
 
 Machine details:
-
 - OS: Windows
 - Node: `v24.11.1`
 - pnpm: `10.33.0`
@@ -19,7 +18,6 @@ package now exports `createDocRaptorClient`, typed request/result/error
 contracts, `DocRaptorClientError`, and the updated `docraptorClientBoundary`.
 
 The client uses direct REST calls aligned with the official DocRaptor docs:
-
 - `POST https://api.docraptor.com/docs`
 - Basic auth with API key as username and blank password.
 - PDF payloads with `document_content`, `test`, `tag`, and
@@ -41,7 +39,6 @@ Date: 2026-04-26T17:25:22.2007163+07:00
 
 The Phase 11 review found four follow-up issues in the DocRaptor client
 implementation. They were fixed with a narrow TDD pass:
-
 - Sync renders no longer send async-only `callback_url` payload fields.
   Async render creation still sends `callback_url` when provided.
 - Successful-response body read failures from `arrayBuffer()` or `text()` are
@@ -64,7 +61,6 @@ Date: 2026-04-26T17:55:57.2598801+07:00
 
 PR #11 received two additional DocRaptor client review findings. They were
 fixed with a narrow regression-first pass:
-
 - `GET /status/{status_id}` requests now send `accept` and `authorization`
   headers without a body-only `content-type` header.
 - JSON `POST /docs` sync and async render requests still send
@@ -157,7 +153,6 @@ Time:      2.452s
 ```
 
 Observed non-blocking upstream warnings during the broader test run:
-
 - Vitest warning about nested `vi.mock("react-dom/server")` in
   `@react-email/render` tests.
 - React key warnings from existing editor serializer tests.
@@ -228,7 +223,6 @@ Totals: 1 passed, 0 failed (1 items)
 ## Revert Guidance
 
 To revert Phase 11 without touching prior phases:
-
 1. Restore `packages/docraptor-client/src/index.ts` to the boundary-only
    export and delete `src/client.ts`, `src/errors.ts`, `src/server-only.ts`,
    and `src/types.ts`.
@@ -249,7 +243,6 @@ To revert Phase 11 without touching prior phases:
 
 Phase 12 should build browser preview and true DocRaptor preview strategy on
 top of:
-
 - `packages/docraptor-client/src/client.ts`
 - `packages/docraptor-client/test/docraptor-client.spec.ts`
 - `packages/docraptor-client/readme.md`

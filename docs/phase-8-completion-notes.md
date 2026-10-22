@@ -361,7 +361,6 @@ Revert: remove the Phase 08 alias decision sections, set Phase 08 back to
 ## Phase 09 Handoff
 
 Phase 09 is ready to begin from:
-
 - `packages/pdf-editor/src/index.ts`
 - `packages/pdf-editor/test/document-naming-compatibility.spec.tsx`
 - `packages/editor/src/compatibility`

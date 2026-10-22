@@ -9,16 +9,16 @@ serializer, or introduce PDF rendering behavior.
 
 `packages/editor/package.json` exposes these public subpaths:
 
-| Subpath | Current role |
-|---|---|
-| `@react-email/editor` | Root React editor component and props/ref types. |
-| `@react-email/editor/core` | Event bus, serializer, `EmailNode`, `EmailMark`, and core editor helpers. |
-| `@react-email/editor/extensions` | TipTap extensions and the current `StarterKit`. |
-| `@react-email/editor/plugins` | Email theming and image upload helpers. |
-| `@react-email/editor/ui` | Bubble menu, inspector, slash command, icons, and editor UI primitives. |
-| `@react-email/editor/utils` | Public utility exports such as `setTextAlignment`. |
-| `@react-email/editor/styles/*.css` | Public CSS import surfaces. |
-| `@react-email/editor/themes/default.css` | Public default theme CSS import surface. |
+| Subpath                                  | Current role                                                              |
+| ---------------------------------------- | ------------------------------------------------------------------------- |
+| `@react-email/editor`                    | Root React editor component and props/ref types.                          |
+| `@react-email/editor/core`               | Event bus, serializer, `EmailNode`, `EmailMark`, and core editor helpers. |
+| `@react-email/editor/extensions`         | TipTap extensions and the current `StarterKit`.                           |
+| `@react-email/editor/plugins`            | Email theming and image upload helpers.                                   |
+| `@react-email/editor/ui`                 | Bubble menu, inspector, slash command, icons, and editor UI primitives.   |
+| `@react-email/editor/utils`              | Public utility exports such as `setTextAlignment`.                        |
+| `@react-email/editor/styles/*.css`       | Public CSS import surfaces.                                               |
+| `@react-email/editor/themes/default.css` | Public default theme CSS import surface.                                  |
 
 These exports remain the compatibility baseline until a later OpenSpec phase
 explicitly defines a rename or replacement path.
@@ -28,23 +28,22 @@ explicitly defines a rename or replacement path.
 The editor package currently organizes source code around these internal
 entry points:
 
-| Area | Path | Boundary role |
-|---|---|---|
-| Root public entry | `packages/editor/src/index.ts` | Re-exports `EmailEditor` only. |
-| Editor shell | `packages/editor/src/email-editor` | Browser React shell around TipTap `EditorProvider`, default extensions, menus, theme CSS, and ref methods. |
-| Core | `packages/editor/src/core` | Event bus, paste/drop handlers, visual-empty helper, serializer contracts, and core types. |
-| Serializer | `packages/editor/src/core/serializer` | Current React Email serializer, email node/mark contracts, and base email template. |
-| Extensions | `packages/editor/src/extensions` | Current email-aware TipTap nodes, marks, attributes, and `StarterKit`. |
-| Plugins | `packages/editor/src/plugins` | Email theming and browser image upload helpers. |
-| UI | `packages/editor/src/ui` | Bubble menus, inspector, slash commands, icons, primitives, and CSS. |
-| Utils | `packages/editor/src/utils` | Public and internal helper utilities. |
-| Internal boundary | `packages/editor/src/boundary` | Phase 4 metadata and tests that group the legacy editor surface without creating public exports. |
+| Area              | Path                                  | Boundary role                                                                                              |
+| ----------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Root public entry | `packages/editor/src/index.ts`        | Re-exports `EmailEditor` only.                                                                             |
+| Editor shell      | `packages/editor/src/email-editor`    | Browser React shell around TipTap `EditorProvider`, default extensions, menus, theme CSS, and ref methods. |
+| Core              | `packages/editor/src/core`            | Event bus, paste/drop handlers, visual-empty helper, serializer contracts, and core types.                 |
+| Serializer        | `packages/editor/src/core/serializer` | Current React Email serializer, email node/mark contracts, and base email template.                        |
+| Extensions        | `packages/editor/src/extensions`      | Current email-aware TipTap nodes, marks, attributes, and `StarterKit`.                                     |
+| Plugins           | `packages/editor/src/plugins`         | Email theming and browser image upload helpers.                                                            |
+| UI                | `packages/editor/src/ui`              | Bubble menus, inspector, slash commands, icons, primitives, and CSS.                                       |
+| Utils             | `packages/editor/src/utils`           | Public and internal helper utilities.                                                                      |
+| Internal boundary | `packages/editor/src/boundary`        | Phase 4 metadata and tests that group the legacy editor surface without creating public exports.           |
 
 ## Safe To Wrap
 
 The following surfaces are safe to wrap during the migration because they can
 be referenced without changing runtime behavior:
-
 - Public package subpaths through `@asym/pdf-editor/react-email-compat`.
 - Internal metadata in `packages/editor/src/boundary`.
 - Export smoke scripts and package boundary tests.
@@ -55,7 +54,6 @@ be referenced without changing runtime behavior:
 ## Must Remain Untouched For Now
 
 The following surfaces must not be moved or renamed in Phase 4:
-
 - `packages/editor/package.json#name`, `#exports`, and CSS side-effect policy.
 - `packages/editor/src/index.ts` public root behavior.
 - `packages/editor/src/email-editor/email-editor.tsx` ref methods:
@@ -72,7 +70,6 @@ The following surfaces must not be moved or renamed in Phase 4:
 ## Current Test Coverage
 
 Current behavior is protected by these test groups:
-
 - Serializer unit tests under
   `packages/editor/src/core/serializer/*.spec.ts*`.
 - Extension renderer snapshot tests under
@@ -91,13 +88,13 @@ Current behavior is protected by these test groups:
 
 The intended future split remains:
 
-| Package | Future ownership |
-|---|---|
+| Package                     | Future ownership                                                                                                            |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | `@asym/pdf-template-schema` | Versioned template JSON, page settings, themes, variables, assets, render jobs, batch runs, and audit-oriented model types. |
-| `@asym/pdf-editor` | Browser React editor shell, PDF-first TipTap extensions, document UI, inspector controls, and compatibility adapters. |
-| `@asym/pdf-renderer` | PDF serializer, deterministic print HTML/CSS, preflight, preview helpers, and fixture utilities. |
-| `@asym/docraptor-client` | Server-only DocRaptor API calls, async status, test mode, error normalization, and render metadata. |
-| `@asym/pdf-studio-adapter` | Future `Asymmetric-al/core` adapter for storage, permissions, assets, audit, feature flags, and render jobs. |
+| `@asym/pdf-editor`          | Browser React editor shell, PDF-first TipTap extensions, document UI, inspector controls, and compatibility adapters.       |
+| `@asym/pdf-renderer`        | PDF serializer, deterministic print HTML/CSS, preflight, preview helpers, and fixture utilities.                            |
+| `@asym/docraptor-client`    | Server-only DocRaptor API calls, async status, test mode, error normalization, and render metadata.                         |
+| `@asym/pdf-studio-adapter`  | Future `Asymmetric-al/core` adapter for storage, permissions, assets, audit, feature flags, and render jobs.                |
 
 Phase 4 only creates boundary documentation, metadata, and fixture scaffolding.
 Real schema, serializer, editor shell, DocRaptor, and adapter behavior belongs

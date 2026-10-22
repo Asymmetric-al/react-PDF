@@ -25,7 +25,6 @@ this is not a production-readiness or rollout claim. See the
 The following phase inventory describes the accessible Phase 22 source before
 restoration. It remains historical roadmap evidence; it does not describe all
 functionality already shipped in Core, nor mark later roadmap phases complete.
-
 - OpenSpec is the source of product intent and behavior.
 - The upstream baseline is frozen in `docs/baseline-test-results.md`.
 - `packages/editor` still publishes as `@react-email/editor@1.1.1`.
@@ -65,7 +64,6 @@ document JSON. Raw exported HTML is a render artifact, not the editable
 template model.
 
 Core capabilities planned by OpenSpec:
-
 - PDF-first editor for structured document templates
 - typed template schema and runtime validation
 - variables, merge tags, fallbacks, and formatters
@@ -83,7 +81,6 @@ Core capabilities planned by OpenSpec:
 ## OpenSpec First
 
 Before changing PDF builder behavior, read these files:
-
 - `AGENTS.md`
 - `openspec/project.md`
 - `openspec/changes/build-pdf-document-builder/proposal.md`
@@ -167,7 +164,6 @@ pnpm dlx @fission-ai/openspec@latest validate --all
 ```
 
 Baseline caveats from the Phase 1 validation run:
-
 - `pnpm build` failed on this Windows machine because `playground` and
   `apps/demo` attempted to create symlinks inside generated `.react-email`
   directories.

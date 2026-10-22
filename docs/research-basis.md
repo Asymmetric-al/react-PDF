@@ -3,7 +3,6 @@
 ## Repo Baseline
 
 Observed Phase 1 repo facts:
-
 - Branch: `canary`
 - Fork HEAD at planning time: `f53bb0e814f630efd0774240355d97d55046a6c3`
 - Frozen upstream React Email canary SHA:
@@ -56,7 +55,6 @@ tenant assets, branded templates, and migration/coexistence paths.
 DocRaptor is the production PDF renderer target because it uses Prince and
 supports print-focused CSS capabilities that browser engines do not fully
 support. Relevant capabilities include:
-
 - `@page` size and margins
 - page margin boxes
 - page counters and total page counters
@@ -75,7 +73,6 @@ the production fidelity contract.
 OpenSpec records that the broader Asymmetric.al platform currently uses Unlayer
 document mode for PDF Studio. The native builder must preserve or map these
 concepts during later integration:
-
 - template CRUD
 - Unlayer design JSON coexistence
 - HTML export

@@ -8,23 +8,25 @@ It includes all components directly from source with a path alias import of `rea
 
 ### 1. Create an email template
 
-Create a new file at `playground/emails/testing.tsx` 
+Create a new file at `playground/emails/testing.tsx`
 
 ```tsx emails/testing.tsx
 import { Html, Head, Body, Tailwind, Text } from 'react-email';
 
 export default function Testing() {
-  return <Tailwind>
-    <Html>
-      <Head/>
+  return (
+    <Tailwind>
+      <Html>
+        <Head />
 
-      <Body className="bg-black text-white">
-        <Text className="m-0 my-4 bg-cyan-200 text-slate-800">
-          This is a testing email template.
-        </Text>
-      </Body>
-    </Html>
-  </Tailwind>;
+        <Body className="bg-black text-white">
+          <Text className="m-0 my-4 bg-cyan-200 text-slate-800">
+            This is a testing email template.
+          </Text>
+        </Body>
+      </Html>
+    </Tailwind>
+  );
 }
 ```
 
@@ -37,4 +39,3 @@ pnpm dev
 ### 3. Open in your browser
 
 Go to http://localhost:3000
-

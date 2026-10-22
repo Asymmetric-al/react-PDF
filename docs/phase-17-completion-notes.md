@@ -13,7 +13,6 @@ Phase 17: Build Repeater Extension and Scoped Data Resolver.
 
 Phase 17 adds structured repeaters without arbitrary JavaScript and without
 DocRaptor, financial table, totals, grouping, or batch orchestration behavior.
-
 - `@asym/pdf-template-schema` now validates repeater `indexAlias`, structured
   `filters`, DataPath-based item aliases, and exposes a React-free repeater
   resolver.
@@ -176,7 +175,6 @@ Passed with line-ending warnings only for modified text files.
 
 After Phase 17 merged into `canary`, commit `6f2d3569` added two narrow
 hardening fixes:
-
 - `resolveRepeaterItems` now returns an `invalid_repeater_binding` diagnostic
   for invalid bindings instead of throwing.
 - Repeater string sorting now uses deterministic lowercasing and no longer
@@ -206,7 +204,6 @@ complete and Phase 18 as next.
 Phase 18 should build the first report-grade data table block on top of the
 Phase 17 scoped repeater behavior. Use these files as the immediate starting
 point:
-
 - `packages/pdf-template-schema/src/repeaters.ts`
 - `packages/pdf-template-schema/test/repeater-resolution.spec.ts`
 - `packages/pdf-renderer/src/repeaters.ts`

@@ -73,7 +73,6 @@ pnpm dlx @fission-ai/openspec@latest validate --all || true
 ```
 
 Local execution status:
-
 - Blocked: `pnpm --filter @asym/pdf-renderer test`
 - Blocked: `pnpm --filter @asym/docraptor-client test`
 - Blocked: `pnpm --filter @asym/pdf-renderer build`

@@ -19,13 +19,12 @@
   Having separate packages for components (`@react-email/components`), and the CLI (`react-email`) created unnecessary confusion, and a maintenance burden for us.
 
   ### How to migrate
-
   1. Remove `@react-email/components`:
 
      ```diff
      npm remove @react-email/components
      ```
-  
+
   2. Update `react-email`, and move it over to `dependencies`:
 
      ```diff

@@ -113,7 +113,6 @@ work under Phases 22 and 23.
 ## Original Phase 19 Handoff
 
 Before Phase 19 began, the handoff identified these starting files:
-
 - `packages/pdf-template-schema/src/bindings.ts`
 - `packages/pdf-template-schema/src/tables.ts`
 - `packages/pdf-renderer/src/compose-pdf-document-html.ts`
@@ -121,7 +120,6 @@ Before Phase 19 began, the handoff identified these starting files:
 - `packages/pdf-editor/src/extensions/data-table/index.ts`
 
 Phase 19 was required to preserve:
-
 - Structured `TableBindingSchema` validation.
 - Deterministic row order and display values.
 - Diagnostics-as-return-values behavior.
@@ -130,7 +128,6 @@ Phase 19 was required to preserve:
 - No renderer-only or server-only imports in browser-facing editor exports.
 
 Phase 19 was expected to extend tests in:
-
 - `packages/pdf-template-schema/test/table-resolution.spec.ts`
 - `packages/pdf-renderer/test/data-table.spec.ts`
 - `packages/pdf-editor/test/data-table-extension.spec.tsx`

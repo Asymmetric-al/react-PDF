@@ -161,7 +161,6 @@ Result: passed. `50 passed (50)` test files, `460 passed | 1 skipped (461)`
 tests.
 
 Known existing warnings during editor tests:
-
 - Vite cannot analyze the dynamic Prism import in
   `packages/editor/src/extensions/prism-plugin.ts`.
 - Existing React key warnings in serializer tests.
@@ -180,7 +179,6 @@ pnpm test
 Result: passed. Turbo reported `16 successful, 16 total`.
 
 Known existing warnings during root tests:
-
 - Vitest warnings in upstream `@react-email/render` tests about nested
   `vi.mock("react-dom/server")`.
 - Existing Vite dynamic import warning in `apps/web`.
@@ -241,7 +239,6 @@ files.
 ## Phase 16 Handoff
 
 Phase 16 can build conditional section support against:
-
 - `packages/pdf-editor/src/extensions/variable/index.ts`
 - `packages/pdf-template-schema/src/variable-resolution.ts`
 - `packages/pdf-template-schema/src/variables.ts`

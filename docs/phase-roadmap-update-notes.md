@@ -48,7 +48,6 @@ from 33 phases to 36 phases. The canonical plan later expanded to a historical
 ## Phase 06 Source Of Truth
 
 Future Phase 06 agents should start from:
-
 - `AGENTS.md`
 - `openspec/project.md`
 - `openspec/changes/build-pdf-document-builder/proposal.md`

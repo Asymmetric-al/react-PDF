@@ -15,78 +15,78 @@
 - [ ] Identify the current roadmap phase before changing files.
 - [ ] Keep changes scoped to the phase and its stated primary output.
 - [ ] Do not delete upstream React Email code until the phase explicitly says
-      to do so.
+  to do so.
 - [ ] Use TypeScript with strict types. Avoid `any` unless the phase requires a
-      compatibility boundary and the value is narrowed immediately.
+  compatibility boundary and the value is narrowed immediately.
 - [ ] Add or update tests in every implementation phase.
 - [ ] Run the smallest useful test set first, then run broader tests before
-      completion.
+  completion.
 - [ ] Write docs for public APIs and cross-phase decisions.
 - [ ] Treat DocRaptor API keys as server-only secrets.
 - [ ] Treat donor and financial data as private by default.
 - [ ] Keep output deterministic. Rendering snapshots should not change due to
-      object key order, timestamps, or random IDs.
+  object key order, timestamps, or random IDs.
 - [ ] Prefer small composable packages and adapter interfaces over
-      app-specific imports.
+  app-specific imports.
 - [ ] Do not introduce `ds.shadcn` unless a phase explicitly reopens the
-      canvas-mode decision.
+  canvas-mode decision.
 - [ ] Do not treat browser preview as production PDF fidelity.
 - [ ] Do not use arbitrary JavaScript in template logic.
 - [ ] Do not store raw HTML as the only template source of truth.
 - [ ] Leave handoff notes that state scope completed, checks run, known gaps,
-      and the next phase entry point.
+  and the next phase entry point.
 
 ## 47-Phase Course of Action
 
-| Phase | Name | Status | Primary Output |
-|---:|---|---|---|
-| 1 | Fork Baseline, Governance, and Product Charter | Complete | `docs/asym-product-charter.md`, `docs/research-basis.md` |
-| 2 | Monorepo Inventory and Isolation Map | Complete | `docs/monorepo-inventory.md`, `docs/editor-dependency-graph.md` |
-| 3 | Package Boundary for @asym/pdf-editor and Related Packages | Complete | `packages/pdf-editor`, `packages/pdf-renderer` |
-| 4 | Editor Boundary Isolation, Baseline Fixtures, and Regression Harness | Complete | `packages/pdf-editor/test/fixtures`, `packages/pdf-renderer/test/fixtures` |
-| 5 | Package Names, Export Strategy, and Compatibility Policy | Complete | `docs/package-strategy.md`, `scripts/asym-package-strategy-smoke.ts` |
-| 6 | Create the PDF Template Schema Foundation | Complete | `packages/pdf-template-schema/src`, `packages/pdf-template-schema/test` |
-| 7 | Add Compatibility Fixtures and Regression Harness | Complete | `packages/editor/src`, `packages/editor/test` |
-| 8 | Rename Public Concepts Safely from Email to Document | Complete | `@asym/pdf-editor` compatibility exports, editor docs |
-| 9 | Build the Document Serializer Foundation | Complete | `packages/pdf-renderer/src/compose-pdf-document-html.ts` |
-| 10 | Build the Print HTML Shell and Page Model | Complete | `packages/pdf-renderer/src/print-shell.ts` |
-| 11 | Build the DocRaptor Client Package | Complete | `packages/docraptor-client/src` |
-| 12 | Build Browser Preview and DocRaptor Preview Strategy | Complete; validation recorded | `packages/pdf-renderer/src/preview`, `packages/pdf-renderer/src/docraptor-preview.ts` |
-| 13 | Build the Typed Variable Registry | Complete; validation recorded | `packages/pdf-template-schema/src/variables` |
-| 14 | Build Variable Resolution, Formatter, and Fallback System | Complete; validation recorded | `packages/pdf-template-schema/src/formatters`, `packages/pdf-renderer/src/variables` |
-| 15 | Build the Variable Chip Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/variable` |
-| 16 | Build Conditional Section Engine and Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/conditional-section`, `packages/pdf-renderer/src/conditions` |
-| 17 | Build Repeater Extension and Scoped Data Resolver | Complete; validation recorded | `packages/pdf-editor/src/extensions/repeater`, `packages/pdf-renderer/src/repeaters` |
-| 18 | Build Financial Data Table Block | Complete; validation recorded | `packages/pdf-editor/src/extensions/data-table`, `packages/pdf-renderer/src/data-table` |
-| 19 | Build Financial Data Table Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/data-table` |
-| 20 | Build Financial Data Table Renderer and Print Markup | Complete; validation recorded | `packages/pdf-renderer/src/data-table` |
-| 21 | Build Data Table End-to-End Preview Fixtures | Complete; validation recorded | table fixtures and preview tests |
-| 22 | Build Calculation Engine for Totals, Subtotals, and Grouping | Next | calculation contracts and helpers |
-| 23 | Build Summary Blocks and Table Total Rendering | Not started | summary blocks and table totals |
-| 24 | Build Form Field, Signature, and QR Placeholder Contracts | Not started | placeholder contracts |
-| 25 | Build Page Break and Keep-Together Controls | Not started | page-flow controls |
-| 26 | Build Header and Footer System | Not started | header/footer schema and renderer support |
-| 27 | Build Image and Asset Pipeline | Not started | asset adapters and render-safe URLs |
-| 28 | Build Branding and Theme System | Not started | theme model and print CSS tokens |
-| 29 | Build Starter Templates and Golden Fixtures | Not started | starter templates and golden fixtures |
-| 30 | Build Preflight Validation | Not started | preflight diagnostics |
-| 31 | Build Render Logs, Artifact Metadata, and Audit Contracts | Not started | metadata and audit contracts |
-| 32 | Build Template Lifecycle, Versioning, and Publishing Contracts | Not started | lifecycle and publishing contracts |
-| 33 | Build Batch Generation Framework | Not started | queue-agnostic batch framework |
-| 34 | Build Async DocRaptor Rendering and Retry System | Not started | async render and retry helpers |
-| 35 | Build Playwright Local Fallback and Test Renderer | Not started | local test renderer |
-| 36 | Build Accessibility, Metadata, and PDF Profile Support | Not started | metadata, accessibility, and profile support |
-| 37 | Build Security and Tenant Integration Contracts | Not started | security and tenant contracts |
-| 38 | Build Unlayer Migration and Coexistence Path | Not started | migration and coexistence contracts |
-| 39 | Build `Asymmetric-al/core` Adapter Package and Feature Flag Contract | Not started | core adapter contract |
-| 40 | Build Documentation, Playground, and Developer Examples | Not started | docs, examples, and playground |
-| 41 | Build Performance, Load, and Large Document Tests | Not started | performance smoke and opt-in load tests |
-| 42 | Build Release, Versioning, and API Stability Review | Not started | API stability and release review |
-| 43 | Run Security, Secret, and Browser Bundle Audit | Not started | security and browser-bundle audit |
-| 44 | OpenSpec Current-State Reconciliation and Archive Readiness | Not started | OpenSpec reconciliation notes |
-| 45 | End-to-End Package Validation with Mocked Production Flows | Not started | mocked package-level E2E flows |
-| 46 | `Asymmetric-al/core` Cutover Playbook and Integration PR Plan | Not started | `docs/core-cutover-playbook.md` |
-| 47 | Production Hardening, Launch Readiness, and Final Package Sign-Off | Not started | `docs/final-package-readiness.md` |
+| Phase | Name                                                                 | Status                        | Primary Output                                                                                   |
+| ----: | -------------------------------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------ |
+|     1 | Fork Baseline, Governance, and Product Charter                       | Complete                      | `docs/asym-product-charter.md`, `docs/research-basis.md`                                         |
+|     2 | Monorepo Inventory and Isolation Map                                 | Complete                      | `docs/monorepo-inventory.md`, `docs/editor-dependency-graph.md`                                  |
+|     3 | Package Boundary for @asym/pdf-editor and Related Packages           | Complete                      | `packages/pdf-editor`, `packages/pdf-renderer`                                                   |
+|     4 | Editor Boundary Isolation, Baseline Fixtures, and Regression Harness | Complete                      | `packages/pdf-editor/test/fixtures`, `packages/pdf-renderer/test/fixtures`                       |
+|     5 | Package Names, Export Strategy, and Compatibility Policy             | Complete                      | `docs/package-strategy.md`, `scripts/asym-package-strategy-smoke.ts`                             |
+|     6 | Create the PDF Template Schema Foundation                            | Complete                      | `packages/pdf-template-schema/src`, `packages/pdf-template-schema/test`                          |
+|     7 | Add Compatibility Fixtures and Regression Harness                    | Complete                      | `packages/editor/src`, `packages/editor/test`                                                    |
+|     8 | Rename Public Concepts Safely from Email to Document                 | Complete                      | `@asym/pdf-editor` compatibility exports, editor docs                                            |
+|     9 | Build the Document Serializer Foundation                             | Complete                      | `packages/pdf-renderer/src/compose-pdf-document-html.ts`                                         |
+|    10 | Build the Print HTML Shell and Page Model                            | Complete                      | `packages/pdf-renderer/src/print-shell.ts`                                                       |
+|    11 | Build the DocRaptor Client Package                                   | Complete                      | `packages/docraptor-client/src`                                                                  |
+|    12 | Build Browser Preview and DocRaptor Preview Strategy                 | Complete; validation recorded | `packages/pdf-renderer/src/preview`, `packages/pdf-renderer/src/docraptor-preview.ts`            |
+|    13 | Build the Typed Variable Registry                                    | Complete; validation recorded | `packages/pdf-template-schema/src/variables`                                                     |
+|    14 | Build Variable Resolution, Formatter, and Fallback System            | Complete; validation recorded | `packages/pdf-template-schema/src/formatters`, `packages/pdf-renderer/src/variables`             |
+|    15 | Build the Variable Chip Editor Extension                             | Complete; validation recorded | `packages/pdf-editor/src/extensions/variable`                                                    |
+|    16 | Build Conditional Section Engine and Editor Extension                | Complete; validation recorded | `packages/pdf-editor/src/extensions/conditional-section`, `packages/pdf-renderer/src/conditions` |
+|    17 | Build Repeater Extension and Scoped Data Resolver                    | Complete; validation recorded | `packages/pdf-editor/src/extensions/repeater`, `packages/pdf-renderer/src/repeaters`             |
+|    18 | Build Financial Data Table Block                                     | Complete; validation recorded | `packages/pdf-editor/src/extensions/data-table`, `packages/pdf-renderer/src/data-table`          |
+|    19 | Build Financial Data Table Editor Extension                          | Complete; validation recorded | `packages/pdf-editor/src/extensions/data-table`                                                  |
+|    20 | Build Financial Data Table Renderer and Print Markup                 | Complete; validation recorded | `packages/pdf-renderer/src/data-table`                                                           |
+|    21 | Build Data Table End-to-End Preview Fixtures                         | Complete; validation recorded | table fixtures and preview tests                                                                 |
+|    22 | Build Calculation Engine for Totals, Subtotals, and Grouping         | Next                          | calculation contracts and helpers                                                                |
+|    23 | Build Summary Blocks and Table Total Rendering                       | Not started                   | summary blocks and table totals                                                                  |
+|    24 | Build Form Field, Signature, and QR Placeholder Contracts            | Not started                   | placeholder contracts                                                                            |
+|    25 | Build Page Break and Keep-Together Controls                          | Not started                   | page-flow controls                                                                               |
+|    26 | Build Header and Footer System                                       | Not started                   | header/footer schema and renderer support                                                        |
+|    27 | Build Image and Asset Pipeline                                       | Not started                   | asset adapters and render-safe URLs                                                              |
+|    28 | Build Branding and Theme System                                      | Not started                   | theme model and print CSS tokens                                                                 |
+|    29 | Build Starter Templates and Golden Fixtures                          | Not started                   | starter templates and golden fixtures                                                            |
+|    30 | Build Preflight Validation                                           | Not started                   | preflight diagnostics                                                                            |
+|    31 | Build Render Logs, Artifact Metadata, and Audit Contracts            | Not started                   | metadata and audit contracts                                                                     |
+|    32 | Build Template Lifecycle, Versioning, and Publishing Contracts       | Not started                   | lifecycle and publishing contracts                                                               |
+|    33 | Build Batch Generation Framework                                     | Not started                   | queue-agnostic batch framework                                                                   |
+|    34 | Build Async DocRaptor Rendering and Retry System                     | Not started                   | async render and retry helpers                                                                   |
+|    35 | Build Playwright Local Fallback and Test Renderer                    | Not started                   | local test renderer                                                                              |
+|    36 | Build Accessibility, Metadata, and PDF Profile Support               | Not started                   | metadata, accessibility, and profile support                                                     |
+|    37 | Build Security and Tenant Integration Contracts                      | Not started                   | security and tenant contracts                                                                    |
+|    38 | Build Unlayer Migration and Coexistence Path                         | Not started                   | migration and coexistence contracts                                                              |
+|    39 | Build `Asymmetric-al/core` Adapter Package and Feature Flag Contract | Not started                   | core adapter contract                                                                            |
+|    40 | Build Documentation, Playground, and Developer Examples              | Not started                   | docs, examples, and playground                                                                   |
+|    41 | Build Performance, Load, and Large Document Tests                    | Not started                   | performance smoke and opt-in load tests                                                          |
+|    42 | Build Release, Versioning, and API Stability Review                  | Not started                   | API stability and release review                                                                 |
+|    43 | Run Security, Secret, and Browser Bundle Audit                       | Not started                   | security and browser-bundle audit                                                                |
+|    44 | OpenSpec Current-State Reconciliation and Archive Readiness          | Not started                   | OpenSpec reconciliation notes                                                                    |
+|    45 | End-to-End Package Validation with Mocked Production Flows           | Not started                   | mocked package-level E2E flows                                                                   |
+|    46 | `Asymmetric-al/core` Cutover Playbook and Integration PR Plan        | Not started                   | `docs/core-cutover-playbook.md`                                                                  |
+|    47 | Production Hardening, Launch Readiness, and Final Package Sign-Off   | Not started                   | `docs/final-package-readiness.md`                                                                |
 
 ## Phase 01: Fork Baseline, Governance, and Product Charter
 
@@ -104,16 +104,16 @@ baseline facts before product implementation begins.
 
 - [x] Read `AGENTS.md`, `openspec/project.md`, and the active OpenSpec change.
 - [x] Record branch, package manager, scripts, package names, editor exports,
-      and upstream React Email fork state.
+  and upstream React Email fork state.
 - [x] Write the product charter and research basis without claiming
-      implementation exists.
+  implementation exists.
 - [x] Add governance docs, maintainers/CODEOWNERS, and baseline validation
-      notes.
+  notes.
 
 ### Validation
 
 - [x] Confirm charter and research notes cite real repo files and current
-      OpenSpec docs.
+  OpenSpec docs.
 - [x] Run safe documentation checks available in the repo.
 
 ### Handoff output
@@ -138,16 +138,16 @@ isolated without breaking upstream package behavior.
 ### Tasks
 
 - [x] Inventory workspaces, apps, packages, scripts, build tooling, docs,
-      tests, and examples.
+  tests, and examples.
 - [x] Map `packages/editor` imports, exports, dependencies, UI boundaries,
-      plugins, theming, image upload, and serializer paths.
+  plugins, theming, image upload, and serializer paths.
 - [x] Classify email-only assumptions as keep, wrap, fork, replace later,
-      remove later, or unknown.
+  remove later, or unknown.
 
 ### Validation
 
 - [x] Confirm dependency graph distinguishes browser, server, shared, and test
-      concerns.
+  concerns.
 - [x] Add deterministic dependency-map and export-smoke tooling.
 
 ### Handoff output
@@ -171,15 +171,15 @@ Create the first `@asym/*` package shells while preserving the current fork.
 ### Tasks
 
 - [x] Define package ownership, runtime boundaries, and allowed dependency
-      direction.
+  direction.
 - [x] Create private package shells with typed boundary exports and package
-      readmes.
+  readmes.
 - [x] Preserve existing `@react-email/editor` exports and compatibility paths.
 
 ### Validation
 
 - [x] Package builds and workspace discovery still work after package shells
-      are added.
+  are added.
 - [x] Dependency directions remain acyclic and documented.
 
 ### Handoff output
@@ -203,10 +203,10 @@ PDF-first changes.
 ### Tasks
 
 - [x] Add internal legacy editor boundary metadata without public package
-      exports.
+  exports.
 - [x] Add package boundary tests that guard selected current editor surfaces.
 - [x] Add deterministic baseline fixtures for current editor JSON and render
-      expectations.
+  expectations.
 
 ### Validation
 
@@ -232,24 +232,24 @@ names without a dangerous big-bang rename.
 ### Tasks
 
 - [x] Document current names, target names, compatibility exports, long-term
-      APIs, and private internals.
+  APIs, and private internals.
 - [x] Choose the wrapper-first path: keep `@react-email/editor` unchanged and
-      use private `@asym/pdf-editor` as the future import target.
+  use private `@asym/pdf-editor` as the future import target.
 - [x] Document changeset, release, and future `Asymmetric-al/core`
-      consumption policy.
+  consumption policy.
 - [x] Add deterministic package-strategy smoke coverage.
 
 ### Validation
 
 - [x] `@react-email/editor` export surfaces remain unchanged.
 - [x] `@asym/pdf-editor` wrapper and `react-email-compat` entry points remain
-      discoverable.
+  discoverable.
 - [x] All `@asym/*` package shells remain private.
 
 ### Handoff output
 
 - [x] Package strategy policy, smoke command, and Phase 06 schema handoff
-      notes.
+  notes.
 
 ## Phase 06: Create the PDF Template Schema Foundation
 
@@ -268,18 +268,18 @@ DocRaptor, batch, and adapter work can share.
 ### Tasks
 
 - [x] Use Zod by default for runtime validation and inferred TypeScript types
-      because it is already in the workspace catalog and supports JSON Schema
-      conversion; document any measured reason before choosing Valibot.
+  because it is already in the workspace catalog and supports JSON Schema
+  conversion; document any measured reason before choosing Valibot.
 - [x] Define runtime schemas and aligned TypeScript types for
-      `DocumentTemplateV1`, `DocumentPageSettings`, `DocumentTheme`,
-      `VariableDefinition`, `VariableReference`, `DataBinding`,
-      `ConditionalRule`, `RepeaterBinding`, `TableBinding`, `AssetReference`,
-      `RenderRequest`, `RenderResult`, `RenderWarning`, `RenderError`,
-      `RenderJobV1`, `BatchRunV1`, `DocumentArtifact`, and `AuditEvent`.
+  `DocumentTemplateV1`, `DocumentPageSettings`, `DocumentTheme`,
+  `VariableDefinition`, `VariableReference`, `DataBinding`,
+  `ConditionalRule`, `RepeaterBinding`, `TableBinding`, `AssetReference`,
+  `RenderRequest`, `RenderResult`, `RenderWarning`, `RenderError`,
+  `RenderJobV1`, `BatchRunV1`, `DocumentArtifact`, and `AuditEvent`.
 - [x] Add schema version behavior, page setting defaults, nonprofit document
-      categories, and first product fixtures.
+  categories, and first product fixtures.
 - [x] Keep the package free of React UI, browser-only code, DocRaptor secrets,
-      and app-specific dependencies.
+  and app-specific dependencies.
 
 ### Validation
 
@@ -288,13 +288,13 @@ DocRaptor, batch, and adapter work can share.
 - [x] Run `pnpm --filter @asym/pdf-template-schema build`.
 - [x] Run `pnpm lint`.
 - [x] Tests cover valid template parsing, invalid template rejection, page
-      setting defaults, variable validation, version field behavior, and
-      schema fixtures.
+  setting defaults, variable validation, version field behavior, and
+  schema fixtures.
 
 ### Handoff output
 
 - [x] Schema API docs, fixtures, validation-library decision note, and Phase
-      07 compatibility-harness entry point.
+  07 compatibility-harness entry point.
 
 ## Phase 07: Add Compatibility Fixtures and Regression Harness
 
@@ -310,12 +310,12 @@ serializers, or core extensions.
 ### Tasks
 
 - [x] Add fixtures for paragraph, heading, link, image, button, two-column
-      layout, table, themed document, and current custom extension examples.
+  layout, table, themed document, and current custom extension examples.
 - [x] Test editor JSON shape, current HTML export, `composeReactEmail`,
-      extension registration, package exports, and CSS/theme import
-      availability.
+  extension registration, package exports, and CSS/theme import
+  availability.
 - [x] Avoid changing output unless the harness reveals a bug that OpenSpec
-      allows fixing.
+  allows fixing.
 
 ### Validation
 
@@ -342,15 +342,15 @@ current imports.
 ### Tasks
 
 - [x] Add safe document/PDF-first names, such as `PdfEditor` or
-      `DocumentEditor`, only beside existing names.
+  `DocumentEditor`, only beside existing names.
 - [x] Keep `EmailEditor`, `composeReactEmail`, `EmailNode`, `EmailMark`, UI
-      exports, and CSS exports working.
+  exports, and CSS exports working.
 - [x] Document every compatibility decision and the migration window.
 
 ### Validation
 
 - [x] Tests prove old imports still work, new imports work, generated types are
-      correct, and build output contains intended exports.
+  correct, and build output contains intended exports.
 - [x] Run `pnpm --filter @react-email/editor test`.
 - [x] Run `pnpm --filter @react-email/editor typecheck`.
 - [x] Run `pnpm --filter @react-email/editor build`.
@@ -373,18 +373,18 @@ Create a PDF document serializer path separate from `composeReactEmail`.
 ### Tasks
 
 - [x] Implement a serializer that walks structured editor/template JSON,
-      resolves registered document nodes and marks, and returns deterministic
-      HTML fragments or body output.
+  resolves registered document nodes and marks, and returns deterministic
+  HTML fragments or body output.
 - [x] Return structured CSS requirements, render warnings, asset references,
-      variable usage, and unsupported node warnings.
+  variable usage, and unsupported node warnings.
 - [x] Do not connect DocRaptor and do not implement a string-replacement
-      engine.
+  engine.
 
 ### Validation
 
 - [x] Tests cover paragraph, heading, links, images, columns, table where
-      supported, unknown node warning, style merge order, empty document, and
-      invalid input.
+  supported, unknown node warning, style merge order, empty document, and
+  invalid input.
 - [x] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -406,16 +406,16 @@ render.
 ### Tasks
 
 - [x] Support Letter, A4, Legal, custom sizes, portrait, landscape, margins,
-      document title, print media, base CSS variables, page breaks,
-      keep-together classes, repeated table header CSS, and page number
-      placeholders.
+  document title, print media, base CSS variables, page breaks,
+  keep-together classes, repeated table header CSS, and page number
+  placeholders.
 - [x] Drive page settings from the schema and keep output deterministic.
 - [x] Do not call DocRaptor.
 
 ### Validation
 
 - [x] Tests cover page sizes, orientations, margins, invalid custom sizes,
-      title escaping, print CSS snapshots, and page break output.
+  title escaping, print CSS snapshots, and page break output.
 - [x] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -436,17 +436,17 @@ async rendering, polling, and error normalization.
 ### Tasks
 
 - [x] Implement server-only client APIs for test mode, production mode,
-      document content, base URL, print media, sync render, async job creation,
-      status polling, timeouts, abort signals, and normalized errors.
+  document content, base URL, print media, sync render, async job creation,
+  status polling, timeouts, abort signals, and normalized errors.
 - [x] Keep API keys out of browser bundles and tests.
 - [x] Support app-layer idempotency metadata without requiring DocRaptor to
-      provide a first-class idempotency key.
+  provide a first-class idempotency key.
 
 ### Validation
 
 - [x] Mock tests cover payloads, missing API key, test mode, base URL, sync
-      success/error, async success/polling, timeout handling, and browser import
-      guards where practical.
+  success/error, async success/polling, timeout handling, and browser import
+  guards where practical.
 - [x] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -471,27 +471,27 @@ implementation begins.
 
 - [x] Confirm the active phase is Pre-Phase 12.
 - [x] Re-read `AGENTS.md`, `openspec/project.md`, the active OpenSpec change,
-      and prior phase notes.
+  and prior phase notes.
 - [x] Inspect local merge history after Phase 11.
 - [x] Record that `gh` was unavailable, so live PR body/comment/review
-      inspection was not claimed.
+  inspection was not claimed.
 - [x] Identify documentation drift after Phase 11.
 - [x] Update documentation and OpenSpec tracker without implementing Phase 12
-      product code.
+  product code.
 - [x] Expand the remaining phase plan to the then-current 42-phase roadmap
-      (historical; later superseded by the 47-phase tracker).
+  (historical; later superseded by the 47-phase tracker).
 - [x] Keep Phase 12 marked as `Next`.
 
 ### Validation
 
 - [x] Run available non-mutating validation.
 - [x] Record blocked validation honestly when local package-manager tooling is
-      unavailable.
+  unavailable.
 
 ### Handoff output
 
 - [x] Reconciliation note with active phase, scope completed, checks run,
-      known gaps, and Phase 12 guardrails.
+  known gaps, and Phase 12 guardrails.
 
 ## Phase 12: Build Browser Preview and DocRaptor Preview Strategy
 
@@ -507,19 +507,19 @@ preview.
 ### Tasks
 
 - [x] Add browser preview from generated print HTML/CSS and DocRaptor preview
-      through server-side test mode.
+  through server-side test mode.
 - [x] Return preview result types with success, warnings, errors, render ID,
-      generated HTML/CSS snapshots, PDF bytes or URL, and render timing.
+  generated HTML/CSS snapshots, PDF bytes or URL, and render timing.
 - [x] Mark browser preview as non-final fidelity and ensure preview cannot
-      mutate templates.
+  mutate templates.
 
 ### Validation
 
 - [x] Tests cover browser preview generation, DocRaptor preview payload,
-      warning/error flow, no API key exposure, and read-only preview behavior.
+  warning/error flow, no API key exposure, and read-only preview behavior.
 - [x] Run or attempt `pnpm test`, `pnpm build`, and `pnpm lint`; record
-      blocked local package-manager validation honestly when tooling is
-      unavailable.
+  blocked local package-manager validation honestly when tooling is
+  unavailable.
 
 ### Handoff output
 
@@ -539,27 +539,27 @@ financial-report document workflows.
 ### Tasks
 
 - [x] Create registry domains for organization, recipient, donation,
-      document, missionary, tax receipt, financial report, statement, invoice,
-      asset, and computed values.
+  document, missionary, tax receipt, financial report, statement, invoice,
+  asset, and computed values.
 - [x] Define key, label, group, description, type, sample value, required flag,
-      fallback behavior, formatter hints, privacy classification, and future
-      source-path metadata.
+  fallback behavior, formatter hints, privacy classification, and future
+  source-path metadata.
 - [x] Add deterministic sample-data generation and fixtures for donation
-      receipt, tax receipt, annual statement, financial report, invoice, and
-      certificate.
+  receipt, tax receipt, annual statement, financial report, invoice, and
+  certificate.
 - [x] Keep the registry React-free so schema, renderer, preview, preflight,
-      and future core adapters can import it safely.
+  and future core adapters can import it safely.
 
 ### Validation
 
 - [x] Tests cover registry validation, duplicate rejection, required fields,
-      sample data generation, group lookup, and unknown variable detection.
+  sample data generation, group lookup, and unknown variable detection.
 - [x] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
 
 - [x] Variable registry exports, sample-data behavior, and merge tag domain
-      notes.
+  notes.
 
 ## Phase 14: Build Variable Resolution, Formatter, and Fallback System
 
@@ -575,20 +575,20 @@ receipts, statements, invoices, and reports without React dependencies.
 ### Tasks
 
 - [x] Support variable lookup from data contexts, nested source paths,
-      required/optional behavior, fallback values, missing value diagnostics,
-      and type validation.
+  required/optional behavior, fallback values, missing value diagnostics,
+  and type validation.
 - [x] Support currency, date, date range, number, percentage, address, receipt
-      number, fiscal period, boolean labels, image URL validation, and
-      deterministic output.
+  number, fiscal period, boolean labels, image URL validation, and
+  deterministic output.
 - [x] Do not evaluate arbitrary JavaScript from templates. Computed behavior
-      must remain structured and deterministic.
+  must remain structured and deterministic.
 
 ### Validation
 
 - [x] Tests cover string resolution, nested source paths, optional fallback,
-      missing required errors, USD currency, dates/ranges, fiscal years,
-      addresses, percentages, booleans, image URLs, invalid types, unknown
-      formatters, and React-free imports.
+  missing required errors, USD currency, dates/ranges, fiscal years,
+  addresses, percentages, booleans, image URLs, invalid types, unknown
+  formatters, and React-free imports.
 - [x] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -609,21 +609,21 @@ backed by the registry and resolver.
 ### Tasks
 
 - [x] Add structured inline variable nodes that reference registry keys,
-      render visibly, serialize to JSON, deserialize from JSON, and preview
-      sample/fallback values.
+  render visibly, serialize to JSON, deserialize from JSON, and preview
+  sample/fallback values.
 - [x] Add command/API insertion and slash command integration only if it fits
-      current UI patterns.
+  current UI patterns.
 - [x] Detect missing or broken variable keys and prevent accidental key edits
-      inside the chip.
+  inside the chip.
 
 ### Validation
 
 - [x] Tests cover insertion, serialization, deserialization, chip rendering,
-      sample preview value rendering, unknown key warnings, fallback display,
-      keyboard behavior, copy/paste behavior where practical, and stable
-      package exports.
+  sample preview value rendering, unknown key warnings, fallback display,
+  keyboard behavior, copy/paste behavior where practical, and stable
+  package exports.
 - [x] Run `pnpm --filter @react-email/editor test`, `pnpm build`, and
-      `pnpm lint`.
+  `pnpm lint`.
 
 ### Handoff output
 
@@ -644,15 +644,15 @@ arbitrary JavaScript.
 ### Tasks
 
 - [x] Support structured operators: exists, not_exists, equals, not_equals,
-      greater_than, greater_than_or_equal, less_than, less_than_or_equal,
-      contains, not_contains, is_empty, is_not_empty, in, and not_in.
+  greater_than, greater_than_or_equal, less_than, less_than_or_equal,
+  contains, not_contains, is_empty, is_not_empty, in, and not_in.
 - [x] Cover receipt language, country-specific language, empty donation table
-      messages, missionary sections, and financial report sections.
+  messages, missionary sections, and financial report sections.
 
 ### Validation
 
 - [x] Tests cover schema validation, condition evaluation, nested content,
-      true/false preview, invalid fields, and missing data behavior.
+  true/false preview, invalid fields, and missing data behavior.
 - [x] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -674,18 +674,18 @@ resolution for item aliases and nested variables.
 ### Tasks
 
 - [x] Support source array key/path, item alias, index alias where useful,
-      empty state, structured sorting, safe structured filtering where useful,
-      maximum row guard, scoped variables, nested conditionals, warnings for
-      missing sources, warnings for non-array sources, and deterministic render
-      order.
+  empty state, structured sorting, safe structured filtering where useful,
+  maximum row guard, scoped variables, nested conditionals, warnings for
+  missing sources, warnings for non-array sources, and deterministic render
+  order.
 - [x] Cover donations, invoice line items, missionary lists, financial row
-      groups, and funds.
+  groups, and funds.
 
 ### Validation
 
 - [x] Tests cover repeated rows, empty state, missing source warnings, scoped
-      variable resolution, sorting where included, nested variables, and
-      invalid source type.
+  variable resolution, sorting where included, nested variables, and
+  invalid source type.
 - [x] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -704,19 +704,19 @@ data table work begins.
 - [x] Confirm the active phase is Pre-Phase 18 and that Phase 18 remains next.
 - [x] Reconcile stale README and OpenSpec design status through Phase 17.
 - [x] Record repository, PR, issue, and validation review in
-      `docs/pre-phase-18-reconciliation.md`.
+  `docs/pre-phase-18-reconciliation.md`.
 - [x] Add renderer URL-scheme safety for link and button `href` output.
 - [x] Replace environment-dependent date parsing in conditional comparisons
-      and repeater sorting with strict deterministic ISO parsing.
+  and repeater sorting with strict deterministic ISO parsing.
 - [x] Surface invalid external repeater binding diagnostics instead of
-      silently treating referenced invalid bindings as missing.
+  silently treating referenced invalid bindings as missing.
 - [x] Do not implement financial table blocks, totals, grouping, or Phase 18
-      runtime behavior.
+  runtime behavior.
 
 ### Handoff output
 
 - [x] Pre-Phase 18 reconciliation notes, safety tests, and Phase 18 go/no-go
-      decision.
+  decision.
 
 ## Phase 18: Build Financial Data Table Block
 
@@ -733,24 +733,24 @@ giving statements.
 ### Tasks
 
 - [x] Support data source binding, columns, labels, widths, alignment,
-      formatters, grouping, totals, empty state, repeated headers, page-safe
-      classes, unsupported-column warnings, and deterministic order.
+  formatters, grouping, totals, empty state, repeated headers, page-safe
+  classes, unsupported-column warnings, and deterministic order.
 - [x] Cover annual giving statements, invoices, financial reports, and fund
-      activity reports.
+  activity reports.
 
 ### Validation
 
 - [x] Tests cover table schema, donation table render, invoice table render,
-      financial report table render, empty state, invalid binding, totals row
-      placeholder, and repeated header markup.
+  financial report table render, empty state, invalid binding, totals row
+  placeholder, and repeated header markup.
 - [x] Run focused package tests, package builds, broad tests, OpenSpec
-      validation, and lint; exact output is recorded in
-      `docs/phase-18-completion-notes.md`.
+  validation, and lint; exact output is recorded in
+  `docs/phase-18-completion-notes.md`.
 
 ### Handoff output
 
 - [x] Data table block contract, financial table tests, and Phase 19/20
-      hardening handoff notes.
+  hardening handoff notes.
 
 ## Phase 19: Build Financial Data Table Editor Extension
 
@@ -774,31 +774,31 @@ not duplicate code blindly.
 ### Tasks
 
 - [x] Verify or harden the protected/selectable/isolating `dataTable` node
-      following the existing variable, conditional, and repeater extension
-      patterns.
+  following the existing variable, conditional, and repeater extension
+  patterns.
 - [x] Support insertion commands such as `insertDataTable`.
 - [x] Serialize a shared-schema-valid `TableBinding` or `bindingId` with
-      deterministic JSON and HTML round trips.
+  deterministic JSON and HTML round trips.
 - [x] Preserve `data-asym-data-table`, `data-table-binding`,
-      `data-table-binding-id`, and deterministic source/column metadata attrs.
+  `data-table-binding-id`, and deterministic source/column metadata attrs.
 - [x] Provide preview diagnostics backed by the shared `TableBindingSchema`.
 - [x] Export from `@asym/pdf-editor/extensions`.
 - [x] Avoid renderer, DocRaptor, server-only, calculation, aggregation, and
-      arbitrary JavaScript imports or behavior.
+  arbitrary JavaScript imports or behavior.
 
 ### Validation
 
 - [x] Tests cover command insertion, JSON attrs, HTML round trip, invalid
-      binding diagnostics, missing binding diagnostics, extension export, and
-      no renderer/DocRaptor import.
+  binding diagnostics, missing binding diagnostics, extension export, and
+  no renderer/DocRaptor import.
 - [x] Confirm existing variable, conditional, and repeater extension tests
-      still pass.
+  still pass.
 - [x] Run focused `@asym/pdf-editor` tests before broader package validation.
 
 ### Handoff output
 
 - [x] Editor node shape, serialized attrs, schema validation behavior,
-      diagnostics behavior, and Phase 20 renderer handoff notes.
+  diagnostics behavior, and Phase 20 renderer handoff notes.
 
 ## Phase 20: Build Financial Data Table Renderer and Print Markup
 
@@ -821,30 +821,30 @@ gaps, and do not duplicate code blindly.
 ### Tasks
 
 - [x] Accept `tableBindings?: readonly TableBindingInput[]` in document
-      composition where appropriate.
+  composition where appropriate.
 - [x] Render `dataTable` nodes from inline binding or `bindingId`.
 - [x] Emit deterministic semantic `table`, `thead`, `tbody`, `tr`, `th`, and
-      `td` markup with repeated-header-friendly classes.
+  `td` markup with repeated-header-friendly classes.
 - [x] Handle empty states, row limits, missing source, non-array source,
-      invalid bindings, unsupported columns, and formatter display metadata
-      with structured warnings.
+  invalid bindings, unsupported columns, and formatter display metadata
+  with structured warnings.
 - [x] Keep totals/subtotals as declarative placeholders only.
 - [x] Do not implement calculations, aggregation, DocRaptor orchestration, or
-      browser-preview-as-production behavior.
+  browser-preview-as-production behavior.
 
 ### Validation
 
 - [x] Tests cover donation table, invoice table, financial report table, empty
-      state, invalid/missing binding, repeated header markup, max-row warning,
-      formatter display, deterministic snapshots, and totals placeholders
-      without computed values.
+  state, invalid/missing binding, repeated header markup, max-row warning,
+  formatter display, deterministic snapshots, and totals placeholders
+  without computed values.
 - [x] Run focused `@asym/pdf-renderer` tests before broader package
-      validation.
+  validation.
 
 ### Handoff output
 
 - [x] Renderer markup contract, diagnostics, unresolved calculation behavior,
-      and Phase 21 fixture handoff notes.
+  and Phase 21 fixture handoff notes.
 
 ## Phase 21: Build Data Table End-to-End Preview Fixtures
 
@@ -860,18 +860,18 @@ end-to-end fixtures.
 ### Tasks
 
 - [x] Create annual giving statement, invoice, and financial report table
-      fixtures.
+  fixtures.
 - [x] Validate editor round trip, render output, browser preview, and mocked
-      DocRaptor preview.
+  DocRaptor preview.
 - [x] Propagate structured warnings to preview diagnostics.
 - [x] Avoid calculation logic and real network calls.
 
 ### Validation
 
 - [x] Tests cover E2E table fixture preview, no template mutation, warnings
-      propagation, deterministic snapshots, and mocked DocRaptor behavior.
+  propagation, deterministic snapshots, and mocked DocRaptor behavior.
 - [x] Run focused schema, editor, and renderer checks before broader package
-      validation.
+  validation.
 
 ### Handoff output
 
@@ -891,22 +891,22 @@ financial reports.
 ### Tasks
 
 - [x] Implement structured operations for sum, count, useful averages, min/max
-      where useful, group subtotal, invoice subtotal/total, income/expense/net,
-      and tax-deductible amount.
+  where useful, group subtotal, invoice subtotal/total, income/expense/net,
+  and tax-deductible amount.
 - [x] Define precision rules and justify any decimal dependency.
 - [x] Avoid arbitrary JavaScript and hidden expression evaluation.
 
 ### Validation
 
 - [x] Tests cover donation sums, invoice totals, grouped subtotals,
-      income/expense/net, empty arrays, invalid fields, non-number fields, and
-      precision behavior.
+  income/expense/net, empty arrays, invalid fields, non-number fields, and
+  precision behavior.
 - [x] Run focused schema/renderer checks before broader package validation.
 
 ### Handoff output
 
 - [x] Calculation contracts, precision notes, and Phase 23 summary/table-total
-      handoff notes.
+  handoff notes.
 
 ## Phase 23: Build Summary Blocks and Table Total Rendering
 
@@ -923,20 +923,20 @@ compromising auditability.
 
 - [ ] Add structured summary block declarations that reference calculations.
 - [ ] Render total rows where safe and preserve calculation metadata for later
-      audit phases.
+  audit phases.
 - [ ] Avoid batch behavior and persistence.
 
 ### Validation
 
 - [ ] Tests cover total contributions block, invoice total block, financial
-      report net block, table total row, grouped subtotal, and invalid
-      calculation reference.
+  report net block, table total row, grouped subtotal, and invalid
+  calculation reference.
 - [ ] Run focused package checks before broader validation.
 
 ### Handoff output
 
 - [ ] Summary block contract, table total behavior, and Phase 24 placeholder
-      handoff notes.
+  handoff notes.
 
 ## Phase 24: Build Form Field, Signature, and QR Placeholder Contracts
 
@@ -952,22 +952,22 @@ e-signature system.
 ### Tasks
 
 - [ ] Define schema, editor, and renderer support for text field, checkbox,
-      signature, initials, QR, and date placeholders.
+  signature, initials, QR, and date placeholders.
 - [ ] Render placeholders as print-safe HTML and keep them future-compatible
-      with core/e-sign adapters.
+  with core/e-sign adapters.
 - [ ] Do not implement live submission, provider APIs, or e-sign workflow.
 
 ### Validation
 
 - [ ] Tests cover schema validation, editor insertion/round trip, renderer
-      output, missing label warnings, QR payload validation, and absence of
-      submission/provider behavior.
+  output, missing label warnings, QR payload validation, and absence of
+  submission/provider behavior.
 - [ ] Run focused package checks before broader validation.
 
 ### Handoff output
 
 - [ ] Placeholder-only contract, limitations, and Phase 25 page-flow handoff
-      notes.
+  notes.
 
 ## Phase 25: Build Page Break and Keep-Together Controls
 
@@ -982,14 +982,14 @@ Allow users to control PDF pagination without editing CSS.
 ### Tasks
 
 - [ ] Support explicit page breaks, keep section together, avoid break after
-      heading, avoid row split where possible, start section on new page, print
-      CSS output, and warnings for non-guaranteed controls.
+  heading, avoid row split where possible, start section on new page, print
+  CSS output, and warnings for non-guaranteed controls.
 
 ### Validation
 
 - [ ] Tests cover page break serialization, print HTML output,
-      keep-together classes, invalid placement, preview output, and table row
-      avoid-break classes.
+  keep-together classes, invalid placement, preview output, and table row
+  avoid-break classes.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1009,14 +1009,14 @@ Support first-page and repeating headers/footers with page numbers.
 ### Tasks
 
 - [ ] Support no header/footer, first-page and repeating variants, page
-      number, total pages, document title, organization footer, margin
-      requirements, and small-margin warnings.
+  number, total pages, document title, organization footer, margin
+  requirements, and small-margin warnings.
 - [ ] Keep DocRaptor-specific output isolated in renderer code.
 
 ### Validation
 
 - [ ] Tests cover header/footer schema, page number output, first-page
-      variant, margin warning, and serializer snapshots.
+  variant, margin warning, and serializer snapshots.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1036,16 +1036,16 @@ Support images, logos, signatures, and render-safe asset URLs.
 ### Tasks
 
 - [ ] Support image metadata, alt text, width/height, alignment, optional
-      links, logo/signature roles, render-safe URL, asset ID, tenant/source
-      metadata, preflight hooks, and no blob URLs in production render.
+  links, logo/signature roles, render-safe URL, asset ID, tenant/source
+  metadata, preflight hooks, and no blob URLs in production render.
 - [ ] Define adapters instead of building a storage backend unless one already
-      exists in this repo.
+  exists in this repo.
 
 ### Validation
 
 - [ ] Tests cover image schema, node serialization, alt text warnings, blob
-      URL rejection, render-safe URL acceptance, missing image warnings, and
-      signature fixtures.
+  URL rejection, render-safe URL acceptance, missing image warnings, and
+  signature fixtures.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1066,14 +1066,14 @@ tenant values.
 ### Tasks
 
 - [ ] Support organization name, logo asset, colors, heading/body fonts,
-      fallback fonts, footer text, receipt defaults where appropriate,
-      template overrides, and brand token use in print CSS.
+  fallback fonts, footer text, receipt defaults where appropriate,
+  template overrides, and brand token use in print CSS.
 
 ### Validation
 
 - [ ] Tests cover theme schema, defaults, overrides, CSS variable output,
-      missing font fallback, receipt brand fixture, and financial report brand
-      fixture.
+  missing font fallback, receipt brand fixture, and financial report brand
+  fixture.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1093,16 +1093,16 @@ Create realistic templates that drive development and regression tests.
 ### Tasks
 
 - [ ] Add fixtures for donation receipt, tax receipt, annual giving statement,
-      donor letter, missionary support report, financial report, invoice, and
-      certificate.
+  donor letter, missionary support report, financial report, invoice, and
+  certificate.
 - [ ] Include metadata, page settings, theme, variables, sample data, expected
-      warnings, and output snapshots where practical.
+  warnings, and output snapshots where practical.
 
 ### Validation
 
 - [ ] Tests validate every fixture, render every fixture to print HTML, confirm
-      sample data, reject unexpected warnings, and keep snapshots
-      deterministic.
+  sample data, reject unexpected warnings, and keep snapshots
+  deterministic.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1122,16 +1122,16 @@ Catch broken templates before publishing or rendering.
 ### Tasks
 
 - [ ] Validate schema, required variables, unknown keys, formatters,
-      conditionals, repeaters, tables, assets, blob URLs, header/footer margin
-      risk, unsupported nodes, required sections, and batch unsafe conditions.
+  conditionals, repeaters, tables, assets, blob URLs, header/footer margin
+  risk, unsupported nodes, required sections, and batch unsafe conditions.
 - [ ] Return structured errors, warnings, info, affected node IDs, and
-      suggested fixes where practical.
+  suggested fixes where practical.
 
 ### Validation
 
 - [ ] Tests cover valid receipt, missing donor field, broken image, invalid
-      table column, conditional missing source, batch unsafe template, and
-      result shape snapshots.
+  table column, conditional missing source, batch unsafe template, and
+  result shape snapshots.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1151,18 +1151,18 @@ Define metadata contracts for renders and generated PDFs.
 ### Tasks
 
 - [ ] Capture render ID, template ID/version, data snapshot hash, renderer
-      mode, DocRaptor metadata, timing, page settings, warnings, errors,
-      artifact MIME/size/location, actor, and batch ID where applicable.
+  mode, DocRaptor metadata, timing, page settings, warnings, errors,
+  artifact MIME/size/location, actor, and batch ID where applicable.
 - [ ] Define audit event types for template lifecycle, render lifecycle, batch
-      lifecycle, and artifact download.
+  lifecycle, and artifact download.
 - [ ] Use package-level types and in-memory test adapters only if no backend
-      storage exists.
+  storage exists.
 
 ### Validation
 
 - [ ] Tests cover metadata schema, artifact schema, audit schema, successful
-      render with warnings, failed render, and deterministic data snapshot
-      hashes.
+  render with warnings, failed render, and deterministic data snapshot
+  hashes.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1183,18 +1183,18 @@ published immutable versions.
 ### Tasks
 
 - [ ] Support draft, published, and archived template states, version numbers,
-      immutable published snapshots, current draft pointers, timestamps,
-      engine metadata, validation status, preflight status, duplicate/archive/
-      restore behavior, and changelog metadata.
+  immutable published snapshots, current draft pointers, timestamps,
+  engine metadata, validation status, preflight status, duplicate/archive/
+  restore behavior, and changelog metadata.
 - [ ] Do not add a database. Use contracts, pure helpers, and in-memory test
-      adapters if needed.
+  adapters if needed.
 
 ### Validation
 
 - [ ] Tests cover draft metadata, publish immutability, draft updates that do
-      not mutate published versions, duplicate/archive/restore behavior,
-      preflight-blocked publish, engine metadata, and adapter behavior if
-      added.
+  not mutate published versions, duplicate/archive/restore behavior,
+  preflight-blocked publish, engine metadata, and adapter behavior if
+  added.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1215,17 +1215,17 @@ platform queues.
 ### Tasks
 
 - [ ] Support batch definition, batch ID, immutable template snapshot
-      reference, dataset reference, per-document jobs, status transitions,
-      progress summary, cancellation, retry, partial success, result manifest,
-      zip/download manifest shape, batch safety preflight, and structured
-      failure reasons.
+  reference, dataset reference, per-document jobs, status transitions,
+  progress summary, cancellation, retry, partial success, result manifest,
+  zip/download manifest shape, batch safety preflight, and structured
+  failure reasons.
 - [ ] Define adapters instead of requiring a queue library.
 
 ### Validation
 
 - [ ] Tests cover batch creation from a published snapshot, job creation,
-      transitions, partial failure, retry, cancellation, progress, manifest
-      generation, rejection of mutable drafts, and preflight-blocked starts.
+  transitions, partial failure, retry, cancellation, progress, manifest
+  generation, rejection of mutable drafts, and preflight-blocked starts.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1246,18 +1246,18 @@ retry-safe logic.
 ### Tasks
 
 - [ ] Support async render creation, status ID storage, polling, callback
-      contract where useful, transient and permanent error classification,
-      retry limits, backoff, timeouts, cancellation handling where possible,
-      partial completion, idempotency metadata, structured logs, and no
-      secrets in logs.
+  contract where useful, transient and permanent error classification,
+  retry limits, backoff, timeouts, cancellation handling where possible,
+  partial completion, idempotency metadata, structured logs, and no
+  secrets in logs.
 - [ ] Preserve Phase 11 sync client compatibility where practical.
 
 ### Validation
 
 - [ ] Mocked tests cover async job creation, polling success/failure,
-      transient retry, permanent failure without retry, max retries, partial
-      success, cancellation request, status summaries, and no real network
-      calls.
+  transient retry, permanent failure without retry, max retries, partial
+  success, cancellation request, status summaries, and no real network
+  calls.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1278,18 +1278,18 @@ it the production contract.
 ### Tasks
 
 - [ ] Prefer Playwright because the repo already uses it. Do not introduce a
-      production dependency on the local renderer.
+  production dependency on the local renderer.
 - [ ] Support developer preview, CI smoke tests, HTML-to-PDF sanity checks,
-      screenshot/PDF snapshots, page size input where practical, print HTML/CSS
-      input, failure reporting, and graceful skips when browser binaries are
-      unavailable.
+  screenshot/PDF snapshots, page size input where practical, print HTML/CSS
+  input, failure reporting, and graceful skips when browser binaries are
+  unavailable.
 - [ ] Document DocRaptor as the production-fidelity renderer.
 
 ### Validation
 
 - [ ] Tests cover print HTML input, page size handling, failures, graceful skip
-      when browser binaries are unavailable, no production dependency on local
-      renderer, and documentation that DocRaptor remains production fidelity.
+  when browser binaries are unavailable, no production dependency on local
+  renderer, and documentation that DocRaptor remains production fidelity.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1310,19 +1310,19 @@ before production hardening.
 ### Tasks
 
 - [ ] Support title, subject, author/organization, language, keywords, PDF/A
-      profile options, PDF/UA profile options where feasible, alt text
-      validation, heading order warnings where practical, table header
-      warnings, link text warnings, DocRaptor request metadata mapping, and
-      invalid profile rejection.
+  profile options, PDF/UA profile options where feasible, alt text
+  validation, heading order warnings where practical, table header
+  warnings, link text warnings, DocRaptor request metadata mapping, and
+  invalid profile rejection.
 - [ ] Do not overclaim accessibility guarantees. Provide structured warnings
-      and supported profile options.
+  and supported profile options.
 
 ### Validation
 
 - [ ] Tests cover metadata schema, DocRaptor request metadata mapping, missing
-      title warning, missing alt text warning, heading/table/link warnings
-      where implemented, PDF profile serialization, and invalid profile
-      rejection.
+  title warning, missing alt text warning, heading/table/link warnings
+  where implemented, PDF profile serialization, and invalid profile
+  rejection.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1342,18 +1342,18 @@ Prepare for `Asymmetric-al/core` integration without app-specific code.
 ### Tasks
 
 - [ ] Define contracts for tenant ID, user ID, permissions, asset access,
-      render authorization, preview authorization, edit/publish authorization,
-      batch authorization, audit identity, signed/public render URLs, PII
-      classification, secret-like value rejection in templates, no API key in
-      browser bundles, and redacted logs.
+  render authorization, preview authorization, edit/publish authorization,
+  batch authorization, audit identity, signed/public render URLs, PII
+  classification, secret-like value rejection in templates, no API key in
+  browser bundles, and redacted logs.
 - [ ] Use interfaces and fake adapters if the repo has no auth system.
 
 ### Validation
 
 - [ ] Tests cover unauthorized render, unauthorized publish, unauthorized
-      batch, tenant mismatch, secret-like template metadata rejection, PII
-      classification, API key client-export checks where testable, and log
-      redaction.
+  batch, tenant mismatch, secret-like template metadata rejection, PII
+  classification, API key client-export checks where testable, and log
+  redaction.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1375,18 +1375,18 @@ conversion.
 ### Tasks
 
 - [ ] Support engine metadata, `unlayer`,
-      `asym_pdf_document_builder`, legacy template references, manual
-      migration workflow, optional HTML import shape, migration report,
-      unsupported feature list, side-by-side comparison hooks, feature flag
-      contract, legacy PDF artifact references, and safe fallback behavior.
+  `asym_pdf_document_builder`, legacy template references, manual
+  migration workflow, optional HTML import shape, migration report,
+  unsupported feature list, side-by-side comparison hooks, feature flag
+  contract, legacy PDF artifact references, and safe fallback behavior.
 - [ ] Do not attempt full Unlayer JSON conversion unless a later spec narrows
-      the scope.
+  the scope.
 
 ### Validation
 
 - [ ] Tests cover engine metadata, legacy/new template metadata, migration
-      reports, unsupported features, feature flag contract shape, comparison
-      hooks, and legacy template pass-through.
+  reports, unsupported features, feature flag contract shape, comparison
+  hooks, and legacy template pass-through.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1407,18 +1407,18 @@ builder later.
 ### Tasks
 
 - [ ] Expose integration points for editor component/factory, template
-      load/save, lifecycle/versioning, preview, render, variable registry
-      injection, asset adapter, auth/permission adapter, DocRaptor client
-      injection, feature flags, legacy engine metadata, preflight, and batch
-      generation.
+  load/save, lifecycle/versioning, preview, render, variable registry
+  injection, asset adapter, auth/permission adapter, DocRaptor client
+  injection, feature flags, legacy engine metadata, preflight, and batch
+  generation.
 - [ ] Do not require editing `Asymmetric-al/core` in this repo.
 
 ### Validation
 
 - [ ] Tests cover adapter exports, type-level integration fixture, fake core
-      adapter preview, fake core adapter render through mocked DocRaptor path,
-      feature flag selection, legacy engine pass-through, and injectable auth/
-      asset adapters.
+  adapter preview, fake core adapter render through mocked DocRaptor path,
+  feature flag selection, legacy engine pass-through, and injectable auth/
+  asset adapters.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1438,18 +1438,18 @@ Make the package usable by humans before production rollout.
 ### Tasks
 
 - [ ] Add examples for donation receipt, annual giving statement, financial
-      report, invoice, certificate, browser preview, mocked DocRaptor preview,
-      variable chips, conditionals, repeaters, data tables, preflight
-      validation, and batch planning.
+  report, invoice, certificate, browser preview, mocked DocRaptor preview,
+  variable chips, conditionals, repeaters, data tables, preflight
+  validation, and batch planning.
 - [ ] Document workspace package installation, exports, editor usage,
-      serializer usage, preview usage, DocRaptor setup, environment variables,
-      tests, known limitations, migration notes, and core adapter notes.
+  serializer usage, preview usage, DocRaptor setup, environment variables,
+  tests, known limitations, migration notes, and core adapter notes.
 
 ### Validation
 
 - [ ] Docs examples typecheck where supported, playground builds where
-      supported, export smoke tests pass, example templates validate, and
-      mocked DocRaptor examples require no real network or API key.
+  supported, export smoke tests pass, example templates validate, and
+  mocked DocRaptor examples require no real network or API key.
 - [ ] Run `pnpm build`, `pnpm test`, and `pnpm lint`.
 
 ### Handoff output
@@ -1470,18 +1470,18 @@ integration.
 ### Tasks
 
 - [ ] Measure one-page receipts, ten-page annual statements, fifty-page
-      financial reports, 500 donation line items, 1,000 financial rows, 1,000
-      recipient batch manifests, asset-heavy documents, repeated
-      header/footer output, large-template preflight, and variable resolver
-      behavior on large datasets.
+  financial reports, 500 donation line items, 1,000 financial rows, 1,000
+  recipient batch manifests, asset-heavy documents, repeated
+  header/footer output, large-template preflight, and variable resolver
+  behavior on large datasets.
 - [ ] Track serializer time, preflight time, resolver time, memory where
-      practical, output size, warning count, and batch planning time.
+  practical, output size, warning count, and batch planning time.
 - [ ] Keep heavy tests opt-in so CI stays stable.
 
 ### Validation
 
 - [ ] Lightweight performance smoke tests run in normal CI and heavy tests are
-      behind an env flag or separate script with documented broad thresholds.
+  behind an env flag or separate script with documented broad thresholds.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1502,17 +1502,17 @@ production integration.
 ### Tasks
 
 - [ ] Review public exports, private/internal exports, backwards
-      compatibility, schema versions, package names, changeset/changelog needs,
-      generated type declarations, breaking-change policy, deprecated
-      email-first aliases, package size impact, and release notes.
+  compatibility, schema versions, package names, changeset/changelog needs,
+  generated type declarations, breaking-change policy, deprecated
+  email-first aliases, package size impact, and release notes.
 - [ ] Preserve compatibility shims unless OpenSpec and tests explicitly allow
-      their removal.
+  their removal.
 
 ### Validation
 
 - [ ] Tests/checks cover public exports, type declarations, schema version
-      compatibility, deprecated alias behavior where applicable, package build
-      output, and changeset/release-note presence if the repo uses changesets.
+  compatibility, deprecated alias behavior where applicable, package build
+  output, and changeset/release-note presence if the repo uses changesets.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1534,17 +1534,17 @@ bundles before integration.
 ### Tasks
 
 - [ ] Audit DocRaptor API key usage, server-only exports, browser exports,
-      logs, preview result serialization, render metadata, asset URLs, sample
-      data, PII classifications, side effects, and dependency risks.
+  logs, preview result serialization, render metadata, asset URLs, sample
+  data, PII classifications, side effects, and dependency risks.
 - [ ] Add automated checks where practical instead of relying on docs-only
-      assurances.
+  assurances.
 
 ### Validation
 
 - [ ] Tests/checks cover browser-facing import boundaries, client bundle
-      secret names where testable, redacted logs, secret-free preview results,
-      redacted render metadata, asset URL classification, and PII variable
-      classifications.
+  secret names where testable, redacted logs, secret-free preview results,
+  redacted render metadata, asset URL classification, and PII variable
+  classifications.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint`.
 
 ### Handoff output
@@ -1566,17 +1566,17 @@ readiness.
 ### Tasks
 
 - [ ] Review `openspec/project.md`, active proposal/design/tasks, all spec
-      delta files, root specs if present, completed tasks through Phase 38,
-      known deviations, deferred items, and current behavior versus proposed
-      behavior.
+  delta files, root specs if present, completed tasks through Phase 38,
+  known deviations, deferred items, and current behavior versus proposed
+  behavior.
 - [ ] Update specs to actual chosen architecture without claiming unfinished
-      items are complete.
+  items are complete.
 
 ### Validation
 
 - [ ] Run OpenSpec validation for the active change and all specs, docs link
-      checks if available, manual task consistency checks, and a contradiction
-      scan if no tooling exists.
+  checks if available, manual task consistency checks, and a contradiction
+  scan if no tooling exists.
 - [ ] Run `pnpm test`, `pnpm build`, and `pnpm lint` where relevant and safe.
 
 ### Handoff output
@@ -1596,16 +1596,16 @@ Exercise complete package-level flows before platform integration.
 ### Tasks
 
 - [ ] Cover donation receipt flow, annual statement flow, financial report
-      flow, batch run flow, migration flow, and asset flow using deterministic
-      fixtures and mocked external services.
+  flow, batch run flow, migration flow, and asset flow using deterministic
+  fixtures and mocked external services.
 - [ ] Do not require real DocRaptor or `Asymmetric-al/core`.
 
 ### Validation
 
 - [ ] Tests cover template to preflight to preview to mocked DocRaptor render
-      metadata, variables/repeaters/tables/totals, grouped financial reports,
-      batch async partial success manifests, legacy pass-through feature flags,
-      and render-safe asset preflight.
+  metadata, variables/repeaters/tables/totals, grouped financial reports,
+  batch async partial success manifests, legacy pass-through feature flags,
+  and render-safe asset preflight.
 - [ ] Run `pnpm test`, `pnpm build`, `pnpm lint`, and OpenSpec validation.
 
 ### Handoff output
@@ -1626,19 +1626,19 @@ Create the concrete integration plan for bringing the package into
 ### Tasks
 
 - [ ] Document package dependency strategy, feature flag names and rollout
-      modes, required env vars, server-only DocRaptor setup, asset adapter
-      expectations, auth/permission adapter expectations, template storage
-      mapping, Unlayer coexistence, pilot templates, side-by-side comparison,
-      batch rollout, monitoring/logs, rollback, support/training, migration
-      limits, and criteria for removing Unlayer fallback later.
+  modes, required env vars, server-only DocRaptor setup, asset adapter
+  expectations, auth/permission adapter expectations, template storage
+  mapping, Unlayer coexistence, pilot templates, side-by-side comparison,
+  batch rollout, monitoring/logs, rollback, support/training, migration
+  limits, and criteria for removing Unlayer fallback later.
 - [ ] Do not edit `Asymmetric-al/core` in this repo or claim integration is
-      complete.
+  complete.
 
 ### Validation
 
 - [ ] Check that the playbook references current package exports accurately,
-      includes no secrets, links to correct OpenSpec files, and compiles/
-      typechecks examples if included.
+  includes no secrets, links to correct OpenSpec files, and compiles/
+  typechecks examples if included.
 - [ ] Run docs/type checks if the repo supports them.
 
 ### Handoff output
@@ -1659,24 +1659,24 @@ separating package readiness from future platform integration work.
 ### Tasks
 
 - [ ] Review API exports, compatibility, package names, schema versions,
-      changelog/changesets, docs, full test suite, OpenSpec tasks/specs,
-      security checklist, client-bundle secrets, DocRaptor modes, core
-      adapter docs, migration plan, launch plan, rollback plan, known
-      limitations, first-class template fixtures, and batch safety.
+  changelog/changesets, docs, full test suite, OpenSpec tasks/specs,
+  security checklist, client-bundle secrets, DocRaptor modes, core
+  adapter docs, migration plan, launch plan, rollback plan, known
+  limitations, first-class template fixtures, and batch safety.
 - [ ] Create a final readiness report that makes remaining platform work
-      explicit.
+  explicit.
 
 ### Validation
 
 - [ ] Run full test suite, full build, full lint, OpenSpec validate all,
-      export smoke tests, fixture render tests, Phase 38 security/bundle
-      checks, and Phase 40 mocked end-to-end flows.
+  export smoke tests, fixture render tests, Phase 38 security/bundle
+  checks, and Phase 40 mocked end-to-end flows.
 - [ ] Document exact pre-existing failures if any command fails.
 
 ### Handoff output
 
 - [ ] Final package readiness report, known limitations, rollback guidance,
-      and sign-off notes.
+  and sign-off notes.
 
 ## OpenSpec Validation
 

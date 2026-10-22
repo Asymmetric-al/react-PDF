@@ -25,7 +25,6 @@ JSON. Exported HTML is a render artifact, not the editable template model.
 ## Core Document Types
 
 The first-class product target covers:
-
 - donation receipts
 - tax receipts
 - annual giving statements
@@ -48,7 +47,6 @@ matter for Asymmetric.al nonprofit and ministry workflows. It does not mean
 cloning every Unlayer feature.
 
 The required parity target includes:
-
 - embeddable template authoring
 - structured template JSON storage
 - document categories and starter templates

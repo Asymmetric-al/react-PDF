@@ -8,7 +8,6 @@ the fork toward the OpenSpec-defined PDF builder.
 ## Before You Start
 
 Read:
-
 - `AGENTS.md`
 - `openspec/project.md`
 - `openspec/changes/build-pdf-document-builder/proposal.md`
@@ -71,7 +70,6 @@ check passed unless it did.
 ## Pull Requests
 
 Each pull request should include:
-
 - roadmap phase and scope
 - user-facing summary
 - files changed

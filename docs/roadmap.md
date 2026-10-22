@@ -4,55 +4,55 @@ The canonical phase list lives in
 `openspec/changes/build-pdf-document-builder/tasks.md`. This document mirrors
 that list with current phase status for handoff visibility.
 
-| Phase | Name | Status | Primary Output |
-|---:|---|---|---|
-| 1 | Fork Baseline, Governance, and Product Charter | Complete; validation gaps recorded | `docs/asym-product-charter.md`, `docs/research-basis.md` |
-| 2 | Monorepo Inventory and Isolation Map | Complete; validation recorded | `docs/monorepo-inventory.md`, `docs/editor-dependency-graph.md` |
-| 3 | Package Boundary for @asym/pdf-editor and Related Packages | Complete; validation recorded | `packages/pdf-editor`, `packages/pdf-renderer` |
-| 4 | Editor Boundary Isolation, Baseline Fixtures, and Regression Harness | Complete; validation recorded | `packages/editor/src/boundary`, baseline fixtures |
-| 5 | Package Names, Export Strategy, and Compatibility Policy | Complete; validation recorded | `docs/package-strategy.md`, `scripts/asym-package-strategy-smoke.ts` |
-| 6 | Create the PDF Template Schema Foundation | Complete; validation recorded | `packages/pdf-template-schema/src`, schema fixtures |
-| 7 | Add Compatibility Fixtures and Regression Harness | Complete; validation recorded | Expanded `@react-email/editor` compatibility fixtures |
-| 8 | Rename Public Concepts Safely from Email to Document | Complete; validation recorded | Compatibility aliases and migration docs |
-| 9 | Build the Document Serializer Foundation | Complete; validation recorded | `packages/pdf-renderer/src/compose-pdf-document-html.ts` |
-| 10 | Build the Print HTML Shell and Page Model | Complete; validation recorded | `packages/pdf-renderer/src/print-shell.ts` |
-| 11 | Build the DocRaptor Client Package | Complete; validation recorded | `packages/docraptor-client/src` |
-| 12 | Build Browser Preview and DocRaptor Preview Strategy | Complete; validation recorded | Preview package APIs |
-| 13 | Build the Typed Variable Registry | Complete; validation recorded | `packages/pdf-template-schema/src/variables` |
-| 14 | Build Variable Resolution, Formatter, and Fallback System | Complete; validation recorded | Shared resolver, formatter, and fallback modules |
-| 15 | Build the Variable Chip Editor Extension | Complete; validation recorded | `packages/pdf-editor/src/extensions/variable` |
-| 16 | Build Conditional Section Engine and Editor Extension | Complete; validation recorded | Conditional editor and renderer support |
-| 17 | Build Repeater Extension and Scoped Data Resolver | Complete; validation recorded | Repeater editor and renderer support |
-| 18 | Build Financial Data Table Block | Complete; validation recorded | Financial table node and renderer support |
-| 19 | Build Financial Data Table Editor Extension | Complete; validation recorded | Data table editor extension hardening |
-| 20 | Build Financial Data Table Renderer and Print Markup | Complete; validation recorded | Data table renderer hardening |
-| 21 | Build Data Table End-to-End Preview Fixtures | Complete; validation recorded | Table fixture preview flow |
-| 22 | Build Calculation Engine for Totals, Subtotals, and Grouping | Complete; validation recorded | Calculation contracts and helpers |
-| 23 | Build Summary Blocks and Table Total Rendering | Next | Summary blocks and table totals |
-| 24 | Build Form Field, Signature, and QR Placeholder Contracts | Not started | Placeholder contracts |
-| 25 | Build Page Break and Keep-Together Controls | Not started | Page-flow controls and print CSS |
-| 26 | Build Header and Footer System | Not started | Header/footer schema and serializer |
-| 27 | Build Image and Asset Pipeline | Not started | PDF image model and asset adapters |
-| 28 | Build Branding and Theme System | Not started | Document theme model and print tokens |
-| 29 | Build Starter Templates and Golden Fixtures | Not started | Starter templates and golden fixtures |
-| 30 | Build Preflight Validation | Not started | Preflight diagnostics |
-| 31 | Build Render Logs, Artifact Metadata, and Audit Contracts | Not started | Render metadata and audit schemas |
-| 32 | Build Template Lifecycle, Versioning, and Publishing Contracts | Not started | Template lifecycle and publishing contracts |
-| 33 | Build Batch Generation Framework | Not started | Queue-agnostic batch framework |
-| 34 | Build Async DocRaptor Rendering and Retry System | Not started | Async render and retry helpers |
-| 35 | Build Playwright Local Fallback and Test Renderer | Not started | Local development/test renderer |
-| 36 | Build Accessibility, Metadata, and PDF Profile Support | Not started | Metadata and PDF profile contracts |
-| 37 | Build Security and Tenant Integration Contracts | Not started | Security and tenant adapter contracts |
-| 38 | Build Unlayer Migration and Coexistence Path | Not started | Migration/coexistence contracts |
-| 39 | Build `Asymmetric-al/core` Adapter Package and Feature Flag Contract | Not started | Core adapter contract |
-| 40 | Build Documentation, Playground, and Developer Examples | Not started | PDF-first docs, examples, playground |
-| 41 | Build Performance, Load, and Large Document Tests | Not started | Performance smoke and opt-in load tests |
-| 42 | Build Release, Versioning, and API Stability Review | Not started | API stability and release readiness review |
-| 43 | Run Security, Secret, and Browser Bundle Audit | Not started | Boundary and secret-safety audit |
-| 44 | OpenSpec Current-State Reconciliation and Archive Readiness | Not started | OpenSpec alignment and archive-readiness notes |
-| 45 | End-to-End Package Validation with Mocked Production Flows | Not started | Mocked package-level production-flow tests |
-| 46 | `Asymmetric-al/core` Cutover Playbook and Integration PR Plan | Not started | Core cutover playbook |
-| 47 | Production Hardening, Launch Readiness, and Final Package Sign-Off | Not started | Final package readiness report |
+| Phase | Name                                                                 | Status                             | Primary Output                                                       |
+| ----: | -------------------------------------------------------------------- | ---------------------------------- | -------------------------------------------------------------------- |
+|     1 | Fork Baseline, Governance, and Product Charter                       | Complete; validation gaps recorded | `docs/asym-product-charter.md`, `docs/research-basis.md`             |
+|     2 | Monorepo Inventory and Isolation Map                                 | Complete; validation recorded      | `docs/monorepo-inventory.md`, `docs/editor-dependency-graph.md`      |
+|     3 | Package Boundary for @asym/pdf-editor and Related Packages           | Complete; validation recorded      | `packages/pdf-editor`, `packages/pdf-renderer`                       |
+|     4 | Editor Boundary Isolation, Baseline Fixtures, and Regression Harness | Complete; validation recorded      | `packages/editor/src/boundary`, baseline fixtures                    |
+|     5 | Package Names, Export Strategy, and Compatibility Policy             | Complete; validation recorded      | `docs/package-strategy.md`, `scripts/asym-package-strategy-smoke.ts` |
+|     6 | Create the PDF Template Schema Foundation                            | Complete; validation recorded      | `packages/pdf-template-schema/src`, schema fixtures                  |
+|     7 | Add Compatibility Fixtures and Regression Harness                    | Complete; validation recorded      | Expanded `@react-email/editor` compatibility fixtures                |
+|     8 | Rename Public Concepts Safely from Email to Document                 | Complete; validation recorded      | Compatibility aliases and migration docs                             |
+|     9 | Build the Document Serializer Foundation                             | Complete; validation recorded      | `packages/pdf-renderer/src/compose-pdf-document-html.ts`             |
+|    10 | Build the Print HTML Shell and Page Model                            | Complete; validation recorded      | `packages/pdf-renderer/src/print-shell.ts`                           |
+|    11 | Build the DocRaptor Client Package                                   | Complete; validation recorded      | `packages/docraptor-client/src`                                      |
+|    12 | Build Browser Preview and DocRaptor Preview Strategy                 | Complete; validation recorded      | Preview package APIs                                                 |
+|    13 | Build the Typed Variable Registry                                    | Complete; validation recorded      | `packages/pdf-template-schema/src/variables`                         |
+|    14 | Build Variable Resolution, Formatter, and Fallback System            | Complete; validation recorded      | Shared resolver, formatter, and fallback modules                     |
+|    15 | Build the Variable Chip Editor Extension                             | Complete; validation recorded      | `packages/pdf-editor/src/extensions/variable`                        |
+|    16 | Build Conditional Section Engine and Editor Extension                | Complete; validation recorded      | Conditional editor and renderer support                              |
+|    17 | Build Repeater Extension and Scoped Data Resolver                    | Complete; validation recorded      | Repeater editor and renderer support                                 |
+|    18 | Build Financial Data Table Block                                     | Complete; validation recorded      | Financial table node and renderer support                            |
+|    19 | Build Financial Data Table Editor Extension                          | Complete; validation recorded      | Data table editor extension hardening                                |
+|    20 | Build Financial Data Table Renderer and Print Markup                 | Complete; validation recorded      | Data table renderer hardening                                        |
+|    21 | Build Data Table End-to-End Preview Fixtures                         | Complete; validation recorded      | Table fixture preview flow                                           |
+|    22 | Build Calculation Engine for Totals, Subtotals, and Grouping         | Complete; validation recorded      | Calculation contracts and helpers                                    |
+|    23 | Build Summary Blocks and Table Total Rendering                       | Next                               | Summary blocks and table totals                                      |
+|    24 | Build Form Field, Signature, and QR Placeholder Contracts            | Not started                        | Placeholder contracts                                                |
+|    25 | Build Page Break and Keep-Together Controls                          | Not started                        | Page-flow controls and print CSS                                     |
+|    26 | Build Header and Footer System                                       | Not started                        | Header/footer schema and serializer                                  |
+|    27 | Build Image and Asset Pipeline                                       | Not started                        | PDF image model and asset adapters                                   |
+|    28 | Build Branding and Theme System                                      | Not started                        | Document theme model and print tokens                                |
+|    29 | Build Starter Templates and Golden Fixtures                          | Not started                        | Starter templates and golden fixtures                                |
+|    30 | Build Preflight Validation                                           | Not started                        | Preflight diagnostics                                                |
+|    31 | Build Render Logs, Artifact Metadata, and Audit Contracts            | Not started                        | Render metadata and audit schemas                                    |
+|    32 | Build Template Lifecycle, Versioning, and Publishing Contracts       | Not started                        | Template lifecycle and publishing contracts                          |
+|    33 | Build Batch Generation Framework                                     | Not started                        | Queue-agnostic batch framework                                       |
+|    34 | Build Async DocRaptor Rendering and Retry System                     | Not started                        | Async render and retry helpers                                       |
+|    35 | Build Playwright Local Fallback and Test Renderer                    | Not started                        | Local development/test renderer                                      |
+|    36 | Build Accessibility, Metadata, and PDF Profile Support               | Not started                        | Metadata and PDF profile contracts                                   |
+|    37 | Build Security and Tenant Integration Contracts                      | Not started                        | Security and tenant adapter contracts                                |
+|    38 | Build Unlayer Migration and Coexistence Path                         | Not started                        | Migration/coexistence contracts                                      |
+|    39 | Build `Asymmetric-al/core` Adapter Package and Feature Flag Contract | Not started                        | Core adapter contract                                                |
+|    40 | Build Documentation, Playground, and Developer Examples              | Not started                        | PDF-first docs, examples, playground                                 |
+|    41 | Build Performance, Load, and Large Document Tests                    | Not started                        | Performance smoke and opt-in load tests                              |
+|    42 | Build Release, Versioning, and API Stability Review                  | Not started                        | API stability and release readiness review                           |
+|    43 | Run Security, Secret, and Browser Bundle Audit                       | Not started                        | Boundary and secret-safety audit                                     |
+|    44 | OpenSpec Current-State Reconciliation and Archive Readiness          | Not started                        | OpenSpec alignment and archive-readiness notes                       |
+|    45 | End-to-End Package Validation with Mocked Production Flows           | Not started                        | Mocked package-level production-flow tests                           |
+|    46 | `Asymmetric-al/core` Cutover Playbook and Integration PR Plan        | Not started                        | Core cutover playbook                                                |
+|    47 | Production Hardening, Launch Readiness, and Final Package Sign-Off   | Not started                        | Final package readiness report                                       |
 
 ## Phase 23 Entry Point
 
@@ -81,7 +81,6 @@ Phase 11 DocRaptor client, Phase 10 print shell and page model, Phase 9
 document serializer foundation, Phase 8 naming compatibility aliases, Phase 7
 compatibility harness, Phase 6 schema foundation, Phase 5 package strategy, and
 Phase 4 editor boundary artifacts:
-
 - `docs/package-strategy.md`
 - `docs/package-boundaries.md`
 - `docs/editor-package-isolation.md`

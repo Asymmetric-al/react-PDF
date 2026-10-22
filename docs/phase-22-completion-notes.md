@@ -52,7 +52,6 @@
 ## TDD Notes
 
 Tests were added before implementation:
-
 - `packages/pdf-template-schema/test/calculations.spec.ts`
 - `packages/pdf-template-schema/test/public-entry.spec.ts`
 
@@ -65,7 +64,6 @@ total reconciliation before the review fixes were applied.
 ## Validation Summary
 
 All Phase 22 focused and broad checks passed with `corepack pnpm`:
-
 - `corepack pnpm --filter @asym/pdf-template-schema test -- calculations.spec.ts public-entry.spec.ts`
 - `corepack pnpm --filter @asym/pdf-template-schema test`
 - `corepack pnpm --filter @asym/pdf-template-schema typecheck`
@@ -85,7 +83,6 @@ All Phase 22 focused and broad checks passed with `corepack pnpm`:
 - `git diff --check`
 
 Notes:
-
 - Bare `pnpm` was unavailable on PATH, so `corepack pnpm` was used as the
   pnpm-compatible fallback.
 - Turbo needed a temporary `%TEMP%\codex-pnpm-shim\pnpm.cmd` shim for nested

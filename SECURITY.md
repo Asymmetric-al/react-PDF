@@ -11,7 +11,6 @@ The project is still in foundation work. There are no stable `@asym/*` package
 versions yet.
 
 Security review currently covers:
-
 - repository governance and documentation
 - the inherited React Email fork baseline
 - future PDF builder design and package boundaries
@@ -27,7 +26,6 @@ If private reporting is unavailable, contact the maintainer listed in
 `MAINTAINERS.md` and provide enough detail to reproduce the issue privately.
 
 Include:
-
 - affected package, app, or docs path
 - commit SHA and branch
 - reproduction steps

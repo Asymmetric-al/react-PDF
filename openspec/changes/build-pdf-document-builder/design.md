@@ -5,7 +5,6 @@
 `Asymmetric-al/react-PDF` is currently still close to upstream React Email.
 
 Observed repo facts:
-
 - The default branch is `canary`.
 - `origin` points to `https://github.com/Asymmetric-al/react-PDF.git`.
 - `upstream` points to `https://github.com/resend/react-email.git`.
@@ -84,7 +83,6 @@ platform will consume them later through an adapter.
 ## 2. Research basis
 
 This design is based on the following project research:
-
 - React Email Editor is an embeddable visual editor built on TipTap and
   ProseMirror. It provides rich text editing, bubble menus, slash commands,
   multi-column layouts, theming, HTML export, image upload, and custom
@@ -111,7 +109,6 @@ This design is based on the following project research:
 
 Future implementation agents should revisit these sources when working on
 phase-specific details:
-
 - React Email repository: https://github.com/resend/react-email
 - React Email Editor docs: https://react.email/docs/editor/overview
 - React Email `composeReactEmail` docs:
@@ -141,7 +138,6 @@ phase-specific details:
 ## 4. Modern implementation practices
 
 Future implementation phases should follow these practices:
-
 - Use TypeScript with strict types. Avoid `any` unless it is a compatibility
   boundary and the value is narrowed immediately.
 - Keep output deterministic. Rendering snapshots should not change due to
@@ -321,7 +317,6 @@ core platform data, storage, audit, and permissions into the builder packages.
 ## 10. Template schema
 
 Intended models:
-
 - `DocumentTemplateV1`: versioned source-of-truth template with category,
   metadata, editor JSON, page settings, theme, bindings, asset references,
   status, and engine metadata.
@@ -352,7 +347,6 @@ Intended models:
 ## 11. Editor extension plan
 
 Custom extensions needed for PDF-first editing:
-
 - Variable chip node: protects variables from fragile raw text editing.
 - Conditional section node: supports structured content that appears only when
   data rules match.
@@ -400,7 +394,6 @@ platform datasets.
 ## 13. Print HTML and CSS strategy
 
 The renderer should produce deterministic print-ready HTML/CSS:
-
 - Use print media.
 - Use `@page` for size, orientation, and margins.
 - Generate page counters for page number and Page X of Y behavior.
@@ -414,7 +407,6 @@ The renderer should produce deterministic print-ready HTML/CSS:
 ## 14. Preview strategy
 
 The editor should support:
-
 - Fast browser preview for authoring feedback.
 - True DocRaptor preview for production fidelity.
 - Sample data preview for safe template creation.
@@ -426,7 +418,6 @@ The editor should support:
 ## 15. DocRaptor strategy
 
 DocRaptor should be used as the production rendering contract:
-
 - Sync render for small documents.
 - Async render for batch or long documents.
 - Test mode for PDF preview.
@@ -441,7 +432,6 @@ DocRaptor should be used as the production rendering contract:
 ## 16. Batch generation strategy
 
 Batch generation should include:
-
 - Batch run model.
 - Template snapshot at start.
 - Dataset snapshot or query record sufficient for audit.
@@ -459,7 +449,6 @@ Batch generation should include:
 ## 17. Assets and branding strategy
 
 Assets and branding should include:
-
 - Tenant-scoped asset library after core integration.
 - Logos, brand colors, fonts, and organization identity.
 - Image upload and selection.
@@ -472,7 +461,6 @@ Assets and branding should include:
 ## 18. Data binding strategy
 
 Data binding should include:
-
 - Typed variable registry.
 - Variable groups for organization, recipient, donation, document, missionary,
   tax receipt, financial report, statement, and invoice.
@@ -489,7 +477,6 @@ Data binding should include:
 ## 19. Permissions and audit
 
 Future integration must support:
-
 - Edit permission.
 - Publish permission.
 - Render permission.
@@ -519,7 +506,6 @@ and data-bound templates.
 ## 22. Open-source tools to consider
 
 These are evaluation candidates, not mandatory choices:
-
 - TipTap TableKit or TipTap table extensions for table editing.
 - ProseMirror utilities for custom schema and nodes.
 - Zod or Valibot for runtime schema validation.
@@ -552,7 +538,6 @@ These are evaluation candidates, not mandatory choices:
 ## 24. Testing strategy
 
 Future implementation should include:
-
 - Schema unit tests.
 - Variable resolver tests.
 - Conditional rule tests.

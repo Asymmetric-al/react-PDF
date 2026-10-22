@@ -11,13 +11,13 @@ DocRaptor test preview behind a server-only renderer subpath.
 
 ## Package Ownership
 
-| Package | Runtime | Owns | Current maturity |
-|---|---|---|---|
-| `@asym/pdf-template-schema` | shared | Template schema, document domain types, variables, page settings, assets, render metadata, batch metadata, and audit-oriented model types | `phase-6-schema-foundation` |
-| `@asym/pdf-renderer` | browser-safe root with server-only DocRaptor preview subpath | Document serialization, deterministic print HTML, paged-media CSS, preview diagnostics, browser preview, DocRaptor test preview orchestration, and renderer fixtures | `phase-21-data-table-preview-fixtures` |
-| `@asym/docraptor-client` | server only | DocRaptor API client, sync and async render calls, status polling, test mode, timeouts, abort signals, and error normalization | `phase-11-client` |
-| `@asym/pdf-editor` | browser React | Future PDF editor shell, TipTap extensions, document UI, slash commands, inspector controls, and compatibility shims | `phase-3-boundary` |
-| `@asym/pdf-studio-adapter` | future app adapter | Future `Asymmetric-al/core` integration boundary for storage, permissions, assets, audit, feature flags, and render jobs | not created in Phase 3 |
+| Package                     | Runtime                                                      | Owns                                                                                                                                                                 | Current maturity                       |
+| --------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `@asym/pdf-template-schema` | shared                                                       | Template schema, document domain types, variables, page settings, assets, render metadata, batch metadata, and audit-oriented model types                            | `phase-6-schema-foundation`            |
+| `@asym/pdf-renderer`        | browser-safe root with server-only DocRaptor preview subpath | Document serialization, deterministic print HTML, paged-media CSS, preview diagnostics, browser preview, DocRaptor test preview orchestration, and renderer fixtures | `phase-21-data-table-preview-fixtures` |
+| `@asym/docraptor-client`    | server only                                                  | DocRaptor API client, sync and async render calls, status polling, test mode, timeouts, abort signals, and error normalization                                       | `phase-11-client`                      |
+| `@asym/pdf-editor`          | browser React                                                | Future PDF editor shell, TipTap extensions, document UI, slash commands, inspector controls, and compatibility shims                                                 | `phase-3-boundary`                     |
+| `@asym/pdf-studio-adapter`  | future app adapter                                           | Future `Asymmetric-al/core` integration boundary for storage, permissions, assets, audit, feature flags, and render jobs                                             | not created in Phase 3                 |
 
 All Phase 3 packages are marked `private: true` to prevent accidental
 publication before release policy and production APIs are defined.
@@ -37,15 +37,14 @@ Allowed dependency direction for Phase 3 and later package-boundary work:
 
 Current package edges:
 
-| From | To | Reason |
-|---|---|---|
-| `@asym/pdf-renderer` | `@asym/pdf-template-schema` | Renderer output validates and serializes structured document JSON. |
-| `@asym/pdf-renderer/docraptor-preview` | `@asym/docraptor-client` | Server-only Phase 12 DocRaptor test preview uses the Phase 11 client in test mode. |
-| `@asym/pdf-editor` | `@asym/pdf-template-schema` | Editor state must eventually write the shared template schema. |
-| `@asym/pdf-editor` | `@react-email/editor` | Temporary reference adapter while the email editor remains the known-working implementation. |
+| From                                   | To                          | Reason                                                                                       |
+| -------------------------------------- | --------------------------- | -------------------------------------------------------------------------------------------- |
+| `@asym/pdf-renderer`                   | `@asym/pdf-template-schema` | Renderer output validates and serializes structured document JSON.                           |
+| `@asym/pdf-renderer/docraptor-preview` | `@asym/docraptor-client`    | Server-only Phase 12 DocRaptor test preview uses the Phase 11 client in test mode.           |
+| `@asym/pdf-editor`                     | `@asym/pdf-template-schema` | Editor state must eventually write the shared template schema.                               |
+| `@asym/pdf-editor`                     | `@react-email/editor`       | Temporary reference adapter while the email editor remains the known-working implementation. |
 
 Rejected directions:
-
 - `@asym/pdf-template-schema` must not import React, editor UI, renderer code,
   DocRaptor code, tenant storage, auth, queues, or app routes.
 - `@asym/pdf-renderer` must not import React editor UI or core app internals.
@@ -59,17 +58,16 @@ Rejected directions:
 
 Each package exposes one small typed boundary export from its root entry point:
 
-| Package | Root boundary export |
-|---|---|
-| `@asym/pdf-template-schema` | `pdfTemplateSchemaBoundary`, `PdfTemplateSchemaBoundary` |
-| `@asym/pdf-renderer` | `pdfRendererBoundary`, `PdfRendererBoundary`, `composePdfDocumentHtml`, `composePrintDocumentHtml`, `createBrowserPdfPreview`, related serializer, print-shell, and browser-safe preview types |
-| `@asym/pdf-renderer/docraptor-preview` | `docraptorPreviewBoundary`, `createDocRaptorTestPdfPreview`, server-only DocRaptor test preview request type |
-| `@asym/docraptor-client` | `createDocRaptorClient`, `DocRaptorClient`, `DocRaptorClientError`, `docraptorClientBoundary`, related request/result/error types |
-| `@asym/pdf-editor` | `pdfEditorBoundary`, `PdfEditorBoundary` |
+| Package                                | Root boundary export                                                                                                                                                                           |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@asym/pdf-template-schema`            | `pdfTemplateSchemaBoundary`, `PdfTemplateSchemaBoundary`                                                                                                                                       |
+| `@asym/pdf-renderer`                   | `pdfRendererBoundary`, `PdfRendererBoundary`, `composePdfDocumentHtml`, `composePrintDocumentHtml`, `createBrowserPdfPreview`, related serializer, print-shell, and browser-safe preview types |
+| `@asym/pdf-renderer/docraptor-preview` | `docraptorPreviewBoundary`, `createDocRaptorTestPdfPreview`, server-only DocRaptor test preview request type                                                                                   |
+| `@asym/docraptor-client`               | `createDocRaptorClient`, `DocRaptorClient`, `DocRaptorClientError`, `docraptorClientBoundary`, related request/result/error types                                                              |
+| `@asym/pdf-editor`                     | `pdfEditorBoundary`, `PdfEditorBoundary`                                                                                                                                                       |
 
 `@asym/pdf-editor/react-email-compat` exposes temporary reference adapters for
 public `@react-email/editor` primitives:
-
 - `ReactEmailEditorReference`
 - `ReactEmailNodeReference`
 - `ReactEmailMarkReference`
@@ -86,7 +84,6 @@ with final PDF-first APIs.
 ## Build And Test Shape
 
 All new packages follow the current repo toolchain:
-
 - `pnpm` workspace package discovery through `packages/*`.
 - `tsdown` build output with ESM import exports first and CJS compatibility.
 - `tsc --noEmit` type checks.
@@ -105,7 +102,6 @@ They remain reference material until the phases that own package behavior and
 documentation replacements exist.
 
 Retained reference surfaces:
-
 - `apps/docs/editor/**`
 - `apps/demo`
 - `apps/web`
@@ -127,7 +123,6 @@ surface without adding public package exports. The boundary lives at
 extension, plugin, UI, utility, CSS, and theme surfaces for future wrappers.
 
 The baseline fixture scaffolding lives under:
-
 - `packages/pdf-editor/test/fixtures`
 - `packages/pdf-renderer/test/fixtures`
 
@@ -140,7 +135,6 @@ the working legacy package and `@asym/pdf-editor` remains the private future
 PDF editor package that consumes it through public exports.
 
 Active package migration rules:
-
 - Do not rename `packages/editor` or change `@react-email/editor` exports.
 - Do not force consumers to migrate during the compatibility window.
 - New PDF-first work should target `@asym/*` package names.
@@ -158,7 +152,6 @@ Phase 6 creates the PDF template schema foundation inside
 `@asym/pdf-template-schema` while preserving the editor boundary created in
 Phase 4 and the package strategy defined in Phase 5. The new package names
 remain available for fixture imports:
-
 - `@asym/pdf-editor`
 - `@asym/pdf-renderer`
 - `@asym/pdf-template-schema`
@@ -175,7 +168,6 @@ DocRaptor calls, browser APIs, storage, auth, and queue dependencies.
 Phase 8 adds future-facing document/PDF names to the root `@asym/pdf-editor`
 entry point while preserving the React Email compatibility adapter and all
 current `@react-email/editor` exports:
-
 - `PdfEditor`, `PdfEditorProps`, and `PdfEditorRef`
 - `DocumentEditor`, `DocumentEditorProps`, and `DocumentEditorRef`
 - `DocumentNode`

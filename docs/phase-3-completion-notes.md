@@ -297,7 +297,6 @@ demo/playground `.react-email` builds. Targeted package builds passed and root
 `pnpm test` passed.
 
 The test suites include existing skipped cases:
-
 - `pnpm --filter @react-email/editor test:unit`: 1 skipped test.
 - `pnpm test`: skipped cases in editor and web test suites.
 
@@ -324,7 +323,6 @@ The test suites include existing skipped cases:
 ## Phase 4 Handoff
 
 Phase 4 can start from:
-
 - `packages/pdf-editor`
 - `packages/pdf-renderer`
 - `packages/pdf-template-schema`

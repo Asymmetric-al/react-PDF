@@ -26,7 +26,7 @@ import { Tailwind, pixelBasedPreset } from 'react-email';
   }}
 >
   {/* Email content */}
-</Tailwind>
+</Tailwind>;
 ```
 
 ## pixelBasedPreset
@@ -78,7 +78,7 @@ Always define `<Head />` inside `<Tailwind>` when using Tailwind CSS:
     <Head />
     <Body>...</Body>
   </Tailwind>
-</Html>
+</Html>;
 ```
 
 ### PreviewProps
@@ -95,7 +95,7 @@ const Email = ({ source }: { source: string }) => {
 };
 
 Email.PreviewProps = {
-  source: "https://example.com",
+  source: 'https://example.com',
 };
 ```
 
@@ -124,7 +124,7 @@ Include physical address, unsubscribe link, current year:
   <Text className="m-0">123 Main St, City, State 12345</Text>
   <Text className="m-0">&copy; {new Date().getFullYear()} Company Name</Text>
   <Link href={unsubscribeUrl}>Unsubscribe</Link>
-</Section>
+</Section>;
 ```
 
 ## Typography
@@ -164,7 +164,7 @@ Use consistent spacing that respects content hierarchy. Larger margins for headi
   src="https://example.com/image.png"
   alt="Description"
   className="w-full h-auto"
-/>
+/>;
 ```
 
 ## Buttons
@@ -177,7 +177,7 @@ Always use `box-border` to prevent padding overflow:
   className="bg-blue-600 text-white px-5 py-3 rounded box-border block text-center no-underline"
 >
   Click Here
-</Button>
+</Button>;
 ```
 
 ## Layout
@@ -185,7 +185,6 @@ Always use `box-border` to prevent padding overflow:
 ### Mobile-First
 
 Always design for mobile by default:
-
 - Use stacked layouts that work on all screen sizes
 - Max-width around 600px for main container
 - Remove default spacing/margins/padding between list items
@@ -198,13 +197,12 @@ Use `Row` and `Column` components instead of flexbox/grid:
 <Row>
   <Column className="w-1/2">Left content</Column>
   <Column className="w-1/2">Right content</Column>
-</Row>
+</Row>;
 ```
 
 ## Dark Mode
 
 When requested, use dark backgrounds:
-
 - Container: black (`#000`)
 - Background: dark gray (`#151516`)
 
@@ -218,7 +216,6 @@ When requested, use dark backgrounds:
 ### Gathering Brand Colors
 
 Before creating emails, collect these colors from the user:
-
 - **Primary**: Main brand color for buttons, links, key accents
 - **Secondary**: Supporting color for borders, backgrounds, less prominent elements
 - **Text**: Main body text color (suggest `#1a1a1a` for light backgrounds)
@@ -268,11 +265,15 @@ import tailwindConfig, { brandAssets } from './tailwind.config';
 <Tailwind config={tailwindConfig}>
   <Body className="bg-gray-100 font-sans">
     <Container className="bg-white p-6">
-      <Img src={brandAssets.logo.src} alt={brandAssets.logo.alt} width={brandAssets.logo.width} />
+      <Img
+        src={brandAssets.logo.src}
+        alt={brandAssets.logo.alt}
+        width={brandAssets.logo.width}
+      />
       <Button className="bg-brand-primary text-white">Action</Button>
     </Container>
   </Body>
-</Tailwind>
+</Tailwind>;
 ```
 
 ### Maintaining Consistency
@@ -285,7 +286,6 @@ import tailwindConfig, { brandAssets } from './tailwind.config';
 ## Asset Locations
 
 Direct users to place brand assets in appropriate locations:
-
 - **Logo and images**: Host on a CDN or public URL. For local development, place in `emails/static/`.
 - **Custom fonts**: Use the `Font` component with a web font URL (Google Fonts, Adobe Fonts, or self-hosted).
 
@@ -303,4 +303,3 @@ Direct users to place brand assets in appropriate locations:
 3. **Keep file size under 102KB** - Gmail clips larger emails
 4. **Use keywords strategically** - Increase engagement in email body
 5. **Inline styles as fallback** - Some clients strip `<style>` tags
-

@@ -8,7 +8,6 @@ DocRaptor behavior.
 ## Chosen Strategy
 
 The near-term package path is wrapper-first:
-
 1. Keep `packages/editor` publishing as `@react-email/editor`.
 2. Keep `packages/pdf-editor` as private `@asym/pdf-editor`.
 3. Treat `@asym/pdf-editor` as the future PDF editor import target.
@@ -23,19 +22,18 @@ or renaming the working editor implementation.
 
 ## Current Package Names
 
-| Current package | Status | Phase 5 policy |
-|---|---|---|
-| `@react-email/editor` | Working legacy editor baseline | Keep unchanged until a later compatibility-removal phase. |
-| `@asym/pdf-editor` | Private wrapper boundary | Use as the stable future import target. |
-| `@asym/pdf-template-schema` | Private schema package | Keep private; Phase 6 added the shared template schema foundation. |
-| `@asym/pdf-renderer` | Private renderer package | Keep private; Phase 9 added the serializer, Phase 10 added the print shell, and Phase 12 added preview orchestration. |
-| `@asym/docraptor-client` | Private server-only client | Keep private; Phase 11 adds the direct DocRaptor REST client while retry, batch, and core adapter behavior remain later phases. |
-| `react-email` and `@react-email/render` | Retained React Email runtime | Wrap or replace later after PDF serializer behavior exists. |
+| Current package                         | Status                         | Phase 5 policy                                                                                                                  |
+| --------------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `@react-email/editor`                   | Working legacy editor baseline | Keep unchanged until a later compatibility-removal phase.                                                                       |
+| `@asym/pdf-editor`                      | Private wrapper boundary       | Use as the stable future import target.                                                                                         |
+| `@asym/pdf-template-schema`             | Private schema package         | Keep private; Phase 6 added the shared template schema foundation.                                                              |
+| `@asym/pdf-renderer`                    | Private renderer package       | Keep private; Phase 9 added the serializer, Phase 10 added the print shell, and Phase 12 added preview orchestration.           |
+| `@asym/docraptor-client`                | Private server-only client     | Keep private; Phase 11 adds the direct DocRaptor REST client while retry, batch, and core adapter behavior remain later phases. |
+| `react-email` and `@react-email/render` | Retained React Email runtime   | Wrap or replace later after PDF serializer behavior exists.                                                                     |
 
 ## Target Package Names
 
 The long-term public package names are:
-
 - `@asym/pdf-template-schema`
 - `@asym/pdf-editor`
 - `@asym/pdf-renderer`
@@ -80,7 +78,6 @@ name because it matches the package name, while `DocumentEditor` is retained as
 a semantic alias for document-first code.
 
 The following `@react-email/editor` exports remain stable during this phase:
-
 - `@react-email/editor`
 - `@react-email/editor/core`
 - `@react-email/editor/extensions`
@@ -114,7 +111,6 @@ compatibility exports before any legacy export is removed.
 ## Private Internals
 
 These surfaces remain private until a later phase explicitly promotes them:
-
 - `packages/editor/src/boundary`
 - `packages/pdf-editor/test/fixtures`
 - `packages/pdf-renderer/test/fixtures`
@@ -130,7 +126,6 @@ interfaces. They must not depend on private source paths from another package.
 ## How `@react-email/editor` Continues To Build
 
 `@react-email/editor` remains the known-working editor baseline:
-
 - Its package name, version, exports, serializer, styles, and tests remain
   unchanged in Phase 5.
 - `composeReactEmail`, `EmailNode`, `EmailMark`, `EmailTheming`, and
@@ -165,13 +160,11 @@ under `@asym/pdf-editor` when their phase owns the behavior.
 Phase 5 does not add a changeset.
 
 Reasons:
-
 - All `@asym/*` packages are private.
 - No publishable runtime API changes are introduced.
 - `@react-email/editor` public exports do not change.
 
 When packages become publishable, release policy should require:
-
 - A changeset for any public `@asym/*` API change.
 - Compatibility notes for any `@react-email/editor` migration behavior.
 - Explicit prerelease or canary handling before stable publication.
@@ -184,7 +177,6 @@ When packages become publishable, release policy should require:
 interfaces, not private source paths.
 
 Expected future direction:
-
 - Core imports `@asym/pdf-editor` for the browser editor surface.
 - Core imports `@asym/pdf-template-schema` for template JSON validation and
   persistence boundaries.
@@ -234,7 +226,6 @@ serialize API keys into preview results.
 
 Phase 8 introduces document/PDF-first names in `@asym/pdf-editor` without
 changing `@react-email/editor`:
-
 - `PdfEditor`, `PdfEditorProps`, and `PdfEditorRef` alias the current
   `EmailEditor` component and types.
 - `DocumentEditor`, `DocumentEditorProps`, and `DocumentEditorRef` alias the

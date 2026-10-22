@@ -11,7 +11,6 @@ Complete reference for all React Email components. All examples use the Tailwind
 ## Available Components
 
 All components are imported from `react-email`:
-
 - **Body** - A React component to wrap emails
 - **Button** - A link that is styled to look like a button
 - **CodeBlock** - Display code with a selected theme and regex highlighting using Prism.js
@@ -37,7 +36,16 @@ All components are imported from `react-email`:
 The recommended way to style React Email components. Wrap your email content and use utility classes.
 
 ```tsx
-import { Tailwind, pixelBasedPreset, Html, Body, Container, Heading, Text, Button } from 'react-email';
+import {
+  Tailwind,
+  pixelBasedPreset,
+  Html,
+  Body,
+  Container,
+  Heading,
+  Text,
+  Button,
+} from 'react-email';
 
 export default function Email() {
   return (
@@ -49,7 +57,7 @@ export default function Email() {
             extend: {
               colors: {
                 brand: '#007bff',
-                accent: '#28a745'
+                accent: '#28a745',
               },
             },
           },
@@ -104,7 +112,7 @@ import { Html, Tailwind, pixelBasedPreset } from 'react-email';
   <Tailwind config={{ presets: [pixelBasedPreset] }}>
     {/* email content */}
   </Tailwind>
-</Html>
+</Html>;
 ```
 
 **Props:**
@@ -120,7 +128,7 @@ import { Head } from 'react-email';
 
 <Head>
   <title>Email Title</title>
-</Head>
+</Head>;
 ```
 
 ### Body
@@ -130,9 +138,7 @@ A React component to wrap emails.
 ```tsx
 import { Body } from 'react-email';
 
-<Body className="bg-gray-100 font-sans">
-  {/* email content */}
-</Body>
+<Body className="bg-gray-100 font-sans">{/* email content */}</Body>;
 ```
 
 ### Container
@@ -144,7 +150,7 @@ import { Container } from 'react-email';
 
 <Container className="max-w-xl mx-auto p-5">
   {/* centered content */}
-</Container>
+</Container>;
 ```
 
 ### Section
@@ -154,9 +160,7 @@ Display a section that can also be formatted using rows and columns.
 ```tsx
 import { Section } from 'react-email';
 
-<Section className="p-5 bg-white">
-  {/* section content */}
-</Section>
+<Section className="p-5 bg-white">{/* section content */}</Section>;
 ```
 
 ### Row & Column
@@ -168,14 +172,10 @@ import { Section, Row, Column } from 'react-email';
 
 <Section>
   <Row>
-    <Column className="w-1/2 p-2 align-top">
-      Left column content
-    </Column>
-    <Column className="w-1/2 p-2 align-top">
-      Right column content
-    </Column>
+    <Column className="w-1/2 p-2 align-top">Left column content</Column>
+    <Column className="w-1/2 p-2 align-top">Right column content</Column>
   </Row>
-</Section>
+</Section>;
 ```
 
 **Column widths:**
@@ -192,7 +192,7 @@ A preview text that will be displayed in the inbox of the recipient.
 ```tsx
 import { Preview } from 'react-email';
 
-<Preview>Welcome to our platform - Get started today!</Preview>
+<Preview>Welcome to our platform - Get started today!</Preview>;
 ```
 
 **Best practices:**
@@ -228,7 +228,7 @@ import { Text } from 'react-email';
 
 <Text className="text-base leading-6 text-gray-800 my-4">
   Your paragraph content here.
-</Text>
+</Text>;
 ```
 
 ### Button
@@ -244,7 +244,7 @@ import { Button } from 'react-email';
   className="bg-blue-600 text-white px-5 py-3 rounded block text-center no-underline font-medium box-border"
 >
   Verify Email Address
-</Button>
+</Button>;
 ```
 
 **Props:**
@@ -263,9 +263,13 @@ A hyperlink to web pages, email addresses, or anything else a URL can address.
 ```tsx
 import { Link } from 'react-email';
 
-<Link href="https://example.com" target="_blank" className="text-blue-600 underline">
+<Link
+  href="https://example.com"
+  target="_blank"
+  className="text-blue-600 underline"
+>
   Visit our website
-</Link>
+</Link>;
 ```
 
 **Props:**
@@ -285,7 +289,7 @@ import { Img } from 'react-email';
   width="150"
   height="50"
   className="block mx-auto"
-/>
+/>;
 ```
 
 **Props:**
@@ -307,7 +311,7 @@ Display a divider that separates content areas in your email.
 ```tsx
 import { Hr } from 'react-email';
 
-<Hr className="border-solid border-gray-200 my-5" />
+<Hr className="border-solid border-gray-200 my-5" />;
 ```
 
 ## Specialized Components
@@ -363,8 +367,9 @@ Display a predictable inline code HTML element that works on all email clients.
 import { Text, CodeInline } from 'react-email';
 
 <Text className="text-base text-gray-800">
-  Run <CodeInline className="bg-gray-100 px-1 rounded">npm install</CodeInline> to get started.
-</Text>
+  Run <CodeInline className="bg-gray-100 px-1 rounded">npm install</CodeInline>{' '}
+  to get started.
+</Text>;
 ```
 
 ### Markdown
@@ -379,13 +384,13 @@ const Email = () => {
     <Html lang="en" dir="ltr">
       <Markdown
         markdownCustomStyles={{
-          h1: { color: "red" },
-          h2: { color: "blue" },
-          codeInline: { background: "grey" },
+          h1: { color: 'red' },
+          h2: { color: 'blue' },
+          codeInline: { background: 'grey' },
         }}
         markdownContainerStyles={{
-          padding: "12px",
-          border: "solid 1px black",
+          padding: '12px',
+          border: 'solid 1px black',
         }}
       >{`# Hello, World!`}</Markdown>
 
@@ -414,11 +419,11 @@ import { Head, Font } from 'react-email';
     fontFamily="Roboto"
     fallbackFontFamily="Arial, sans-serif"
     webFont={{
-      url: "https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2",
-      format: "woff2"
+      url: 'https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2',
+      format: 'woff2',
     }}
   />
-</Head>
+</Head>;
 ```
 
 **Props:**

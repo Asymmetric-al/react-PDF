@@ -11,8 +11,8 @@ job behavior unless a later OpenSpec phase explicitly changes that boundary.
 ## Current Baseline Behavior
 
 ```tsx
-import { render } from "@react-email/render";
-import { MyTemplate } from "../components/MyTemplate";
+import { render } from '@react-email/render';
+import { MyTemplate } from '../components/MyTemplate';
 
 const html = await render(<MyTemplate firstName="Jim" />);
 ```

@@ -57,7 +57,6 @@ renderer or server-only packages.
 
 Tests were added before production changes. The focused red run failed on the
 expected production gaps:
-
 - `pdfEditorBoundary.maturity` still reported `phase-18-financial-data-table`.
 - Invalid data table preview results did not preserve the requested
   `bindingId`.

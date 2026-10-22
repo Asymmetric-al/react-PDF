@@ -345,10 +345,7 @@
             "fonts": {
               "body": "Arial",
               "heading": "Georgia",
-              "fallback": [
-                "Arial",
-                "sans-serif"
-              ]
+              "fallback": ["Arial", "sans-serif"]
             },
             "logoAsset": {
               "id": "starter-asset-logo",
@@ -1077,10 +1074,7 @@
           "fonts": {
             "body": "Arial",
             "heading": "Georgia",
-            "fallback": [
-              "Arial",
-              "sans-serif"
-            ]
+            "fallback": ["Arial", "sans-serif"]
           },
           "logoAsset": {
             "id": "starter-asset-logo",
@@ -1690,57 +1684,29 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           }
         ],
         "variables": [
           {
             "key": "donation.receipt_number",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "1"
-            ]
+            "path": ["content", "2", "content", "1"]
           },
           {
             "key": "tax_receipt.issued_date",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "3"
-            ]
+            "path": ["content", "2", "content", "3"]
           },
           {
             "key": "recipient.full_name",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "1"
-            ]
+            "path": ["content", "3", "content", "1"]
           },
           {
             "key": "organization.name",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "3"
-            ]
+            "path": ["content", "3", "content", "3"]
           },
           {
             "key": "tax_receipt.goods_services_statement",
-            "path": [
-              "content",
-              "6",
-              "content",
-              "0"
-            ]
+            "path": ["content", "6", "content", "0"]
           }
         ]
       },
@@ -1778,57 +1744,29 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           }
         ],
         "variables": [
           {
             "key": "donation.receipt_number",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "1"
-            ]
+            "path": ["content", "2", "content", "1"]
           },
           {
             "key": "tax_receipt.issued_date",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "3"
-            ]
+            "path": ["content", "2", "content", "3"]
           },
           {
             "key": "recipient.full_name",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "1"
-            ]
+            "path": ["content", "3", "content", "1"]
           },
           {
             "key": "organization.name",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "3"
-            ]
+            "path": ["content", "3", "content", "3"]
           },
           {
             "key": "tax_receipt.goods_services_statement",
-            "path": [
-              "content",
-              "6",
-              "content",
-              "0"
-            ]
+            "path": ["content", "6", "content", "0"]
           }
         ],
         "page": {
@@ -1958,10 +1896,7 @@
             "fonts": {
               "body": "Arial",
               "heading": "Georgia",
-              "fallback": [
-                "Arial",
-                "sans-serif"
-              ]
+              "fallback": ["Arial", "sans-serif"]
             },
             "logoAsset": {
               "id": "starter-asset-logo",
@@ -2452,12 +2387,7 @@
           ],
           "metadata": {
             "description": "Starter year-end tax receipt with deductible totals, confirmation placeholder, and structured receipt language.",
-            "tags": [
-              "starter-template",
-              "phase-29",
-              "tax-receipt",
-              "receipt"
-            ],
+            "tags": ["starter-template", "phase-29", "tax-receipt", "receipt"],
             "createdAt": "2026-05-15T00:00:00.000Z",
             "updatedAt": "2026-05-15T00:00:00.000Z"
           }
@@ -2616,10 +2546,7 @@
           "fonts": {
             "body": "Arial",
             "heading": "Georgia",
-            "fallback": [
-              "Arial",
-              "sans-serif"
-            ]
+            "fallback": ["Arial", "sans-serif"]
           },
           "logoAsset": {
             "id": "starter-asset-logo",
@@ -3110,12 +3037,7 @@
         ],
         "metadata": {
           "description": "Starter year-end tax receipt with deductible totals, confirmation placeholder, and structured receipt language.",
-          "tags": [
-            "starter-template",
-            "phase-29",
-            "tax-receipt",
-            "receipt"
-          ],
+          "tags": ["starter-template", "phase-29", "tax-receipt", "receipt"],
           "createdAt": "2026-05-15T00:00:00.000Z",
           "updatedAt": "2026-05-15T00:00:00.000Z"
         }
@@ -3148,48 +3070,25 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           }
         ],
         "variables": [
           {
             "key": "tax_receipt.tax_year",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "1"
-            ]
+            "path": ["content", "2", "content", "1"]
           },
           {
             "key": "recipient.full_name",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "1"
-            ]
+            "path": ["content", "3", "content", "1"]
           },
           {
             "key": "organization.legal_name",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "3"
-            ]
+            "path": ["content", "3", "content", "3"]
           },
           {
             "key": "tax_receipt.goods_services_statement",
-            "path": [
-              "content",
-              "7",
-              "content",
-              "0"
-            ]
+            "path": ["content", "7", "content", "0"]
           }
         ]
       },
@@ -3227,48 +3126,25 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           }
         ],
         "variables": [
           {
             "key": "tax_receipt.tax_year",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "1"
-            ]
+            "path": ["content", "2", "content", "1"]
           },
           {
             "key": "recipient.full_name",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "1"
-            ]
+            "path": ["content", "3", "content", "1"]
           },
           {
             "key": "organization.legal_name",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "3"
-            ]
+            "path": ["content", "3", "content", "3"]
           },
           {
             "key": "tax_receipt.goods_services_statement",
-            "path": [
-              "content",
-              "7",
-              "content",
-              "0"
-            ]
+            "path": ["content", "7", "content", "0"]
           }
         ],
         "page": {
@@ -3398,10 +3274,7 @@
             "fonts": {
               "body": "Arial",
               "heading": "Georgia",
-              "fallback": [
-                "Arial",
-                "sans-serif"
-              ]
+              "fallback": ["Arial", "sans-serif"]
             },
             "logoAsset": {
               "id": "starter-asset-logo",
@@ -4037,10 +3910,7 @@
           "fonts": {
             "body": "Arial",
             "heading": "Georgia",
-            "fallback": [
-              "Arial",
-              "sans-serif"
-            ]
+            "fallback": ["Arial", "sans-serif"]
           },
           "logoAsset": {
             "id": "starter-asset-logo",
@@ -4536,48 +4406,25 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           }
         ],
         "variables": [
           {
             "key": "statement.period",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "0"
-            ]
+            "path": ["content", "2", "content", "0"]
           },
           {
             "key": "recipient.full_name",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "2"
-            ]
+            "path": ["content", "2", "content", "2"]
           },
           {
             "key": "statement.donation_count",
-            "path": [
-              "content",
-              "5",
-              "content",
-              "1"
-            ]
+            "path": ["content", "5", "content", "1"]
           },
           {
             "key": "tax_receipt.tax_year",
-            "path": [
-              "content",
-              "5",
-              "content",
-              "3"
-            ]
+            "path": ["content", "5", "content", "3"]
           }
         ]
       },
@@ -4615,48 +4462,25 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           }
         ],
         "variables": [
           {
             "key": "statement.period",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "0"
-            ]
+            "path": ["content", "2", "content", "0"]
           },
           {
             "key": "recipient.full_name",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "2"
-            ]
+            "path": ["content", "2", "content", "2"]
           },
           {
             "key": "statement.donation_count",
-            "path": [
-              "content",
-              "5",
-              "content",
-              "1"
-            ]
+            "path": ["content", "5", "content", "1"]
           },
           {
             "key": "tax_receipt.tax_year",
-            "path": [
-              "content",
-              "5",
-              "content",
-              "3"
-            ]
+            "path": ["content", "5", "content", "3"]
           }
         ],
         "page": {
@@ -4786,10 +4610,7 @@
             "fonts": {
               "body": "Arial",
               "heading": "Georgia",
-              "fallback": [
-                "Arial",
-                "sans-serif"
-              ]
+              "fallback": ["Arial", "sans-serif"]
             },
             "logoAsset": {
               "id": "starter-asset-logo",
@@ -5253,10 +5074,7 @@
           "fonts": {
             "body": "Arial",
             "heading": "Georgia",
-            "fallback": [
-              "Arial",
-              "sans-serif"
-            ]
+            "fallback": ["Arial", "sans-serif"]
           },
           "logoAsset": {
             "id": "starter-asset-logo",
@@ -5610,10 +5428,7 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           },
           {
             "id": "starter-asset-signature",
@@ -5632,39 +5447,21 @@
               "sourceId": "signature-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "4"
-            ]
+            "path": ["content", "4"]
           }
         ],
         "variables": [
           {
             "key": "recipient.full_name",
-            "path": [
-              "content",
-              "1",
-              "content",
-              "1"
-            ]
+            "path": ["content", "1", "content", "1"]
           },
           {
             "key": "document.donor_letter_body",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "0"
-            ]
+            "path": ["content", "2", "content", "0"]
           },
           {
             "key": "asset.portal_url",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "1"
-            ]
+            "path": ["content", "3", "content", "1"]
           }
         ]
       },
@@ -5702,10 +5499,7 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           },
           {
             "id": "starter-asset-signature",
@@ -5724,39 +5518,21 @@
               "sourceId": "signature-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "4"
-            ]
+            "path": ["content", "4"]
           }
         ],
         "variables": [
           {
             "key": "recipient.full_name",
-            "path": [
-              "content",
-              "1",
-              "content",
-              "1"
-            ]
+            "path": ["content", "1", "content", "1"]
           },
           {
             "key": "document.donor_letter_body",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "0"
-            ]
+            "path": ["content", "2", "content", "0"]
           },
           {
             "key": "asset.portal_url",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "1"
-            ]
+            "path": ["content", "3", "content", "1"]
           }
         ],
         "page": {
@@ -5886,10 +5662,7 @@
             "fonts": {
               "body": "Arial",
               "heading": "Georgia",
-              "fallback": [
-                "Arial",
-                "sans-serif"
-              ]
+              "fallback": ["Arial", "sans-serif"]
             },
             "logoAsset": {
               "id": "starter-asset-logo",
@@ -6487,10 +6260,7 @@
           "fonts": {
             "body": "Arial",
             "heading": "Georgia",
-            "fallback": [
-              "Arial",
-              "sans-serif"
-            ]
+            "fallback": ["Arial", "sans-serif"]
           },
           "logoAsset": {
             "id": "starter-asset-logo",
@@ -6946,10 +6716,7 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           },
           {
             "id": "starter-asset-field-photo",
@@ -6968,30 +6735,17 @@
               "sourceId": "field-photo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "3"
-            ]
+            "path": ["content", "3"]
           }
         ],
         "variables": [
           {
             "key": "missionary.full_name",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "0"
-            ]
+            "path": ["content", "2", "content", "0"]
           },
           {
             "key": "missionary.location",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "2"
-            ]
+            "path": ["content", "2", "content", "2"]
           },
           {
             "key": "missionary.prayer_update",
@@ -7051,10 +6805,7 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           },
           {
             "id": "starter-asset-field-photo",
@@ -7073,30 +6824,17 @@
               "sourceId": "field-photo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "3"
-            ]
+            "path": ["content", "3"]
           }
         ],
         "variables": [
           {
             "key": "missionary.full_name",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "0"
-            ]
+            "path": ["content", "2", "content", "0"]
           },
           {
             "key": "missionary.location",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "2"
-            ]
+            "path": ["content", "2", "content", "2"]
           },
           {
             "key": "missionary.prayer_update",
@@ -7248,10 +6986,7 @@
             "fonts": {
               "body": "Arial",
               "heading": "Georgia",
-              "fallback": [
-                "Arial",
-                "sans-serif"
-              ]
+              "fallback": ["Arial", "sans-serif"]
             },
             "logoAsset": {
               "id": "starter-asset-logo",
@@ -7652,17 +7387,9 @@
                 "sourcePath": "financialReport.rows",
                 "amountPath": "amount",
                 "categoryPath": "category",
-                "incomeCategories": [
-                  "Income"
-                ],
-                "expenseCategories": [
-                  "Expense"
-                ],
-                "fields": [
-                  "income",
-                  "expense",
-                  "net"
-                ]
+                "incomeCategories": ["Income"],
+                "expenseCategories": ["Expense"],
+                "fields": ["income", "expense", "net"]
               }
             }
           ],
@@ -7873,10 +7600,7 @@
           "fonts": {
             "body": "Arial",
             "heading": "Georgia",
-            "fallback": [
-              "Arial",
-              "sans-serif"
-            ]
+            "fallback": ["Arial", "sans-serif"]
           },
           "logoAsset": {
             "id": "starter-asset-logo",
@@ -8277,17 +8001,9 @@
               "sourcePath": "financialReport.rows",
               "amountPath": "amount",
               "categoryPath": "category",
-              "incomeCategories": [
-                "Income"
-              ],
-              "expenseCategories": [
-                "Expense"
-              ],
-              "fields": [
-                "income",
-                "expense",
-                "net"
-              ]
+              "incomeCategories": ["Income"],
+              "expenseCategories": ["Expense"],
+              "fields": ["income", "expense", "net"]
             }
           }
         ],
@@ -8353,39 +8069,21 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           }
         ],
         "variables": [
           {
             "key": "financial_report.period",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "0"
-            ]
+            "path": ["content", "2", "content", "0"]
           },
           {
             "key": "financial_report.fund_name",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "2"
-            ]
+            "path": ["content", "2", "content", "2"]
           },
           {
             "key": "computed.generated_at",
-            "path": [
-              "content",
-              "6",
-              "content",
-              "1"
-            ]
+            "path": ["content", "6", "content", "1"]
           }
         ]
       },
@@ -8423,39 +8121,21 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           }
         ],
         "variables": [
           {
             "key": "financial_report.period",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "0"
-            ]
+            "path": ["content", "2", "content", "0"]
           },
           {
             "key": "financial_report.fund_name",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "2"
-            ]
+            "path": ["content", "2", "content", "2"]
           },
           {
             "key": "computed.generated_at",
-            "path": [
-              "content",
-              "6",
-              "content",
-              "1"
-            ]
+            "path": ["content", "6", "content", "1"]
           }
         ],
         "page": {
@@ -8585,10 +8265,7 @@
             "fonts": {
               "body": "Arial",
               "heading": "Georgia",
-              "fallback": [
-                "Arial",
-                "sans-serif"
-              ]
+              "fallback": ["Arial", "sans-serif"]
             },
             "logoAsset": {
               "id": "starter-asset-logo",
@@ -9057,12 +8734,7 @@
                 "amountPath": "amount",
                 "discountPath": "invoice.discount",
                 "taxPath": "invoice.tax",
-                "fields": [
-                  "subtotal",
-                  "discounts",
-                  "taxes",
-                  "total"
-                ]
+                "fields": ["subtotal", "discounts", "taxes", "total"]
               }
             }
           ],
@@ -9098,12 +8770,7 @@
           ],
           "metadata": {
             "description": "Starter invoice with line items, subtotal, discount, tax, total, and approval-date placeholder.",
-            "tags": [
-              "starter-template",
-              "phase-29",
-              "invoice",
-              "billing"
-            ],
+            "tags": ["starter-template", "phase-29", "invoice", "billing"],
             "createdAt": "2026-05-15T00:00:00.000Z",
             "updatedAt": "2026-05-15T00:00:00.000Z"
           }
@@ -9270,10 +8937,7 @@
           "fonts": {
             "body": "Arial",
             "heading": "Georgia",
-            "fallback": [
-              "Arial",
-              "sans-serif"
-            ]
+            "fallback": ["Arial", "sans-serif"]
           },
           "logoAsset": {
             "id": "starter-asset-logo",
@@ -9742,12 +9406,7 @@
               "amountPath": "amount",
               "discountPath": "invoice.discount",
               "taxPath": "invoice.tax",
-              "fields": [
-                "subtotal",
-                "discounts",
-                "taxes",
-                "total"
-              ]
+              "fields": ["subtotal", "discounts", "taxes", "total"]
             }
           }
         ],
@@ -9783,12 +9442,7 @@
         ],
         "metadata": {
           "description": "Starter invoice with line items, subtotal, discount, tax, total, and approval-date placeholder.",
-          "tags": [
-            "starter-template",
-            "phase-29",
-            "invoice",
-            "billing"
-          ],
+          "tags": ["starter-template", "phase-29", "invoice", "billing"],
           "createdAt": "2026-05-15T00:00:00.000Z",
           "updatedAt": "2026-05-15T00:00:00.000Z"
         }
@@ -9821,48 +9475,25 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           }
         ],
         "variables": [
           {
             "key": "invoice.number",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "1"
-            ]
+            "path": ["content", "2", "content", "1"]
           },
           {
             "key": "recipient.full_name",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "1"
-            ]
+            "path": ["content", "3", "content", "1"]
           },
           {
             "key": "invoice.due_date",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "3"
-            ]
+            "path": ["content", "3", "content", "3"]
           },
           {
             "key": "invoice.paid",
-            "path": [
-              "content",
-              "7",
-              "content",
-              "1"
-            ]
+            "path": ["content", "7", "content", "1"]
           }
         ]
       },
@@ -9900,48 +9531,25 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           }
         ],
         "variables": [
           {
             "key": "invoice.number",
-            "path": [
-              "content",
-              "2",
-              "content",
-              "1"
-            ]
+            "path": ["content", "2", "content", "1"]
           },
           {
             "key": "recipient.full_name",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "1"
-            ]
+            "path": ["content", "3", "content", "1"]
           },
           {
             "key": "invoice.due_date",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "3"
-            ]
+            "path": ["content", "3", "content", "3"]
           },
           {
             "key": "invoice.paid",
-            "path": [
-              "content",
-              "7",
-              "content",
-              "1"
-            ]
+            "path": ["content", "7", "content", "1"]
           }
         ],
         "page": {
@@ -10057,10 +9665,7 @@
             "fonts": {
               "body": "Arial",
               "heading": "Georgia",
-              "fallback": [
-                "Arial",
-                "sans-serif"
-              ]
+              "fallback": ["Arial", "sans-serif"]
             },
             "logoAsset": {
               "id": "starter-asset-logo",
@@ -10497,10 +10102,7 @@
           "fonts": {
             "body": "Arial",
             "heading": "Georgia",
-            "fallback": [
-              "Arial",
-              "sans-serif"
-            ]
+            "fallback": ["Arial", "sans-serif"]
           },
           "logoAsset": {
             "id": "starter-asset-logo",
@@ -10841,10 +10443,7 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           },
           {
             "id": "starter-asset-signature",
@@ -10863,30 +10462,17 @@
               "sourceId": "signature-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "5"
-            ]
+            "path": ["content", "5"]
           }
         ],
         "variables": [
           {
             "key": "recipient.full_name",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "0"
-            ]
+            "path": ["content", "3", "content", "0"]
           },
           {
             "key": "organization.name",
-            "path": [
-              "content",
-              "4",
-              "content",
-              "1"
-            ]
+            "path": ["content", "4", "content", "1"]
           }
         ]
       },
@@ -10924,10 +10510,7 @@
               "sourceId": "logo-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "0"
-            ]
+            "path": ["content", "0"]
           },
           {
             "id": "starter-asset-signature",
@@ -10946,30 +10529,17 @@
               "sourceId": "signature-v1",
               "version": "2026-05-15"
             },
-            "path": [
-              "content",
-              "5"
-            ]
+            "path": ["content", "5"]
           }
         ],
         "variables": [
           {
             "key": "recipient.full_name",
-            "path": [
-              "content",
-              "3",
-              "content",
-              "0"
-            ]
+            "path": ["content", "3", "content", "0"]
           },
           {
             "key": "organization.name",
-            "path": [
-              "content",
-              "4",
-              "content",
-              "1"
-            ]
+            "path": ["content", "4", "content", "1"]
           }
         ],
         "page": {

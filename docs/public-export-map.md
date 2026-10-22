@@ -12,34 +12,32 @@ CSS/theme export subpaths.
 
 ## Package Export Subpaths
 
-| Subpath | Kind | Target |
-|---|---|---|
-| `@react-email/editor` | JS | `./dist/index.mjs`, `./dist/index.cjs` |
-| `@react-email/editor/core` | JS | `./dist/core/index.mjs`, `./dist/core/index.cjs` |
-| `@react-email/editor/extensions` | JS | `./dist/extensions/index.mjs`, `./dist/extensions/index.cjs` |
-| `@react-email/editor/plugins` | JS | `./dist/plugins/index.mjs`, `./dist/plugins/index.cjs` |
-| `@react-email/editor/ui` | JS | `./dist/ui/index.mjs`, `./dist/ui/index.cjs` |
-| `@react-email/editor/utils` | JS | `./dist/utils/index.mjs`, `./dist/utils/index.cjs` |
-| `@react-email/editor/styles/bubble-menu.css` | CSS | `./dist/ui/bubble-menu/bubble-menu.css` |
-| `@react-email/editor/styles/link-bubble-menu.css` | CSS | `./dist/ui/link-bubble-menu/link-bubble-menu.css` |
-| `@react-email/editor/styles/button-bubble-menu.css` | CSS | `./dist/ui/button-bubble-menu/button-bubble-menu.css` |
-| `@react-email/editor/styles/image-bubble-menu.css` | CSS | `./dist/ui/image-bubble-menu/image-bubble-menu.css` |
-| `@react-email/editor/styles/slash-command.css` | CSS | `./dist/ui/slash-command/slash-command.css` |
-| `@react-email/editor/styles/inspector.css` | CSS | `./dist/ui/inspector/inspector.css` |
-| `@react-email/editor/themes/default.css` | CSS theme | `./dist/ui/themes/default.css` |
+| Subpath                                             | Kind      | Target                                                       |
+| --------------------------------------------------- | --------- | ------------------------------------------------------------ |
+| `@react-email/editor`                               | JS        | `./dist/index.mjs`, `./dist/index.cjs`                       |
+| `@react-email/editor/core`                          | JS        | `./dist/core/index.mjs`, `./dist/core/index.cjs`             |
+| `@react-email/editor/extensions`                    | JS        | `./dist/extensions/index.mjs`, `./dist/extensions/index.cjs` |
+| `@react-email/editor/plugins`                       | JS        | `./dist/plugins/index.mjs`, `./dist/plugins/index.cjs`       |
+| `@react-email/editor/ui`                            | JS        | `./dist/ui/index.mjs`, `./dist/ui/index.cjs`                 |
+| `@react-email/editor/utils`                         | JS        | `./dist/utils/index.mjs`, `./dist/utils/index.cjs`           |
+| `@react-email/editor/styles/bubble-menu.css`        | CSS       | `./dist/ui/bubble-menu/bubble-menu.css`                      |
+| `@react-email/editor/styles/link-bubble-menu.css`   | CSS       | `./dist/ui/link-bubble-menu/link-bubble-menu.css`            |
+| `@react-email/editor/styles/button-bubble-menu.css` | CSS       | `./dist/ui/button-bubble-menu/button-bubble-menu.css`        |
+| `@react-email/editor/styles/image-bubble-menu.css`  | CSS       | `./dist/ui/image-bubble-menu/image-bubble-menu.css`          |
+| `@react-email/editor/styles/slash-command.css`      | CSS       | `./dist/ui/slash-command/slash-command.css`                  |
+| `@react-email/editor/styles/inspector.css`          | CSS       | `./dist/ui/inspector/inspector.css`                          |
+| `@react-email/editor/themes/default.css`            | CSS theme | `./dist/ui/themes/default.css`                               |
 
 ## Root Export: `@react-email/editor`
 
 Source: `packages/editor/src/index.ts`
 
 Exports:
-
 - `EmailEditor`
 - `EmailEditorProps` type
 - `EmailEditorRef` type
 
 Current behavior:
-
 - `EmailEditor` is a React component around TipTap `EditorProvider`.
 - It configures `StarterKit`, `Placeholder`, `EmailTheming`, image upload,
   `BubbleMenu`, and `SlashCommandRoot` by default.
@@ -51,7 +49,6 @@ Current behavior:
 Source: `packages/editor/src/core/index.ts`
 
 Runtime exports:
-
 - `composeReactEmail`
 - `EmailMark`
 - `EmailNode`
@@ -60,7 +57,6 @@ Runtime exports:
 - `useEditorEvent`
 
 Type exports:
-
 - `ComposeReactEmailResult` is internal today; the function return type is
   inferred from `composeReactEmail`.
 - `ConfigParameter`
@@ -79,7 +75,6 @@ Type exports:
 - `SerializerPluginStorage`
 
 Important email-specific public concepts:
-
 - `composeReactEmail`
 - `EmailNode`
 - `EmailMark`
@@ -94,7 +89,6 @@ phases without breaking current exports prematurely.
 Source: `packages/editor/src/extensions/index.ts`
 
 Runtime exports:
-
 - `AlignmentAttribute`
 - `Blockquote`
 - `Body`
@@ -137,7 +131,6 @@ Runtime exports:
 - `Uppercase`
 
 Type exports include each extension's option type where defined, including:
-
 - `AlignmentOptions`
 - `BlockquoteOptions`
 - `BodyOptions`
@@ -165,7 +158,6 @@ Type exports include each extension's option type where defined, including:
 - `UppercaseOptions`
 
 Current structural value for PDF:
-
 - Keep the TipTap extension registration shape.
 - Fork `StarterKit` and email-aware node/mark serializer behavior later.
 - Preserve current exports until compatibility shims are explicitly planned.
@@ -173,12 +165,10 @@ Current structural value for PDF:
 ## Plugins Export: `@react-email/editor/plugins`
 
 Sources:
-
 - `packages/editor/src/plugins/email-theming/index.ts`
 - `packages/editor/src/plugins/image/index.ts`
 
 Runtime exports:
-
 - `createTheme`
 - `EDITOR_THEMES`
 - `EmailTheming`
@@ -196,7 +186,6 @@ Runtime exports:
 - `useEmailTheming`
 
 Type exports:
-
 - `CssJs`
 - `EditorTheme`
 - `EditorThemeInput`
@@ -214,7 +203,6 @@ Type exports:
 - `UseEditorImageOptions`
 
 Current PDF isolation note:
-
 - `EmailTheming` is structurally useful for document theming, but the current
   name and defaults are email-oriented.
 - `useEditorImage` keeps image upload browser-side. Future production PDF
@@ -229,14 +217,12 @@ Current PDF isolation note:
 Source: `packages/editor/src/ui/index.ts`
 
 Main grouped runtime exports:
-
 - `BubbleMenu`
 - `EditorFocusScope`
 - `Inspector`
 - `SlashCommand`
 
 Bubble menu runtime exports:
-
 - `BubbleMenuAlignCenter`
 - `BubbleMenuAlignLeft`
 - `BubbleMenuAlignRight`
@@ -275,7 +261,6 @@ Bubble menu runtime exports:
 - `useBubbleMenuContext`
 
 Slash command runtime exports:
-
 - `BULLET_LIST`
 - `BUTTON`
 - `CODE`
@@ -297,12 +282,10 @@ Slash command runtime exports:
 - `scoreItem`
 
 Inspector runtime exports:
-
 - `Inspector`
 - `getNodeMeta`
 
 Icon runtime exports:
-
 - `AlignCenterIcon`
 - `AlignCenterVerticalIcon`
 - `AlignEndVerticalIcon`
@@ -365,7 +348,6 @@ and `IconProps`.
 Source: `packages/editor/src/utils/index.ts`
 
 Runtime exports:
-
 - `setTextAlignment`
 
 `packages/editor/src/utils` contains more internal helpers, but only
@@ -392,7 +374,6 @@ Future package boundaries must keep CSS imports deterministic and explicit.
 ## Export Smoke Coverage
 
 `pnpm asym:editor-export-smoke` verifies these runtime JS exports:
-
 - root: `EmailEditor`
 - core: `EmailMark`, `EmailNode`, `composeReactEmail`, `editorEventBus`,
   `isDocumentVisuallyEmpty`

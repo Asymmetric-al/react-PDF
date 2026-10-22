@@ -148,9 +148,7 @@
           ]
         }
       ],
-      "declarationOnlySourcePaths": [
-        "src/types.ts"
-      ]
+      "declarationOnlySourcePaths": ["src/types.ts"]
     },
     {
       "name": "@asym/pdf-editor",

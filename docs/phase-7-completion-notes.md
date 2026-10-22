@@ -305,7 +305,6 @@ Revert: delete this file.
 ## Phase 8 Handoff
 
 Phase 8 can start from:
-
 - `packages/editor/src/compatibility`
 - `docs/phase-7-completion-notes.md`
 - `docs/public-export-map.md`

@@ -7,7 +7,6 @@ Asymmetric.al PDF Document Builder.
 Agents working on the PDF builder, PDF Studio replacement, DocRaptor rendering,
 template schema, variables, repeaters, financial reports, batch generation,
 Unlayer migration, or future `Asymmetric-al/core` integration must start with:
-
 - `AGENTS.md`
 - `openspec/project.md`
 - `openspec/changes/build-pdf-document-builder/proposal.md`
