@@ -67,7 +67,7 @@
         "noChildrenProp": "off"
       },
       "nursery": {
-        "useSortedClasses": "off"
+        "useTailwindSortedClasses": "off"
       },
       "complexity": {
         "useNumericLiterals": "error",
@@ -101,7 +101,13 @@
       "!**/*.d.ts",
       "!**/out",
       "!**/.turbo",
-      "!**/prism.ts"
+      "!**/prism.ts",
+      "!packages/render/src/shared/utils/testing/stripe-email.html"
     ]
+  },
+  "markdown": {
+    "parser": {
+      "frontmatter": true
+    }
   }
 }

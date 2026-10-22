@@ -5,7 +5,7 @@ on:
     paths:
       - package.json
       - pnpm-lock.yaml
-      - 'packages/**'
+      - "packages/**"
       - .github/workflows/preview-release.yml
 
 concurrency:
@@ -18,7 +18,7 @@ permissions:
 
 jobs:
   preview-release:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Confirm preview release policy
         run: |

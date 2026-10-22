@@ -1,11 +1,16 @@
 # @asym/docraptor-client
 
+> Historical phase-baseline notes follow. For the current restored 0.1.0 API,
+> exports, supported toolchain and qualification, see
+> [Core PDF modernization](../../docs/maintenance/core-pdf-modernization/README.md)
+> and this package's `src/index.ts` and `package.json`. Later shipped functionality
+> supersedes the phase-specific omissions below; native-builder rollout remains unchanged.
+
 Phase 11 server-only DocRaptor REST client for the Asym PDF Document Builder.
 
 ## Purpose
 
 This package owns DocRaptor API calls for the PDF builder package set:
-
 - synchronous PDF rendering
 - asynchronous render job creation
 - status polling
@@ -20,7 +25,6 @@ It remains private while the package APIs mature.
 ## Public API Promise
 
 Current root exports:
-
 - `createDocRaptorClient`
 - `DocRaptorClient`
 - `DocRaptorClientConfig`
@@ -39,7 +43,6 @@ authenticates with HTTP Basic auth using the API key as the username and a
 blank password, and polls async jobs through `/status/{status_id}`.
 
 DocRaptor references:
-
 - https://docraptor.com/documentation/api/making_documents
 - https://docraptor.com/documentation/api
 - https://docraptor.com/documentation/api/status_codes

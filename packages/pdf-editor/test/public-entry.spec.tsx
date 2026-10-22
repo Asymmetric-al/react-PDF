@@ -49,7 +49,7 @@ describe('@asym/pdf-editor public entry', () => {
     const packageJson = readPackageJson();
 
     expect(packageJson.private).toBe(true);
-    expect(packageJson.dependencies['@react-email/editor']).toBe('workspace:*');
+    expect(packageJson.dependencies['@react-email/editor']).toBe('1.7.14');
     expect(Object.keys(packageJson.exports).sort()).toEqual([
       '.',
       './extensions',

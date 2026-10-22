@@ -4,6 +4,7 @@
 }
 
 .example-shell-content .tiptap {
+  /* biome-ignore lint/complexity/noImportantStyles: demo viewport must override serialized editor inline min-height: 100%. */
   min-height: 350px !important;
 }
 

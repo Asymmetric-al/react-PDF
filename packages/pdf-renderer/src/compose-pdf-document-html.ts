@@ -2608,7 +2608,7 @@ function renderDataTableTotalRow(input: {
   const columnIndex = input.binding.columns.findIndex(
     (column) => column.key === input.column.key,
   );
-  const resolvedColumnIndex = columnIndex < 0 ? 0 : columnIndex;
+  const resolvedColumnIndex = Math.max(columnIndex, 0);
   const leadingSpan = Math.max(resolvedColumnIndex, 1);
   const trailingSpan = input.binding.columns.length - resolvedColumnIndex - 1;
   const cellsHtml = [

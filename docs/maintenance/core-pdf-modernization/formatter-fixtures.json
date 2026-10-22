@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "owner": "PDF package maintenance",
+  "frontmatterParser": {
+    "enabled": true,
+    "reason": "Biome 2.6 defaults frontmatter parsing to false; explicit parsing preserves skill YAML metadata.",
+    "upstream": "https://biomejs.dev/reference/configuration/#markdownparserfrontmatter"
+  },
+  "preservedFixture": {
+    "path": "packages/render/src/shared/utils/testing/stripe-email.html",
+    "sha256": "7ef57f884540a33d5f67c31a92640eb7fdf06c18817699e0b7b91fc550f46034",
+    "reason": "Captured external HTML email is the literal input of packages/render/src/shared/utils/pretty.spec.ts. New embedded CSS analysis treats entity-encoded inline CSS as raw CSS; preserve fixture bytes and existing snapshot coverage. Only this exact fixture is excluded from Biome parsing.",
+    "verification": "Existing pretty.spec.ts snapshot plus fixture SHA256",
+    "recheckCondition": "When Biome HTML embedded-style parsing supports entity-decoded attribute input; re-run original snapshot unchanged."
+  },
+  "formatOnlyCommit": "e5d92073ffdcabbe09178f4e98407700c1a4ceca"
+}

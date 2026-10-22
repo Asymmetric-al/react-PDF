@@ -68,7 +68,8 @@ export function createPageBreakExtension() {
     },
 
     parseHTML() {
-      return [{ tag: `hr[${pageBreakAttribute}]` }];
+      // Preserve the specific page-break contract before generic horizontal rules.
+      return [{ tag: `hr[${pageBreakAttribute}]`, priority: 100 }];
     },
 
     renderHTML({ HTMLAttributes }) {

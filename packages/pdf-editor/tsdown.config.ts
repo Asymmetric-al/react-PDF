@@ -8,7 +8,7 @@ export default defineConfig({
     'migration/unlayer': 'src/migration/unlayer/index.ts',
   },
   format: ['esm', 'cjs'],
-  dts: true,
+  dts: { generator: 'tsc' },
   deps: {
     neverBundle: [
       '@asym/pdf-template-schema',

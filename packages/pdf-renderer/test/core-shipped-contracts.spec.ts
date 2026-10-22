@@ -1,12 +1,15 @@
 import { readFileSync } from 'node:fs';
-import * as schema from '@asym/pdf-template-schema';
-import type { VariableDataContext } from '@asym/pdf-template-schema';
 import * as renderer from '@asym/pdf-renderer';
+import type { VariableDataContext } from '@asym/pdf-template-schema';
+import * as schema from '@asym/pdf-template-schema';
 import { describe, expect, it } from 'vitest';
 
 interface CapturedFixture {
   readonly category: string;
-  readonly input: { readonly template: unknown; readonly dataContext: VariableDataContext };
+  readonly input: {
+    readonly template: unknown;
+    readonly dataContext: VariableDataContext;
+  };
   readonly normalized: unknown;
   readonly document: unknown;
   readonly printed: unknown;
@@ -14,9 +17,20 @@ interface CapturedFixture {
 }
 
 const captured: {
-  readonly exports: { readonly schema: readonly string[]; readonly renderer: readonly string[] };
+  readonly exports: {
+    readonly schema: readonly string[];
+    readonly renderer: readonly string[];
+  };
   readonly fixtures: readonly CapturedFixture[];
-} = JSON.parse(readFileSync(new URL('../../../docs/maintenance/core-pdf-modernization/shipped-contracts.json', import.meta.url), 'utf8'));
+} = JSON.parse(
+  readFileSync(
+    new URL(
+      '../../../docs/maintenance/core-pdf-modernization/shipped-contracts.json',
+      import.meta.url,
+    ),
+    'utf8',
+  ),
+);
 
 function jsonContract(value: unknown): unknown {
   return JSON.parse(JSON.stringify(value));
@@ -24,13 +38,19 @@ function jsonContract(value: unknown): unknown {
 
 describe('independently shipped Core PDF contracts', () => {
   it('retains every consumed schema and browser-renderer export', () => {
-    expect(Object.keys(schema)).toEqual(expect.arrayContaining([...captured.exports.schema]));
-    expect(Object.keys(renderer)).toEqual(expect.arrayContaining([...captured.exports.renderer]));
+    expect(Object.keys(schema)).toEqual(
+      expect.arrayContaining([...captured.exports.schema]),
+    );
+    expect(Object.keys(renderer)).toEqual(
+      expect.arrayContaining([...captured.exports.renderer]),
+    );
   });
 
   for (const fixture of captured.fixtures) {
     it(`round-trips the shipped ${fixture.category} document`, async () => {
-      const template = schema.DocumentTemplateV1Schema.parse(fixture.input.template);
+      const template = schema.DocumentTemplateV1Schema.parse(
+        fixture.input.template,
+      );
       expect(jsonContract(template)).toEqual(fixture.normalized);
       const input = { template, dataContext: fixture.input.dataContext };
       const document = renderer.composePdfDocumentHtml({
@@ -44,7 +64,11 @@ describe('independently shipped Core PDF contracts', () => {
         tableBindings: template.tableBindings,
       });
       expect(document.html.length).toBeGreaterThan(100);
-      expect(document.warnings).not.toEqual(expect.arrayContaining([expect.objectContaining({code: 'invalid_document'})]));
+      expect(document.warnings).not.toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ code: 'invalid_document' }),
+        ]),
+      );
       expect(jsonContract(document)).toEqual(fixture.document);
       const printed = renderer.composePrintDocumentHtml({
         title: template.name,

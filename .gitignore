@@ -46,3 +46,9 @@ yarn-error.log*
 # mintlify exports (generated locally)
 apps/docs/export.zip
 apps/docs/export/
+
+# Local PDF qualification output; source contracts remain tracked.
+/tmp/pdfs/
+
+# Vitest browser failure attachments.
+**/.vitest/

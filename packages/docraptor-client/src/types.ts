@@ -19,7 +19,10 @@ export interface DocRaptorClientBoundary {
 }
 export type DocRaptorMode = 'test' | 'production';
 export type DocRaptorMedia = 'print' | 'screen';
-export type DocRaptorFetch = (input: string | URL, init?: RequestInit) => Promise<Response>;
+export type DocRaptorFetch = (
+  input: string | URL,
+  init?: RequestInit,
+) => Promise<Response>;
 export interface DocRaptorClientConfig {
   readonly apiKey: string;
   readonly mode?: DocRaptorMode;
@@ -78,7 +81,12 @@ export interface DocRaptorAsyncRenderJob {
   readonly request: DocRaptorRequestMetadata;
   readonly idempotency?: DocRaptorIdempotencyMetadata;
 }
-export type DocRaptorAsyncRenderStatusValue = 'queued' | 'working' | 'completed' | 'failed' | 'unknown';
+export type DocRaptorAsyncRenderStatusValue =
+  | 'queued'
+  | 'working'
+  | 'completed'
+  | 'failed'
+  | 'unknown';
 export interface DocRaptorAsyncRenderStatus {
   readonly statusId: string;
   readonly status: DocRaptorAsyncRenderStatusValue;
@@ -88,15 +96,24 @@ export interface DocRaptorAsyncRenderStatus {
   readonly validationErrors?: readonly string[];
   readonly raw: Readonly<Record<string, unknown>>;
 }
-export interface DocRaptorPollAsyncRenderStatusOptions extends DocRaptorRequestOptions {
+export interface DocRaptorPollAsyncRenderStatusOptions
+  extends DocRaptorRequestOptions {
   readonly intervalMs?: number;
   readonly maxAttempts?: number;
 }
 export interface DocRaptorClient {
   renderSync(input: DocRaptorRenderRequest): Promise<DocRaptorSyncRenderResult>;
-  createAsyncRender(input: DocRaptorRenderRequest): Promise<DocRaptorAsyncRenderJob>;
-  getAsyncRenderStatus(statusId: string, options?: DocRaptorRequestOptions): Promise<DocRaptorAsyncRenderStatus>;
-  pollAsyncRenderStatus(statusId: string, options?: DocRaptorPollAsyncRenderStatusOptions): Promise<DocRaptorAsyncRenderStatus>;
+  createAsyncRender(
+    input: DocRaptorRenderRequest,
+  ): Promise<DocRaptorAsyncRenderJob>;
+  getAsyncRenderStatus(
+    statusId: string,
+    options?: DocRaptorRequestOptions,
+  ): Promise<DocRaptorAsyncRenderStatus>;
+  pollAsyncRenderStatus(
+    statusId: string,
+    options?: DocRaptorPollAsyncRenderStatusOptions,
+  ): Promise<DocRaptorAsyncRenderStatus>;
 }
 
 export interface DocRaptorDocumentPayload {

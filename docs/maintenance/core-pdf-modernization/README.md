@@ -1,17 +1,60 @@
 # Core PDF package modernization
 
-Status: source recovery and baseline qualification in progress. The original product roadmap remains historical intent; this maintenance change preserves the functionality Core already consumes and does not activate rollout.
+The restored five-package cohort is versioned at `0.1.0`. Local installation,
+package builds, native TypeScript checks, unit tests, real Chromium editor and
+retained document print contracts pass. Owner PR/CI, final source reproduction,
+versioned artifact ingestion and Core deployment qualification remain open.
+The existing native-builder rollout setting stays disabled.
 
-The source and artifact baseline are recorded in source-provenance.json and qualification.json. shipped-contracts.json was captured directly from installed Core artifacts, with every loaded entry verified against the committed vendor copy. Eight synthetic document categories produced successful fixed-clock browser previews. Browser output is not DocRaptor production-fidelity proof.
+Use Node 24.22.1 and the exact pnpm 12.14.0 release recorded with integrity in
+`package.json`. Install with `pnpm install --frozen-lockfile`. Run
+`pnpm core-pdf:check`, `pnpm core-pdf:browser` and `pnpm core-pdf:render`.
+Chromium is installed with `pnpm --filter @asym/pdf-editor exec playwright install chromium`.
+These are maintenance checks; they make no live DocRaptor calls.
 
-The baseline owner checkpoint passes frozen pnpm 10.33.0 installation without lock drift, all seven consumed build/dependency tasks, and all four existing PDF package test tasks. Dependency upgrades have not started. See the active OpenSpec change at openspec/changes/restore-core-pdf-packages.
+The current cohort uses React 19.3.1, React Email 6.11.3, its public editor 1.7.14,
+Tiptap 3.32.0 and Zod 4.6.7. Product typechecks use TypeScript 7.0.2. The current
+declaration builder needs the supported TypeScript 6.0.3 JavaScript AST API;
+explicit ownership, physical-identity tests and its recheck condition are in
+[dependency-qualification.json](dependency-qualification.json).
 
-## Reconstructed baseline qualification
+## Source and contract provenance
 
-Before dependency changes, all five consumed packages pass 36 files / 220 cases (zero cache hits), all five package typechecks, and the eight required build tasks. Original implementation files remain byte-identical to their source-map recovery; only erased declarations and export wiring were reconstructed. The original external lock graph and upstream workspace importers are preserved; frozen offline installation succeeds.
+Restoration commit `ca79063bd679599573a2eba563dcfa9a304e8605` reconstructs Core's
+shipped implementation from committed source maps and its missing erased types
+from shipped declarations. [source-provenance.json](source-provenance.json) and
+[qualification.json](qualification.json) preserve that baseline. Existing upstream
+source and tests remain. The historical 47-phase roadmap is not marked complete.
 
-The first capture harness used preview-style input for the direct serializer, yielding an empty direct body. Schema-version-2 capture corrects that layer through the unchanged shipped artifact, requires nonempty output, and matches the eight existing browser-preview bodies, print HTML and CSS exactly. Original normalized templates, public exports and full browser previews are unchanged. The superseded capture hash and private temporary evidence location are recorded explicitly; it is not an active acceptance baseline.
+[shipped-contracts.json](shipped-contracts.json) is the schema-version-2 capture
+from the independently shipped Core renderer. Its eight categories preserve
+exports, document schemas, browser bodies, print HTML and CSS. The superseded
+first direct-composer harness used the wrong input envelope; baseline evidence
+records that correction. Formatting commit
+`e5d92073ffdcabbe09178f4e98407700c1a4ceca` preserves parsed JSON values and the
+Markdown structure, YAML metadata and executable example structure; original
+bytes remain in Git. See [formatting-preservation.json](formatting-preservation.json).
 
-The adapter suite preserves disabled native-editor selection, respects host authorization denials before work, blocks failed production preflight, and makes no live provider calls. Core owns authenticated tenant context and tenant-bound template repositories; portable document metadata cannot supply tenant identity. Existing phase tests retain their case counts while reconciling assertions with the already-shipped calculations, pagination and accessibility behavior.
+## Qualified behavior and limits
 
-Dependency modernization, formatting/lint, final browser/provider qualification and immutable artifact ingestion remain open. This restoration does not mark the historical 47-phase product roadmap complete.
+The actual editor accepts keyboard formatting, respects read-only mode and
+round-trips custom nodes. A browser regression exposed page-break HTML being
+parsed as a generic horizontal rule; the specific rule now precedes it while
+ordinary rules retain their behavior. One physical Tiptap/ProseMirror runtime
+is verified through real document and mutation-step operations.
+
+All eight retained synthetic document categories render locally. All nine
+printed pages were visually inspected and have zero out-of-page characters.
+The serializer deliberately retains placeholders; the public variable resolver
+is checked separately. Three labelled local assets stand in for fixture URLs;
+other network requests fail the check. Chromium is not Prince/DocRaptor page
+counter or production-fidelity qualification. Live provider boundaries remain
+mocked, and Core still owns authentication, tenant context and authorization.
+
+The fresh audit has zero production advisories on consumed package paths.
+The full owner workspace still has advisories in untouched legacy applications;
+this maintenance result does not qualify that separate graph or downstream Core.
+The [active maintenance change](../../../openspec/changes/restore-core-pdf-packages/proposal.md)
+limits work to Core's consumed functionality. Final committed-source artifact
+reproduction, owner review/CI, Core ingestion, clean installation and deployed
+checks remain required.
