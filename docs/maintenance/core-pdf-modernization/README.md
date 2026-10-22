@@ -8,7 +8,8 @@ The existing native-builder rollout setting stays disabled.
 
 Use Node 24.22.1 and the exact pnpm 12.14.0 release recorded with integrity in
 `package.json`. Install with `pnpm install --frozen-lockfile`. Run
-`pnpm core-pdf:check`, `pnpm core-pdf:browser` and `pnpm core-pdf:render`.
+`pnpm core-pdf:check`, `pnpm core-pdf:reproduce`, `pnpm core-pdf:browser` and
+`pnpm core-pdf:render`.
 Chromium is installed with `pnpm --filter @asym/pdf-editor exec playwright install chromium`.
 These are maintenance checks; they make no live DocRaptor calls.
 
@@ -58,3 +59,16 @@ The [active maintenance change](../../../openspec/changes/restore-core-pdf-packa
 limits work to Core's consumed functionality. Final committed-source artifact
 reproduction, owner review/CI, Core ingestion, clean installation and deployed
 checks remain required.
+
+## Reproducible declaration builds
+
+The schema declaration builder uses its source-only `tsconfig.build.json` and
+the supported whole-project `build: true, incremental: false` mode. This avoids
+per-module declaration generation producing different Zod property/union order
+across processes. Runtime schemas and JavaScript stay unchanged. Product checks
+still include tests under the regular TypeScript 7 configuration.
+
+`core-pdf:reproduce` forces three complete build/pack rounds and compares each
+of the five tarballs byte for byte. It also rejects source-tree changes from
+declaration emission. Independent clean-checkout reproduction remains part of
+release qualification; three runs in one checkout alone do not prove that.

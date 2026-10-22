@@ -39,6 +39,8 @@ jobs:
         run: pnpm --filter @react-email/editor test:unit
       - name: Qualify all five Core PDF packages
         run: pnpm core-pdf:check
+      - name: Verify reproducible Core PDF packages
+        run: pnpm core-pdf:reproduce
       - name: Install pinned Chromium
         run: pnpm --filter @react-email/editor exec playwright install --with-deps chromium
       - name: Verify public PDF editor in Chromium

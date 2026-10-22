@@ -21,7 +21,8 @@
     "version": "changeset version && pnpm install --no-frozen-lockfile && pnpm lint:fix",
     "core-pdf:check": "turbo run lint typecheck test build --filter=@asym/docraptor-client --filter=@asym/pdf-template-schema --filter=@asym/pdf-renderer --filter=@asym/pdf-editor --filter=@asym/pdf-studio-adapter --force",
     "core-pdf:render": "node scripts/verify-core-pdf-rendering.mjs",
-    "core-pdf:browser": "pnpm --filter @asym/pdf-editor test:browser"
+    "core-pdf:browser": "pnpm --filter @asym/pdf-editor test:browser",
+    "core-pdf:reproduce": "node scripts/verify-core-pdf-reproducibility.mjs"
   },
   "devDependencies": {
     "@actions/core": "3.0.0",
