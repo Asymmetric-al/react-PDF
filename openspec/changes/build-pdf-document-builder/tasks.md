@@ -1,5 +1,14 @@
 # Tasks
 
+> Maintenance note (2026-10-22): the accessible owner source stopped at Phase 22,
+> while Core shipped later package functionality. Source restoration and its
+> release gates are tracked in
+> [restore-core-pdf-packages](../restore-core-pdf-packages/tasks.md), with
+> [artifact provenance](../../../docs/maintenance/core-pdf-modernization/README.md).
+> These historical phase checkboxes are preserved; restoration does not certify
+> all roadmap phases or activate native-builder rollout.
+
+
 ## Working Rules For Every Phase
 
 - [ ] Inspect the repo before editing. Do not assume file paths.

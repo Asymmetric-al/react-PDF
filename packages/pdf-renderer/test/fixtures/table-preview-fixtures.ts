@@ -12,7 +12,7 @@ export interface TablePreviewFixture {
   readonly expectedRowCount: number;
   readonly expectedCellText: readonly string[];
   readonly expectedPlaceholderText: readonly string[];
-  readonly unexpectedCalculatedText: readonly string[];
+  readonly expectedCalculatedText: readonly string[];
 }
 
 const annualGivingTableBinding = {
@@ -237,7 +237,7 @@ export const annualGivingStatementTablePreviewFixture: TablePreviewFixture = {
   ],
   expectedPlaceholderText: ['Total gifts placeholder'],
   expectedRowCount: 3,
-  unexpectedCalculatedText: ['$250.00'],
+  expectedCalculatedText: ['$250.00'],
 };
 
 export const invoiceTablePreviewFixture: TablePreviewFixture = {
@@ -311,7 +311,7 @@ export const invoiceTablePreviewFixture: TablePreviewFixture = {
   ],
   expectedPlaceholderText: ['Amount due placeholder'],
   expectedRowCount: 2,
-  unexpectedCalculatedText: ['$350.00'],
+  expectedCalculatedText: ['$350.00'],
 };
 
 export const financialReportTablePreviewFixture: TablePreviewFixture = {
@@ -399,7 +399,7 @@ export const financialReportTablePreviewFixture: TablePreviewFixture = {
   ],
   expectedPlaceholderText: ['Net change placeholder'],
   expectedRowCount: 3,
-  unexpectedCalculatedText: ['$1,125.00'],
+  expectedCalculatedText: ['$1,125.00'],
 };
 
 export const tablePreviewFixtures = [

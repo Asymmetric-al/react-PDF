@@ -1,0 +1,201 @@
+{
+  "capturedAt": "2026-10-22T04:12:10.691Z",
+  "source": "Existing Phase22 fixture data rendered through frozen shipped Core artifacts, independently of reconstructed source.",
+  "artifactSha256": "39553db1bf29d345d48ffc54660a5e69f0f710e9b8576fd619fde70755b1999e",
+  "fixtureDeclarationsSha256": "529cf7334f218270f004674227db3b459db5f1ca804ac1a3f80e3bd5eb2df13d",
+  "inputs": {
+    "dataContext": {
+      "donations": [
+        {
+          "amount": 50,
+          "date": "2026-01-15",
+          "designation": "Missions"
+        },
+        {
+          "amount": 125,
+          "date": "2026-01-02",
+          "designation": "General"
+        }
+      ],
+      "financialRows": [
+        {
+          "account": "Income",
+          "amount": 1200,
+          "fund": "General"
+        },
+        {
+          "account": "Expense",
+          "amount": -350,
+          "fund": "Outreach"
+        }
+      ],
+      "invoice": {
+        "lineItems": [
+          {
+            "description": "Design",
+            "total": 700
+          },
+          {
+            "description": "Print",
+            "total": 300
+          }
+        ]
+      }
+    },
+    "donationTableBinding": {
+      "id": "donation-table",
+      "sourcePath": "donations",
+      "emptyState": "No donations in this period.",
+      "totals": [
+        {
+          "columnKey": "amount",
+          "label": "Total gifts",
+          "operation": "sum"
+        }
+      ],
+      "columns": [
+        {
+          "formatter": "date.medium",
+          "key": "date",
+          "label": "Date",
+          "sourcePath": "date",
+          "type": "date"
+        },
+        {
+          "key": "designation",
+          "label": "Designation",
+          "sourcePath": "designation",
+          "type": "string"
+        },
+        {
+          "align": "right",
+          "formatter": "currency.usd",
+          "key": "amount",
+          "label": "Amount",
+          "sourcePath": "amount",
+          "type": "currency"
+        }
+      ]
+    },
+    "invoiceTableBinding": {
+      "id": "invoice-lines",
+      "sourcePath": "invoice.lineItems",
+      "columns": [
+        {
+          "key": "description",
+          "label": "Description",
+          "sourcePath": "description",
+          "type": "string"
+        },
+        {
+          "align": "right",
+          "formatter": "currency.usd",
+          "key": "total",
+          "label": "Total",
+          "sourcePath": "total",
+          "type": "currency"
+        }
+      ]
+    },
+    "financialReportTableBinding": {
+      "id": "financial-report",
+      "sourcePath": "financialRows",
+      "grouping": {
+        "fieldPath": "fund",
+        "label": "Fund"
+      },
+      "columns": [
+        {
+          "key": "fund",
+          "label": "Fund",
+          "sourcePath": "fund",
+          "type": "string",
+          "width": "25%"
+        },
+        {
+          "key": "account",
+          "label": "Account",
+          "sourcePath": "account",
+          "type": "string",
+          "width": "45%"
+        },
+        {
+          "align": "right",
+          "formatter": "currency.usd",
+          "key": "amount",
+          "label": "Amount",
+          "sourcePath": "amount",
+          "type": "currency",
+          "width": "30%"
+        }
+      ]
+    }
+  },
+  "outputs": {
+    "donationTableBinding": {
+      "html": "<table class=\"pdf-data-table\" data-asym-data-table=\"true\" data-data-table-path=\"content.0\" data-table-binding-id=\"donation-table\" data-table-repeat-header=\"true\" data-table-source-path=\"donations\"><thead class=\"pdf-data-table-header\"><tr><th class=\"pdf-data-table-heading\" data-table-column-key=\"date\" scope=\"col\" style=\"text-align:left\">Date</th><th class=\"pdf-data-table-heading\" data-table-column-key=\"designation\" scope=\"col\" style=\"text-align:left\">Designation</th><th class=\"pdf-data-table-heading\" data-table-column-key=\"amount\" scope=\"col\" style=\"text-align:right\">Amount</th></tr></thead><tbody class=\"pdf-data-table-body\"><tr class=\"pdf-data-table-row pdf-table-row-avoid-break\" data-table-avoid-row-split=\"true\" data-table-rendered-index=\"0\" data-table-source-index=\"0\"><td class=\"pdf-data-table-cell\" data-table-column-key=\"date\" style=\"text-align:left\">Jan 15, 2026</td><td class=\"pdf-data-table-cell\" data-table-column-key=\"designation\" style=\"text-align:left\">Missions</td><td class=\"pdf-data-table-cell\" data-table-column-key=\"amount\" style=\"text-align:right\">$50.00</td></tr><tr class=\"pdf-data-table-row pdf-table-row-avoid-break\" data-table-avoid-row-split=\"true\" data-table-rendered-index=\"1\" data-table-source-index=\"1\"><td class=\"pdf-data-table-cell\" data-table-column-key=\"date\" style=\"text-align:left\">Jan 2, 2026</td><td class=\"pdf-data-table-cell\" data-table-column-key=\"designation\" style=\"text-align:left\">General</td><td class=\"pdf-data-table-cell\" data-table-column-key=\"amount\" style=\"text-align:right\">$125.00</td></tr></tbody><tfoot class=\"pdf-data-table-footer\"><tr class=\"pdf-data-table-total-row pdf-table-row-avoid-break\" data-table-avoid-row-split=\"true\" data-table-total-column-key=\"amount\" data-table-total-count=\"2\" data-table-total-decimal=\"175.00\" data-table-total-minor-units=\"17500\" data-table-total-operation=\"sum\" data-table-total-scale=\"2\"><td class=\"pdf-data-table-total-label\" colspan=\"2\">Total gifts</td><td class=\"pdf-data-table-total-value\" data-table-column-key=\"amount\" style=\"text-align:right\">$175.00</td></tr></tfoot></table>",
+      "cssRequirements": [
+        {
+          "id": "phase-09-document-serializer",
+          "media": "all",
+          "css": ".pdf-button{display:inline-block;text-decoration:none;}\n.pdf-column{box-sizing:border-box;display:table-cell;vertical-align:top;width:50%;}\n.pdf-columns{box-sizing:border-box;display:table;width:100%;}\n.pdf-conditional-section{display:block;}\n.pdf-image{max-width:100%;}\n.pdf-asset-image--center{display:block;margin-left:auto;margin-right:auto;}\n.pdf-asset-image--full_width{display:block;width:100%;}\n.pdf-asset-image--right{display:block;margin-left:auto;}\n.pdf-repeater{display:block;}\n.pdf-repeater-empty{display:block;}\n.pdf-repeater-item{display:block;}\n.pdf-data-table{border-collapse:collapse;width:100%;}\n.pdf-data-table-empty{display:block;}\n.pdf-data-table-footer{display:table-footer-group;}\n.pdf-data-table-group-subtotal{font-weight:600;}\n.pdf-data-table-header{display:table-header-group;}\n.pdf-data-table-total-row{font-weight:700;}\n.pdf-document-placeholder{border:1px solid #6b7280;box-sizing:border-box;display:inline-flex;gap:0.375rem;padding:0.25rem 0.5rem;vertical-align:middle;}\n.pdf-document-placeholder-box{border:1px solid #111827;display:inline-block;height:0.8rem;width:0.8rem;}\n.pdf-document-placeholder-control{color:#6b7280;}\n.pdf-document-placeholder-label{font-weight:600;}\n.pdf-document-placeholder-line{border-bottom:1px solid #111827;display:inline-block;min-width:8rem;}\n.pdf-document-placeholder-qr-box{align-items:center;border:1px solid #111827;display:inline-flex;height:4rem;justify-content:center;width:4rem;}\n.pdf-avoid-break-after-heading{break-after:avoid;page-break-after:avoid;}\n.pdf-keep-together{break-inside:avoid;page-break-inside:avoid;}\n.pdf-page-break{break-after:page;height:0;page-break-after:always;}\n.pdf-start-on-new-page{break-before:page;page-break-before:always;}\n.pdf-summary-block{display:block;}\n.pdf-summary-list{margin:0;}\n.pdf-summary-item{display:grid;grid-template-columns:1fr auto;}\n.pdf-table{border-collapse:collapse;width:100%;}\n.pdf-table-row-avoid-break{break-inside:avoid;page-break-inside:avoid;}\n.pdf-variable{white-space:nowrap;}"
+        }
+      ],
+      "warnings": [],
+      "assets": [],
+      "variables": []
+    },
+    "invoiceTableBinding": {
+      "html": "<table class=\"pdf-data-table\" data-asym-data-table=\"true\" data-data-table-path=\"content.0\" data-table-binding-id=\"invoice-lines\" data-table-repeat-header=\"true\" data-table-source-path=\"invoice.lineItems\"><thead class=\"pdf-data-table-header\"><tr><th class=\"pdf-data-table-heading\" data-table-column-key=\"description\" scope=\"col\" style=\"text-align:left\">Description</th><th class=\"pdf-data-table-heading\" data-table-column-key=\"total\" scope=\"col\" style=\"text-align:right\">Total</th></tr></thead><tbody class=\"pdf-data-table-body\"><tr class=\"pdf-data-table-row pdf-table-row-avoid-break\" data-table-avoid-row-split=\"true\" data-table-rendered-index=\"0\" data-table-source-index=\"0\"><td class=\"pdf-data-table-cell\" data-table-column-key=\"description\" style=\"text-align:left\">Design</td><td class=\"pdf-data-table-cell\" data-table-column-key=\"total\" style=\"text-align:right\">$700.00</td></tr><tr class=\"pdf-data-table-row pdf-table-row-avoid-break\" data-table-avoid-row-split=\"true\" data-table-rendered-index=\"1\" data-table-source-index=\"1\"><td class=\"pdf-data-table-cell\" data-table-column-key=\"description\" style=\"text-align:left\">Print</td><td class=\"pdf-data-table-cell\" data-table-column-key=\"total\" style=\"text-align:right\">$300.00</td></tr></tbody></table>",
+      "cssRequirements": [
+        {
+          "id": "phase-09-document-serializer",
+          "media": "all",
+          "css": ".pdf-button{display:inline-block;text-decoration:none;}\n.pdf-column{box-sizing:border-box;display:table-cell;vertical-align:top;width:50%;}\n.pdf-columns{box-sizing:border-box;display:table;width:100%;}\n.pdf-conditional-section{display:block;}\n.pdf-image{max-width:100%;}\n.pdf-asset-image--center{display:block;margin-left:auto;margin-right:auto;}\n.pdf-asset-image--full_width{display:block;width:100%;}\n.pdf-asset-image--right{display:block;margin-left:auto;}\n.pdf-repeater{display:block;}\n.pdf-repeater-empty{display:block;}\n.pdf-repeater-item{display:block;}\n.pdf-data-table{border-collapse:collapse;width:100%;}\n.pdf-data-table-empty{display:block;}\n.pdf-data-table-footer{display:table-footer-group;}\n.pdf-data-table-group-subtotal{font-weight:600;}\n.pdf-data-table-header{display:table-header-group;}\n.pdf-data-table-total-row{font-weight:700;}\n.pdf-document-placeholder{border:1px solid #6b7280;box-sizing:border-box;display:inline-flex;gap:0.375rem;padding:0.25rem 0.5rem;vertical-align:middle;}\n.pdf-document-placeholder-box{border:1px solid #111827;display:inline-block;height:0.8rem;width:0.8rem;}\n.pdf-document-placeholder-control{color:#6b7280;}\n.pdf-document-placeholder-label{font-weight:600;}\n.pdf-document-placeholder-line{border-bottom:1px solid #111827;display:inline-block;min-width:8rem;}\n.pdf-document-placeholder-qr-box{align-items:center;border:1px solid #111827;display:inline-flex;height:4rem;justify-content:center;width:4rem;}\n.pdf-avoid-break-after-heading{break-after:avoid;page-break-after:avoid;}\n.pdf-keep-together{break-inside:avoid;page-break-inside:avoid;}\n.pdf-page-break{break-after:page;height:0;page-break-after:always;}\n.pdf-start-on-new-page{break-before:page;page-break-before:always;}\n.pdf-summary-block{display:block;}\n.pdf-summary-list{margin:0;}\n.pdf-summary-item{display:grid;grid-template-columns:1fr auto;}\n.pdf-table{border-collapse:collapse;width:100%;}\n.pdf-table-row-avoid-break{break-inside:avoid;page-break-inside:avoid;}\n.pdf-variable{white-space:nowrap;}"
+        }
+      ],
+      "warnings": [],
+      "assets": [],
+      "variables": []
+    },
+    "financialReportTableBinding": {
+      "html": "<table class=\"pdf-data-table\" data-asym-data-table=\"true\" data-data-table-path=\"content.0\" data-table-binding-id=\"financial-report\" data-table-repeat-header=\"true\" data-table-source-path=\"financialRows\"><thead class=\"pdf-data-table-header\"><tr><th class=\"pdf-data-table-heading\" data-table-column-key=\"fund\" scope=\"col\" style=\"text-align:left;width:25%\">Fund</th><th class=\"pdf-data-table-heading\" data-table-column-key=\"account\" scope=\"col\" style=\"text-align:left;width:45%\">Account</th><th class=\"pdf-data-table-heading\" data-table-column-key=\"amount\" scope=\"col\" style=\"text-align:right;width:30%\">Amount</th></tr></thead><tbody class=\"pdf-data-table-body\"><tr class=\"pdf-data-table-row pdf-table-row-avoid-break\" data-table-avoid-row-split=\"true\" data-table-rendered-index=\"0\" data-table-source-index=\"0\"><td class=\"pdf-data-table-cell\" data-table-column-key=\"fund\" style=\"text-align:left;width:25%\">General</td><td class=\"pdf-data-table-cell\" data-table-column-key=\"account\" style=\"text-align:left;width:45%\">Income</td><td class=\"pdf-data-table-cell\" data-table-column-key=\"amount\" style=\"text-align:right;width:30%\">$1,200.00</td></tr><tr class=\"pdf-data-table-row pdf-table-row-avoid-break\" data-table-avoid-row-split=\"true\" data-table-rendered-index=\"1\" data-table-source-index=\"1\"><td class=\"pdf-data-table-cell\" data-table-column-key=\"fund\" style=\"text-align:left;width:25%\">Outreach</td><td class=\"pdf-data-table-cell\" data-table-column-key=\"account\" style=\"text-align:left;width:45%\">Expense</td><td class=\"pdf-data-table-cell\" data-table-column-key=\"amount\" style=\"text-align:right;width:30%\">-$350.00</td></tr></tbody></table>",
+      "cssRequirements": [
+        {
+          "id": "phase-09-document-serializer",
+          "media": "all",
+          "css": ".pdf-button{display:inline-block;text-decoration:none;}\n.pdf-column{box-sizing:border-box;display:table-cell;vertical-align:top;width:50%;}\n.pdf-columns{box-sizing:border-box;display:table;width:100%;}\n.pdf-conditional-section{display:block;}\n.pdf-image{max-width:100%;}\n.pdf-asset-image--center{display:block;margin-left:auto;margin-right:auto;}\n.pdf-asset-image--full_width{display:block;width:100%;}\n.pdf-asset-image--right{display:block;margin-left:auto;}\n.pdf-repeater{display:block;}\n.pdf-repeater-empty{display:block;}\n.pdf-repeater-item{display:block;}\n.pdf-data-table{border-collapse:collapse;width:100%;}\n.pdf-data-table-empty{display:block;}\n.pdf-data-table-footer{display:table-footer-group;}\n.pdf-data-table-group-subtotal{font-weight:600;}\n.pdf-data-table-header{display:table-header-group;}\n.pdf-data-table-total-row{font-weight:700;}\n.pdf-document-placeholder{border:1px solid #6b7280;box-sizing:border-box;display:inline-flex;gap:0.375rem;padding:0.25rem 0.5rem;vertical-align:middle;}\n.pdf-document-placeholder-box{border:1px solid #111827;display:inline-block;height:0.8rem;width:0.8rem;}\n.pdf-document-placeholder-control{color:#6b7280;}\n.pdf-document-placeholder-label{font-weight:600;}\n.pdf-document-placeholder-line{border-bottom:1px solid #111827;display:inline-block;min-width:8rem;}\n.pdf-document-placeholder-qr-box{align-items:center;border:1px solid #111827;display:inline-flex;height:4rem;justify-content:center;width:4rem;}\n.pdf-avoid-break-after-heading{break-after:avoid;page-break-after:avoid;}\n.pdf-keep-together{break-inside:avoid;page-break-inside:avoid;}\n.pdf-page-break{break-after:page;height:0;page-break-after:always;}\n.pdf-start-on-new-page{break-before:page;page-break-before:always;}\n.pdf-summary-block{display:block;}\n.pdf-summary-list{margin:0;}\n.pdf-summary-item{display:grid;grid-template-columns:1fr auto;}\n.pdf-table{border-collapse:collapse;width:100%;}\n.pdf-table-row-avoid-break{break-inside:avoid;page-break-inside:avoid;}\n.pdf-variable{white-space:nowrap;}"
+        }
+      ],
+      "warnings": [],
+      "assets": [],
+      "variables": []
+    }
+  },
+  "plain": {
+    "html": "<!doctype html><html lang=\"en-US\"><head><meta charset=\"utf-8\"><title>Donation Receipt</title><meta name=\"generator\" content=\"Asymmetric.al PDF Document Builder\"><style>@page{size:8.5in 11in;margin:0.5in 0.5in 0.5in 0.5in;}\n:root{--asym-page-width:8.5in;--asym-page-height:11in;--asym-page-margin-top:0.5in;--asym-page-margin-right:0.5in;--asym-page-margin-bottom:0.5in;--asym-page-margin-left:0.5in;--asym-brand-primary:#1f2937;--asym-brand-accent:#2563eb;--asym-brand-text:#111827;--asym-brand-background:#ffffff;--asym-font-body:\"Arial\",sans-serif;--asym-font-heading:\"Arial\",sans-serif;}\nhtml,body{margin:0;padding:0;}\nbody{background:var(--asym-brand-background);color:var(--asym-brand-text);font-family:var(--asym-font-body);}\n.asym-print-document{box-sizing:border-box;}\n.asym-print-document h1,.asym-print-document h2,.asym-print-document h3,.asym-print-document h4,.asym-print-document h5,.asym-print-document h6{color:var(--asym-brand-primary);font-family:var(--asym-font-heading);}\n.asym-print-document a{color:var(--asym-brand-accent);}\n.asym-page-region{box-sizing:border-box;font-size:9pt;line-height:1.3;}\n.asym-page-region-content{text-align:center;}\n.asym-page-region-token{display:inline;}\n.asym-page-break{break-after:page;page-break-after:always;}\n.asym-page-break-before{break-before:page;page-break-before:always;}\n.asym-keep-together{break-inside:avoid;page-break-inside:avoid;}\n.asym-avoid-break-after{break-after:avoid;page-break-after:avoid;}\ntable.asym-repeat-header thead{display:table-header-group;}\ntable.asym-repeat-header tfoot{display:table-footer-group;}\n.asym-page-number::after{content:counter(page);}\n.asym-total-pages::after{content:counter(pages);}\n@media print{.asym-screen-only{display:none !important;}.asym-print-document{width:100%;}}</style></head><body data-asym-theme-name=\"Default\" data-asym-brand-source=\"system_default\"><main class=\"asym-print-document\"><p>Phase 10 body.</p></main></body></html>",
+    "css": "@page{size:8.5in 11in;margin:0.5in 0.5in 0.5in 0.5in;}\n:root{--asym-page-width:8.5in;--asym-page-height:11in;--asym-page-margin-top:0.5in;--asym-page-margin-right:0.5in;--asym-page-margin-bottom:0.5in;--asym-page-margin-left:0.5in;--asym-brand-primary:#1f2937;--asym-brand-accent:#2563eb;--asym-brand-text:#111827;--asym-brand-background:#ffffff;--asym-font-body:\"Arial\",sans-serif;--asym-font-heading:\"Arial\",sans-serif;}\nhtml,body{margin:0;padding:0;}\nbody{background:var(--asym-brand-background);color:var(--asym-brand-text);font-family:var(--asym-font-body);}\n.asym-print-document{box-sizing:border-box;}\n.asym-print-document h1,.asym-print-document h2,.asym-print-document h3,.asym-print-document h4,.asym-print-document h5,.asym-print-document h6{color:var(--asym-brand-primary);font-family:var(--asym-font-heading);}\n.asym-print-document a{color:var(--asym-brand-accent);}\n.asym-page-region{box-sizing:border-box;font-size:9pt;line-height:1.3;}\n.asym-page-region-content{text-align:center;}\n.asym-page-region-token{display:inline;}\n.asym-page-break{break-after:page;page-break-after:always;}\n.asym-page-break-before{break-before:page;page-break-before:always;}\n.asym-keep-together{break-inside:avoid;page-break-inside:avoid;}\n.asym-avoid-break-after{break-after:avoid;page-break-after:avoid;}\ntable.asym-repeat-header thead{display:table-header-group;}\ntable.asym-repeat-header tfoot{display:table-footer-group;}\n.asym-page-number::after{content:counter(page);}\n.asym-total-pages::after{content:counter(pages);}\n@media print{.asym-screen-only{display:none !important;}.asym-print-document{width:100%;}}",
+    "cssRequirements": [
+      {
+        "id": "phase-10-print-shell",
+        "media": "print",
+        "css": "@page{size:8.5in 11in;margin:0.5in 0.5in 0.5in 0.5in;}\n:root{--asym-page-width:8.5in;--asym-page-height:11in;--asym-page-margin-top:0.5in;--asym-page-margin-right:0.5in;--asym-page-margin-bottom:0.5in;--asym-page-margin-left:0.5in;--asym-brand-primary:#1f2937;--asym-brand-accent:#2563eb;--asym-brand-text:#111827;--asym-brand-background:#ffffff;--asym-font-body:\"Arial\",sans-serif;--asym-font-heading:\"Arial\",sans-serif;}\nhtml,body{margin:0;padding:0;}\nbody{background:var(--asym-brand-background);color:var(--asym-brand-text);font-family:var(--asym-font-body);}\n.asym-print-document{box-sizing:border-box;}\n.asym-print-document h1,.asym-print-document h2,.asym-print-document h3,.asym-print-document h4,.asym-print-document h5,.asym-print-document h6{color:var(--asym-brand-primary);font-family:var(--asym-font-heading);}\n.asym-print-document a{color:var(--asym-brand-accent);}\n.asym-page-region{box-sizing:border-box;font-size:9pt;line-height:1.3;}\n.asym-page-region-content{text-align:center;}\n.asym-page-region-token{display:inline;}\n.asym-page-break{break-after:page;page-break-after:always;}\n.asym-page-break-before{break-before:page;page-break-before:always;}\n.asym-keep-together{break-inside:avoid;page-break-inside:avoid;}\n.asym-avoid-break-after{break-after:avoid;page-break-after:avoid;}\ntable.asym-repeat-header thead{display:table-header-group;}\ntable.asym-repeat-header tfoot{display:table-footer-group;}\n.asym-page-number::after{content:counter(page);}\n.asym-total-pages::after{content:counter(pages);}\n@media print{.asym-screen-only{display:none !important;}.asym-print-document{width:100%;}}"
+      }
+    ],
+    "warnings": [],
+    "assets": [],
+    "variables": [],
+    "page": {
+      "pageSize": "letter",
+      "orientation": "portrait",
+      "width": "8.5in",
+      "height": "11in",
+      "margins": {
+        "top": "0.5in",
+        "right": "0.5in",
+        "bottom": "0.5in",
+        "left": "0.5in"
+      }
+    }
+  }
+}

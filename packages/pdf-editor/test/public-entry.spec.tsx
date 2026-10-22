@@ -24,14 +24,14 @@ function readPackageJson() {
 }
 
 describe('@asym/pdf-editor public entry', () => {
-  it('exposes the Phase 3 package boundary in a React environment', () => {
+  it('exposes the restored shipped package boundary in a React environment', () => {
     const boundary: PdfEditorBoundary = pdfEditorBoundary;
 
     render(<BoundaryLabel />);
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-editor',
-      maturity: 'phase-19-financial-data-table-editor',
+      maturity: 'phase-27-assets',
       owns: 'pdf-editor',
       runtime: 'browser-react',
       compatibility: 'react-email-reference-adapter',
@@ -53,6 +53,7 @@ describe('@asym/pdf-editor public entry', () => {
     expect(Object.keys(packageJson.exports).sort()).toEqual([
       '.',
       './extensions',
+      './migration/unlayer',
       './react-email-compat',
     ]);
     expect(pdfEditorBoundary.compatibility).toBe(

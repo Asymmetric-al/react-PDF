@@ -6,12 +6,12 @@ import {
 import { describe, expect, it } from 'vitest';
 
 describe('@asym/docraptor-client public entry', () => {
-  it('exposes the Phase 11 package boundary and client factory', () => {
+  it('exposes the restored shipped package boundary and client factory', () => {
     const boundary: DocRaptorClientBoundary = docraptorClientBoundary;
 
     expect(boundary).toEqual({
       packageName: '@asym/docraptor-client',
-      maturity: 'phase-11-client',
+      maturity: 'phase-36-accessibility-metadata',
       owns: 'docraptor-client',
       runtime: 'server-only',
       secretPolicy: 'credentials-stay-server-side',

@@ -48,5 +48,8 @@
     "tsdown": "catalog:",
     "typescript": "catalog:",
     "vitest": "4.1.4"
+  },
+  "dependencies": {
+    "@asym/pdf-template-schema": "workspace:*"
   }
 }

@@ -201,14 +201,21 @@ export async function preparePdfPreviewDocument(
 
   const template = templateParseResult.data;
   const serializedDocument = composePdfDocumentHtml({
+    assetReferences: template.assets,
+    assetRenderMode:
+      mode === 'docraptor-test' ? 'production_render' : 'browser_preview',
     dataContext: request.dataContext,
     document: template.content,
+    placeholderBindings: template.placeholderBindings,
     repeaterBindings: template.repeaterBindings,
+    summaryBlockBindings: template.summaryBlockBindings,
     tableBindings: template.tableBindings,
   });
   const printDocument = composePrintDocumentHtml({
     document: serializedDocument,
+    metadata: template.pdfSettings.metadata,
     pageSettings: template.pageSettings,
+    theme: template.theme,
     title: request.title ?? template.name,
   });
   const snapshots: PdfPreviewSnapshots = {

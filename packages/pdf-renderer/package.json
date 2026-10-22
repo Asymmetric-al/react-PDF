@@ -29,6 +29,16 @@
         "types": "./dist/docraptor-preview.d.cts",
         "default": "./dist/docraptor-preview.cjs"
       }
+    },
+    "./local-renderer": {
+      "import": {
+        "types": "./dist/local-renderer.d.mts",
+        "default": "./dist/local-renderer.mjs"
+      },
+      "require": {
+        "types": "./dist/local-renderer.d.cts",
+        "default": "./dist/local-renderer.cjs"
+      }
     }
   },
   "license": "MIT",

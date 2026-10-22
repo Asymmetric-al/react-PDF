@@ -17,7 +17,8 @@ describe('Phase 10 print shell invariants', () => {
 
   it('throws if custom page settings pass validation without a custom size', async () => {
     vi.resetModules();
-    vi.doMock('@asym/pdf-template-schema', () => ({
+    vi.doMock('@asym/pdf-template-schema', async (importOriginal) => ({
+      ...(await importOriginal<typeof import('@asym/pdf-template-schema')>()),
       DocumentPageSettingsSchema: {
         safeParse: (settings: unknown) => ({
           success: true,

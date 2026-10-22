@@ -1,0 +1,851 @@
+{
+  "status": "baseline captured; restoration and modernization qualification pending",
+  "sourceHead": "5ce8e68b96e5316a410ca1bd81a500cf511e7894",
+  "coreArtifactHead": "11d7f936a9b8bda796680027941a4e457ac15c9f",
+  "proofs": {
+    "checkout": {
+      "proofSha256": "cb63111f6dd41c3b80431b7c67b6ac49f4175d2936681475f042ea63ef2dfa16",
+      "record": {
+        "completedAt": "2026-10-22T03:20:13.959048+00:00",
+        "sourceHead": "5ce8e68b96e5316a410ca1bd81a500cf511e7894",
+        "materialization": "Batch fetched911missing blobs for984included source/build/docs paths; sparse excludes upstream apps,benchmarks,playground.",
+        "interruptedCheckoutPartialDemoImageRemoved": "apps/web/components/static/braun-vintage.jpg",
+        "workingTreeClean": true,
+        "environmentFileAbsent": true,
+        "pnpmManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
+        "rootLockSha256": "fe758b2a50d2b099c923307ea7929f44502a9b9be00e092773d13f6bd2688a84"
+      }
+    },
+    "install": {
+      "proofSha256": "8ef53fcb084d6140216ff6516c798d225946354ec1c686dfe2811dbd56a24d71",
+      "record": {
+        "startedAt": "2026-10-22T03:22:38.127182+00:00",
+        "completedAt": "2026-10-22T03:24:21.855098+00:00",
+        "command": [
+          "npx",
+          "--yes",
+          "pnpm@10.33.0",
+          "install",
+          "--frozen-lockfile"
+        ],
+        "exitCode": 0,
+        "logSha256": "3d099c57e91f2d49e264aeb9cbc78920d5cec164deb909118f35d350c7440397",
+        "lockBeforeSha256": "fe758b2a50d2b099c923307ea7929f44502a9b9be00e092773d13f6bd2688a84",
+        "lockAfterSha256": "fe758b2a50d2b099c923307ea7929f44502a9b9be00e092773d13f6bd2688a84",
+        "head": "5ce8e68b96e5316a410ca1bd81a500cf511e7894",
+        "workingTreeClean": true
+      }
+    },
+    "build": {
+      "proofSha256": "427f7cda9ba27010046594306acd6c55e04e66c1b99ef16ff541ce7849ca07b6",
+      "record": {
+        "startedAt": "2026-10-22T03:26:49.274205+00:00",
+        "completedAt": "2026-10-22T03:27:04.204344+00:00",
+        "command": [
+          "npx",
+          "--yes",
+          "pnpm@10.33.0",
+          "exec",
+          "turbo",
+          "run",
+          "build",
+          "--filter=@asym/pdf-editor...",
+          "--filter=@asym/pdf-renderer..."
+        ],
+        "exitCode": 0,
+        "logSha256": "838ad12f1fe8b67899d95a1134cc751b102df58fabe921b2e455a9005992ee90",
+        "head": "5ce8e68b96e5316a410ca1bd81a500cf511e7894",
+        "trackedDiff": []
+      }
+    },
+    "tests": {
+      "proofSha256": "038c79b9f92859bcc5496812609f3f6cc4a929b1a15592b3c3d7930974606ce9",
+      "record": {
+        "startedAt": "2026-10-22T03:27:04.210676+00:00",
+        "completedAt": "2026-10-22T03:27:09.956645+00:00",
+        "command": [
+          "npx",
+          "--yes",
+          "pnpm@10.33.0",
+          "exec",
+          "turbo",
+          "run",
+          "test",
+          "--filter=@asym/pdf-editor",
+          "--filter=@asym/pdf-renderer",
+          "--filter=@asym/docraptor-client",
+          "--filter=@asym/pdf-template-schema"
+        ],
+        "exitCode": 0,
+        "logSha256": "1aceda2b8a882a20e0393ae89065dcb478ac327466d6770a992c9703a657f707",
+        "head": "5ce8e68b96e5316a410ca1bd81a500cf511e7894"
+      }
+    },
+    "shippedContracts": {
+      "proofSha256": "f390c206b17b8671e853aab177dfbead23de78efe4c44f8abd4bcc7e35b15129",
+      "record": {
+        "at": "2026-10-22T03:48:24.180437+00:00",
+        "sourceCoreHead": "11d7f936a9b8bda796680027941a4e457ac15c9f",
+        "generator": "Native ESM imports of installed consumed artifacts, SHA-checked against committed vendor copies; fixed preview IDs/clock; no provider calls.",
+        "fixtureSha256": "acefe4a4edbde0f5384990261f037f80db3fc9dda6f13741454b7aacb3c53a86",
+        "fixtureBytes": 555946,
+        "artifactProvenanceSha256": "be2d44c156954b2741d2c107635e0c865f72d28644301559f901bb6871242d2c"
+      }
+    }
+  },
+  "restorationApplication": {
+    "capturedAt": "2026-10-22T04:00:07.498703+00:00",
+    "copied": [
+      {
+        "path": "packages/docraptor-client/src/async-render.ts",
+        "sha256": "f6158250c0a59e6e21aef0231d3719f933f323cc5b51a8f7aed87005ee0e214e",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/docraptor-client/src/client.ts",
+        "sha256": "7287287e8c89c0bebf8682fa4570ac6a813e89cc27084f41143249f9546bdb55",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/docraptor-client/src/errors.ts",
+        "sha256": "4ad26097703be2610c021af63bad71c839bbdee208fc13c0033cc80801043ebe",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/docraptor-client/src/index.ts",
+        "sha256": "4d9010c60755cf8bae49b317adf84d734121b96be243e14e5cf8f15cdd4c454d",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/docraptor-client/src/server-only.ts",
+        "sha256": "62479345b9207c70158870eda5ac75fb30f07b891a88394fa6d92946062f3d7f",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-editor/src/extensions/asset-image/index.ts",
+        "sha256": "d540fc6d0cf33c491099042fe78e6ef8f870d0fc5f42715dfdf8c1bfbd14fa17",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-editor/src/extensions/conditional-section/index.ts",
+        "sha256": "949ab536b4d9ab0fce66f82250a494ec73413fea096e9780351e69e7d899afde",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-editor/src/extensions/data-table/index.ts",
+        "sha256": "ba52a8a66df79314d5305db4ef07223860507a80c701b2c5c2ccf7d5c2e8961d",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-editor/src/extensions/header-footer/index.ts",
+        "sha256": "33566dea8dbd4b6207e0a76790b2cce0b57c1e280500df895d73b89a3258e15f",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-editor/src/extensions/page-flow/index.ts",
+        "sha256": "5acbae4d7e385f8db8598277252ff02d283a72827906996fd97debab801fba47",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-editor/src/extensions/placeholder/index.ts",
+        "sha256": "bb8856fedcbcdd93a172105f61fe9d95f5036d2547ad539f22c9ee7e8604faf2",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-editor/src/extensions/repeater/index.ts",
+        "sha256": "c6743c8cfa1c1bc9c8bc8028552092c02dbba475bcd05072510dc0a6c2716164",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-editor/src/extensions/variable/index.ts",
+        "sha256": "870227dfc7423cb678de930975ab6a2220e0c85acd076026625f00cabd31b20f",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-editor/src/index.ts",
+        "sha256": "48f27888e9437806e573184edfa5e27521f57e4ea44f2fc83ff78d89e17f6837",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-editor/src/migration/unlayer/index.ts",
+        "sha256": "9e3c4ad480d737d859f427b96cc1b591eefc6a91fc9b54860405719a5db5719d",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-renderer/src/compose-pdf-document-html.ts",
+        "sha256": "a1db60b74d74a4260f4e4c8875294420432123d00ac9db8c5cd44ffd6b6be9ab",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-renderer/src/conditions.ts",
+        "sha256": "e9b6b01469d98b6e88457e98acf8182d198405ac9f144589f870e073d6f3e146",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-renderer/src/data-table.ts",
+        "sha256": "0df7c4a1c974de25e075137e88cb248b6677f542e53e617e75db94fae8623ae0",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-renderer/src/docraptor-preview.ts",
+        "sha256": "ddc7fa0256990292d6a5d6a54f2071f742eae1c23cec0fe37bb120e495cb1bed",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-renderer/src/index.ts",
+        "sha256": "732a3640b11cacef7d6ad07c8c9512fc011cb22f354532bc562e3b7098d80f06",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-renderer/src/local-renderer.ts",
+        "sha256": "9d556adc1521a1dc730c1db1b8e01dbceac5865d0172be39626a611a0841cbfc",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-renderer/src/preflight.ts",
+        "sha256": "37bc80e5b7ae43ab0fb9fa1cdd3c09e9f4fad4827f6c1221e1946a3d9c201b57",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-renderer/src/preview.ts",
+        "sha256": "3550272d422fd1b6a9b151de6d44e737308ccfc12f55e1dec917202438a47a04",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-renderer/src/print-shell.ts",
+        "sha256": "8fce89a02dc7d3d46d4cbcc638cdd1da163dcf9d459e58f801e9b0f0f05299be",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-renderer/src/repeaters.ts",
+        "sha256": "73e08970abdd143eb2aa987eed310a2813ac272fdac52087a4b8510c1565a385",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-renderer/src/variables.ts",
+        "sha256": "6438b04dafc00f489afa828ce657eb1a093f5250c99725838b3217e6a2cfaed7",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-studio-adapter/src/index.ts",
+        "sha256": "d3801d4dc7185bfea8554db32543c352954bb94e8fb42a8c0a27f332544fb9b1",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/assets.ts",
+        "sha256": "9deab9293ac9851b628d9d0b0afd092b756a8f71df8310945731fb222181a3f1",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/batch.ts",
+        "sha256": "ddc8a8fd292d637ecfcb19634f38ffac869a0d9ba57cc66abc4054f235a2ac2c",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/bindings.ts",
+        "sha256": "c0a247b1470354095d20618dc70c9f81e7d109c8a689652a517b2eae804093cf",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/calculations.ts",
+        "sha256": "115d04434cc1dcc321eaeb3e772df959025fdf548b4eb0dc02625f82d81cf5fb",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/categories.ts",
+        "sha256": "118c650763a11551b1b5022d921b8308bd24f71724b3383abecec7db74e0fde2",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/conditions.ts",
+        "sha256": "a07cf4a9482c8c6747425555d2ff257a2a9dc55ff070231cd6d20e511d6c2376",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/dates.ts",
+        "sha256": "9abd831e8fc4af66abdc33beddbdb6c5200bd48be83e2fc826cb35eb7fa68c04",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/formatters.ts",
+        "sha256": "98dbc32b7d8b097245c8bb5763972fb189ca639ff85a78368404c9aa5b78eb45",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/header-footer.ts",
+        "sha256": "511fb1a1112dbdb7d0d81c2ba8dc814ba41c962d17e988ee7cbfc26ade5ac4d7",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/index.ts",
+        "sha256": "3064d36808634c5540b04628d0936ba1b86e0bbeb23ccae4a2bc823f88950da9",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/lifecycle.ts",
+        "sha256": "a5a3eb66b084ab24e1b9c5e6a17ea245a8faeccb214721088e6dd199b0b02b57",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/migration.ts",
+        "sha256": "fe79303416bc2e9a4ef509db1ead269c54bf8a0017d331cc881f619adf01f83a",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/page-flow.ts",
+        "sha256": "9741fb5b9eaa42a4c2ad98b7b46d62309bbbad49e25cf6f1ab5b53cff98d31d4",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/pdf-metadata.ts",
+        "sha256": "752e668d514c4319331a2d75b6e47d6a28429f4191efca855bac6f128053ab3a",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/placeholders.ts",
+        "sha256": "a2db654d86bca97e76bece2a29db664a13b3a83678c0fc0373c6aa19658ec6a4",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/primitives.ts",
+        "sha256": "615bb23cf9e7e2ae9493d840e5b2246971d7d9686d15368d7eda4ccccc4ddbfc",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/rendering.ts",
+        "sha256": "d28e18e78ace940511d1f3164438a202b46c1f8e3ff09c05b8d6efa670f50675",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/repeaters.ts",
+        "sha256": "81519ed540876969618df38d2699a3dd4a514d860022f3096ec2b2cba16600ab",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/security.ts",
+        "sha256": "814187e24850ca324826b77b195df3d641aaac344826ed919cb684eebca090ef",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/starter-templates.ts",
+        "sha256": "cf87d0e65be725f0a81c137fadd2151fd8851645ab32875cb8642f5635297b43",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/summary-blocks.ts",
+        "sha256": "b0d4288ae96e46d0d844d9b6f8a333ef1cff91ded3a73d55871d27a661345529",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/tables.ts",
+        "sha256": "6493521e0e8929901f58e0aadd1efae027f6c53b6812710fdfec11863df1829a",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/template.ts",
+        "sha256": "d8c7fa2ee5ee75e34c5f669f09738d141a9729d7188bdc645ab001b49874f001",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/themes.ts",
+        "sha256": "17df161c0af2209c9dbab580424d74ad44d30e4314d0fb320111bbb4ca4fa2f0",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/variable-resolution.ts",
+        "sha256": "7bfe1bb2f3d41d5b61a1c8453b4d1549e82ef3b870bed8cc2426030b604dbe03",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/pdf-template-schema/src/variables.ts",
+        "sha256": "51b9d2bd4936f4b9f7cedd9a4f21a44864ee83204d1ee5e70897ff73ed388351",
+        "kind": "verbatim-source-map"
+      },
+      {
+        "path": "packages/docraptor-client/src/types.ts",
+        "sha256": "278435834455cca2303e4247c099fe6e4aaa6cd21200fdc379afc031ad28b7f3",
+        "kind": "declaration-reconstruction"
+      }
+    ],
+    "newAdapterPackage": true,
+    "dependencyVersionsChanged": false,
+    "sourceOnlyEntrypointReconstruction": {
+      "declaration": "/home/conrad/code/core-worktrees/payload-modernization-2026-10-22/vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.d.mts",
+      "exportCount": 79,
+      "exports": [
+        {
+          "name": "AssetImageAttributes",
+          "typeOnly": true
+        },
+        {
+          "name": "AssetImageNode",
+          "typeOnly": false
+        },
+        {
+          "name": "AssetImagePreviewDiagnostic",
+          "typeOnly": true
+        },
+        {
+          "name": "AssetImagePreviewInput",
+          "typeOnly": true
+        },
+        {
+          "name": "AssetImagePreviewResult",
+          "typeOnly": true
+        },
+        {
+          "name": "AssetImagePreviewStatus",
+          "typeOnly": true
+        },
+        {
+          "name": "ConditionalSection",
+          "typeOnly": false
+        },
+        {
+          "name": "ConditionalSectionAttributes",
+          "typeOnly": true
+        },
+        {
+          "name": "ConditionalSectionOptions",
+          "typeOnly": true
+        },
+        {
+          "name": "ConditionalSectionPreviewDiagnostic",
+          "typeOnly": true
+        },
+        {
+          "name": "ConditionalSectionPreviewInput",
+          "typeOnly": true
+        },
+        {
+          "name": "ConditionalSectionPreviewResult",
+          "typeOnly": true
+        },
+        {
+          "name": "DataTableAttributes",
+          "typeOnly": true
+        },
+        {
+          "name": "DataTableBlock",
+          "typeOnly": false
+        },
+        {
+          "name": "DataTableOptions",
+          "typeOnly": true
+        },
+        {
+          "name": "DataTablePreviewDiagnostic",
+          "typeOnly": true
+        },
+        {
+          "name": "DataTablePreviewInput",
+          "typeOnly": true
+        },
+        {
+          "name": "DataTablePreviewResult",
+          "typeOnly": true
+        },
+        {
+          "name": "DataTablePreviewStatus",
+          "typeOnly": true
+        },
+        {
+          "name": "DocumentPlaceholderAttributes",
+          "typeOnly": true
+        },
+        {
+          "name": "DocumentPlaceholderNode",
+          "typeOnly": false
+        },
+        {
+          "name": "DocumentPlaceholderOptions",
+          "typeOnly": true
+        },
+        {
+          "name": "DocumentPlaceholderPreviewDiagnostic",
+          "typeOnly": true
+        },
+        {
+          "name": "DocumentPlaceholderPreviewInput",
+          "typeOnly": true
+        },
+        {
+          "name": "DocumentPlaceholderPreviewResult",
+          "typeOnly": true
+        },
+        {
+          "name": "DocumentPlaceholderPreviewStatus",
+          "typeOnly": true
+        },
+        {
+          "name": "HeaderFooterPreviewDiagnostic",
+          "typeOnly": true
+        },
+        {
+          "name": "HeaderFooterPreviewInput",
+          "typeOnly": true
+        },
+        {
+          "name": "HeaderFooterPreviewResult",
+          "typeOnly": true
+        },
+        {
+          "name": "HeaderFooterPreviewStatus",
+          "typeOnly": true
+        },
+        {
+          "name": "InsertAssetImageInput",
+          "typeOnly": true
+        },
+        {
+          "name": "InsertConditionalSectionInput",
+          "typeOnly": true
+        },
+        {
+          "name": "InsertDataTableInput",
+          "typeOnly": true
+        },
+        {
+          "name": "InsertDocumentPlaceholderInput",
+          "typeOnly": true
+        },
+        {
+          "name": "InsertPageBreakInput",
+          "typeOnly": true
+        },
+        {
+          "name": "InsertRepeaterSectionInput",
+          "typeOnly": true
+        },
+        {
+          "name": "InsertVariableChipInput",
+          "typeOnly": true
+        },
+        {
+          "name": "PageBreakAttributes",
+          "typeOnly": true
+        },
+        {
+          "name": "PageBreakNode",
+          "typeOnly": false
+        },
+        {
+          "name": "PageBreakOptions",
+          "typeOnly": true
+        },
+        {
+          "name": "PageBreakPreviewDiagnostic",
+          "typeOnly": true
+        },
+        {
+          "name": "PageBreakPreviewInput",
+          "typeOnly": true
+        },
+        {
+          "name": "PageBreakPreviewResult",
+          "typeOnly": true
+        },
+        {
+          "name": "PageBreakPreviewStatus",
+          "typeOnly": true
+        },
+        {
+          "name": "RepeaterSection",
+          "typeOnly": false
+        },
+        {
+          "name": "RepeaterSectionAttributes",
+          "typeOnly": true
+        },
+        {
+          "name": "RepeaterSectionOptions",
+          "typeOnly": true
+        },
+        {
+          "name": "RepeaterSectionPreviewDiagnostic",
+          "typeOnly": true
+        },
+        {
+          "name": "RepeaterSectionPreviewInput",
+          "typeOnly": true
+        },
+        {
+          "name": "RepeaterSectionPreviewResult",
+          "typeOnly": true
+        },
+        {
+          "name": "VariableChip",
+          "typeOnly": false
+        },
+        {
+          "name": "VariableChipAttributes",
+          "typeOnly": true
+        },
+        {
+          "name": "VariableChipFallback",
+          "typeOnly": true
+        },
+        {
+          "name": "VariableChipOptions",
+          "typeOnly": true
+        },
+        {
+          "name": "VariableChipPreviewInput",
+          "typeOnly": true
+        },
+        {
+          "name": "VariableChipPreviewResult",
+          "typeOnly": true
+        },
+        {
+          "name": "createAssetImageExtension",
+          "typeOnly": false
+        },
+        {
+          "name": "createConditionalSectionExtension",
+          "typeOnly": false
+        },
+        {
+          "name": "createDataTableExtension",
+          "typeOnly": false
+        },
+        {
+          "name": "createDocumentPlaceholderExtension",
+          "typeOnly": false
+        },
+        {
+          "name": "createPageBreakExtension",
+          "typeOnly": false
+        },
+        {
+          "name": "createRepeaterSectionExtension",
+          "typeOnly": false
+        },
+        {
+          "name": "createVariableChipExtension",
+          "typeOnly": false
+        },
+        {
+          "name": "getAssetImagePreview",
+          "typeOnly": false
+        },
+        {
+          "name": "getConditionalSectionPreview",
+          "typeOnly": false
+        },
+        {
+          "name": "getDataTablePreview",
+          "typeOnly": false
+        },
+        {
+          "name": "getDocumentPlaceholderPreview",
+          "typeOnly": false
+        },
+        {
+          "name": "getHeaderFooterPreview",
+          "typeOnly": false
+        },
+        {
+          "name": "getPageBreakPreview",
+          "typeOnly": false
+        },
+        {
+          "name": "getRepeaterSectionPreview",
+          "typeOnly": false
+        },
+        {
+          "name": "getVariableChipPreview",
+          "typeOnly": false
+        },
+        {
+          "name": "isKnownVariableChipKey",
+          "typeOnly": false
+        },
+        {
+          "name": "isValidConditionalRule",
+          "typeOnly": false
+        },
+        {
+          "name": "isValidDocumentAssetImage",
+          "typeOnly": false
+        },
+        {
+          "name": "isValidDocumentHeaderFooterSettings",
+          "typeOnly": false
+        },
+        {
+          "name": "isValidDocumentPageBreakNode",
+          "typeOnly": false
+        },
+        {
+          "name": "isValidDocumentPlaceholder",
+          "typeOnly": false
+        },
+        {
+          "name": "isValidRepeaterBinding",
+          "typeOnly": false
+        },
+        {
+          "name": "isValidTableBinding",
+          "typeOnly": false
+        }
+      ],
+      "sourceDirectories": [
+        "asset-image",
+        "conditional-section",
+        "data-table",
+        "placeholder",
+        "header-footer",
+        "page-flow",
+        "repeater",
+        "variable"
+      ],
+      "reconstruction": "Erased export-only entrypoint restored from shipped named exports; implementation declarations matched with the TypeScript AST."
+    },
+    "reactEmailCompatSourcePreservedSha256": "d20c5dec37abac00dfc0ee59d704195031b2dea95f76f6d0fdef5de03d2f6d81"
+  },
+  "lockedGraphPreservation": {
+    "at": "2026-10-22T04:04:03.145058+00:00",
+    "beforeSha256": "fe758b2a50d2b099c923307ea7929f44502a9b9be00e092773d13f6bd2688a84",
+    "afterSha256": "fe5ad38aad73824324d84f679f354f3b61ab643d8e9efbf3d7f5db83c1d0fe73",
+    "originalExternalPackagesAndSnapshotsByteIdentical": true,
+    "allOriginalImportersPreserved": true,
+    "addedChanges": [
+      "DocRaptor -> schema workspace dependency",
+      "new adapter workspace importer with already-locked tool versions"
+    ],
+    "supersedesUnqualifiedInstallLockHash": "cc9424270b73c53dc46e219b4650431c0ee171107a26b1e4cd530f51fc95656a"
+  },
+  "restoredFrozenInstall": {
+    "startedAt": "2026-10-22T04:04:38.978110+00:00",
+    "completedAt": "2026-10-22T04:04:42.677212+00:00",
+    "command": [
+      "npx",
+      "--yes",
+      "pnpm@10.33.0",
+      "install",
+      "--frozen-lockfile",
+      "--offline",
+      "--ignore-scripts"
+    ],
+    "exitCode": 0,
+    "logSha256": "dc89df313c4a1ca70a0d3ad44e43d0a8e728a7b0c90b60d54e5d83f1c68abe37"
+  },
+  "restoredBuild": {
+    "startedAt": "2026-10-22T04:04:42.677667+00:00",
+    "completedAt": "2026-10-22T04:04:59.471322+00:00",
+    "command": [
+      "npx",
+      "--yes",
+      "pnpm@10.33.0",
+      "exec",
+      "turbo",
+      "run",
+      "build",
+      "--filter=@asym/pdf-studio-adapter..."
+    ],
+    "exitCode": 0,
+    "logSha256": "3d29bd03b9c8ab938dedfa6657e708a4176562521ecd6e126d3f316e32dd09f2"
+  },
+  "captureHarnessCorrection": {
+    "at": "2026-10-22T04:22:38.975961+00:00",
+    "scriptSha256": "6837d7ad42c3ecddc5733f702299814344bc0ee39250091da135d98d822c70ed",
+    "result": {
+      "correctedCategories": 8,
+      "unchangedBrowserPreviewCategories": 8,
+      "correctedSha256": "de730b72a7c0b32768a5b1eefcb905bf2537d9c89c81b63f25ed3e378e59867d",
+      "nonemptyBodyLengths": [
+        {
+          "category": "donation_receipt",
+          "length": 3302
+        },
+        {
+          "category": "tax_receipt",
+          "length": 4141
+        },
+        {
+          "category": "annual_giving_statement",
+          "length": 5550
+        },
+        {
+          "category": "donor_letter",
+          "length": 1609
+        },
+        {
+          "category": "missionary_report",
+          "length": 6499
+        },
+        {
+          "category": "financial_report",
+          "length": 7229
+        },
+        {
+          "category": "invoice",
+          "length": 5275
+        },
+        {
+          "category": "certificate",
+          "length": 1823
+        }
+      ]
+    }
+  },
+  "restoredAllFiveTests": {
+    "startedAt": "2026-10-22T04:40:36.861781+00:00",
+    "completedAt": "2026-10-22T04:40:54.305697+00:00",
+    "command": [
+      "npx",
+      "--yes",
+      "pnpm@10.33.0",
+      "exec",
+      "turbo",
+      "run",
+      "test",
+      "--filter=@asym/*",
+      "--force"
+    ],
+    "exitCode": 0,
+    "logSha256": "a3f05a275deda9266441d523ba1cc848b3e6e8ea240ea71ae7b7468f0046f142",
+    "shippedContractSchemaVersion": 2,
+    "shippedContractsSha256": "de730b72a7c0b32768a5b1eefcb905bf2537d9c89c81b63f25ed3e378e59867d"
+  },
+  "restoredAllFiveTypechecks": {
+    "startedAt": "2026-10-22T04:28:57.673605+00:00",
+    "completedAt": "2026-10-22T04:29:14.296562+00:00",
+    "command": [
+      "npx",
+      "--yes",
+      "pnpm@10.33.0",
+      "-r",
+      "--workspace-concurrency=1",
+      "--filter",
+      "@asym/*",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "logSha256": "2c1f6913f6e317e71cdf1d3a531ac8a09a4ddcaa03795d69b666cfc3c9f88952"
+  },
+  "retainedTestsReconciliation": {
+    "removedCases": 0,
+    "changes": [
+      "Shipped maturity metadata and added erased export subpath",
+      "Empty header/footer default",
+      "Already-shipped exact table rows/calculated totals, pagination and accessibility markup",
+      "Default print CSS snapshot captured through unchanged Core artifact rather than restored source",
+      "Partial invariant mock preserves other real schema exports"
+    ],
+    "providerImportGuardRetained": true,
+    "newAdapterSuite": {
+      "files": 1,
+      "cases": 9,
+      "evidence": "adapter-baseline-corrected-tests-proof.json",
+      "limits": "Tests host authorization decisions and mocked render-adapter calls. Core remains responsible for tenant-bound repositories and authenticated host context; document metadata does not carry tenant identity."
+    }
+  },
+  "qualificationLimits": [
+    "This checkpoint restores the consumed artifact baseline; dependency upgrades remain pending.",
+    "No live DocRaptor calls or production execution. Browser preview is authoring feedback, not final provider PDF fidelity.",
+    "Owner-wide upstream demo apps, excluded sparse source, formatting/lint and final clean rebuilt-artifact ingestion remain unqualified."
+  ]
+}

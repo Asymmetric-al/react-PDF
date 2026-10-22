@@ -15,8 +15,16 @@ serializer conventions that are useful for a PDF document builder.
 
 ## Current Status
 
-This is not yet a production-ready PDF builder package. The fork is in the
-foundation phase.
+Core's consumed package sources have been restored from its shipped artifacts
+under the [maintenance change](openspec/changes/restore-core-pdf-packages/proposal.md).
+The restored five-package baseline passes 220 cases, strict package typechecks
+and required builds. Dependency and release qualification remain in progress;
+this is not a production-readiness or rollout claim. See the
+[provenance and qualification record](docs/maintenance/core-pdf-modernization/README.md).
+
+The following phase inventory describes the accessible Phase 22 source before
+restoration. It remains historical roadmap evidence; it does not describe all
+functionality already shipped in Core, nor mark later roadmap phases complete.
 
 - OpenSpec is the source of product intent and behavior.
 - The upstream baseline is frozen in `docs/baseline-test-results.md`.
@@ -42,7 +50,7 @@ foundation phase.
 - Phase 21 added deterministic end-to-end data table preview fixtures across
   schema, editor, renderer, browser preview, and mocked DocRaptor preview.
 - Phase 22 added deterministic financial calculation primitives in the shared
-  schema package. Phase 23 is next for summary blocks and rendered table totals.
+  schema package. The original roadmap next called for Phase 23 summary blocks and rendered table totals.
 - DocRaptor is the production PDF rendering target.
 - Puppeteer may be used later only for local preview, debugging, or fallback.
 

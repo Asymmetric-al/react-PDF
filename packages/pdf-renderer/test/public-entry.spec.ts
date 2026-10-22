@@ -12,12 +12,12 @@ import {
 import { describe, expect, it } from 'vitest';
 
 describe('@asym/pdf-renderer public entry', () => {
-  it('exposes the Phase 3 package boundary', () => {
+  it('exposes the restored shipped package boundary', () => {
     const boundary: PdfRendererBoundary = pdfRendererBoundary;
 
     expect(boundary).toEqual({
       packageName: '@asym/pdf-renderer',
-      maturity: 'phase-21-data-table-preview-fixtures',
+      maturity: 'phase-37-security-tenant-contracts',
       owns: 'print-renderer',
       runtime: 'browser-safe-root-with-server-subpath',
       consumes: ['@asym/pdf-template-schema'],

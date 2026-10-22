@@ -34,10 +34,10 @@ describe('Phase 10 composePrintDocumentHtml', () => {
     });
 
     expect(result.warnings).toEqual([]);
-    expect(result.html).toContain('<!doctype html><html>');
+    expect(result.html).toContain('<!doctype html><html lang="en-US">');
     expect(result.html).toContain('<title>Donation Receipt</title>');
     expect(result.html).toContain(
-      '<body><main class="asym-print-document"><p>Phase 10 body.</p></main></body>',
+      '<body data-asym-theme-name="Default" data-asym-brand-source="system_default"><main class="asym-print-document"><p>Phase 10 body.</p></main></body>',
     );
     expect(result.css).toContain(
       '@page{size:8.5in 11in;margin:0.5in 0.5in 0.5in 0.5in;}',
@@ -210,35 +210,59 @@ describe('Phase 10 composePrintDocumentHtml', () => {
     });
 
     expect(result.css).toMatchInlineSnapshot(`
-".pdf-button{display:inline-block;text-decoration:none;}
-.pdf-column{box-sizing:border-box;display:table-cell;vertical-align:top;width:50%;}
-.pdf-columns{box-sizing:border-box;display:table;width:100%;}
-.pdf-conditional-section{display:block;}
-.pdf-image{max-width:100%;}
-.pdf-repeater{display:block;}
-.pdf-repeater-empty{display:block;}
-.pdf-repeater-item{display:block;}
-.pdf-data-table{border-collapse:collapse;width:100%;}
-.pdf-data-table-empty{display:block;}
-.pdf-data-table-footer{display:table-footer-group;}
-.pdf-data-table-header{display:table-header-group;}
-.pdf-table{border-collapse:collapse;width:100%;}
-.pdf-variable{white-space:nowrap;}
-@page{size:8.5in 11in;margin:0.5in 0.5in 0.5in 0.5in;}
-:root{--asym-page-width:8.5in;--asym-page-height:11in;--asym-page-margin-top:0.5in;--asym-page-margin-right:0.5in;--asym-page-margin-bottom:0.5in;--asym-page-margin-left:0.5in;}
-html,body{margin:0;padding:0;}
-body{background:#ffffff;color:#111827;font-family:Arial,sans-serif;}
-.asym-print-document{box-sizing:border-box;}
-.asym-page-break{break-after:page;page-break-after:always;}
-.asym-page-break-before{break-before:page;page-break-before:always;}
-.asym-keep-together{break-inside:avoid;page-break-inside:avoid;}
-.asym-avoid-break-after{break-after:avoid;page-break-after:avoid;}
-table.asym-repeat-header thead{display:table-header-group;}
-table.asym-repeat-header tfoot{display:table-footer-group;}
-.asym-page-number::after{content:counter(page);}
-.asym-total-pages::after{content:counter(pages);}
-@media print{.asym-screen-only{display:none !important;}.asym-print-document{width:100%;}}"
-`);
+      ".pdf-button{display:inline-block;text-decoration:none;}
+      .pdf-column{box-sizing:border-box;display:table-cell;vertical-align:top;width:50%;}
+      .pdf-columns{box-sizing:border-box;display:table;width:100%;}
+      .pdf-conditional-section{display:block;}
+      .pdf-image{max-width:100%;}
+      .pdf-asset-image--center{display:block;margin-left:auto;margin-right:auto;}
+      .pdf-asset-image--full_width{display:block;width:100%;}
+      .pdf-asset-image--right{display:block;margin-left:auto;}
+      .pdf-repeater{display:block;}
+      .pdf-repeater-empty{display:block;}
+      .pdf-repeater-item{display:block;}
+      .pdf-data-table{border-collapse:collapse;width:100%;}
+      .pdf-data-table-empty{display:block;}
+      .pdf-data-table-footer{display:table-footer-group;}
+      .pdf-data-table-group-subtotal{font-weight:600;}
+      .pdf-data-table-header{display:table-header-group;}
+      .pdf-data-table-total-row{font-weight:700;}
+      .pdf-document-placeholder{border:1px solid #6b7280;box-sizing:border-box;display:inline-flex;gap:0.375rem;padding:0.25rem 0.5rem;vertical-align:middle;}
+      .pdf-document-placeholder-box{border:1px solid #111827;display:inline-block;height:0.8rem;width:0.8rem;}
+      .pdf-document-placeholder-control{color:#6b7280;}
+      .pdf-document-placeholder-label{font-weight:600;}
+      .pdf-document-placeholder-line{border-bottom:1px solid #111827;display:inline-block;min-width:8rem;}
+      .pdf-document-placeholder-qr-box{align-items:center;border:1px solid #111827;display:inline-flex;height:4rem;justify-content:center;width:4rem;}
+      .pdf-avoid-break-after-heading{break-after:avoid;page-break-after:avoid;}
+      .pdf-keep-together{break-inside:avoid;page-break-inside:avoid;}
+      .pdf-page-break{break-after:page;height:0;page-break-after:always;}
+      .pdf-start-on-new-page{break-before:page;page-break-before:always;}
+      .pdf-summary-block{display:block;}
+      .pdf-summary-list{margin:0;}
+      .pdf-summary-item{display:grid;grid-template-columns:1fr auto;}
+      .pdf-table{border-collapse:collapse;width:100%;}
+      .pdf-table-row-avoid-break{break-inside:avoid;page-break-inside:avoid;}
+      .pdf-variable{white-space:nowrap;}
+      @page{size:8.5in 11in;margin:0.5in 0.5in 0.5in 0.5in;}
+      :root{--asym-page-width:8.5in;--asym-page-height:11in;--asym-page-margin-top:0.5in;--asym-page-margin-right:0.5in;--asym-page-margin-bottom:0.5in;--asym-page-margin-left:0.5in;--asym-brand-primary:#1f2937;--asym-brand-accent:#2563eb;--asym-brand-text:#111827;--asym-brand-background:#ffffff;--asym-font-body:"Arial",sans-serif;--asym-font-heading:"Arial",sans-serif;}
+      html,body{margin:0;padding:0;}
+      body{background:var(--asym-brand-background);color:var(--asym-brand-text);font-family:var(--asym-font-body);}
+      .asym-print-document{box-sizing:border-box;}
+      .asym-print-document h1,.asym-print-document h2,.asym-print-document h3,.asym-print-document h4,.asym-print-document h5,.asym-print-document h6{color:var(--asym-brand-primary);font-family:var(--asym-font-heading);}
+      .asym-print-document a{color:var(--asym-brand-accent);}
+      .asym-page-region{box-sizing:border-box;font-size:9pt;line-height:1.3;}
+      .asym-page-region-content{text-align:center;}
+      .asym-page-region-token{display:inline;}
+      .asym-page-break{break-after:page;page-break-after:always;}
+      .asym-page-break-before{break-before:page;page-break-before:always;}
+      .asym-keep-together{break-inside:avoid;page-break-inside:avoid;}
+      .asym-avoid-break-after{break-after:avoid;page-break-after:avoid;}
+      table.asym-repeat-header thead{display:table-header-group;}
+      table.asym-repeat-header tfoot{display:table-footer-group;}
+      .asym-page-number::after{content:counter(page);}
+      .asym-total-pages::after{content:counter(pages);}
+      @media print{.asym-screen-only{display:none !important;}.asym-print-document{width:100%;}}"
+    `);
   });
 
   it('includes page control classes in the full HTML output', () => {

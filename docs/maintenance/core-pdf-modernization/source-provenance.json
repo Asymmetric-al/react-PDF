@@ -1,0 +1,1765 @@
+{
+  "capturedAt": "2026-10-22T03:12:46.938880+00:00",
+  "coreHead": "41f388756914b5e1a6c76818cb0afe0a3306e36f",
+  "ownerHead": "5ce8e68b96e5316a410ca1bd81a500cf511e7894",
+  "purpose": "Recover shipped implementation verbatim before any dependency change; declaration-only sources handled separately.",
+  "packages": [
+    {
+      "name": "@asym/docraptor-client",
+      "sourceDirectory": "packages/docraptor-client",
+      "artifactDirectory": "vendor/react-pdf-packages/asym-docraptor-client",
+      "artifactFiles": [
+        {
+          "path": "vendor/react-pdf-packages/asym-docraptor-client/LICENSE.md",
+          "sha256": "824a5acd4cf751b349d2f37513b94c682bceddbf6ead1d0225ff0aaa9b7eb2e4",
+          "bytes": 1059
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.cjs",
+          "sha256": "3f84576938f2a3d2556b2e80808fe9aa8583e36881935c961a5b25d0d97ba585",
+          "bytes": 29474
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.d.cts",
+          "sha256": "028e3e38d208a51875dfb5bda53ebdf5ba714afe87f01b76fba2bf98e0a48ef0",
+          "bytes": 10105
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.d.cts.map",
+          "sha256": "73f79a1355f476553e6920e2334a49247952899ef9d80db3afa9c11f6261380f",
+          "bytes": 4098
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.d.mts",
+          "sha256": "259fea04f245523abfcd8e0bddc5c4b5ab116bfa440195c094fbf02802e170c7",
+          "bytes": 10105
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.d.mts.map",
+          "sha256": "cd30def7ee9014fa475647a2c885da1407fa52afd9b317273e6f856ee2b96f8f",
+          "bytes": 4098
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.mjs",
+          "sha256": "92e24b6530068741ea49eefd7af40d204a62ec7a432ffc2e28aad25c87bd211f",
+          "bytes": 29101
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.mjs.map",
+          "sha256": "b423ac98c515920b71add3046085841205b0e642907efbe8b943ef82ca9335d9",
+          "bytes": 63442
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-docraptor-client/package.json",
+          "sha256": "090dbd004dcbd8d612408fb8ab4af90e7671f7941f5f6f2d8002a677d473f186",
+          "bytes": 824
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-docraptor-client/readme.md",
+          "sha256": "92af69f931d77c917353514df88c889d543ed182a6a5942f6237cd7c990a3f36",
+          "bytes": 6082
+        }
+      ],
+      "maps": [
+        {
+          "path": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.d.cts.map",
+          "sha256": "73f79a1355f476553e6920e2334a49247952899ef9d80db3afa9c11f6261380f",
+          "ownedSourceCount": 5,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.d.mts.map",
+          "sha256": "cd30def7ee9014fa475647a2c885da1407fa52afd9b317273e6f856ee2b96f8f",
+          "ownedSourceCount": 5,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.mjs.map",
+          "sha256": "b423ac98c515920b71add3046085841205b0e642907efbe8b943ef82ca9335d9",
+          "ownedSourceCount": 5,
+          "sourcesContentPresent": true
+        }
+      ],
+      "recoveredSourceCount": 5,
+      "recoveredSources": [
+        {
+          "path": "src/async-render.ts",
+          "sha256": "f6158250c0a59e6e21aef0231d3719f933f323cc5b51a8f7aed87005ee0e214e",
+          "bytes": 20558,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.mjs.map",
+              "mapSha256": "b423ac98c515920b71add3046085841205b0e642907efbe8b943ef82ca9335d9",
+              "sourceIndex": 2,
+              "sourcePath": "../src/async-render.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/client.ts",
+          "sha256": "7287287e8c89c0bebf8682fa4570ac6a813e89cc27084f41143249f9546bdb55",
+          "bytes": 20606,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.mjs.map",
+              "mapSha256": "b423ac98c515920b71add3046085841205b0e642907efbe8b943ef82ca9335d9",
+              "sourceIndex": 3,
+              "sourcePath": "../src/client.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/errors.ts",
+          "sha256": "4ad26097703be2610c021af63bad71c839bbdee208fc13c0033cc80801043ebe",
+          "bytes": 1257,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.mjs.map",
+              "mapSha256": "b423ac98c515920b71add3046085841205b0e642907efbe8b943ef82ca9335d9",
+              "sourceIndex": 1,
+              "sourcePath": "../src/errors.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/index.ts",
+          "sha256": "4d9010c60755cf8bae49b317adf84d734121b96be243e14e5cf8f15cdd4c454d",
+          "bytes": 1693,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.mjs.map",
+              "mapSha256": "b423ac98c515920b71add3046085841205b0e642907efbe8b943ef82ca9335d9",
+              "sourceIndex": 4,
+              "sourcePath": "../src/index.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/server-only.ts",
+          "sha256": "62479345b9207c70158870eda5ac75fb30f07b891a88394fa6d92946062f3d7f",
+          "bytes": 412,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.mjs.map",
+              "mapSha256": "b423ac98c515920b71add3046085841205b0e642907efbe8b943ef82ca9335d9",
+              "sourceIndex": 0,
+              "sourcePath": "../src/server-only.ts"
+            }
+          ]
+        }
+      ],
+      "declarationOnlySourcePaths": [
+        "src/types.ts"
+      ]
+    },
+    {
+      "name": "@asym/pdf-editor",
+      "sourceDirectory": "packages/pdf-editor",
+      "artifactDirectory": "vendor/react-pdf-packages/asym-pdf-editor",
+      "artifactFiles": [
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/LICENSE.md",
+          "sha256": "824a5acd4cf751b349d2f37513b94c682bceddbf6ead1d0225ff0aaa9b7eb2e4",
+          "bytes": 1059
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.cjs",
+          "sha256": "583c917a4e4dd9416b0a8ce8acd1c6e264cc23e517e99f25059b6f33e32a40d8",
+          "bytes": 40203
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.d.cts",
+          "sha256": "eb76a525e983842860e46ea5c1c4a602fb24747e7ff985e3202158b23cd45e06",
+          "bytes": 15125
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.d.cts.map",
+          "sha256": "20ee929080156104382725f740780622c3207a42286665130693b78afe19c2ca",
+          "bytes": 6141
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.d.mts",
+          "sha256": "9d81ddd16da6b1f08347a1509efb6a51eac0a50725928737027e366c919106fa",
+          "bytes": 15125
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.d.mts.map",
+          "sha256": "23a11b54e733b5a7da186290022725021c436e105ac57d8b4fe4438fb25d969d",
+          "bytes": 6141
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.mjs",
+          "sha256": "df75c70f51e9043d7c8567bcc8308194e4478d5a7d5e6ed98d1d568167db1d2d",
+          "bytes": 38598
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.mjs.map",
+          "sha256": "12cdd1e0f136d42d96be551c80f3a58cf6c1c857cfc707ea725202dd82bdc534",
+          "bytes": 86533
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/index.cjs",
+          "sha256": "2999fa470247df0c7ac347a104f114bb5911c753165507baa5e1992dc35e50d4",
+          "bytes": 2741
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/index.d.cts",
+          "sha256": "bcdfeb56627bd154d52bea4c74e915f8c5ca8281131427b6654371a695409edd",
+          "bytes": 2166
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/index.d.cts.map",
+          "sha256": "fe4065b5f85e7ff5f564e6047b5fcf88b5c04160ef297954e5f0bd82e5bad3f8",
+          "bytes": 374
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/index.d.mts",
+          "sha256": "4d791fe1c918b4cbd85a545dfc189ec688b29f52ab7e77c73c654468a97b4a0f",
+          "bytes": 2166
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/index.d.mts.map",
+          "sha256": "e184c286dfb6f10330f1a156473f70402793622247fab476488c5f7de5fbcf55",
+          "bytes": 374
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/index.mjs",
+          "sha256": "c10dfb77752c4e2e0633db74996444dc3bccf0e200609489519cfee5137883ae",
+          "bytes": 1163
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/index.mjs.map",
+          "sha256": "750811f6955d30de344ad3dfe7db6e389dbaaabaf5261cf271146d1933eb85e6",
+          "bytes": 2038
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/migration/unlayer.cjs",
+          "sha256": "9922b4e73925827cd5fcd9f172dead47feceb39a27fc8f77d31d8bca8682136f",
+          "bytes": 2648
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/migration/unlayer.d.cts",
+          "sha256": "b7fcdc3f3d4b3767655b6aef6a45e1d7ea6181a24ad30750f716d70b91de564b",
+          "bytes": 2175
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/migration/unlayer.d.cts.map",
+          "sha256": "49e60c03de7c68168be317896adc12943a318974af6479e4971ed16f4f313a5d",
+          "bytes": 231
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/migration/unlayer.d.mts",
+          "sha256": "9388f8c4565dafcf58ae08b05f5aadabbb628c20c4b15fe5f7d64cec8576a90a",
+          "bytes": 2175
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/migration/unlayer.d.mts.map",
+          "sha256": "5892ddb547b5cea817983a633e0a18c1cffd56003d8fb86957c41006551276d5",
+          "bytes": 231
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/migration/unlayer.mjs",
+          "sha256": "1fd12c0568d57206fe251fd9f3b26181f2863ed28bcdc0ef28e5b10ac7d7f136",
+          "bytes": 1182
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/migration/unlayer.mjs.map",
+          "sha256": "20c20dec5f6f635dbda707452659451a42aa04db588d405c8431dd00695ea897",
+          "bytes": 1688
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/react-email-compat-DD6vEgUU.d.cts",
+          "sha256": "ed2e8c09d4cc017a1c29a3268212b73ad7b844cb3d43f1009f4c2caf90eb5bac",
+          "bytes": 1095
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/react-email-compat-HZUbOONN.d.mts",
+          "sha256": "ed2e8c09d4cc017a1c29a3268212b73ad7b844cb3d43f1009f4c2caf90eb5bac",
+          "bytes": 1095
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/react-email-compat.cjs",
+          "sha256": "429e343f3ee4e3fca68ce6ffd44d4b9bf1aa7763505cf1a44071069c8e0c895e",
+          "bytes": 1816
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/react-email-compat.d.cts",
+          "sha256": "2615751c1d9c381cfa878d9669d17438786a3ac84c10f1049ace71a003b8a901",
+          "bytes": 757
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/react-email-compat.d.mts",
+          "sha256": "cd5eb3482e9d10373d6cab7cfe10f0283e6f8d464c475b83d9a79811d1d37485",
+          "bytes": 757
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/react-email-compat.mjs",
+          "sha256": "c33bcddb68592143d48dc7e6e4fdbfea77387214870a8020bb28f89688df18f6",
+          "bytes": 879
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/package.json",
+          "sha256": "4bfd797ec0ea6a1563708aabfca50290f3b884b6fc659e1749450ce6e66b0772",
+          "bytes": 1883
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/readme.md",
+          "sha256": "9ed7511b61fd6902736f362b5ffad2d6cd72b949bf2733dcbc963d46f844c06c",
+          "bytes": 8449
+        }
+      ],
+      "maps": [
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.d.cts.map",
+          "sha256": "20ee929080156104382725f740780622c3207a42286665130693b78afe19c2ca",
+          "ownedSourceCount": 8,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.d.mts.map",
+          "sha256": "23a11b54e733b5a7da186290022725021c436e105ac57d8b4fe4438fb25d969d",
+          "ownedSourceCount": 8,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.mjs.map",
+          "sha256": "12cdd1e0f136d42d96be551c80f3a58cf6c1c857cfc707ea725202dd82bdc534",
+          "ownedSourceCount": 8,
+          "sourcesContentPresent": true
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/index.d.cts.map",
+          "sha256": "fe4065b5f85e7ff5f564e6047b5fcf88b5c04160ef297954e5f0bd82e5bad3f8",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/index.d.mts.map",
+          "sha256": "e184c286dfb6f10330f1a156473f70402793622247fab476488c5f7de5fbcf55",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/index.mjs.map",
+          "sha256": "750811f6955d30de344ad3dfe7db6e389dbaaabaf5261cf271146d1933eb85e6",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": true
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/migration/unlayer.d.cts.map",
+          "sha256": "49e60c03de7c68168be317896adc12943a318974af6479e4971ed16f4f313a5d",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/migration/unlayer.d.mts.map",
+          "sha256": "5892ddb547b5cea817983a633e0a18c1cffd56003d8fb86957c41006551276d5",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-editor/dist/migration/unlayer.mjs.map",
+          "sha256": "20c20dec5f6f635dbda707452659451a42aa04db588d405c8431dd00695ea897",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": true
+        }
+      ],
+      "recoveredSourceCount": 10,
+      "recoveredSources": [
+        {
+          "path": "src/extensions/asset-image/index.ts",
+          "sha256": "d540fc6d0cf33c491099042fe78e6ef8f870d0fc5f42715dfdf8c1bfbd14fa17",
+          "bytes": 13723,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.mjs.map",
+              "mapSha256": "12cdd1e0f136d42d96be551c80f3a58cf6c1c857cfc707ea725202dd82bdc534",
+              "sourceIndex": 0,
+              "sourcePath": "../src/extensions/asset-image/index.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/extensions/conditional-section/index.ts",
+          "sha256": "949ab536b4d9ab0fce66f82250a494ec73413fea096e9780351e69e7d899afde",
+          "bytes": 7419,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.mjs.map",
+              "mapSha256": "12cdd1e0f136d42d96be551c80f3a58cf6c1c857cfc707ea725202dd82bdc534",
+              "sourceIndex": 1,
+              "sourcePath": "../src/extensions/conditional-section/index.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/extensions/data-table/index.ts",
+          "sha256": "ba52a8a66df79314d5305db4ef07223860507a80c701b2c5c2ccf7d5c2e8961d",
+          "bytes": 8908,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.mjs.map",
+              "mapSha256": "12cdd1e0f136d42d96be551c80f3a58cf6c1c857cfc707ea725202dd82bdc534",
+              "sourceIndex": 2,
+              "sourcePath": "../src/extensions/data-table/index.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/extensions/header-footer/index.ts",
+          "sha256": "33566dea8dbd4b6207e0a76790b2cce0b57c1e280500df895d73b89a3258e15f",
+          "bytes": 1533,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.mjs.map",
+              "mapSha256": "12cdd1e0f136d42d96be551c80f3a58cf6c1c857cfc707ea725202dd82bdc534",
+              "sourceIndex": 3,
+              "sourcePath": "../src/extensions/header-footer/index.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/extensions/page-flow/index.ts",
+          "sha256": "5acbae4d7e385f8db8598277252ff02d283a72827906996fd97debab801fba47",
+          "bytes": 4819,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.mjs.map",
+              "mapSha256": "12cdd1e0f136d42d96be551c80f3a58cf6c1c857cfc707ea725202dd82bdc534",
+              "sourceIndex": 4,
+              "sourcePath": "../src/extensions/page-flow/index.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/extensions/placeholder/index.ts",
+          "sha256": "bb8856fedcbcdd93a172105f61fe9d95f5036d2547ad539f22c9ee7e8604faf2",
+          "bytes": 10332,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.mjs.map",
+              "mapSha256": "12cdd1e0f136d42d96be551c80f3a58cf6c1c857cfc707ea725202dd82bdc534",
+              "sourceIndex": 5,
+              "sourcePath": "../src/extensions/placeholder/index.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/extensions/repeater/index.ts",
+          "sha256": "c6743c8cfa1c1bc9c8bc8028552092c02dbba475bcd05072510dc0a6c2716164",
+          "bytes": 7625,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.mjs.map",
+              "mapSha256": "12cdd1e0f136d42d96be551c80f3a58cf6c1c857cfc707ea725202dd82bdc534",
+              "sourceIndex": 6,
+              "sourcePath": "../src/extensions/repeater/index.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/extensions/variable/index.ts",
+          "sha256": "870227dfc7423cb678de930975ab6a2220e0c85acd076026625f00cabd31b20f",
+          "bytes": 7047,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.mjs.map",
+              "mapSha256": "12cdd1e0f136d42d96be551c80f3a58cf6c1c857cfc707ea725202dd82bdc534",
+              "sourceIndex": 7,
+              "sourcePath": "../src/extensions/variable/index.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/index.ts",
+          "sha256": "48f27888e9437806e573184edfa5e27521f57e4ea44f2fc83ff78d89e17f6837",
+          "bytes": 1768,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-editor/dist/index.mjs.map",
+              "mapSha256": "750811f6955d30de344ad3dfe7db6e389dbaaabaf5261cf271146d1933eb85e6",
+              "sourceIndex": 0,
+              "sourcePath": "../src/index.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/migration/unlayer/index.ts",
+          "sha256": "9e3c4ad480d737d859f427b96cc1b591eefc6a91fc9b54860405719a5db5719d",
+          "bytes": 1450,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-editor/dist/migration/unlayer.mjs.map",
+              "mapSha256": "20c20dec5f6f635dbda707452659451a42aa04db588d405c8431dd00695ea897",
+              "sourceIndex": 0,
+              "sourcePath": "../../src/migration/unlayer/index.ts"
+            }
+          ]
+        }
+      ],
+      "declarationOnlySourcePaths": []
+    },
+    {
+      "name": "@asym/pdf-renderer",
+      "sourceDirectory": "packages/pdf-renderer",
+      "artifactDirectory": "vendor/react-pdf-packages/asym-pdf-renderer",
+      "artifactFiles": [
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/LICENSE.md",
+          "sha256": "824a5acd4cf751b349d2f37513b94c682bceddbf6ead1d0225ff0aaa9b7eb2e4",
+          "bytes": 1059
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/docraptor-preview.cjs",
+          "sha256": "be2099c08b40975271d09e864ac9f76ec4dd6acc837ba55b3dac50e33203344b",
+          "bytes": 3281
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/docraptor-preview.d.cts",
+          "sha256": "4c481696924d706e68fd121ae4f1139275fabe2b41ae263ae70b095d4a63102d",
+          "bytes": 1615
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/docraptor-preview.d.cts.map",
+          "sha256": "d1a2bf4426a59ecfccc2936e6e4d2bda349074629fc67b223942db3f18a518b3",
+          "bytes": 608
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/docraptor-preview.d.mts",
+          "sha256": "e854e9e4a4df1c22887663c2aa41006400f58e27b94496cef378fb60e26521e5",
+          "bytes": 1615
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/docraptor-preview.d.mts.map",
+          "sha256": "0a424baa9a19b3134617d8dc12a5bb4b614a6191767fc3ffe6a73aa499f67ffa",
+          "bytes": 608
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/docraptor-preview.mjs",
+          "sha256": "cb44984ca3ba6f6f76c973e7ef7b07197ec852f6bb56d128d253f07c55fc7c49",
+          "bytes": 3165
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/docraptor-preview.mjs.map",
+          "sha256": "e7f3c929e870edbed22f3749ba5932f56c448fc8a8bb199cb998c9788bed4933",
+          "bytes": 6707
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/index.cjs",
+          "sha256": "1c7ebc7f1d7465300279180617ebefd2b028a087463692e07df5de6685d6c86c",
+          "bytes": 30228
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/index.d.cts",
+          "sha256": "bada9fd92821280182fdd9d76d2cd5a85aea3f7fd7ddbb76ae5e990768fc8d5d",
+          "bytes": 11646
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/index.d.cts.map",
+          "sha256": "5b90df98a77c85513df891c03944709e120aee02b955bf5e391b5008aa989042",
+          "bytes": 3027
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/index.d.mts",
+          "sha256": "23bfb2a0b1539f4be1d71e925866106802666c4e168ce85bd20b4be31284d67d",
+          "bytes": 11646
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/index.d.mts.map",
+          "sha256": "7c352a6d47da6f0307895ceec7608d75a32c418ef59d7a6459ecb6122eb88f6f",
+          "bytes": 3027
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/index.mjs",
+          "sha256": "39553db1bf29d345d48ffc54660a5e69f0f710e9b8576fd619fde70755b1999e",
+          "bytes": 29691
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/index.mjs.map",
+          "sha256": "cef9df03d0238cbb5bbc741232e20cbfc468308d823310bfe6242155539b9a8e",
+          "bytes": 62896
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/local-renderer.cjs",
+          "sha256": "39212c2f4debc6f5405bec8b0e7362d6b4f53306f1159dbfa6d86dae38f1edd6",
+          "bytes": 6894
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/local-renderer.d.cts",
+          "sha256": "ad6c06a88f29e3915368ae2ab013caa9a7e916b5890a43d3739742a674050af6",
+          "bytes": 5138
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/local-renderer.d.cts.map",
+          "sha256": "c88394e48c0bf3fb73f05559949375cb67fb541ee2ae937f534a0fce10f9ccde",
+          "bytes": 2108
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/local-renderer.d.mts",
+          "sha256": "6a3de55f7b5d912eff8c9277740f613fc9ed8eb3f069cac7200579122ab45882",
+          "bytes": 5138
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/local-renderer.d.mts.map",
+          "sha256": "0bb88ed0d40af90fd6abc42498a16b176ba82a7a258393597d2e5a808017f7ca",
+          "bytes": 2108
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/local-renderer.mjs",
+          "sha256": "7d143b0ccab1e5040f50844ad878d218c23019753a4d51e6767c46dff0aa8769",
+          "bytes": 6718
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/local-renderer.mjs.map",
+          "sha256": "a86e6bb34aacef97c84eb80dea5dafce82aa3b464e1d7eec666e8d8cd1183d04",
+          "bytes": 16966
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-BNR9SGDr.d.mts",
+          "sha256": "bd6ccf42783d2ee624d8c1352b56cfcea7acfde75c60457cc087f41a59383d88",
+          "bytes": 11297
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-BNR9SGDr.d.mts.map",
+          "sha256": "6450c3f9b4fe0eef22bae12cc4a1b480b2816a8739baa78811689555e9021a50",
+          "bytes": 4136
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-BmcBZiCw.mjs",
+          "sha256": "46e8816757f2c573310791631f635020de88a07c2ff8fe6b95ee4c8ab98ce07f",
+          "bytes": 106325
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-BmcBZiCw.mjs.map",
+          "sha256": "1c2ec5f0cd6932724a99bef1018647b5cb69acb74ffc8a056859e385dac93b49",
+          "bytes": 221980
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-CzVYZKyh.d.cts",
+          "sha256": "93b8fef1cb5a368ef75423a1f81be0098497c0f5c24c78667e32d8dc6642dae0",
+          "bytes": 11297
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-CzVYZKyh.d.cts.map",
+          "sha256": "9bff0219ac54037b355ea6434e4d270e5e3dd708a982aa986f5e364244dc0312",
+          "bytes": 4136
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-DfRauC4f.cjs",
+          "sha256": "36dbb65776cdb8eac8ffa3b23c07ed46a1c3a4abf1227ff7720714368eb6be9b",
+          "bytes": 107895
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/package.json",
+          "sha256": "08bcb0d8d2fd41f0fc3ba4a77d1ab2b79cac3ab1b2073591c150a62b5794d87c",
+          "bytes": 1451
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/readme.md",
+          "sha256": "946ec97b1402e9554cd0d22d7ba7d032db06224ae0578a2dfe08ee9109b883f7",
+          "bytes": 25563
+        }
+      ],
+      "maps": [
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/docraptor-preview.d.cts.map",
+          "sha256": "d1a2bf4426a59ecfccc2936e6e4d2bda349074629fc67b223942db3f18a518b3",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/docraptor-preview.d.mts.map",
+          "sha256": "0a424baa9a19b3134617d8dc12a5bb4b614a6191767fc3ffe6a73aa499f67ffa",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/docraptor-preview.mjs.map",
+          "sha256": "e7f3c929e870edbed22f3749ba5932f56c448fc8a8bb199cb998c9788bed4933",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": true
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/index.d.cts.map",
+          "sha256": "5b90df98a77c85513df891c03944709e120aee02b955bf5e391b5008aa989042",
+          "ownedSourceCount": 7,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/index.d.mts.map",
+          "sha256": "7c352a6d47da6f0307895ceec7608d75a32c418ef59d7a6459ecb6122eb88f6f",
+          "ownedSourceCount": 7,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/index.mjs.map",
+          "sha256": "cef9df03d0238cbb5bbc741232e20cbfc468308d823310bfe6242155539b9a8e",
+          "ownedSourceCount": 3,
+          "sourcesContentPresent": true
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/local-renderer.d.cts.map",
+          "sha256": "c88394e48c0bf3fb73f05559949375cb67fb541ee2ae937f534a0fce10f9ccde",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/local-renderer.d.mts.map",
+          "sha256": "0bb88ed0d40af90fd6abc42498a16b176ba82a7a258393597d2e5a808017f7ca",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/local-renderer.mjs.map",
+          "sha256": "a86e6bb34aacef97c84eb80dea5dafce82aa3b464e1d7eec666e8d8cd1183d04",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": true
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-BNR9SGDr.d.mts.map",
+          "sha256": "6450c3f9b4fe0eef22bae12cc4a1b480b2816a8739baa78811689555e9021a50",
+          "ownedSourceCount": 2,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-BmcBZiCw.mjs.map",
+          "sha256": "1c2ec5f0cd6932724a99bef1018647b5cb69acb74ffc8a056859e385dac93b49",
+          "ownedSourceCount": 6,
+          "sourcesContentPresent": true
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-CzVYZKyh.d.cts.map",
+          "sha256": "9bff0219ac54037b355ea6434e4d270e5e3dd708a982aa986f5e364244dc0312",
+          "ownedSourceCount": 2,
+          "sourcesContentPresent": false
+        }
+      ],
+      "recoveredSourceCount": 11,
+      "recoveredSources": [
+        {
+          "path": "src/compose-pdf-document-html.ts",
+          "sha256": "a1db60b74d74a4260f4e4c8875294420432123d00ac9db8c5cd44ffd6b6be9ab",
+          "bytes": 118986,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-BmcBZiCw.mjs.map",
+              "mapSha256": "1c2ec5f0cd6932724a99bef1018647b5cb69acb74ffc8a056859e385dac93b49",
+              "sourceIndex": 3,
+              "sourcePath": "../src/compose-pdf-document-html.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/conditions.ts",
+          "sha256": "e9b6b01469d98b6e88457e98acf8182d198405ac9f144589f870e073d6f3e146",
+          "bytes": 1909,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-BmcBZiCw.mjs.map",
+              "mapSha256": "1c2ec5f0cd6932724a99bef1018647b5cb69acb74ffc8a056859e385dac93b49",
+              "sourceIndex": 0,
+              "sourcePath": "../src/conditions.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/data-table.ts",
+          "sha256": "0df7c4a1c974de25e075137e88cb248b6677f542e53e617e75db94fae8623ae0",
+          "bytes": 1256,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-BmcBZiCw.mjs.map",
+              "mapSha256": "1c2ec5f0cd6932724a99bef1018647b5cb69acb74ffc8a056859e385dac93b49",
+              "sourceIndex": 1,
+              "sourcePath": "../src/data-table.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/docraptor-preview.ts",
+          "sha256": "ddc7fa0256990292d6a5d6a54f2071f742eae1c23cec0fe37bb120e495cb1bed",
+          "bytes": 4904,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-renderer/dist/docraptor-preview.mjs.map",
+              "mapSha256": "e7f3c929e870edbed22f3749ba5932f56c448fc8a8bb199cb998c9788bed4933",
+              "sourceIndex": 0,
+              "sourcePath": "../src/docraptor-preview.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/index.ts",
+          "sha256": "732a3640b11cacef7d6ad07c8c9512fc011cb22f354532bc562e3b7098d80f06",
+          "bytes": 3734,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-renderer/dist/index.mjs.map",
+              "mapSha256": "cef9df03d0238cbb5bbc741232e20cbfc468308d823310bfe6242155539b9a8e",
+              "sourceIndex": 2,
+              "sourcePath": "../src/index.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/local-renderer.ts",
+          "sha256": "9d556adc1521a1dc730c1db1b8e01dbceac5865d0172be39626a611a0841cbfc",
+          "bytes": 12704,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-renderer/dist/local-renderer.mjs.map",
+              "mapSha256": "a86e6bb34aacef97c84eb80dea5dafce82aa3b464e1d7eec666e8d8cd1183d04",
+              "sourceIndex": 0,
+              "sourcePath": "../src/local-renderer.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/preflight.ts",
+          "sha256": "37bc80e5b7ae43ab0fb9fa1cdd3c09e9f4fad4827f6c1221e1946a3d9c201b57",
+          "bytes": 40735,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-renderer/dist/index.mjs.map",
+              "mapSha256": "cef9df03d0238cbb5bbc741232e20cbfc468308d823310bfe6242155539b9a8e",
+              "sourceIndex": 1,
+              "sourcePath": "../src/preflight.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/preview.ts",
+          "sha256": "3550272d422fd1b6a9b151de6d44e737308ccfc12f55e1dec917202438a47a04",
+          "bytes": 11978,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-BmcBZiCw.mjs.map",
+              "mapSha256": "1c2ec5f0cd6932724a99bef1018647b5cb69acb74ffc8a056859e385dac93b49",
+              "sourceIndex": 5,
+              "sourcePath": "../src/preview.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/print-shell.ts",
+          "sha256": "8fce89a02dc7d3d46d4cbcc638cdd1da163dcf9d459e58f801e9b0f0f05299be",
+          "bytes": 20270,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-BmcBZiCw.mjs.map",
+              "mapSha256": "1c2ec5f0cd6932724a99bef1018647b5cb69acb74ffc8a056859e385dac93b49",
+              "sourceIndex": 4,
+              "sourcePath": "../src/print-shell.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/repeaters.ts",
+          "sha256": "73e08970abdd143eb2aa987eed310a2813ac272fdac52087a4b8510c1565a385",
+          "bytes": 1344,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-renderer/dist/preview-BmcBZiCw.mjs.map",
+              "mapSha256": "1c2ec5f0cd6932724a99bef1018647b5cb69acb74ffc8a056859e385dac93b49",
+              "sourceIndex": 2,
+              "sourcePath": "../src/repeaters.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/variables.ts",
+          "sha256": "6438b04dafc00f489afa828ce657eb1a093f5250c99725838b3217e6a2cfaed7",
+          "bytes": 1986,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-renderer/dist/index.mjs.map",
+              "mapSha256": "cef9df03d0238cbb5bbc741232e20cbfc468308d823310bfe6242155539b9a8e",
+              "sourceIndex": 0,
+              "sourcePath": "../src/variables.ts"
+            }
+          ]
+        }
+      ],
+      "declarationOnlySourcePaths": []
+    },
+    {
+      "name": "@asym/pdf-studio-adapter",
+      "sourceDirectory": "packages/pdf-studio-adapter",
+      "artifactDirectory": "vendor/react-pdf-packages/asym-pdf-studio-adapter",
+      "artifactFiles": [
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-studio-adapter/LICENSE.md",
+          "sha256": "824a5acd4cf751b349d2f37513b94c682bceddbf6ead1d0225ff0aaa9b7eb2e4",
+          "bytes": 1059
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-studio-adapter/dist/index.cjs",
+          "sha256": "e9c96be8d8f20770ad990f99a94621afd0bd9d5e36c60e31a839ac96bee60276",
+          "bytes": 6956
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-studio-adapter/dist/index.d.cts",
+          "sha256": "ca2f7373bef33238306d17617a9452ed1802df317354930160e4c2f9b27f13f7",
+          "bytes": 10404
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-studio-adapter/dist/index.d.cts.map",
+          "sha256": "ab65a60c3043abb0829834d591830e9d51c468a61ce8ee5f884b480c7f96f626",
+          "bytes": 4400
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-studio-adapter/dist/index.d.mts",
+          "sha256": "87fafe398bc61bad02b6e058f34852253d71469290ba43e03c6a1964b740311c",
+          "bytes": 10404
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-studio-adapter/dist/index.d.mts.map",
+          "sha256": "0c5d327b2c616ff9e32d79277eb2fcb315a1e7ae3b2769c4da660baecad3f8ef",
+          "bytes": 4400
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-studio-adapter/dist/index.mjs",
+          "sha256": "647246f1db2d9f418f63750f9386c998dd9c8800260f6c2a138db1e213c1207c",
+          "bytes": 6483
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-studio-adapter/dist/index.mjs.map",
+          "sha256": "93ad0c2e0a0915e8bdd525c2a321927d365aaaa19f00f789b50a6162da7c6de7",
+          "bytes": 21151
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-studio-adapter/package.json",
+          "sha256": "1fb012473a61a4be7d7456ae4b4bd08d777239e2ff5ad5236eecf50458fcdcb9",
+          "bytes": 965
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-studio-adapter/readme.md",
+          "sha256": "f81b31316ec93c82fc2fc27a0e5d62c779bf1c3e8b4ba2c445e2f2794600bf86",
+          "bytes": 2818
+        }
+      ],
+      "maps": [
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-studio-adapter/dist/index.d.cts.map",
+          "sha256": "ab65a60c3043abb0829834d591830e9d51c468a61ce8ee5f884b480c7f96f626",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-studio-adapter/dist/index.d.mts.map",
+          "sha256": "0c5d327b2c616ff9e32d79277eb2fcb315a1e7ae3b2769c4da660baecad3f8ef",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-studio-adapter/dist/index.mjs.map",
+          "sha256": "93ad0c2e0a0915e8bdd525c2a321927d365aaaa19f00f789b50a6162da7c6de7",
+          "ownedSourceCount": 1,
+          "sourcesContentPresent": true
+        }
+      ],
+      "recoveredSourceCount": 1,
+      "recoveredSources": [
+        {
+          "path": "src/index.ts",
+          "sha256": "d3801d4dc7185bfea8554db32543c352954bb94e8fb42a8c0a27f332544fb9b1",
+          "bytes": 17263,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-studio-adapter/dist/index.mjs.map",
+              "mapSha256": "93ad0c2e0a0915e8bdd525c2a321927d365aaaa19f00f789b50a6162da7c6de7",
+              "sourceIndex": 0,
+              "sourcePath": "../src/index.ts"
+            }
+          ]
+        }
+      ],
+      "declarationOnlySourcePaths": []
+    },
+    {
+      "name": "@asym/pdf-template-schema",
+      "sourceDirectory": "packages/pdf-template-schema",
+      "artifactDirectory": "vendor/react-pdf-packages/asym-pdf-template-schema",
+      "artifactFiles": [
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-template-schema/LICENSE.md",
+          "sha256": "824a5acd4cf751b349d2f37513b94c682bceddbf6ead1d0225ff0aaa9b7eb2e4",
+          "bytes": 1059
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.cjs",
+          "sha256": "17800209a97dcc25bc5ddc822788b32944884b9b36fefb9b67a6b7e511bc1963",
+          "bytes": 219457
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.d.cts",
+          "sha256": "799c4df8840be8dd779fd1ddfaff42b4e7f922dfe8bdfb86b45e785e42815b58",
+          "bytes": 252469
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.d.cts.map",
+          "sha256": "61b131861a2d24f5f45dabfcc09f694ac986eae38060314b7f076e949b12ea55",
+          "bytes": 33103
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.d.mts",
+          "sha256": "a615818eb6230202007354bffdaa8ba4d1b5f1b060f9a24a58e6cf4f5cd38da9",
+          "bytes": 252469
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.d.mts.map",
+          "sha256": "7b0bfd653f31cc067df9844b7697105835eed80b5528916b3e0c753344e82a58",
+          "bytes": 33103
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs",
+          "sha256": "275348a1040fecadbd0e236b1ac0be3f540f9c5edf2c9d83524556a822e31585",
+          "bytes": 210091
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+          "sha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+          "bytes": 430317
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-template-schema/package.json",
+          "sha256": "af87dd36ac0f3a54a9ae741e015534592f35d33aae4675dcd479bb964fdc2a0a",
+          "bytes": 839
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-template-schema/readme.md",
+          "sha256": "2cd6f5775cc645ce15f255c39984b7fd88d11fa41100229fee60a89b3a7df9d1",
+          "bytes": 21393
+        }
+      ],
+      "maps": [
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.d.cts.map",
+          "sha256": "61b131861a2d24f5f45dabfcc09f694ac986eae38060314b7f076e949b12ea55",
+          "ownedSourceCount": 25,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.d.mts.map",
+          "sha256": "7b0bfd653f31cc067df9844b7697105835eed80b5528916b3e0c753344e82a58",
+          "ownedSourceCount": 25,
+          "sourcesContentPresent": false
+        },
+        {
+          "path": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+          "sha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+          "ownedSourceCount": 26,
+          "sourcesContentPresent": true
+        }
+      ],
+      "recoveredSourceCount": 26,
+      "recoveredSources": [
+        {
+          "path": "src/assets.ts",
+          "sha256": "9deab9293ac9851b628d9d0b0afd092b756a8f71df8310945731fb222181a3f1",
+          "bytes": 11281,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 1,
+              "sourcePath": "../src/assets.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/batch.ts",
+          "sha256": "ddc8a8fd292d637ecfcb19634f38ffac869a0d9ba57cc66abc4054f235a2ac2c",
+          "bytes": 23166,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 13,
+              "sourcePath": "../src/batch.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/bindings.ts",
+          "sha256": "c0a247b1470354095d20618dc70c9f81e7d109c8a689652a517b2eae804093cf",
+          "bytes": 4936,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 4,
+              "sourcePath": "../src/bindings.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/calculations.ts",
+          "sha256": "115d04434cc1dcc321eaeb3e772df959025fdf548b4eb0dc02625f82d81cf5fb",
+          "bytes": 30865,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 17,
+              "sourcePath": "../src/calculations.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/categories.ts",
+          "sha256": "118c650763a11551b1b5022d921b8308bd24f71724b3383abecec7db74e0fde2",
+          "bytes": 322,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 2,
+              "sourcePath": "../src/categories.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/conditions.ts",
+          "sha256": "a07cf4a9482c8c6747425555d2ff257a2a9dc55ff070231cd6d20e511d6c2376",
+          "bytes": 12198,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 19,
+              "sourcePath": "../src/conditions.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/dates.ts",
+          "sha256": "9abd831e8fc4af66abdc33beddbdb6c5200bd48be83e2fc826cb35eb7fa68c04",
+          "bytes": 1301,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 18,
+              "sourcePath": "../src/dates.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/formatters.ts",
+          "sha256": "98dbc32b7d8b097245c8bb5763972fb189ca639ff85a78368404c9aa5b78eb45",
+          "bytes": 13963,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 14,
+              "sourcePath": "../src/formatters.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/header-footer.ts",
+          "sha256": "511fb1a1112dbdb7d0d81c2ba8dc814ba41c962d17e988ee7cbfc26ade5ac4d7",
+          "bytes": 3984,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 5,
+              "sourcePath": "../src/header-footer.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/index.ts",
+          "sha256": "3064d36808634c5540b04628d0936ba1b86e0bbeb23ccae4a2bc823f88950da9",
+          "bytes": 16584,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 25,
+              "sourcePath": "../src/index.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/lifecycle.ts",
+          "sha256": "a5a3eb66b084ab24e1b9c5e6a17ea245a8faeccb214721088e6dd199b0b02b57",
+          "bytes": 19426,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 11,
+              "sourcePath": "../src/lifecycle.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/migration.ts",
+          "sha256": "fe79303416bc2e9a4ef509db1ead269c54bf8a0017d331cc881f619adf01f83a",
+          "bytes": 11329,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 20,
+              "sourcePath": "../src/migration.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/page-flow.ts",
+          "sha256": "9741fb5b9eaa42a4c2ad98b7b46d62309bbbad49e25cf6f1ab5b53cff98d31d4",
+          "bytes": 1245,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 21,
+              "sourcePath": "../src/page-flow.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/pdf-metadata.ts",
+          "sha256": "752e668d514c4319331a2d75b6e47d6a28429f4191efca855bac6f128053ab3a",
+          "bytes": 1963,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 6,
+              "sourcePath": "../src/pdf-metadata.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/placeholders.ts",
+          "sha256": "a2db654d86bca97e76bece2a29db664a13b3a83678c0fc0373c6aa19658ec6a4",
+          "bytes": 3981,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 7,
+              "sourcePath": "../src/placeholders.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/primitives.ts",
+          "sha256": "615bb23cf9e7e2ae9493d840e5b2246971d7d9686d15368d7eda4ccccc4ddbfc",
+          "bytes": 1483,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 0,
+              "sourcePath": "../src/primitives.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/rendering.ts",
+          "sha256": "d28e18e78ace940511d1f3164438a202b46c1f8e3ff09c05b8d6efa670f50675",
+          "bytes": 10712,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 12,
+              "sourcePath": "../src/rendering.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/repeaters.ts",
+          "sha256": "81519ed540876969618df38d2699a3dd4a514d860022f3096ec2b2cba16600ab",
+          "bytes": 11050,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 22,
+              "sourcePath": "../src/repeaters.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/security.ts",
+          "sha256": "814187e24850ca324826b77b195df3d641aaac344826ed919cb684eebca090ef",
+          "bytes": 16349,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 23,
+              "sourcePath": "../src/security.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/starter-templates.ts",
+          "sha256": "cf87d0e65be725f0a81c137fadd2151fd8851645ab32875cb8642f5635297b43",
+          "bytes": 39902,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 24,
+              "sourcePath": "../src/starter-templates.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/summary-blocks.ts",
+          "sha256": "b0d4288ae96e46d0d844d9b6f8a333ef1cff91ded3a73d55871d27a661345529",
+          "bytes": 3720,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 8,
+              "sourcePath": "../src/summary-blocks.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/tables.ts",
+          "sha256": "6493521e0e8929901f58e0aadd1efae027f6c53b6812710fdfec11863df1829a",
+          "bytes": 10490,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 16,
+              "sourcePath": "../src/tables.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/template.ts",
+          "sha256": "d8c7fa2ee5ee75e34c5f669f09738d141a9729d7188bdc645ab001b49874f001",
+          "bytes": 5663,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 10,
+              "sourcePath": "../src/template.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/themes.ts",
+          "sha256": "17df161c0af2209c9dbab580424d74ad44d30e4314d0fb320111bbb4ca4fa2f0",
+          "bytes": 6874,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 9,
+              "sourcePath": "../src/themes.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/variable-resolution.ts",
+          "sha256": "7bfe1bb2f3d41d5b61a1c8453b4d1549e82ef3b870bed8cc2426030b604dbe03",
+          "bytes": 8753,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 15,
+              "sourcePath": "../src/variable-resolution.ts"
+            }
+          ]
+        },
+        {
+          "path": "src/variables.ts",
+          "sha256": "51b9d2bd4936f4b9f7cedd9a4f21a44864ee83204d1ee5e70897ff73ed388351",
+          "bytes": 36409,
+          "provenance": [
+            {
+              "map": "vendor/react-pdf-packages/asym-pdf-template-schema/dist/index.mjs.map",
+              "mapSha256": "28352428219f231ec35942b709d565a36006aff9e8acf54fa15a8373c60e5009",
+              "sourceIndex": 3,
+              "sourcePath": "../src/variables.ts"
+            }
+          ]
+        }
+      ],
+      "declarationOnlySourcePaths": []
+    }
+  ],
+  "typeReconstruction": {
+    "typeSourcePath": "packages/docraptor-client/src/types.ts",
+    "reconstructedSha256": "278435834455cca2303e4247c099fe6e4aaa6cd21200fdc379afc031ad28b7f3",
+    "publicDefinitionsSource": {
+      "path": "vendor/react-pdf-packages/asym-docraptor-client/dist/index.d.mts",
+      "sha256": "259fea04f245523abfcd8e0bddc5c4b5ab116bfa440195c094fbf02802e170c7",
+      "section": "src/types.d.ts",
+      "mechanicalChanges": [
+        "Restore export modifiers on type/interface declarations",
+        "Restore type-only schema import required by those definitions"
+      ]
+    },
+    "privateDefinitionSource": {
+      "ownerCommit": "5ce8e68b96e5316a410ca1bd81a500cf511e7894",
+      "path": "packages/docraptor-client/src/types.ts",
+      "sourceSha256": "be9933228e8d5323fc58684febf82657a8c02ab84d050d69e0d6fa590df176f1",
+      "symbol": "DocRaptorDocumentPayload",
+      "reconstruction": "Retain existing internal request type; add optional pdf_title/profile fields matching shipped client.ts createDocumentPayload and shipped public schema property types.",
+      "runtimeChanged": false
+    },
+    "qualificationRequired": [
+      "Strict typecheck",
+      "Built public declarations equal shipped API",
+      "Emitted runtime behavior matches shipped artifacts"
+    ]
+  },
+  "erasedExportEntrypointReconstruction": {
+    "declaration": "/home/conrad/code/core-worktrees/payload-modernization-2026-10-22/vendor/react-pdf-packages/asym-pdf-editor/dist/extensions.d.mts",
+    "exportCount": 79,
+    "exports": [
+      {
+        "name": "AssetImageAttributes",
+        "typeOnly": true
+      },
+      {
+        "name": "AssetImageNode",
+        "typeOnly": false
+      },
+      {
+        "name": "AssetImagePreviewDiagnostic",
+        "typeOnly": true
+      },
+      {
+        "name": "AssetImagePreviewInput",
+        "typeOnly": true
+      },
+      {
+        "name": "AssetImagePreviewResult",
+        "typeOnly": true
+      },
+      {
+        "name": "AssetImagePreviewStatus",
+        "typeOnly": true
+      },
+      {
+        "name": "ConditionalSection",
+        "typeOnly": false
+      },
+      {
+        "name": "ConditionalSectionAttributes",
+        "typeOnly": true
+      },
+      {
+        "name": "ConditionalSectionOptions",
+        "typeOnly": true
+      },
+      {
+        "name": "ConditionalSectionPreviewDiagnostic",
+        "typeOnly": true
+      },
+      {
+        "name": "ConditionalSectionPreviewInput",
+        "typeOnly": true
+      },
+      {
+        "name": "ConditionalSectionPreviewResult",
+        "typeOnly": true
+      },
+      {
+        "name": "DataTableAttributes",
+        "typeOnly": true
+      },
+      {
+        "name": "DataTableBlock",
+        "typeOnly": false
+      },
+      {
+        "name": "DataTableOptions",
+        "typeOnly": true
+      },
+      {
+        "name": "DataTablePreviewDiagnostic",
+        "typeOnly": true
+      },
+      {
+        "name": "DataTablePreviewInput",
+        "typeOnly": true
+      },
+      {
+        "name": "DataTablePreviewResult",
+        "typeOnly": true
+      },
+      {
+        "name": "DataTablePreviewStatus",
+        "typeOnly": true
+      },
+      {
+        "name": "DocumentPlaceholderAttributes",
+        "typeOnly": true
+      },
+      {
+        "name": "DocumentPlaceholderNode",
+        "typeOnly": false
+      },
+      {
+        "name": "DocumentPlaceholderOptions",
+        "typeOnly": true
+      },
+      {
+        "name": "DocumentPlaceholderPreviewDiagnostic",
+        "typeOnly": true
+      },
+      {
+        "name": "DocumentPlaceholderPreviewInput",
+        "typeOnly": true
+      },
+      {
+        "name": "DocumentPlaceholderPreviewResult",
+        "typeOnly": true
+      },
+      {
+        "name": "DocumentPlaceholderPreviewStatus",
+        "typeOnly": true
+      },
+      {
+        "name": "HeaderFooterPreviewDiagnostic",
+        "typeOnly": true
+      },
+      {
+        "name": "HeaderFooterPreviewInput",
+        "typeOnly": true
+      },
+      {
+        "name": "HeaderFooterPreviewResult",
+        "typeOnly": true
+      },
+      {
+        "name": "HeaderFooterPreviewStatus",
+        "typeOnly": true
+      },
+      {
+        "name": "InsertAssetImageInput",
+        "typeOnly": true
+      },
+      {
+        "name": "InsertConditionalSectionInput",
+        "typeOnly": true
+      },
+      {
+        "name": "InsertDataTableInput",
+        "typeOnly": true
+      },
+      {
+        "name": "InsertDocumentPlaceholderInput",
+        "typeOnly": true
+      },
+      {
+        "name": "InsertPageBreakInput",
+        "typeOnly": true
+      },
+      {
+        "name": "InsertRepeaterSectionInput",
+        "typeOnly": true
+      },
+      {
+        "name": "InsertVariableChipInput",
+        "typeOnly": true
+      },
+      {
+        "name": "PageBreakAttributes",
+        "typeOnly": true
+      },
+      {
+        "name": "PageBreakNode",
+        "typeOnly": false
+      },
+      {
+        "name": "PageBreakOptions",
+        "typeOnly": true
+      },
+      {
+        "name": "PageBreakPreviewDiagnostic",
+        "typeOnly": true
+      },
+      {
+        "name": "PageBreakPreviewInput",
+        "typeOnly": true
+      },
+      {
+        "name": "PageBreakPreviewResult",
+        "typeOnly": true
+      },
+      {
+        "name": "PageBreakPreviewStatus",
+        "typeOnly": true
+      },
+      {
+        "name": "RepeaterSection",
+        "typeOnly": false
+      },
+      {
+        "name": "RepeaterSectionAttributes",
+        "typeOnly": true
+      },
+      {
+        "name": "RepeaterSectionOptions",
+        "typeOnly": true
+      },
+      {
+        "name": "RepeaterSectionPreviewDiagnostic",
+        "typeOnly": true
+      },
+      {
+        "name": "RepeaterSectionPreviewInput",
+        "typeOnly": true
+      },
+      {
+        "name": "RepeaterSectionPreviewResult",
+        "typeOnly": true
+      },
+      {
+        "name": "VariableChip",
+        "typeOnly": false
+      },
+      {
+        "name": "VariableChipAttributes",
+        "typeOnly": true
+      },
+      {
+        "name": "VariableChipFallback",
+        "typeOnly": true
+      },
+      {
+        "name": "VariableChipOptions",
+        "typeOnly": true
+      },
+      {
+        "name": "VariableChipPreviewInput",
+        "typeOnly": true
+      },
+      {
+        "name": "VariableChipPreviewResult",
+        "typeOnly": true
+      },
+      {
+        "name": "createAssetImageExtension",
+        "typeOnly": false
+      },
+      {
+        "name": "createConditionalSectionExtension",
+        "typeOnly": false
+      },
+      {
+        "name": "createDataTableExtension",
+        "typeOnly": false
+      },
+      {
+        "name": "createDocumentPlaceholderExtension",
+        "typeOnly": false
+      },
+      {
+        "name": "createPageBreakExtension",
+        "typeOnly": false
+      },
+      {
+        "name": "createRepeaterSectionExtension",
+        "typeOnly": false
+      },
+      {
+        "name": "createVariableChipExtension",
+        "typeOnly": false
+      },
+      {
+        "name": "getAssetImagePreview",
+        "typeOnly": false
+      },
+      {
+        "name": "getConditionalSectionPreview",
+        "typeOnly": false
+      },
+      {
+        "name": "getDataTablePreview",
+        "typeOnly": false
+      },
+      {
+        "name": "getDocumentPlaceholderPreview",
+        "typeOnly": false
+      },
+      {
+        "name": "getHeaderFooterPreview",
+        "typeOnly": false
+      },
+      {
+        "name": "getPageBreakPreview",
+        "typeOnly": false
+      },
+      {
+        "name": "getRepeaterSectionPreview",
+        "typeOnly": false
+      },
+      {
+        "name": "getVariableChipPreview",
+        "typeOnly": false
+      },
+      {
+        "name": "isKnownVariableChipKey",
+        "typeOnly": false
+      },
+      {
+        "name": "isValidConditionalRule",
+        "typeOnly": false
+      },
+      {
+        "name": "isValidDocumentAssetImage",
+        "typeOnly": false
+      },
+      {
+        "name": "isValidDocumentHeaderFooterSettings",
+        "typeOnly": false
+      },
+      {
+        "name": "isValidDocumentPageBreakNode",
+        "typeOnly": false
+      },
+      {
+        "name": "isValidDocumentPlaceholder",
+        "typeOnly": false
+      },
+      {
+        "name": "isValidRepeaterBinding",
+        "typeOnly": false
+      },
+      {
+        "name": "isValidTableBinding",
+        "typeOnly": false
+      }
+    ],
+    "sourceDirectories": [
+      "asset-image",
+      "conditional-section",
+      "data-table",
+      "placeholder",
+      "header-footer",
+      "page-flow",
+      "repeater",
+      "variable"
+    ],
+    "reconstruction": "Erased export-only entrypoint restored from shipped named exports; implementation declarations matched with the TypeScript AST.",
+    "path": "packages/pdf-editor/src/extensions/index.ts",
+    "sha256": "b5e174b9fc707a7f236fca5240dc050d406cfdfef36cbe878f503e2589b2ce59"
+  },
+  "retainedCompatibilitySource": {
+    "path": "packages/pdf-editor/src/react-email-compat.ts",
+    "sha256": "d20c5dec37abac00dfc0ee59d704195031b2dea95f76f6d0fdef5de03d2f6d81",
+    "provenance": "Owner baseline source retained unchanged; consumed exported names and shipped declarations independently reconciled."
+  }
+}

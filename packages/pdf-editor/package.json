@@ -30,6 +30,16 @@
         "default": "./dist/extensions.cjs"
       }
     },
+    "./migration/unlayer": {
+      "import": {
+        "types": "./dist/migration/unlayer.d.mts",
+        "default": "./dist/migration/unlayer.mjs"
+      },
+      "require": {
+        "types": "./dist/migration/unlayer.d.cts",
+        "default": "./dist/migration/unlayer.cjs"
+      }
+    },
     "./react-email-compat": {
       "import": {
         "types": "./dist/react-email-compat.d.mts",

@@ -2,6 +2,7 @@ export type DocRaptorClientErrorCode =
   | 'missing_api_key'
   | 'http_error'
   | 'docraptor_error'
+  | 'invalid_request'
   | 'network_error'
   | 'timeout'
   | 'aborted'

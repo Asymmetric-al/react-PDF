@@ -25,7 +25,7 @@ describe('Phase 12 DocRaptor test PDF preview', () => {
   it('exposes a server-only subpath boundary', () => {
     expect(docraptorPreviewBoundary).toEqual({
       packageName: '@asym/pdf-renderer/docraptor-preview',
-      maturity: 'phase-21-data-table-preview-fixtures',
+      maturity: 'phase-28-branding',
       owns: 'docraptor-test-preview',
       runtime: 'server-only',
       consumes: ['@asym/pdf-template-schema', '@asym/docraptor-client'],

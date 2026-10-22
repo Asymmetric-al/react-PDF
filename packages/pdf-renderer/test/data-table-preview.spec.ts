@@ -28,7 +28,7 @@ const mockCredential = 'phase-21-docraptor-mock-value';
 const pdfBytes = new Uint8Array([37, 80, 68, 70, 45, 50, 49]);
 
 describe('Phase 21 data table end-to-end preview fixtures', () => {
-  it('renders deterministic table fixture body HTML without calculations', () => {
+  it('renders deterministic table fixture body HTML with shipped calculations', () => {
     for (const fixture of tablePreviewFixtures) {
       const template = DocumentTemplateV1Schema.parse(fixture.template);
       const firstResult = composePdfDocumentHtml({
@@ -57,8 +57,8 @@ describe('Phase 21 data table end-to-end preview fixtures', () => {
         expect(firstResult.html).toContain(expectedText);
       }
 
-      for (const calculatedText of fixture.unexpectedCalculatedText) {
-        expect(firstResult.html).not.toContain(calculatedText);
+      for (const calculatedText of fixture.expectedCalculatedText) {
+        expect(firstResult.html).toContain(calculatedText);
       }
     }
   });

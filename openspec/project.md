@@ -15,7 +15,14 @@ image and asset handling, DocRaptor rendering, and large batch generation.
 
 ## Current state
 
-The repo is still close to upstream React Email:
+The active [Core package restoration change](changes/restore-core-pdf-packages/proposal.md)
+recovers functionality already shipped by Core from committed source maps and
+declarations. Its five-package baseline, provenance and remaining modernization
+gates are recorded in [maintenance evidence](../docs/maintenance/core-pdf-modernization/README.md).
+The original 47-phase roadmap remains product intent; restored artifacts do not
+prove that every historical phase or rollout gate is complete.
+
+The retained upstream workspace foundation is:
 
 - Root package is still named `react-email-monorepo`.
 - `packages/editor` still publishes as `@react-email/editor`.
